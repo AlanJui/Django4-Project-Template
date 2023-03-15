@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文章標讀音</title>
+</head>
+<body>
+    <h1>文章標讀音</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="article">文章:</label>
+        <br>
+        <textarea id="article" name="article" rows="10" cols="50"></textarea>
+        <br>
+        <input type="submit" value="提交">
+    </form>
+    <hr>
+    {% if ruby_text %}
+        {% for char, pronunciation in ruby_text %}
+            {% if pronunciation %}
+                <ruby>
+                    {{ char }}
+                    <rt>{{ pronunciation }}</rt>
+                </ruby>
+            {% else %}
+                {{ char }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
