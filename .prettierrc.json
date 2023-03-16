@@ -4,9 +4,15 @@
   "singleQuote": true,
   "overrides": [
     {
-      "files": ["*.md", "*.uml", "*.puml", "*.tex"],
+      "files": ["*.uml", "*.puml", "*.tex"],
       "options": {
         "tabWidth": 4
+      }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "tabWidth": 2
       }
     },
     {

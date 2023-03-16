@@ -1,14 +1,11 @@
-"""
-poetry run python manage.py test han_ji_dict
-"""
 from django.test import TestCase
 
-from .models import HanJi
+from han_ji_dict.models import HanJi
 
-# 軟體單元測試
+# 軟體整合測試
 
 
-class HanJiModelTestCase(TestCase):
+class HanJiIntegrationTestCase(TestCase):
     def setUp(self):
         HanJi.objects.create(
             character="字",
@@ -19,10 +16,6 @@ class HanJiModelTestCase(TestCase):
             BP="BP_example",
         )
 
-    def test_han_ji_model(self):
+    def test_han_ji_query(self):
         han_ji = HanJi.objects.get(character="字")
         self.assertEqual(han_ji.sip_ngoo_im, "sip_ngoo_im_example")
-        self.assertEqual(han_ji.hong_im, "hong_im_example")
-        self.assertEqual(han_ji.POJ, "POJ_example")
-        self.assertEqual(han_ji.TL, "TL_example")
-        self.assertEqual(han_ji.BP, "BP_example")

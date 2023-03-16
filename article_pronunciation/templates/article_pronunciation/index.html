@@ -17,10 +17,7 @@
     {% if ruby_text %}
         {% for char, pronunciation in ruby_text %}
             {% if pronunciation %}
-                <ruby>
-                    {{ char }}
-                    <rt>{{ pronunciation }}</rt>
-                </ruby>
+                <ruby>{{ char }}<rt>{{ pronunciation }}</rt></ruby>
             {% else %}
                 {{ char }}
             {% endif %}

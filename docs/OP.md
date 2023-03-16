@@ -1,5 +1,7 @@
 # 專案開發環境建置指引
 
+## 作業流程
+
 ### 1. Create project dir
 
 ```shell
@@ -156,7 +158,9 @@ Writing lock file
 
 No dependencies to install or update
 
-❯ poetry add pyright pylint pylint-django mypy django-stubs pydocstyle flake8 djlint autopep8 black --group dev
+❯ poetry add pyright pylint pylint-django mypy django-stubs \
+pydocstyle flake8 djlint autopep8 black --group dev
+
 Using version ^1.1.299 for pyright
 Using version ^2.17.0 for pylint
 Using version ^2.5.3 for pylint-django
@@ -248,7 +252,7 @@ build-backend = "poetry.core.masonry.api"
 
 Add …
 
-```
+```sh
 #====================================================================
 # 專案環境設定檔：setup.cfg，管制以下所列工具之設定：
 # pydocstyle, flake8,
@@ -288,7 +292,7 @@ ignore = "migrations"
 
 [tool.pylint."MESSAGES CONTROL"]
 max-line-length = 120
-disable = """
+disable = \"""
 raw-checker-failed,
 bad-inline-option,
 locally-disabled,
@@ -317,7 +321,7 @@ invalid-str-returned,
 unused-import,
 unused-variable,
 consider-using-enumerate
-"""
+\"""
 
 [tool.pydocstyle]
 ignore = ["D100","D103", "D104"]
@@ -448,6 +452,22 @@ drwxr-xr-x 9 alanjui staff 288B 3 15 21:11 han_ji_dict
 drwxr-xr-x 8 alanjui staff 256B 3 15 21:09 web_app
 ```
 
-```
+### 查詢 Poetry 設定
 
+```bash
+❯ poetry env info
+
+Virtualenv
+Python:         3.10.6
+Implementation: CPython
+Path:           /Users/alanjui/workspace/rime/han_gi/.venv
+Executable:     /Users/alanjui/workspace/rime/han_gi/.venv/bin/python
+Valid:          True
+
+System
+Platform:   darwin
+OS:         posix
+Python:     3.10.6
+Path:       /Users/alanjui/.pyenv/versions/3.10.6
+Executable: /Users/alanjui/.pyenv/versions/3.10.6/bin/python3.10
 ```
