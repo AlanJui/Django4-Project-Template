@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD024 MD043 -->
+
 # 使用者需求規格
 
 ## 系統需求摘要
@@ -63,3 +65,5 @@
 
 - 漢字字典應用（Han_Ji_Dict Application）
 - 文章標讀音應用（Article_Prounciation Application）
+
+請彙總以上所有的問答（只要答覆即可），以 Markdown 文檔格式輸出。

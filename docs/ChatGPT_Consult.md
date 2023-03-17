@@ -1,10 +1,10 @@
-# ChatGPT 諮詢問答錄
+## ChatGPT 諮詢問答錄
 
 ```sh
 請將這個會談（Session）的「問答」輸出到一個文字檔案。文檔格式需為 markdown 標準。
 ```
 
-## 問題 1
+# 問題 1
 
 **用戶**：我需要打造一個應用系統，讓我記錄漢字的「讀音」。我的需求條列如下，請代為撰寫程式碼：
 [需求列表]
@@ -30,3 +30,23 @@ Django Project 執行 「單元測試（Unit Test）」的 Python 程式碼。
 **用戶**：以上程式碼改寫成「可於 Python JupyterBook 執行」之程式碼。
 
 **AI**：回答了用戶的問題，提供了在 Jupyter Notebook 中運行功能測試的方法。
+
+## Q5
+
+請提供「安裝及設定的程序步驟」，說明如何建置一個「軟體功能測試環境」。
+
+需求如下：
+
+- Python 程式碼編輯器：使用 Python JupyterBook
+- 功能測試工具：
+  - 測試軟體：Selenium
+  - WebDrive: ChromeDriver
+  - 瀏覽器：Chrome
+- Python 工具：
+  - Python 版本管理工具：pyenv
+  - Python Packages 安裝管理工具：poetry
+- 輸出：Markdown 文字檔格式
+
+## Q6
+
+請彙總以上所有的問答（只要答覆即可），以 Markdown 文檔格式輸出。
