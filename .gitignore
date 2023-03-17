@@ -22,3 +22,4 @@ static_collected/
 
 _archived/
 **/.null-ls*.py
+.ipynb_checkpoints/
