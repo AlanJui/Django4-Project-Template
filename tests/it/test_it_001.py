@@ -1,9 +1,8 @@
 from django.contrib.auth.models import AnonymousUser
 from django.test import RequestFactory, TestCase
 
+from article_pronunciation.views import index
 from han_ji_dict.models import HanJi
-
-from .views import index
 
 
 class ArticlePronunciationTestCase(TestCase):

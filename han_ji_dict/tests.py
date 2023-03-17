@@ -3,7 +3,7 @@ poetry run python manage.py test han_ji_dict
 """
 from django.test import TestCase
 
-from .models import HanJi
+from han_ji_dict.models import HanJi
 
 # 軟體單元測試
 

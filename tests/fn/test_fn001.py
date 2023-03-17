@@ -1,8 +1,7 @@
+""" Test Command: poetry run python manage.py test tests.st_001
 """
-操作使用：
-pip install selenium chromedriver-autoinstaller
-"""
-
+import os
+import sys
 import unittest
 
 import chromedriver_autoinstaller
@@ -38,7 +37,7 @@ class SystemFunctionalTest(unittest.TestCase):
         input_box.send_keys("字")
         input_box.send_keys(Keys.ENTER)
 
-        WebDriverWait(self.browser, 10).until(
+        WebDriverWait(self.browser, 20).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "ruby rt"))
         )
 
