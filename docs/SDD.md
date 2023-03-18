@@ -149,3 +149,22 @@ with open('data.csv', 'r', encoding='utf-8') as f:
 # 關閉連線
 conn.close()
 ```
+
+## Base Template
+
+```html
+<!-- prettier-ignore -->
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <title>CSS Bopomofo Test</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./assets/styles/fang-yin.css" />
+  </head>
+
+  <body>
+    {% block title %}Blogger{% endblock %} {% block content %} kk
+  </body>
+</html>
+```

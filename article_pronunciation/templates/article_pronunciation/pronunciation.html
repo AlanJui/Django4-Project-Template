@@ -1,0 +1,21 @@
+<!-- article_pronunciation/templates/article_pronunciation/pronunciation.html -->
+{% extends "article_pronunciation/base.html" %}
+{% load static %}
+
+{% block title %}
+  Article Pronunciation
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/article_pronunciation.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="pronunciation">
+    {% for item in pronunciation_list %}
+      <ruby>
+        {{ item.han_ji }}<rt>{{ item.chu_im }}</rt>
+      </ruby>
+    {% endfor %}
+  </div>
+{% endblock %}
