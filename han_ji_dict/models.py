@@ -21,11 +21,5 @@ class HanJi(models.Model):
     # 十五音韻母
     sni_un = models.CharField(max_length=10, default='')
 
-    # def __str__(self):
-    #     return self.han_ji
     def __str__(self):
-        try:
-            return self.han_ji
-        except IndexError as e:
-            print(f"Error in HanJi __str__ method for object with ID {self.id}: {e}")
-            return "<Error>"
+        return self.han_ji

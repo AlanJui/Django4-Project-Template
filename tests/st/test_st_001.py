@@ -1,10 +1,26 @@
-""" Test Command: poetry run python manage.py test tests.st
 """
-import os
-import sys
-import unittest
+To valid that use can input an article and see the pronunciations.
 
-import chromedriver_autoinstaller
+User input article by web browser (like seleium)
+
+- Step 1: User input URL in web browser `http://localhost:8000/article_pronunciation/input/`
+
+- Step 2: System display `Enter Article` form
+
+- Step 3: User input article into form and press submit button
+
+- Step 4: System process the input and redirect to web page in URL and display the content
+which every han_ji (Chinese Character) with pronunction.
+(URL) http://localhost:8000/article_pronunciation/pronunciation/
+
+Command to run test:
+poetry run python manage.py test tests.st
+"""
+# tests/sft/test_article_pronunciation.py
+
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.test import LiveServerTestCase
+from django.urls import reverse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -14,50 +30,56 @@ from selenium.webdriver.support.ui import WebDriverWait
 from han_ji_dict.models import HanJi
 
 
-class SystemFunctionalTest(unittest.TestCase):
+class ArticlePronunciationFunctionalTest(LiveServerTestCase):
     def setUp(self):
-        chromedriver_autoinstaller.install()
-        self.browser = webdriver.Chrome()  # 使用 Google Chrome WebDriver
+        HanJi.objects.create(han_ji='測', chu_im='tshik4')
+        HanJi.objects.create(han_ji='試', chu_im='tshi3')
+        # self.browser = webdriver.Firefox()
+        self.browser = webdriver.Chrome()
 
     def tearDown(self):
         self.browser.quit()
 
-    def test_article_pronunciation(self):
-        self.browser.get("http://localhost:8000/article_pronunciation/")
+    def test_input_article_and_get_pronunciation(self):
+        # Step 1: User input URL in web browser
+        self.browser.get(self.live_server_url + reverse("input_article"))
 
-        input_box = self.browser.find_element(By.NAME, "article")
-        input_box.send_keys("天")
-        # input_box.send_keys(Keys.ENTER)
+        # Step 2: System display "Enter Article" form
+        # textarea = self.browser.find_element_by_id("article")
+        textarea = self.browser.find_element(By.NAME, "article")
 
-        # Locate the submit button using XPath
-        submit_button = self.browser.find_element(
-            By.XPATH, '//input[@type="submit" and @value="提交"]'
-        )
-
-        # Click the submit button
+        # Step 3: User input article into form and press submit button
+        textarea.send_keys("測試")
+        textarea.send_keys(Keys.ENTER)
+        # submit_button = self.browser.find_element_by_xpath("//button[@type='submit']")
+        submit_button = self.browser.find_element(By.XPATH, "//button[@type='submit']")
         submit_button.click()
 
-        WebDriverWait(self.browser, 5).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, "ruby, rt"))
+        # Print the page source for debugging
+        # print(self.browser.page_source)
+
+        # Step 4: System process the input and display the content with pronunciation
+        wait = WebDriverWait(self.browser, 3)  # Wait for the page to load
+        # hanji_elements = self.browser.find_elements_by_css_selector(".hanji")
+        hanji_elements = wait.until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, "ruby"))
         )
 
-        # Find all 'ruby' elements on the page
-        ruby_elements = self.browser.find_elements(By.CSS_SELECTOR, "ruby")
+        # Add assertions here to check the content and prounciation of han_ji
+        hanji_character_text = self.browser.execute_script(
+            "return arguments[0].childNodes[0].nodeValue.trim()", hanji_elements[0]
+        )
+        self.assertEqual(hanji_character_text, "測")
 
-        # Iterate through the 'ruby' elements and find the one with the text '天'
-        for ruby in ruby_elements:
-            if ruby.text.strip().strip("天"):
-                break
-        else:
-            raise AssertionError("The 'ruby' element with the text '天' was not found")
+        hanji_character_text2 = self.browser.execute_script(
+            "return arguments[0].childNodes[0].nodeValue.trim()", hanji_elements[1]
+        )
+        self.assertEqual(hanji_character_text2, "試")
 
-        # Find the corresponding 'rt' element
-        rt = ruby.find_element(By.TAG_NAME, "rt")
+        # Locate the first <rt> element within the <ruby> element
+        rt_element = hanji_elements[0].find_element(By.CSS_SELECTOR, "rt")
+        rt_element2 = hanji_elements[1].find_element(By.CSS_SELECTOR, "rt")
 
-        # Assert that the found 'ruby' and 'rt' elements have the expected text
-        self.assertEqual(ruby.text.strip(), "天\n堅一他")
-        self.assertEqual(rt.text.strip(), "堅一他")
-
-
-if __name__ == "__main__":
-    unittest.main()
+        # Check if the text content of the <rt> element matches the expected pronunciation
+        self.assertEqual(rt_element.text, "tshik4")
+        self.assertEqual(rt_element2.text, "tshi3")

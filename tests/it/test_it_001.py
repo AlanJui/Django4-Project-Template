@@ -1,27 +1,14 @@
-from django.contrib.auth.models import AnonymousUser
-from django.test import RequestFactory, TestCase
+# tests/sit/test_article_pronunciation.py
+from django.test import TestCase
 
-from article_pronunciation.views import index
 from han_ji_dict.models import HanJi
 
 
-class ArticlePronunciationTestCase(TestCase):
-    def setUp(self):
-        self.factory = RequestFactory()
-        HanJi.objects.create(
-            character="字",
-            sip_ngoo_im="sip_ngoo_im_example",
-            hong_im="hong_im_example",
-            POJ="POJ_example",
-            TL="TL_example",
-            BP="BP_example",
-        )
+class ArticlePronunciationIntegrationTest(TestCase):
+    def test_article_pronunciation_can_get_hanji_objects(self):
+        # Create a sample HanJi object
+        HanJi.objects.create(han_ji='測', chu_im='tsheh4')
 
-    def test_article_pronunciation_view(self):
-        request = self.factory.post("/article_pronunciation/", {"article": "字"})
-        request.user = AnonymousUser()
-        response = index(request)
-
-        self.assertEqual(response.status_code, 200)
-        print(response.content.decode('utf-8'))
-        self.assertContains(response, "<ruby>字<rt>sip_ngoo_im_example</rt></ruby>")
+        # Test if the HanJi object is accessible
+        hanji = HanJi.objects.get(han_ji='測')
+        self.assertEqual(hanji.chu_im, 'tsheh4')

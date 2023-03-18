@@ -45,6 +45,7 @@ build-backend = "poetry.core.masonry.api"
 #====================================================================
 
 [tool.pyright]
+extraPaths = ["."]
 venvPath = ".venv"
 exclude = [
 	"**/__pycache__", "**/migrations/**", "**/venv/**", "**/.venv/**",

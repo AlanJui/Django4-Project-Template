@@ -158,13 +158,13 @@ conn.close()
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
-    <title>CSS Bopomofo Test</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./assets/styles/fang-yin.css" />
+    <link rel="stylesheet" href="fang-yin.css" />
   </head>
 
   <body>
-    {% block title %}Blogger{% endblock %} {% block content %} kk
+    {% block content %} {% endblock content %}
   </body>
 </html>
 ```

@@ -50,3 +50,68 @@ Django Project 執行 「單元測試（Unit Test）」的 Python 程式碼。
 ## Q6
 
 請彙總以上所有的問答（只要答覆即可），以 Markdown 文檔格式輸出。
+
+## Files/Directories structure of Django Project
+
+```sh
+❯ tree . -L 2
+.
+├── README.md
+├── _archived
+│   └── db.sqlite3
+├── article_pronunciation
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── templates
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── db.sqlite3
+├── docs
+│   ├── ChatGPT_Consult.md
+│   ├── Markdownlint_Std.md
+│   ├── OP.md
+│   ├── SDD.md
+│   ├── SRS.md
+│   ├── STS-01_功能測試環境建置作業指引.md
+│   ├── STS.md
+│   └── URS.md
+├── han_ji_dict
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── add_data_to_hanji_dict.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── manage.py
+├── poetry.lock
+├── pyproject.toml
+├── setup.cfg
+├── tests
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── fn
+│   ├── it
+│   └── st
+├── tools
+│   ├── han_ji.csv
+│   ├── import_csv.py
+│   ├── import_csv_drop_old_table.py
+│   ├── import_csv_to_han_ji_dict.py
+│   └── setenv.py
+└── web_app
+    ├── __init__.py
+    ├── __pycache__
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+```

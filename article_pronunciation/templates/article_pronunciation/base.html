@@ -1,9 +1,11 @@
 <!-- article_pronunciation/templates/base.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'article_pronunciation/app.css' %}">
     {% block css %}{% endblock css %}
   </head>
 
