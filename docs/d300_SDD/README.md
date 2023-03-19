@@ -154,7 +154,7 @@ conn.close()
 
 ```html
 <!-- prettier-ignore -->
-{% extends "base.html" %}
+\{\% extends "base.html" \%\}
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
