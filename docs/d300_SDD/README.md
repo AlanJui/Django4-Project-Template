@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 <!-- markdownlint-disable MD024 MD043 -->
 
 # SDD

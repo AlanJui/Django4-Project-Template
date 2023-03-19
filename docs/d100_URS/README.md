@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 <!-- markdownlint-disable MD024 MD043 -->
 
 # 使用者需求規格

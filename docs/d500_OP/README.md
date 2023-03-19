@@ -1,3 +1,9 @@
+---
+sidebar: auto
+---
+
+<!-- markdownlint-disable MD024 MD043 -->
+
 # 專案開發環境建置指引
 
 ## 作業流程

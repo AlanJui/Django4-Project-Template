@@ -2,6 +2,8 @@
 sidebar: auto
 ---
 
+<!-- markdownlint-disable MD024 MD043 -->
+
 # 《系統開發作業》
 
 - 420 測試環境建置作業
