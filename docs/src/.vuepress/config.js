@@ -1,6 +1,12 @@
 const { description } = require('../../package')
 
 module.exports = {
+  base: '/Django4-Project-Template/',
+  locales: {
+    '/': {
+      lang: 'zh-TW',
+    },
+  },
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
