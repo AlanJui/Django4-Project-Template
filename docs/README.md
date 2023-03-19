@@ -1,6 +1,5 @@
 ---
 home: false
-actionLink: /guide/
 footer: Made by  with ❤️
 ---
 

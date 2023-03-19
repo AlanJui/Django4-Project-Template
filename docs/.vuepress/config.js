@@ -44,20 +44,158 @@ module.exports = {
     docsDir: '',
     editLinkText: '',
     lastUpdated: false,
+    // nav: [
+    //   { text: '首頁', link: '/' },
+    //   { text: '作業系統', link: '/D01_OS/' },
+    //   { text: '終端機', link: '/D02_Terminal/' },
+    //   { text: '開發環境', link: '/D03_DevEnvironments/' },
+    //   { text: '開發工具', link: '/D04_DevTools/' },
+    // ],
     nav: [
-      { text: '首頁', link: '/' },
-      { text: '作業系統', link: '/D01_OS/' },
-      { text: '終端機', link: '/D02_Terminal/' },
-      { text: '開發環境', link: '/D03_DevEnvironments/' },
-      { text: '開發工具', link: '/D04_DevTools/' },
+      {
+        text: 'Guide',
+        link: '/guide/',
+      },
+      {
+        text: 'Config',
+        link: '/config/',
+      },
+      {
+        text: 'VuePress',
+        link: 'https://v1.vuepress.vuejs.org',
+      },
     ],
     sidebar: [
-      'd100_URS/',
-      'd200_SDD/',
-      'd300_SDD/',
-      'd400_DEV/',
-      'd500_OP/',
-      'd900_REF/',
+      {
+        title: '作業指引',
+        collapsable: false,
+        children: [
+          {
+            title: '使用者需求',
+            path: '/d100_URS/',
+          },
+          {
+            title: '系統需求',
+            path: '/d200_SRS/',
+          },
+          {
+            title: '系統設計',
+            path: '/d300_SDD/',
+          },
+          {
+            title: '開發與測試',
+            path: '/d400_DEV/',
+          },
+          {
+            title: '系統維運',
+            path: '/d500_OP/',
+          },
+          {
+            title: '其它⋯⋯',
+            path: '/d900_REF/',
+          },
+        ],
+      },
+      {
+        title: '電腦硬體',
+        collapsable: true,
+        children: [
+          {
+            title: 'SRV-2020',
+            path: '/srv-2020/',
+            collapsable: true,
+            sidebarDepth: 2,
+          },
+          {
+            title: 'MBP-2018',
+            path: '/MBP-2018/',
+            collapsable: true,
+            sidebarDepth: 2,
+          },
+        ],
+      },
+      {
+        title: '開發環境',
+        collapsable: true,
+        children: [
+          {
+            title: 'Django',
+            path: '/django/',
+          },
+          {
+            title: 'Node.js',
+            path: '/nodejs/',
+          },
+          {
+            title: 'Lua',
+            path: '/lua/',
+          },
+        ],
+      },
+      {
+        title: '參考資料',
+        collapsable: true,
+        children: [
+          {
+            title: '快速參考',
+            path: '/QuickRef/',
+          },
+          {
+            title: 'Python',
+            path: '/python/',
+          },
+          {
+            title: 'Django',
+            path: '/django/',
+          },
+          {
+            title: 'Docker',
+            path: '/docker/',
+          },
+          {
+            title: '其它⋯⋯',
+            path: '/misc/',
+          },
+        ],
+      },
+      {
+        title: '常用工具',
+        collapsable: true,
+        children: [
+          {
+            title: 'VirtualBox',
+            path: '/VirtualBox/',
+          },
+          {
+            title: 'PostgreSQL',
+            path: '/postgres/',
+          },
+          {
+            title: 'Git',
+            path: '/git/',
+          },
+          {
+            title: 'Yabai',
+            path: '/yabai/',
+          },
+          {
+            title: 'Vim',
+            path: '/vim/',
+          },
+          {
+            title: 'Neovim',
+            path: '/nvim/',
+          },
+          {
+            title: 'VS Code',
+            path: '/VSCode/',
+          },
+          {
+            title: 'NVCode',
+            path: '/NVCode/',
+          },
+        ],
+      },
     ],
   },
   markdown: {
