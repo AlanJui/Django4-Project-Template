@@ -1,0 +1,22 @@
+{
+  "name": "han_gi",
+  "version": "0.0.1",
+  "description": "為漢字加註福建話音標。",
+  "main": "index.js",
+  "authors": {
+    "name": "居正中（Alan Jui）",
+    "email": "alanjui.1960@gmail.com"
+  },
+  "repository": "PM &amp; Dev/han_gi",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "build": "vuepress build docs",
+    "review": "live-server docs/.vuepress/dist",
+    "release": ". publish.sh"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.9.9"
+  }
+}

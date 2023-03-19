@@ -130,6 +130,25 @@ sequenceDiagram
     participant Browser
     participant System
 
+    User->>Browser: Input URL:<br> http://localhost:8000/article_pronunciation/input/
+    Browser->>System: Send request (GET) for web page
+    System->>Browser: Rresponse a webpage presented in HTML format
+    Browser->>User: Display web page
+    User->>Browser: Input article and press submit
+    Browser->>System: Send request (POST)
+    System->>System: Process the input of article and generate content with pronunciation
+    Note over System: Generate content with pronunciation for each han_ji
+    System->>Browser: Redirect to URL:<br> http://localhost:8000/article_pronunciation/pronunciation/
+    Browser->>User: Display the article with annotated pronunciation
+    Note over User,Browser: Each Chinese character in the article is annotated with its pronunciation in Chinese.
+```
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser
+    participant System
+
     User->>Browser: Input URL:<br>http://localhost:8000/article_pronunciation/input/
     Browser->>System: Send GET request for web page
     System->>Browser: Respond with a webpage in HTML format
@@ -141,23 +160,4 @@ sequenceDiagram
     System->>Browser: Redirect to URL:<br>http://localhost:8000/article_pronunciation/pronunciation/
     Browser->>User: Display the article with annotated pronunciation
     Note over User,Browser: Each Chinese character in the article is annotated with its pronunciation.
-```
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Browser
-    participant System
-
-    User->>Browser: 輸入網址：<br>http://localhost:8000/article_pronunciation/input/
-    Browser->>System: 發送獲取網頁的 GET 請求
-    System->>Browser: 以 HTML 格式回應網頁
-    Browser->>User: 顯示網頁
-    User->>Browser: 輸入文章並按提交
-    Browser->>System: 發送帶有文章數據的 POST 請求
-    System->>System: 處理文章輸入並生成帶有讀音的內容
-    Note over System: 為文章中的每個漢字生成帶有讀音的內容
-    System->>Browser: 重定向到網址：<br>http://localhost:8000/article_pronunciation/pronunciation/
-    Browser->>User: 顯示帶有標註讀音的文章
-    Note over User,Browser: 文章中的每個漢字都標註有它的讀音。
 ```
