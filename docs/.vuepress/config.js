@@ -51,7 +51,14 @@ module.exports = {
       { text: '開發環境', link: '/D03_DevEnvironments/' },
       { text: '開發工具', link: '/D04_DevTools/' },
     ],
-    sidebar: ['/', '/d100_URS/', '/d200_SDD/', '/d300_SDD/', '/d400_VV/'],
+    sidebar: [
+      'd100_URS/',
+      'd200_SDD/',
+      'd300_SDD/',
+      'd400_DEV/',
+      'd500_OP/',
+      'd900_REF/',
+    ],
   },
   markdown: {
     lineNumbers: true,

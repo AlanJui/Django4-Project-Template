@@ -23,3 +23,17 @@ static_collected/
 _archived/
 **/.null-ls*.py
 .ipynb_checkpoints/
+
+
+pids
+logs
+node_modules
+npm-debug.log
+coverage/
+run
+dist
+.DS_Store
+.nyc_output
+.basement
+config.local.js
+basement_dist
