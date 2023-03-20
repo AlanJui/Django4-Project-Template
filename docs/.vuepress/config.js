@@ -200,10 +200,24 @@ module.exports = {
   },
   markdown: {
     lineNumbers: true,
+    extendMarkdown: (md) => {
+      md.use(require('markdown-it-prism'))
+      // 使用 markdown-it-mermaid 插件
+      md.use(require('markdown-it-mermaid').default)
+      // 控制圖片縮放
+      md.use(require('markdown-it-imsize'))
+    },
   },
 
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */
-  plugins: ['@vuepress/plugin-back-to-top', '@vuepress/plugin-medium-zoom'],
+  plugins: [
+    '@vuepress/plugin-palette',
+    {
+      preset: 'sass', // 使用 Sass 預設顏色方案
+    },
+    '@vuepress/plugin-back-to-top',
+    '@vuepress/plugin-medium-zoom',
+  ],
 }

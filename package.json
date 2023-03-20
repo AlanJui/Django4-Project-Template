@@ -17,6 +17,17 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@vuepress/markdown": "^2.0.0-beta.61",
+    "@vuepress/plugin-back-to-top": "^1.9.9",
+    "@vuepress/plugin-medium-zoom": "^1.9.9",
+    "@vuepress/plugin-palette": "^2.0.0-alpha.26",
+    "markdown-it": "^13.0.1",
+    "markdown-it-imsize": "^2.0.1",
+    "markdown-it-mermaid": "^0.2.5",
+    "markdown-it-prism": "^2.3.0",
     "vuepress": "^1.9.9"
+  },
+  "dependencies": {
+    "prismjs": "^1.29.0"
   }
 }
