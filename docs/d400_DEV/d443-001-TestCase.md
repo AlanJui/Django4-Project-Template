@@ -1,3 +1,9 @@
+---
+sidebar: auto
+---
+
+<!-- markdownlint-disable MD024 MD043 MD033 -->
+
 # 《系統功能規格》
 
 ## 為文章標註漢語讀音
@@ -6,18 +12,21 @@
 
 ### 作業程序
 
-步驟 1：使用者在瀏覽器輸入網址。
+1. 使用者在瀏覽器輸入網址。
 
-【網址】 <http://localhost:8000/article_pronunciation/pronunciation/>
+   【網址】 <http://localhost:8000/article_pronunciation/pronunciation/>
 
-步驟 2：系統顯示「輸入文章」表單。
+2. 系統顯示「輸入文章」表單。
 
-步驟 3：使用者先在表單中輸入文章，然後按《提交》按鈕。
+3. 使用者先在表單中輸入文章，然後按《提交》按鈕。
 
-步驟 4：系統處理輸入之文章，為每個漢字標註「福建話音標」。最後，向使用者顯示已標註福建話音標之文章。
-【網址】 <http://localhost:8000/article_pronunciation/pronunciation/>
+4. 系統處理輸入之文章，為每個漢字標註「福建話音標」。最後，向使用者顯示已標註福建話音標之文章。
+
+   【網址】 <http://localhost:8000/article_pronunciation/pronunciation/>
 
 ### 作業示意圖
+
+<mermaid/>
 
 ```mermaid
 sequenceDiagram
@@ -39,6 +48,8 @@ sequenceDiagram
 ```
 
 ### 網頁架構
+
+<mermaid/>
 
 ```mermaid
 graph TD
@@ -62,21 +73,24 @@ phonetic notation."
 
 ### Procedure
 
-Step 1: The user enters the URL in the browser.
+1. The user enters the URL in the browser.
 
-【URL】 <http://localhost:8000/article_pronunciation/pronunciation/>
+   【URL】 <http://localhost:8000/article_pronunciation/pronunciation/>
 
-Step 2: The system displays the "Enter Article" form.
+2. The system displays the "Enter Article" form.
 
-Step 3: The user inputs the article into the form and then clicks the "Submit" button.
+3. The user inputs the article into the form and then clicks the "Submit" button.
 
-Step 4: The system processes the inputted article, annotates each Chinese
-character with the "Fujian dialect phonetic notation," and finally
-displays the article with annotated Fujian dialect phonetic notation to
-the user.
-【URL】 <http://localhost:8000/article_pronunciation/pronunciation/>
+4. The system processes the inputted article, annotates each Chinese
+   character with the "Fujian dialect phonetic notation," and finally
+   displays the article with annotated Fujian dialect phonetic notation to
+   the user.
+
+   【URL】 <http://localhost:8000/article_pronunciation/pronunciation/>
 
 ### Sqeuence Diagram for Procedure
+
+<mermaid/>
 
 ```mermaid
 sequenceDiagram
@@ -122,6 +136,8 @@ Step 3: The user inputs the article into the form and then clicks the "Submit" b
 
 Step 4: The system processes the inputted article, annotates each Chinese character with the "Fujian dialect phonetic notation," and finally displays the article with annotated Fujian dialect phonetic notation to the user.
 【URL】 <http://localhost:8000/article_pronunciation/pronunciation/>
+
+<mermaid/>
 
 ```mermaid
 sequenceDiagram
