@@ -201,7 +201,7 @@ module.exports = {
   markdown: {
     lineNumbers: true,
     extendMarkdown: (md) => {
-      md.use(require('markdown-it-prism'))
+      // md.use(require('markdown-it-prism'))
       // 使用 markdown-it-mermaid 插件
       md.use(require('markdown-it-mermaid').default)
       // 控制圖片縮放

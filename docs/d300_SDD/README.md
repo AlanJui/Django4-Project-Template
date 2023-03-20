@@ -25,7 +25,7 @@ class HanJi(models.Model):
 
 ### HanJi Table
 
-```SQL
+```python
 CREATE TABLE "han_ji_dict_hanji" (
  "id" integer NOT NULL,
  "character" varchar(2) NOT NULL UNIQUE,
@@ -60,7 +60,7 @@ class HanJi(models.Model):
 
 ### HanJi Table
 
-```SQL
+```python
 CREATE TABLE "han_ji_dict_hanji" (
  "id" integer NOT NULL,
  "han_ji" varchar(2) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE "han_ji_dict_hanji" (
 
 ## Import from CSV File
 
-```SQL
+```python
 import csv
 import sqlite3
 
@@ -127,7 +127,7 @@ conn.close()
 
 請注意，這個程式碼示例假設資料庫檔案 db.sqlite3 已經存在，並且匯入的 CSV 檔案名稱為 data.csv。如果您的 CSV 檔案有不同的欄位名稱或資料型別，請根據需要修改程式碼。
 
-```SQL
+```python
 import csv
 import sqlite3
 
