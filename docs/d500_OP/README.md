@@ -2,478 +2,76 @@
 sidebar: auto
 ---
 
-<!-- markdownlint-disable MD024 MD043 -->
-
-# 專案開發環境建置指引
-
-## 作業流程
-
-### 1. Create project dir
-
-```shell
-❯ cd ~/workspace/rime
-❯ mkdir han_gi && cd $_
-```
-
-### 2. Configure for Python version
-
-```shell
-❯ pyenv versions
-system
-.venv
-2.7.16
-3.8.5
-3.8.5/envs/venv-3.8.5
-3.8.10
-3.9.1
-3.9.1/envs/venv-3.9.1
-3.9.7
-3.9.7/envs/venv-397
-3.10.0
-3.10.0/envs/excel-3.10.0
-3.10.0/envs/venv-3.10.0
-3.10.0/envs/venv-nvim
-3.10.2
-3.10.6
-3.10.6/envs/.venv
-3.10.6/envs/dj4_002
-3.10.6/envs/django-v4
-3.10.6/envs/ex-2022-05
-3.10.6/envs/my-tshu-im
-3.10.6/envs/python-3.10.6
-3.10.6/envs/venv-3.10.6
-3.10.6/envs/venv-dj4
-3.10.6/envs/venv-selenium
-dj4_002
-django-v4
-excel-3.10.0
-ex-2022-05
-my-tshu-im
-python-3.10.6
-venv-3.8.5
-venv-3.9.1
- venv-3.10.0
-* venv-3.10.6 (set by /Users/alanjui/.pyenv/version)
- venv-397
- ❯ pyenv local 3.10.6
-
- ❯ la
- total 8
- -rw-r--r--  1 alanjui  staff     7B  3 15 20:27 .python-version
- ❯ cat .python-version
- 3.10.6
-```
-
-### 3. Create Python Virtual Environment
-
-```shell
-❯ python -m venv .venv
-❯ la
-total 8
--rw-r--r--  1 alanjui  staff     7B  3 15 20:27 .python-version
-drwxr-xr-x  6 alanjui  staff   192B  3 15 20:31 .venv
-
-❯ tree -L 2 .venv
-.venv
-├── bin
-│   ├── Activate.ps1
-│   ├── activate
-│   ├── activate.csh
-│   ├── activate.fish
-│   ├── pip
-│   ├── pip3
-│   ├── pip3.10
-│   ├── python -> /Users/alanjui/workspace/rime/hangu/.venv/bin/python
-│   ├── python3 -> python
-│   └── python3.10 -> python
-├── include
-├── lib
-│   └── python3.10
-└── pyvenv.cfg
-
-5 directories, 11 files
-```
-
-### 4. Create Poetry Configuration File
-
-```shell
-❯ poetry init -q
-
-❯ la
-total 16
--rw-r--r--  1 alanjui  staff     7B  3 15 20:27 .python-version
-drwxr-xr-x  6 alanjui  staff   192B  3 15 20:31 .venv
--rw-r--r--  1 alanjui  staff   300B  3 15 20:35 pyproject.toml
-
-❯ cat pyproject.toml
-[tool.poetry]
-name = "han-gi"
-version = "0.1.0"
-description = ""
-authors = ["居正中 <AlanJui.1960@gmail.com>"]
-readme = "README.md"
-packages = [{include = "han_gi"}]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-```
-
-### 5. Enter Python Virtual Environment
-
-```shell
-❯ poetry shell
-Spawning shell within /Users/alanjui/workspace/rime/hangu/.venv
-❯ emulate bash -c '. /Users/alanjui/workspace/rime/hangu/.venv/bin/activate'
-```
-
-### 6. Install Python Packages
-
-```shell
-❯ cat pyproject.toml
-[tool.poetry]
-name = "han-gi"
-version = "0.1.0"
-description = ""
-authors = ["居正中 <AlanJui.1960@gmail.com>"]
-readme = "README.md"
-packages = [{include = "han_gi"}]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-❯ poetry add django psycopg2-binary asgiref sqlparse
-Using version ^4.1.7 for django
-Using version ^2.9.5 for psycopg2-binary
-Using version ^3.6.0 for asgiref
-Using version ^0.4.3 for sqlparse
-
-Updating dependencies
-Resolving dependencies... (0.1s)
-
-Writing lock file
-
-No dependencies to install or update
-
-❯ poetry add pyright pylint pylint-django mypy django-stubs \
-pydocstyle flake8 djlint autopep8 black --group dev
-
-Using version ^1.1.299 for pyright
-Using version ^2.17.0 for pylint
-Using version ^2.5.3 for pylint-django
-Using version ^1.1.1 for mypy
-Using version ^1.15.0 for django-stubs
-Using version ^6.3.0 for pydocstyle
-Using version ^6.0.0 for flake8
-Using version ^1.19.16 for djlint
-Using version ^2.0.2 for autopep8
-Using version ^23.1.0 for black
-
-Updating dependencies
-Resolving dependencies... (4.6s)
-
-Writing lock file
-
-Package operations: 0 installs, 2 updates, 0 removals
-
-• Updating mypy (1.0.1 -> 1.1.1)
-• Updating pyright (1.1.298 -> 1.1.299)
-```
-
-### 7. Add Development Tools configuration
-
-```shell
-❯ la ~/workspace/rime/hangu
-total 232
--rw-r--r-- 1 alanjui staff 1.2K 3 15 10:35 .djlint_rules.yaml
-drwxr-xr-x 13 alanjui staff 416B 3 15 20:40 .git
--rw-r--r-- 1 alanjui staff 260B 3 15 10:35 .gitignore
-drwxr-xr-x 5 alanjui staff 160B 3 15 10:27 .mypy_cache
--rw-r--r-- 1 alanjui staff 556B 3 15 10:35 .prettierrc.json
--rw-r--r-- 1 alanjui staff 7B 3 15 10:17 .python-version
-drwxr-xr-x 6 alanjui staff 192B 3 15 10:17 .venv
--rw-r--r-- 1 alanjui staff 3.5K 3 15 11:25 .yabs
-drwxr-xr-x 8 alanjui staff 256B 3 15 11:36 myproject
--rw-r--r-- 1 alanjui staff 81K 3 15 10:43 poetry.lock
--rw-r--r-- 1 alanjui staff 4.3K 3 15 10:39 pyproject.toml
--rw-r--r-- 1 alanjui staff 1.0K 3 15 10:35 setup.cfg
-
-❯ cp ~/workspace/rime/hangu/{setup.cfg,.djlint_rules.yaml,.gitignore,.yabs,.prettierrc.json} .
-❯ la
-total 216
--rw-r--r-- 1 alanjui staff 1.2K 3 15 20:58 .djlint_rules.yaml
--rw-r--r-- 1 alanjui staff 260B 3 15 20:58 .gitignore
--rw-r--r-- 1 alanjui staff 556B 3 15 20:58 .prettierrc.json
--rw-r--r-- 1 alanjui staff 7B 3 15 20:27 .python-version
-drwxr-xr-x 6 alanjui staff 192B 3 15 20:31 .venv
--rw-r--r-- 1 alanjui staff 3.5K 3 15 20:58 .yabs
--rw-r--r-- 1 alanjui staff 80K 3 15 20:48 poetry.lock
--rw-r--r-- 1 alanjui staff 626B 3 15 20:48 pyproject.toml
--rw-r--r-- 1 alanjui staff 1.0K 3 15 20:58 setup.cfg
-```
-
-### 8. Add Configuration for tools to pyproject.toml
-
-```shell
-[tool.poetry]
-name = "han-gi"
-version = "0.1.0"
-description = ""
-authors = ["居正中 <AlanJui.1960@gmail.com>"]
-readme = "README.md"
-packages = [{include = "han_gi"}]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-django = "^4.1.7"
-psycopg2-binary = "^2.9.5"
-asgiref = "^3.6.0"
-sqlparse = "^0.4.3"
-
-[tool.poetry.group.dev.dependencies]
-pyright = "^1.1.299"
-pylint = "^2.17.0"
-pylint-django = "^2.5.3"
-mypy = "^1.1.1"
-django-stubs = "^1.15.0"
-pydocstyle = "^6.3.0"
-flake8 = "^6.0.0"
-djlint = "^1.19.16"
-autopep8 = "^2.0.2"
-black = "^23.1.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-```
-
-Add …
-
-```sh
-#====================================================================
-# 專案環境設定檔：setup.cfg，管制以下所列工具之設定：
-# pydocstyle, flake8,
-#====================================================================
-
-[tool.pyright]
-venvPath = ".venv"
-exclude = [
- "**/__pycache__", "**/migrations/**", "**/venv/**", "**/.venv/**",
- "**/node_modules/**", "**/dist/**", "**/build/**", "**/docs/**",
- "**/tests/**", "**/test/**", "**/tests.py", "**/.*"
-]
-ignore = [
- "**/__pycache__", "**/migrations/**", "**/venv/**", "**/.venv/**",
- "**/node_modules/**", "**/dist/**", "**/build/**", "**/docs/**",
- "**/tests/**", "**/test/**", "**/tests.py"
-]
-typeshedPaths = []
-reportUnusedVariable = "none"
-reportUnusedClass = "none"
-reportUnusedFunction = "none"
-reportUnusedImport = "none"
-reportMissingImports = "warning"
-typeCheckingMode = "off"
-useLibraryCodeForTypes = true
-reportMissingTypeStubs = false
-reportGeneralTypeIssues = "none"
-reportOptionalMemberAccess = "none"
-
-[tool.pylint]
-# init-hook = "import sys; import os; from pylint.config import find_pylintrc; sys.path.append(os.path.dirname(find_pylintrc()))"
-# load-plugins = [ "pylint_django" ]
-# django-settings-module = "web_app.settings"
-# disable = ["R0903", "E0307", "E1101", "C0103" ,"C0116", "C0115", "C0114", "C0115", "C0116", "R1710", "E401", "W0621"]
-output-format = "colorized"
-ignore = "migrations"
-
-[tool.pylint."MESSAGES CONTROL"]
-max-line-length = 120
-disable = \"""
-raw-checker-failed,
-bad-inline-option,
-locally-disabled,
-file-ignored,
-suppressed-message,
-useless-suppression,
-deprecated-pragma,
-use-symbolic-message-instead,
-too-many-instance-attributes,
-len-as-condition,
-too-few-public-methods,
-anomalous-backslash-in-string,
-no-else-return,
-simplifiable-if-statement,
-too-many-arguments,
-duplicate-code,
-no-name-in-module,
-no-member,
-import-error,
-missing-module-docstring,
-missing-class-docstring,
-missing-function-docstring,
-missing-docstring,
-invalid-name,
-invalid-str-returned,
-unused-import,
-unused-variable,
-consider-using-enumerate
-\"""
-
-[tool.pydocstyle]
-ignore = ["D100","D103", "D104"]
-# match-dir = "tests/*"
-
-[tool.mypy]
-ignore_missing_imports = true
-exclude = ['.venv', 'venv']
-# plugins = ["mypy_django_plugin.main"]
-
-[tool.django-stubs]
-django_settings_module = "web_app.settings"
-
-# [mypy.plugins.django-stubs]
-# django_settings_module = "web_app.settings"
-
-[tool.flake8]
-max-line-length = 120
-max-complexity = 10
-extend-ignore = ['E231', 'E241', 'E501', 'F841']
-exclude = ['.git', '__pycache__', 'docs/source/conf.py', 'old', 'build', 'dist']
-per-file-ignores = [
- '__init__.py:F401',
-]
-count = true
-
-[tool.autopep8]
-max_line_length = 120
-ignore = ["E501", "W6"]
-in-place = true
-recursive = true
-aggressive = 3
-
-# [tool.djlint]
-# 實際設定，請參考設定檔： .djlint_rules.yaml
-# profile = "django"
-# preserve_blank_lines = true
-# use_gitignore = true
-# format_css = true
-# format_js = true
-# rules = [
-#   "djlint.rules.model_field_order",
-#   "djlint.rules.model_field_type_annotations",
-# ]
-#
-# [tool.djlint.options]
-# ignore = [
-#         "djlint.rules.html_tag_self_closing",
-#         "djlint.rules.html_tag_lang_attribute",
-#         "migrations/",
-# ]
-
-[tool.black]
-line-length = 88
-max-line-length = 120
-skip-string-normalization = true
-no-tidy = true
-# target-version = ['py37']
-# include = '\.pyi?$'
-# 'extend-exclude' excludes files or directories in addition to the defaults
-# extend-exclude = '''
-# # A regex preceded with ^/ will apply only to files and directories
-# # in the root of the project.
-# (
-#   ^/foo.py    # exclude a file named foo.py in the root of the project
-#   | .*_pb2.py  # exclude autogenerated Protocol Buffer files anywhere in the project
-# )
-# '''
-```
-
-### 9. Create Django Project
-
-```shell
-❯ django-admin startproject web_app .
-❯ la
-total 232
--rw-r--r-- 1 alanjui staff 1.2K 3 15 20:58 .djlint_rules.yaml
--rw-r--r-- 1 alanjui staff 260B 3 15 20:58 .gitignore
--rw-r--r-- 1 alanjui staff 556B 3 15 20:58 .prettierrc.json
--rw-r--r-- 1 alanjui staff 7B 3 15 20:27 .python-version
-drwxr-xr-x 6 alanjui staff 192B 3 15 20:31 .venv
--rw-r--r-- 1 alanjui staff 3.5K 3 15 20:58 .yabs
--rwxr-xr-x 1 alanjui staff 663B 3 15 21:06 manage.py
--rw-r--r-- 1 alanjui staff 80K 3 15 20:48 poetry.lock
--rw-r--r-- 1 alanjui staff 4.2K 3 15 21:05 pyproject.toml
--rw-r--r-- 1 alanjui staff 1.0K 3 15 20:58 setup.cfg
-drwxr-xr-x 7 alanjui staff 224B 3 15 21:06 web_app
-```
-
-### 10. Create Application
-
-```shell
-❯ python manage.py startapp han_ji_dict
-❯ la
-total 232
--rw-r--r-- 1 alanjui staff 1.2K 3 15 20:58 .djlint_rules.yaml
--rw-r--r-- 1 alanjui staff 260B 3 15 20:58 .gitignore
--rw-r--r-- 1 alanjui staff 556B 3 15 20:58 .prettierrc.json
--rw-r--r-- 1 alanjui staff 7B 3 15 20:27 .python-version
-drwxr-xr-x 6 alanjui staff 192B 3 15 20:31 .venv
--rw-r--r-- 1 alanjui staff 3.5K 3 15 20:58 .yabs
-drwxr-xr-x 9 alanjui staff 288B 3 15 21:09 han_ji_dict
--rwxr-xr-x 1 alanjui staff 663B 3 15 21:06 manage.py
--rw-r--r-- 1 alanjui staff 80K 3 15 20:48 poetry.lock
--rw-r--r-- 1 alanjui staff 4.2K 3 15 21:05 pyproject.toml
--rw-r--r-- 1 alanjui staff 1.0K 3 15 20:58 setup.cfg
-drwxr-xr-x 8 alanjui staff 256B 3 15 21:09 web_app
-```
-
-```shell
-❯ poetry run python manage.py startapp article_pronunciation
-
-❯ la
-total 232
--rw-r--r-- 1 alanjui staff 1.2K 3 15 20:58 .djlint_rules.yaml
--rw-r--r-- 1 alanjui staff 260B 3 15 20:58 .gitignore
-drwxr-xr-x 5 alanjui staff 160B 3 15 21:10 .mypy_cache
--rw-r--r-- 1 alanjui staff 556B 3 15 20:58 .prettierrc.json
--rw-r--r-- 1 alanjui staff 7B 3 15 20:27 .python-version
-drwxr-xr-x 6 alanjui staff 192B 3 15 20:31 .venv
--rw-r--r-- 1 alanjui staff 3.5K 3 15 20:58 .yabs
-drwxr-xr-x 9 alanjui staff 288B 3 15 21:13 article_pronunciation
-drwxr-xr-x 9 alanjui staff 288B 3 15 21:11 han_ji_dict
--rwxr-xr-x 1 alanjui staff 663B 3 15 21:06 manage.py
--rw-r--r-- 1 alanjui staff 80K 3 15 20:48 poetry.lock
--rw-r--r-- 1 alanjui staff 4.2K 3 15 21:05 pyproject.toml
--rw-r--r-- 1 alanjui staff 1.0K 3 15 20:58 setup.cfg
-drwxr-xr-x 8 alanjui staff 256B 3 15 21:09 web_app
-```
-
-### 查詢 Poetry 設定
-
-```bash
-❯ poetry env info
-
-Virtualenv
-Python:         3.10.6
-Implementation: CPython
-Path:           /Users/alanjui/workspace/rime/han_gi/.venv
-Executable:     /Users/alanjui/workspace/rime/han_gi/.venv/bin/python
-Valid:          True
-
-System
-Platform:   darwin
-OS:         posix
-Python:     3.10.6
-Path:       /Users/alanjui/.pyenv/versions/3.10.6
-Executable: /Users/alanjui/.pyenv/versions/3.10.6/bin/python3.10
-```
+<!-- markdownlint-disable MD013 MD024 MD043 -->
+
+# 系統維運作業指引
+
+## 文件摘要
+
+本操作手冊旨在指導電腦機房操作員，如何在實體電腦（伺服器）上安裝及維護一個基於 Django 平台的應用系統。該應用系統主要用途為協助企業進行業務管理，包括但不限於客戶資料管理、銷售數據分析等功能。
+
+文件主要架構：
+
+- 文件摘要：說明應用系統的用途與主要功能；
+
+- 執行環境：說明應用系統使用的「技術」，如 ：軟體以何種電腦語言開發、軟體須於何種「平台（Framework）」執行；
+
+- 建置作業：指引機房管理員，拿到第一版的應用系統時，如何執行首次的「建置作業」，完成應用系統應用有的安裝及設定工作；
+
+- 更新作業：指引機房管理員，當應用系統遇有更新時（可能時機：新增功能、修正軟體錯誤），如何執行新版軟體的更新作業。
+
+## 執行環境
+
+本應用系統屬於「網路服務（Web Application）」類型，軟體使用 Python 電腦語言開發，須於 Django 平台（Framework）之上執行。
+
+基於：執行效能及安全性之考量，應用系統之執行環境，尚需搭配 Nginx HTTP Server 和 Gunicorn WSGI Server 以提供穩定的網路服務。
+
+以下是應用系統運行所需的技術和環境要求：
+
+- 開發語言：Python
+- 平台（Framework）：Django
+- HTTP Server：Nginx
+- WSGI Server：Gunicorn
+
+對於 Python 在應用及管理的要求如下：
+
+- 直譯器版本：3.10.6
+- 直譯器版本管理工具：pyenv
+- 套件（Package）管理工具：Poetry
+- 虛擬環境（VirtualEnv）管理工具：Python 內建的 venv 套件
+- 虛擬環境使用之目錄：位於 Django 專案根目錄下，目錄名為 .venv。
+
+應用系統之安裝、更新，務必檢查，確認工作之執行，遵循以上要求完成。在伺服器執行建置、更新作業時，
+務必遵循本指引相關作業章節，依照作業程序逐步執行，以確保應用系統能正確運行。
+
+## 建置作業
+
+1. 確保已安裝 Python 和 Django：應用系統需運行在 Python 環境下，請確保已在伺服器上安裝 Python (版本 3.6 或以上) 以及相應的 Django (版本 2.2 或以上)。若尚未安裝，請依照 Python 官方網站和 Django 官方網站的說明進行安裝。
+
+2. 取得應用系統原始碼：從版本控制系統（如 Git）中取得應用系統的原始碼，並將其放置在伺服器上的適當目錄中。
+
+3. 設定環境變數：根據應用系統的需求，設定相應的環境變數，如資料庫連接資訊、應用系統的執行模式等。
+
+4. 安裝相依套件：在伺服器上執行 pip install -r requirements.txt 命令，以安裝應用系統所需的相依套件。
+
+5. 初始化資料庫：執行 python manage.py migrate 命令，以初始化資料庫並建立相應的資料表結構。
+
+6. 啟動應用系統：執行 python manage.py runserver 命令，啟動應用系統。若需將應用系統綁定至特定 IP 和埠號，可在命令後加上相應參數，如 python manage.py runserver 192.168.1.100:8000。
+
+7. 安裝並設定 Nginx：應用系統使用 Nginx 作為 HTTP 伺服器，以強化靜態檔案處理能力，並提供使用者更快速的下載體驗。請依照 Nginx 官方網站的說明進行安裝。安裝完成後，請修改 Nginx 的設定檔，將靜態檔案路徑設定為應用系統的靜態檔案目錄，並將 HTTP 請求代理至 Gunicorn 伺服器。
+
+8. 安裝並設定 Gunicorn：應用系統使用 Gunicorn 作為 WSGI HTTP 伺服器，用以將 Nginx 收到的 HTTP 請求轉交給 Django 應用系統進行後續處理。請執行 pip install gunicorn 命令以安裝 Gunicorn，然後編寫一個 Gunicorn 設定檔，指定應用系統的 WSGI 模組及運行參數。
+
+9. 啟動 Nginx 和 Gunicorn：分別使用適當的命令啟動 Nginx 和 Gunicorn。例如，對於 Gunicorn，您可以使用類似於以下的命令：gunicorn -c gunicorn.conf.py your_project.wsgi:application。對於 Nginx，您可以使用類似於 sudo service nginx start 的命令啟動。
+
+## 更新作業
+
+1. 停止應用系統：在伺服器上執行 Ctrl + C 命令，停止正在運行的應用系統。
+
+2. 獲取更新後的原始碼：從版本控制系統（如 Git）中獲取更新後的應用系統原始碼，並覆蓋伺服器上的
+
+3. 更新相依套件：如有必要，請執行 pip install -r requirements.txt 命令，以更新應用系統所需的相依套件。
+
+4. 更新資料庫結構：如有資料庫結構變動，請執行 python manage.py migrate 命令，以更新資料庫結構。
+
+5. 重新啟動應用系統：分別重啟 Nginx 和 Gunicorn 伺服器，使更新後的應用系統生效。例如，對於 Gunicorn，您可以使用類似於以下的命令：gunicorn -c gunicorn.conf.py your_project.wsgi:application。對於 Nginx，您可以使用類似於 sudo service nginx restart 的命令重啟。
