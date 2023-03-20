@@ -101,14 +101,14 @@ module.exports = {
         collapsable: true,
         children: [
           {
-            title: 'SRV-2020',
-            path: '/srv-2020/',
+            title: '伺服器（SRV-2020）',
+            path: '/_my_dev_env/srv-2020/',
             collapsable: true,
             sidebarDepth: 2,
           },
           {
-            title: 'MBP-2018',
-            path: '/MBP-2018/',
+            title: '開發機（MBP-2018）',
+            path: '/_my_dev_env/MBP-2018/',
             collapsable: true,
             sidebarDepth: 2,
           },
@@ -119,16 +119,52 @@ module.exports = {
         collapsable: true,
         children: [
           {
+            title: 'Manjaro KDE 開發環境',
+            collapsable: true,
+            children: [
+              {
+                title: 'Manjaro KDE 摘要',
+                path: '/_ManjaroKDE/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '作業系統安裝',
+                path: '/_ManjaroKDE/D01_OS/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '終端機作業',
+                path: '/_ManjaroKDE/D02_Terminal/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '開發環境建置',
+                path: '/_ManjaroKDE/D03_DevEnvironments/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '開發作業工具',
+                path: '/_ManjaroKDE/D04_DevTools/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+            ],
+          },
+          {
             title: 'Django',
-            path: '/django/',
+            path: '/_my_dev_env/django/',
           },
           {
             title: 'Node.js',
-            path: '/nodejs/',
+            path: '/_my_dev_env/nodejs/',
           },
           {
             title: 'Lua',
-            path: '/lua/',
+            path: '/_my_dev_env/lua/',
           },
         ],
       },
@@ -138,23 +174,23 @@ module.exports = {
         children: [
           {
             title: '快速參考',
-            path: '/QuickRef/',
+            path: '/_my_dev_env/QuickRef/',
           },
           {
             title: 'Python',
-            path: '/python/',
+            path: '/_my_dev_env/python/',
           },
           {
             title: 'Django',
-            path: '/django/',
+            path: '/_my_dev_env/django/',
           },
           {
             title: 'Docker',
-            path: '/docker/',
+            path: '/_my_dev_env/docker/',
           },
           {
             title: '其它⋯⋯',
-            path: '/misc/',
+            path: '/_my_dev_env/misc/',
           },
         ],
       },
@@ -164,35 +200,31 @@ module.exports = {
         children: [
           {
             title: 'VirtualBox',
-            path: '/VirtualBox/',
+            path: '/_my_dev_env/VirtualBox/',
           },
           {
             title: 'PostgreSQL',
-            path: '/postgres/',
+            path: '/_my_dev_env/postgres/',
           },
           {
             title: 'Git',
-            path: '/git/',
+            path: '/_my_dev_env/git/',
           },
           {
             title: 'Yabai',
-            path: '/yabai/',
+            path: '/_my_dev_env/yabai/',
           },
           {
             title: 'Vim',
-            path: '/vim/',
+            path: '/_my_dev_env/vim/',
           },
           {
             title: 'Neovim',
-            path: '/nvim/',
+            path: '/_my_dev_env/nvim/',
           },
           {
             title: 'VS Code',
-            path: '/VSCode/',
-          },
-          {
-            title: 'NVCode',
-            path: '/NVCode/',
+            path: '/_my_dev_env/VSCode/',
           },
         ],
       },
