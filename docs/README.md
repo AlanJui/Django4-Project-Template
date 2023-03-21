@@ -3,6 +3,8 @@ home: false
 footer: Made by  with ❤️
 ---
 
+<!-- markdownlint-disable MD024 MD041 MD043 MD033 -->
+
 <!-- ![Hero image](./images/hero.png) -->
 
 <!-- ![Hero image](/images/hero.png =200x200) -->
