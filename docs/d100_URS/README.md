@@ -4,9 +4,9 @@ sidebar: auto
 
 <!-- markdownlint-disable MD024 MD043 -->
 
-# 使用者需求規格
+# 需求規格
 
-## 系統需求摘要
+## 文件摘要
 
 我需要打造一個應用系統，讓我記錄漢字的「讀音」。我的需求條列如下，請代為撰寫程式碼：
 
@@ -71,3 +71,7 @@ sidebar: auto
 - 文章標讀音應用（Article_Prounciation Application）
 
 請彙總以上所有的問答（只要答覆即可），以 Markdown 文檔格式輸出。
+
+## 需求規格
+
+1. [為漢字標讀音](./d100_fn001.md)
