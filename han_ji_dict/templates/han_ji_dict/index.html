@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>漢字字典編輯</h1>
+<table>
+    <thead>
+        <tr>
+            <th>漢字</th>
+            <th>讀音編碼</th>
+            <!-- 添加其他列标题，如所需 -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for han_ji in all_han_ji %}
+        <tr>
+            <td>{{ han_ji.han_ji }}</td>
+            <td>{{ han_ji.chu_im }}</td>
+            <!-- 添加其他列的数据，如所需 -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

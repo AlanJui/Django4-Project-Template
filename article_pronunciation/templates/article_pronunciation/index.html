@@ -1,27 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>文章標讀音</title>
-</head>
-<body>
-    <h1>文章標讀音</h1>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+  文章標讀音
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
     <form method="post">
         {% csrf_token %}
-        <label for="article">文章:</label>
-        <br>
-        <textarea id="article" name="article" rows="10" cols="50"></textarea>
-        <br>
-        <input type="submit" value="提交">
+        <h2><label for="text">輸入欲找讀音的漢字：</label></h2>
+        <textarea name="text" id="text" rows="4" cols="50">{{ default_text }}</textarea>
+        <br />
+        <button type="submit">送出</button>
     </form>
-    <hr>
-    {% if ruby_text %}
-        {% for char, pronunciation in ruby_text %}
-            {% if pronunciation %}
-                <ruby>{{ char }}<rt>{{ pronunciation }}</rt></ruby>
-            {% else %}
-                {{ char }}
-            {% endif %}
-        {% endfor %}
+    <br />
+    {% if annotated_text %}
+        <h2>已標註讀音的漢字：</h2>
+        <div class="pronunciation">
+            {% for char in annotated_text %}
+                {% if char.han_ji %}
+                    <ruby>
+                    {{ char.han_ji }}<rt>{{ char.chu_im }}</rt>
+                    </ruby>
+                {% else %}
+                    {{ char|safe }}
+                {% endif %}
+            {% endfor %}
+        </div>
     {% endif %}
-</body>
-</html>
+{% endblock %}

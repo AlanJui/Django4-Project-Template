@@ -7,25 +7,33 @@ from django.urls import reverse
 from han_ji_dict.models import HanJi
 
 
-def input_article(request):
-    return render(request, 'article_pronunciation/input_article.html')
+def index(request):
+    default_text = "我可以為您標註漢字讀音"
+    annotated_text = ""
+
+    if request.method == "POST":
+        input_text = request.POST.get("text", default_text)
+        annotated_text = annotate_pronunciation(input_text)
+
+    context = {
+        "default_text": default_text,
+        "annotated_text": annotated_text,
+    }
+
+    return render(request, "article_pronunciation/index.html", context)
 
 
-def pronunciation(request):
-    if request.method != "POST":
-        return HttpResponseRedirect(reverse("input_article"))
+def annotate_pronunciation(text):
+    # annotated_text = ""
+    annotated_text = []
 
-    article = request.POST["article"]
-    article = article.replace('\r\n', '\n')
-    pronunciation_list = []
-
-    for character in article:
+    for character in text:
         if not character.strip():
-            pronunciation_list.append(character)
+            annotated_text.append(character)
             continue
 
         if character == '\n':
-            pronunciation_list.append('<br/><br/>')
+            annotated_text.append('<br/><br/>')
             continue
 
         max_freq = HanJi.objects.filter(han_ji=character).aggregate(Max('freq'))[
@@ -33,14 +41,10 @@ def pronunciation(request):
         ]
 
         if max_freq is None:
-            pronunciation_list.append(character)
+            annotated_text.append(character)
             continue
 
         hanji_objects = HanJi.objects.filter(han_ji=character, freq=max_freq)
-        pronunciation_list.extend(hanji_objects)
+        annotated_text.extend(hanji_objects)
 
-    return render(
-        request,
-        "article_pronunciation/pronunciation.html",
-        {"pronunciation_list": pronunciation_list},
-    )
+    return annotated_text
