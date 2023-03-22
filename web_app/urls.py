@@ -33,4 +33,5 @@ urlpatterns = [
     ),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
-urlpatterns += staticfiles_urlpatterns()
+# urlpatterns += staticfiles_urlpatterns()
+urlpatterns = staticfiles_urlpatterns() + urlpatterns

@@ -19,16 +19,16 @@
     </form>
     <br />
     {% if annotated_text %}
+        <div class="content-area">
         <h2>已標註讀音的漢字：</h2>
-        <div class="pronunciation">
             {% for char in annotated_text %}
-                {% if char.han_ji %}
-                    <ruby>
+            {% if char.han_ji %}
+                <ruby>
                     {{ char.han_ji }}<rt>{{ char.chu_im }}</rt>
-                    </ruby>
-                {% else %}
-                    {{ char|safe }}
-                {% endif %}
+                </ruby>
+            {% else %}
+                {{ char|safe }}
+            {% endif %}
             {% endfor %}
         </div>
     {% endif %}

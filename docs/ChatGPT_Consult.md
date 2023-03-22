@@ -161,3 +161,70 @@ sequenceDiagram
     Browser->>User: 顯示帶有標註讀音的文章
     Note over User,Browser: 文章中的每個漢字都標註有它的讀音。
 ```
+
+## Q11
+
+請改寫 han_ji_dict application，需求如下：
+
+這個 Application 的用途：提供前端的 UI ，供使用者可自行編輯漢字字典。
+
+han_ji_dict.views:
+
+```python
+class HanJi(models.Model):
+    # 漢字
+    han_ji = models.CharField(max_length=2, default='')
+    # 漢字讀音編碼
+    chu_im = models.CharField(max_length=10, default='')
+    # 讀音常用頻率
+    freq = models.FloatField(default=0.0)
+    # 聲母碼
+    siann = models.CharField(max_length=2, default='')
+    # 韻母碼
+    un = models.CharField(max_length=5, default='')
+    # 調號
+    tiau = models.IntegerField(default=0)
+    # 原編者使用的 BP 標音
+    old_chu_im = models.CharField(max_length=10, null=True)
+    # 十五音聲母
+    sni_siann = models.CharField(max_length=10, default='')
+    # 十五音韻母
+    sni_un = models.CharField(max_length=10, default='')
+
+    def __str__(self):
+        return self.han_ji
+```
+
+han_ji_dict application，需求規格：
+
+1. 進入 han_ji_dict 的 Home View 時，請以 HTML TABLE 顯示 20 個漢字字典資料
+   ，並提供「上一頁」、「下一頁」的按鈕；
+2. Home View 請用 Django View 的 ListView 來實作；
+3. 每個漢字均有 Hyper-link ，點擊後將進 Detail View 顯示該漢字的詳細資料；
+4. Detail View 中需要按鈕，可回到 han_ji_dict Home View；
+5. 仿 CRUD 觀點，提供：加漢字資料（C）、改漢字資料（U）、刪漢字資料（D）。
+   所有功能均以 Django View Class 完成。在 Application 的 Home View 均有按鈕；
+6. 提供查詢（Query）功能，以便使用者可快速查找某一漢字的讀音資料；
+7. 提供篩選功能，以便使用者可依讀音的音標，查找相同發音的漢字。
+
+```htmldjango
+<main>
+  <div class="container">
+
+  <h1>漢字字典編輯</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>漢字</th>
+              <th>讀音編碼</th>
+              <!-- 添加其他列标题，如所需 -->
+          </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+  </table>
+
+  </div>
+</main>
+```

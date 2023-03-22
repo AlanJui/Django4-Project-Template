@@ -40,3 +40,27 @@ footer {
 .navbar .nav-item .nav-link:hover {
     color: black;
 }
+
+/* 突顯 WebApp 標題 */
+.title-brand {
+    color: yellow !important; /* 標題顏色 */
+    margin-left: 15px; /* 與網頁左邊的距離 */
+}
+
+.title-brand:hover {
+    color: orange !important; /* 當滑鼠懸停在標題上時的顏色 */
+    text-decoration: none; /* 移除懸停時的下劃線 */
+}
+
+.pronunciation-container {
+    background-color: #f0f0f0; /* 淺灰色背景 */
+    padding: 15px; /* 為內容添加內邊距 */
+    border-radius: 5px; /* 圓角邊框 */
+}
+
+.content-area {
+    background-color: #f0f0f0; /* 淺灰色背景 */
+    padding: 15px 0; /* 為內容添加內邊距 */
+    border-radius: 5px; /* 圓角邊框 */
+    margin: 0;
+}

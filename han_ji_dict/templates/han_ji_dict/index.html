@@ -1,23 +1,47 @@
-{% extends 'base.html' %}
+{% extends "han_ji_dict/base.html" %}
 
-{% block content %}
-<h1>漢字字典編輯</h1>
-<table>
-    <thead>
+{% block han_ji_dict_content %}
+<div class="text-center">
+    <h4>漢字字典</h4>
+    <a href="{% url 'han_ji_dict:create' %}" class="btn btn-success"
+       style="font-size: 70%;">
+        新增漢字
+    </a>
+</div>
+<br>
+<table class="table table-bordered">
+    <thead style="font-size: 0.5em; color: darkblue; background-color: lightgrey;">
         <tr>
             <th>漢字</th>
             <th>讀音編碼</th>
-            <!-- 添加其他列标题，如所需 -->
+            <th>常用頻率</th>
+            <th>聲母碼</th>
+            <th>韻文碼</th>
+            <th>調&nbsp;&nbsp;號</th>
+            <th>漳州音</th>
+            <th>十五音聲母</th>
+            <th>十五音韻母</th>
         </tr>
     </thead>
     <tbody>
-        {% for han_ji in all_han_ji %}
+        {% for han_ji in object_list %}
         <tr>
-            <td>{{ han_ji.han_ji }}</td>
+            <td>
+                <a href="{% url 'han_ji_dict:detail' han_ji.pk %}">{{ han_ji.han_ji }}</a>
+            </td>
             <td>{{ han_ji.chu_im }}</td>
-            <!-- 添加其他列的数据，如所需 -->
+            <td>{{ han_ji.freq }}</td>
+            <td>{{ han_ji.siann }}</td>
+            <td>{{ han_ji.un }}</td>
+            <td>{{ han_ji.tiau }}</td>
+            <td>{{ han_ji.old_chu_im }}</td>
+            <td>{{ han_ji.sni_siann }}</td>
+            <td>{{ han_ji.sni_un }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+{% include "pagination.html" with page=page_obj %}
+
+
 {% endblock %}
