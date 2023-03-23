@@ -31,29 +31,23 @@ footer: Made by  with ❤️
 
 ### 循序圖
 
-@startuml
-actor User
-control Django.Router as Router
-control Django.Template as Template
-boundary post_detail as View
-boundary CommentForm as Form
-entity Post as Model
-entity Comment as Comment
-database database as DB
+<!-- markdownlint-disable line-length -->
 
-User -> Router : url: /blog/ (post_detail)
-Router -> View : post_detail(request, year, month, day, post)
-View -> Model : get_object_or_404(Post, slug=post, \n status='published', publish**year=year, \n publish**month=month, publish\_\_day=day)
-Model -> DB : sql_query()
-DB --> Model : post
-Model --> View : post
-View -> Comment: post.comments.filter(active=True)
-Comment --> View: comments
-View -> Form: CommentForm()
-Form --> View: form
-View --> Template: render(request, \n uri_of_template, \n {post, comments, form})
-Template --> User: /blog/post/list.html
-@enduml
+@startuml actor User control Django.Router as Router control Django.Template as
+Template boundary post_detail as View boundary CommentForm as Form entity Post
+as Model entity Comment as Comment database database as DB
+
+User -> Router : url: /blog/ (post_detail) Router -> View : post_detail(request,
+year, month, day, post) View -> Model : get_object_or_404(Post, slug=post, \n
+status='published', publish**year=year, \n publish**month=month,
+publish\_\_day=day) Model -> DB : sql_query() DB --> Model : post Model --> View
+: post View -> Comment: post.comments.filter(active=True) Comment --> View:
+comments View -> Form: CommentForm() Form --> View: form View --> Template:
+render(request, \n uri_of_template, \n {post, comments, form}) Template -->
+User: /blog/post/list.html @enduml
+
+<!-- markdownlint-enable line-length -->
+
 <mermaid/>
 
 ```mermaid
@@ -79,13 +73,9 @@ C -->|Three| F[fa:fa-car Car]
 
 ## 指定色彩
 
-::: tip
-This is a tip message.
-:::
+::: tip This is a tip message. :::
 
-::: danger
-This is a danger message.
-:::
+::: danger This is a danger message. :::
 
 <style>
 .tip {
@@ -99,3 +89,15 @@ This is a danger message.
   border-color: var(--color-danger-border);
 }
 </style>
+
+這個提示信息告訴您，需要指定如何解決分支之間的分歧。您可以選擇合併（merge）、變
+基（rebase）或者只允許快速向前（fast-forward only）。
+
+這個提示信息告訴您，需要指定如何解決中文自動換行。
+
+It is very trouble me to control new line my self to let the length of line
+match the rule for markdown linter. I am so glad to hear some tool can solveing
+my prolem.
+
+It is very trouble for me to key an eye on control words in sentence to match
+the line length setting.
