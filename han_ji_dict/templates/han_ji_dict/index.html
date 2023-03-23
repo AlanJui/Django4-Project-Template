@@ -1,5 +1,11 @@
 {% extends "han_ji_dict/base.html" %}
 
+{% load mathfilters %}
+
+{% block title %}
+漢字典首頁
+{% endblock %}
+
 {% block han_ji_dict_content %}
 <div class="text-center">
     <h4>漢字字典</h4>
@@ -12,6 +18,7 @@
 <table class="table table-bordered">
     <thead style="font-size: 0.5em; color: darkblue; background-color: lightgrey;">
         <tr>
+            <th>序號</th>
             <th>漢字</th>
             <th>讀音編碼</th>
             <th>常用頻率</th>
@@ -26,6 +33,11 @@
     <tbody>
         {% for han_ji in object_list %}
         <tr>
+            <!-- <td>{{ han_ji.pk }}</td> -->
+            <!-- <td>{{ forloop.counter }}</td> -->
+            {% with page_offset=page_obj.number|add:-1|mul:page_obj.paginator.per_page %}
+                <td>{{ forloop.counter|add:page_offset }}</td>
+            {% endwith %}
             <td>
                 <a href="{% url 'han_ji_dict:detail' han_ji.pk %}">{{ han_ji.han_ji }}</a>
             </td>

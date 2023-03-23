@@ -15,6 +15,7 @@ class HanJiListView(ListView):
 class HanJiDetailView(DetailView):
     model = HanJi
     template_name = 'han_ji_dict/detail.html'
+    success_url = reverse_lazy('han_ji_dict:home')
 
 
 class HanJiCreateView(CreateView):
@@ -28,6 +29,7 @@ class HanJiUpdateView(UpdateView):
     model = HanJi
     form_class = HanJiForm
     template_name = 'han_ji_dict/update.html'
+    success_url = reverse_lazy('han_ji_dict:home')
 
 
 class HanJiDeleteView(DeleteView):
