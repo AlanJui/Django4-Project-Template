@@ -1,549 +1,501 @@
-# Yabai
+<!-- markdownlint-disable MD024 MD040 MD041 MD043 MD033 -->
 
-https://www.youtube.com/watch?v=mMV3LXQ3pKQ&
+# Yabai 操作指引
 
+在 Linux 平台，Windows Management 工具軟體，開發人員可專注於
+鍵盤操作，無需滑鼠輔助，以此方式作業，進而提昇工作的高效。但
+在 macOS 平台上，並未提供類似的 Windows Management 工具。但
+有名為 Yabai 的工具軟體，能提供相類似的功能。
 
-[https://youtu.be/mMV3LXQ3pKQ](https://youtu.be/mMV3LXQ3pKQ)
+本指引用於說明，如何透過 Yabai ，並將 HarmmerSpoon 整合進來
+，自行構建一個可用 macOS 平台的 Windows Management 工具。
 
+::: tip
 
-https://www.youtube.com/watch?v=JL1lz77YbUE&
+1. 欲令 Yabai 功能全開、發揮到極致，得要關閉 macOS 預設的
+   SIP 保護功能。
 
+2. HammerSpoon 是專為 macOS 作業系統開發的 Lua Script 工具軟
+   體，在 Linux 的使用者，為了讓指令的操作更加 Smart ，常會
+   利用 Shell Script 加工達其目的。仿照這樣的概念
+   ，HammerSpoon 讓他的使用者可透過 Lua Script ，對 macOS 進
+   行自動化、客製作的設計。
 
-[https://youtu.be/JL1lz77YbUE](https://youtu.be/JL1lz77YbUE)
+:::
 
+## 作業環境
 
+- 作業系統： macOS 10.13.1
+- WE 平台：Yabai + SKHD
+- Script 引擎： Hammerspoon
+- 鍵盤配置標準：Querty
+- 鍵盤引擎：Karabiner-Elements
+- 終端機： iTerm 、Alacritty
 
+## 安裝作業
 
+### 安裝 [Yabai](https://github.com/koekeishiya/yabai/)
 
+1. 安裝 Yabai 套件
 
+   ```sh
+   brew install koekeishiya/formulae/yabai
+   ```
 
+2. 以 Service 啟動 yabai
 
-# 關閉 SIP（System Integrity Protection）
-https://blog.developer.money/%E9%97%9C%E9%96%89-mac-%E7%9A%84-sip-system-integrity-protection-8f679c4fdd9e
+   ```sh
+   brew services start yabai
+   ```
 
+3. 建立 Yabai 用戶啟動設定檔
 
+   建立設定檔，以便 macOS 的使用者帳戶，能以 sa 帳戶的權限，
+   啟動 Yabai Service。
 
+   (a) 執行以下指令，備妥其輸出，以便待會在設定檔中填入。
 
-## Install Yabai
+   ```sh
+   echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
+   ```
 
-Update newer “Command Lin e Tools”
+   (b) 以系統管理員權限，編輯設定檔：
 
-    softwareupdate --all --install --force
+   ```sh
+   sudo visudo -f /private/etc/sudoers.d/yabai
+   ```
 
-If that doesn’t show any updates, run:
+   (c) 加入如下所列之設定：
 
-    sudo rm -rf /Library/Developer/CommandLineTools
-    sudo xcode-select --install
-
-
-    brew install koekeishiya/formulae/yabai
-
-Logs will be found in
-  /usr/local/var/log/yabai/yabai.[out|err].log
-
-Open `System Preferences.app` and navigate to `Security & Privacy`, then `Privacy`, then `Accessibility`. Click the lock icon at the bottom and enter your password to allow changes to the list. Starting with `brew services start yabai` will prompt the user to allow `yabai` accessibility permissions. Check the box next to `yabai` to allow accessibility permissions.
-Now install the scripting addition.
-
-    # install the scripting addition
-    sudo yabai --install-sa
-    
-    # if macOS Big Sur, load the scripting addition manually; follow instructions below to automate on startup
-    sudo yabai --load-sa
-
-To run yabai, simply start it.
-
-    # start yabai
-    brew services start yabai
-
-
-To have launchd start koekeishiya/formulae/yabai now and restart at login:
-
-    brew services start koekeishiya/formulae/yabai
-# 快捷操作
-
-https://github.com/itgoyo/yabai-config
-
-**Focus window in a desktop (space)**
-
-| **Action**  | **Key Combination** |
-| ----------- | ------------------- |
-| focus west  | cmd + h             |
-| focus south | cmd + j             |
-| focus north | cmd + k             |
-| focus east  | cmd + l             |
-
-
-**Move window by direction in a desktop (space)**
-
-| **Action**           | **Key Combination** |
-| -------------------- | ------------------- |
-| Move window to left  | shift + cmd + h     |
-| Move window up       | shift + cmd + j     |
-| Move window down     | shift + cmd + k     |
-| Move window to right | shift + cmd + l     |
-
-
-**Resize windows**
-
-| **Action**   | **Key Combination** |
-| ------------ | ------------------- |
-| Resize left  | shfit + cmd + h     |
-| Resize down  | shfit + cmd + j     |
-| Resize up    | shfit + cmd + k     |
-| Resize right | shfit + cmd + l     |
-| Equalise     | shfit + cmd + 0     |
-
-
-**Rotate windows**
-
-| **Action**           | **Key Combination** |
-| -------------------- | ------------------- |
-| Rotate clockwise     | shift + alt + r     |
-| Rotate anticlockwise | alt + r             |
-| Flip on x-axis       | shift + alt + x     |
-| Flip on y-axis       | shift + alt + y     |
-
-**Window actions**
-
-| **Action**        | **Key Combination** |
-| ----------------- | ------------------- |
-| Fullscreen        | alt + f             |
-| Native fullscreen | shift + alt + f     |
-| Center window     | shift + alt + c     |
-
-**Insertion point**
-
-| **Action**                   | **Key Combination**     |
-| ---------------------------- | ----------------------- |
-| Insert left                  | shift + lctrl + alt + h |
-| Insert down                  | shift + lctrl + alt + j |
-| Insert up                    | shift + lctrl + alt + k |
-| Insert right                 | shift + lctrl + alt + l |
-| Cancel insert (chunkwm only) | shift + lctrl + alt + x |
-
-**Misc**
-
-| **Action**      | **Key Combination**     |
-| --------------- | ----------------------- |
-| Toggle float    | shift + alt + space     |
-| Toggle gaps     | lctrl + alt + g         |
-| Restart chunkwm | lctrl + shift + alt + r |
-
-
-
-
-
-----------
-- alt + hjkl
-    切換視窗的 focus
-    
-- alt + s
-    focus 視窗全屏
-    
-- alt + e
-    切換回拼圖排列
-    
-- alt + shift + hjkl
-    移動 focus 視窗的位置
-    
-- alt + cmd + shift + hjkl
-    調整 focus 視窗的大小
-    
-- alt + r
-    旋轉所有視窗 90 度
-    
-- alt + shift + space
-    focus 視窗懸浮（可以亂移動）
-    
-- alt + shift + 1234
-    把 focus 視窗送到 1234 的桌面（要先有桌面，必須手動新增）
-    
-- alt + shift + p n m 
-    把 focus 視窗送到 p(上一個) n(下一個) m(最後切換的) 桌面，如果條件不成立將無動作。
-    
-- alt + p n
-    切換 focus 到 p(上一個) n(下一個) 視窗
-
-
-
-## .yabairc
-    #!/usr/bin/env sh
-    
-    # the scripting-addition must be loaded manually if
-    # you are running yabai on macOS Big Sur. Uncomment
-    # the following line to have the injection performed
-    # when the config is executed during startup.
+   ```sh
+    # input the line below into the file you are editing
+    # replace <yabai> with the path to the yabai binary (output of: which yabai)
+    # replace <user> with your username (output of: whoami)
+    # replace <hash> with the sha256 hash of the yabai binary (output of: shasum -a 256 $(which yabai))
+    # this hash must be updated manually after running brew upgrade
     #
-    # for this to work you must configure sudo such that
-    # it will be able to run the command without password
-    
-    sudo yabai --load-sa
-    yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-    
-    #YABAI STUFF
-    # bsp or float (default: bsp)
-    # yabai -m config layout bsp
-    
-    # My custom space names for my 3 monitor setup. These names are used in some of my scripts.
-    yabai -m space 1 --label one
-    yabai -m space 2 --label two
-    yabai -m space 3 --label three
-    
-    # float system preferences. Most of these just diable Yabai form resizing them.
-    # yabai -m rule --add app="系統偏好設定" manage=off
-    # yabai -m rule --add app="GitKraken" manage=off
-    # yabai -m rule --add app="LINE" manage=off
-    # yabai -m rule --add app="Commander One" manage=off
-    # yabai -m rule --add app="iTube Studio" manage=off
-    # yabai -m rule --add app="啟動台" manage=off
-    # yabai -m rule --add app="活動監視器" manage=off
-    # yabai -m rule --add app="時光機" manage=off
-    # yabai -m rule --add app="照片" manage=off
-    # yabai -m rule --add app="預覽程式" manage=off
-    # yabai -m rule --add app="影像擷取" manage=off
-    # yabai -m rule --add app="行事曆" manage=off
-    
-    #find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
-    
-    ## Some random global settings
-    #yabai -m config focus_follows_mouse          autoraise
-    #yabai -m config focus_follows_mouse          on
-    # New window spawns to the right if vertical split, or bottom if horizontal split
-    yabai -m config window_placement second_child
-    yabai -m config window_topmost off
-    #yabai -m config window_shadow float
-    yabai -m config window_opacity off
-    yabai -m config window_opacity_duration 0.00
-    yabai -m config active_window_opacity 1.0
-    #yabai -m config normal_window_opacity        0.97
-    #yabai -m config window_border                on | off
-    
-    ## WITH SIP ENABLED (Installed Limelight seperately, Don't need this)
-    yabai -m config window_border off
-    
-    ## WTIH SIP DISABLED (Limelight build into Yabai, enable it here)
-    #yabai -m config window_border on
-    #yabai -m config window_border_width 3
-    #yabai -m config active_window_border_color 0xFF40FF00
-    #yabai -m config normal_window_border_color 0x00FFFFFF
-    #yabai -m config insert_feedback_color        0xffd75f5f
-    
-    ## some other settings
-    yabai -m config auto_balance off
-    yabai -m config split_ratio 0.50
-    # # set mouse interaction modifier key (default: fn)
-    yabai -m config mouse_modifier ctrl
-    # set modifier + right-click drag to resize window (default: resize)
-    yabai -m config mouse_action2 resize
-    # set modifier + left-click drag to resize window (default: move)
-    yabai -m config mouse_action1 move
-    
-    # general space settings
-    #yabai -m config focused_border_skip_floating  1
-    #yabai -m config --space 3 layout             float
-    
-    ## Change how yabai looks
-    yabai -m config layout bsp
-    yabai -m config top_padding 2
-    yabai -m config bottom_padding 2
-    yabai -m config left_padding 2
-    yabai -m config right_padding 2
-    yabai -m config window_gap 10
-    
-    #Limelight addon (Kill it and start it each time Yabai starts)
-    killall limelight &>/dev/null
-    limelight &>/dev/null &
-    
-    # #Ubersicht widget bar stuff
-    #yabai -m signal --add event=space_changed \
-    #action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"'"
-    #yabai -m signal --add event=display_changed \
-    #action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"'"
-    
-    #yabai -m signal --add event=space_changed \
-    #action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"'"
-    #yabai -m signal --add event=display_changed \
-    #action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"'"
-    
-    # signals
-    # yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-    #yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --windows --window | jq ".id")"
-    # yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-    
-    #testing signals
-    # yabai -m signal --add event=window_destroyed action="terminal-notifier -message 'window_destroyed'"
-    # yabai -m signal --add event=application_terminated action="terminal-notifier -message 'application_terminated'"
-    
-    ## If I close the active window, focus on any other visible window.
-    # yabai -m signal --add event=window_destroyed action="bash /Users/alanjui/.local/share/YabaiScripts/window-focus-on-destroy.sh"
-    # yabai -m signal --add event=space_changed action="export CUR_ACTIVE_APP=\"iTerm2\""
-    
-    echo "yabai configuration loaded.."
-    
-    #END
+    # 設定之「填寫格式」
+    # <user> ALL=(root) NOPASSWD: sha256:<hash> <yabai> --load-sa
+   ```
 
+   (d) 填入 (a) 指令輸出的執行結果。
 
-## .skhdrc
-    #SKHD STUFF
-    # if you're having troubles finding key codes for a key just type
-    # skhd --observe in a terminal and type a key.
-    
-    # hyper = Shift + Ctrl + Cmd(Window) + Alt(Option)
-    
-    # prevents skhd from monitoring events for listed processes.
-    # .blacklist [
-    #     "終端機"
-    #     "iTerm2"
-    #     "Google Chrome"
-    # ]
-    # .blacklist [
-    # ]
-    
-    #==============================================================================
-    # Restart Yabai
-    hyper - r :
-        /usr/bin/env osascript <<< \
-            "display notification \"Restarting Yabai\" with title \"Yabai\""; \
-        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-    
-    ###################################################
-    # Window
-    ###################################################
-    
-    # focus a window by sequence (recent / previous / next)
-    cmd - o : yabai -m window --focus recent
-    cmd - p : yabai -m window --focus prev
-    cmd - n : yabai -m window --focus next
-    # = --> recent;  [ --> prev;  ] --> next
-    cmd - 0x18 : yabai -m window --focus recent
-    cmd - 0x21 : yabai -m window --focus prev
-    cmd - 0x1E : yabai -m window --focus next
-    
-    # focus a window by direction
-    cmd - h : yabai -m window --focus west
-    cmd - j : yabai -m window --focus south
-    cmd - k : yabai -m window --focus north
-    cmd - l : yabai -m window --focus east
-    
-    # rotate focus window in desktop
-    shift + cmd - r : yabai -m space --rotate 270
-    cmd - r         : yabai -m space --rotate 270
-    
-    # # focus window through screen cyclely by direction
-    # shift + ctrl + cmd - h : yabai -m query --spaces | jq -re ".[] | select(.visible == 1).index" | xargs -I{} yabai -m query --windows --space {} | jq -sre "add | sort_by(.display, .frame.x, .frame.y, .id) | nth(index(map(select(.focused == 1))) - 1).id" | xargs -I{} yabai -m window --focus {}
-    
-    # move window by direction (swap window)
-    shift + cmd - h : yabai -m window --swap west
-    shift + cmd - j : yabai -m window --swap south
-    shift + cmd - k : yabai -m window --swap north
-    shift + cmd - l : yabai -m window --swap east
-    
-    #--------------------------------------------------
-    
-    # toggle window split vertically or horizontally
-    cmd + alt - t : yabai -m window --toggle split
-    
-    # toggle window to float / unfloat in desktop
-    cmd + alt - f : yabai -m window --toggle float
-    
-    # toggle window to unfloat / foloat and center on screen
-    cmd + alt - c : yabai -m window --toggle float;\
-                    yabai -m window --grid 4:4:1:1:2:2
-    
-    # move floating window
-    shift + cmd - w : yabai -m window --move rel:0:-20
-    shift + cmd - s : yabai -m window --move rel:0:20
-    shift + cmd - a : yabai -m window --move rel:-20:0
-    shift + cmd - d : yabai -m window --move rel:20:0
-    
-    # toggle unfloat window to max size in desktop
-    cmd + alt - z  : yabai -m window --toggle zoom-fullscreen
-    
-    # toggle window to zoon in/out screen
-    ctrl + cmd - z : yabai -m window --toggle native-fullscreen
-    
-    #--------------------------------------------------
-    
-    # Resize width of a window
-    cmd + alt - h : \
-        yabai -m window --resize left:-20:0 ; \
-        yabai -m window --resize right:-20:0
-    
-    cmd + alt - l : \
-        yabai -m window --resize right:20:0 ; \
-        yabai -m window --resize left:20:0
-    
-    # Resize height of a window
-    cmd + alt - j : \
-        yabai -m window --resize bottom:0:20 ; \
-        yabai -m window --resize top:0:20
-    
-    cmd + alt - k : \
-        yabai -m window --resize top:0:-20 ; \
-        yabai -m window --resize bottom:0:-20
-    
-    # Equalize size of windows (0x18 --> '=')
-    cmd + alt - 0 : yabai -m space --balance
-    cmd + alt - 0x18 : yabai -m space --balance
-    
-    #--------------------------------------------------
-    
-    # create a window: open terminal
-    # hyper - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
-    hyper - return : ~/.config/yabai/scripts/open_iterm2.sh
-    
-    # close a window (exit active application)
-    hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
-    
-    ###################################################
-    # Desktop
-    ###################################################
-    
-    # focus desktop by sequence (n: 1 --> 2 --> 3; p: 3 --> 2 --> 1)
-    ctrl + cmd - o : yabai -m space --focus recent
-    ctrl + cmd - p : yabai -m space --focus prev
-    ctrl + cmd - n : yabai -m space --focus next
-    # = --> recent;  [ --> prev;  ] --> next
-    ctrl + cmd - 0x18 : yabai -m space --focus recent
-    ctrl + cmd - 0x21 : yabai -m space --focus prev
-    ctrl + cmd - 0x1E : yabai -m space --focus next
-    
-    # focus desktop by number
-    ctrl + cmd - 1 : yabai -m space --focus 1
-    ctrl + cmd - 2 : yabai -m space --focus 2
-    ctrl + cmd - 3 : yabai -m space --focus 3
-    ctrl + cmd - 4 : yabai -m space --focus 4
-    ctrl + cmd - 5 : yabai -m space --focus 5
-    ctrl + cmd - 6 : yabai -m space --focus 6
-    ctrl + cmd - 7 : yabai -m space --focus 7
-    ctrl + cmd - 8 : yabai -m space --focus 8
-    ctrl + cmd - 9 : yabai -m space --focus 9
-    ctrl + cmd - 0 : yabai -m space --focus 0
-    
-    # move window to prev/next desktop (space)
-    # o --> recent;  p --> prev;  n --> next
-    shift + ctrl + cmd - o : ~/.config/yabai/scripts/moveWindowToDesktop.sh recent
-    shift + ctrl + cmd - p : ~/.config/yabai/scripts/moveWindowToDesktop.sh prev
-    shift + ctrl + cmd - n : ~/.config/yabai/scripts/moveWindowToDesktop.sh next
-    # = --> recent;  [ --> prev;  ] --> next
-    shift + ctrl + cmd - 0x18 : ~/.config/yabai/scripts/moveWindowToDesktop.sh recent
-    shift + ctrl + cmd - 0x21 : ~/.config/yabai/scripts/moveWindowToDesktop.sh prev
-    shift + ctrl + cmd - 0x1E : ~/.config/yabai/scripts/moveWindowToDesktop.sh next
-    
-    # move window to desktop by number
-    shift + ctrl + cmd - 1 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 1
-    shift + ctrl + cmd - 2 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 2
-    shift + ctrl + cmd - 3 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 3
-    shift + ctrl + cmd - 4 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 4
-    shift + ctrl + cmd - 5 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 5
-    shift + ctrl + cmd - 6 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 6
-    shift + ctrl + cmd - 7 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 7
-    shift + ctrl + cmd - 8 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 8
-    shift + ctrl + cmd - 9 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 9
-    shift + ctrl + cmd - 0 : ~/.config/yabai/scripts/moveWindowToDesktop.sh 0
-    
-    # warp desktop
-    shift + ctrl + cmd - h : yabai -m window --warp west
-    shift + ctrl + cmd - j : yabai -m window --warp south
-    shift + ctrl + cmd - k : yabai -m window --warp north
-    shift + ctrl + cmd - l : yabai -m window --warp east
-    
-    # flip the layout of desktop horizontally
-    shift + ctrl + cmd - x : yabai -m space --mirror x-axis
-    
-    # flip the layout of desktop vertically
-    shift + ctrl + cmd - y : yabai -m space --mirror y-axis
-    
-    #--------------------------------------------------
-    
-    # creat a desktop on current screen
-    ctrl + cmd - c         : yabai -m space --create
-    # destroy desktop on current screen
-    ctrl + cmd - backspace : yabai -m space --destroy
-    
-    # create desktop, move focus window to created desktop and follow focus
-    shift + ctrl + cmd - c : yabai -m space --create && \
-                                 index="$(yabai -m query --spaces --display \
-                                 | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                             yabai -m window --space "${index}" && \
-                             yabai -m space --focus "${index}"
-    
-    # destroy empty spaces
-    shift + ctrl + cmd - backspace : echo "destroy empty spaces";\
-                                     yabai -m query --spaces \
-                                     | jq 'reverse | .[] | select((.windows | length) == 0) | .index' \
-                                     | xargs -I{} yabai -m space {} --destroy \;
-    
-    ###################################################
-    # Screen
-    ###################################################
-    
-    # focus screen by swquence
-    ctrl + cmd + alt - o : yabai -m display --focus recent
-    ctrl + cmd + alt - p : yabai -m display --focus prev
-    ctrl + cmd + alt - n : yabai -m display --focus next
-    ctrl + cmd + alt - m : yabai -m display --focus last
-    
-    # focus screen by number
-    ctrl + cmd + alt - 1 : yabai -m display --focus 1
-    ctrl + cmd + alt - 2 : yabai -m display --focus 2
-    ctrl + cmd + alt - 3 : yabai -m display --focus 3
-    
-    # move window to prev/next screen
-    # shift + ctrl + cmd + alt - p : /Users/alanjui/.config/yabai/scripts/moveWindowToPrevDisplay.sh
-    # shift + ctrl + cmd + alt - n : /Users/alanjui/.config/yabai/scripts/moveWindowToNextDisplay.sh
-    # o --> recent;  p --> prev;  n --> next
-    shift + ctrl + cmd + alt - o : ~/.config/yabai/scripts/moveWindowToScreen.sh recent
-    shift + ctrl + cmd + alt - p : ~/.config/yabai/scripts/moveWindowToScreen.sh prev
-    shift + ctrl + cmd + alt - n : ~/.config/yabai/scripts/moveWindowToScreen.sh next
-    # = --> recent;  [ --> prev;  ] --> next
-    shift + ctrl + cmd + alt - 0x18 : ~/.config/yabai/scripts/moveWindowToScreen.sh recent
-    shift + ctrl + cmd + alt - 0x21 : ~/.config/yabai/scripts/moveWindowToScreen.sh prev
-    shift + ctrl + cmd + alt - 0x1E : ~/.config/yabai/scripts/moveWindowToScreen.sh next
-    
-    # move window to screen by number
-    shift + ctrl + cmd + alt - 1 :~/.config/yabai/scripts/moveWindowToScreen.sh 1
-    shift + ctrl + cmd + alt - 2 :~/.config/yabai/scripts/moveWindowToScreen.sh 2
-    shift + ctrl + cmd + alt - 3 :~/.config/yabai/scripts/moveWindowToScreen.sh 3
+4. 在 Yabai 設定檔加入上述設定。
 
+   編輯 Yabai 設定檔：
 
+   ```sh
+   nvim ~/.config/yabai/yabairc
+   ```
 
-# 異常排除
+   在設定檔中，加入下列設定：
 
-**無法使用 [Cmd] + [Alt] + [n] 快捷鍵切換「桌面」（Desktop / Space）。**
-可試著先用指令執行切換，籍此診斷：「是否導因起於『指令』亦無法正常運作？」。
+   ```sh
+   yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+   sudo yabai --load-sa
+   ```
 
-    $ yabai -m space --focus 3
+5. 重新啟動 Yabai Service
 
+   ```sh
+   brew services restart yabai
+   ```
 
-**無法使用「指令」切換桌面，終端機出現如下之錯誤回報：**
+## 安裝 [Karabiner-Elements](https://github.com/pqrs-org/Karabiner-Elements)
 
-    $ yabai -m space --focus 3
-    cannot focus space due to an error with the scripting-addition.
+執行安裝指令：
 
+```sh
+brew install --cask karabiner-elements
+```
 
-【異常排除作業】：
+## 安裝 [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
 
+執行安裝指令：
 
-1. 務必確認「SPI： Disable」。
-    csrutil status
+```sh
+brew install --cask hammerspoon
+```
 
-【註】： 關閉 SPI 作業程序⋯⋯
+## 安裝 [myHammerSpoon](https://github.com/AlanJui/myHammerSpoon)
 
-https://blog.developer.money/%E9%97%9C%E9%96%89-mac-%E7%9A%84-sip-system-integrity-protection-8f679c4fdd9e
+1. 下載本專案
 
+```
+cd
+mv .hammerspoon .hammerspoon.bak
+git clone https://github.com/AlanJui/myHammerSpoon .hammerspoon
+```
 
- 2. 重新安裝scripting-addition，並重新啟動。
+（待完成）
 
-    sudo yabai --uninstall-sa && sudo yabai --install-sa
-    sudo yabai --load-sa
+# 環境設定
 
+## Karabiner-Elements 設定
 
-**設定「某些App啟動時，使用浮動視窗」**
+### 〔右 Command〕
 
+令〔右 Command〕 鍵，代表 F18 功能鍵。
 
-    yabai -m rule --add app=SomeName manage=off
+- Simple Modifications:
+- right_command --> f18
 
-Ref: [set certain window to float mode #76](https://github.com/koekeishiya/yabai/issues/76) 
+### 〔右 Control〕＋〔T〕
 
+令 〔右 Control〕＋〔T〕鍵，可啟動 App：Alacritty Terminal。
 
+- Complex Modifications:
+  - right_control + T: Alacritty Terminal
+
+# 操作指引
+
+## 功能指令鍵
+
+啟動指令之操作按鍵，共有以下 10 種。
+
+- **`Mod1`**：**〔ctrl〕**＋**〔alt〕**
+
+  視窗／桌面擇定（Focus）【Tiling Space】指令。
+
+- **`Mod2`**：**〔shift〕**＋**〔ctrl〕**＋**〔alt〕**
+
+  視窗／桌面搬移（Move）/對調（Swap） 【Tiling Space】指令。
+
+- **`Mod3`**：**〔alt〕**＋**〔cmd〕**
+
+  螢幕擇定（Focus）指令。
+
+- **`Mod4`**：**〔shift〕**＋**〔alt〕**＋**〔cmd〕**
+
+  螢幕搬移（Move）指令。
+
+- **`Mod5`**：**〔shift〕**＋**〔alt〕**
+
+  視窗層級設置：變更（Set/Toggle）視窗屬性-寬度／高度指令。
+
+- **`Mod6`**：**〔shift〕**＋**〔cmd〕**
+
+  桌面／螢幕層級設置指令。
+
+- **`Mod7`**：**〔ctrl〕**＋**〔cmd〕**
+
+  移動視窗所在位置：移動視窗所在位置指令。
+
+- **`Mod8`**：**〔shift〕**＋**〔ctrl〕**＋**〔cmd〕**
+
+  桌面中視窗寬度比例調整指令。
+
+- **`Mod9`**：**〔ctrl〕**＋**〔alt〕**＋**〔cmd〕**
+
+  系統層級設置指令。
+
+- **`Mod0`**：**〔shift〕**＋**〔ctrl〕**＋**〔alt〕**＋**〔cmd〕**
+
+  系統層級設置 2 指令。
+
+## 系統層級操作指令
+
+- 〔Mod9〕＋〔y〕：重新啟動 Yabai Service 。
+
+- 〔Mod9〕＋〔h〕：依據設定檔（~/.hammerspoon/init.lua）重啟
+  Hammerspoon。
+
+- 〔Mod9〕＋〔Enter〕：依據設定檔（~/.hammerspoon/init.lua）
+  重啟。
+
+- 〔Mod9〕＋〔m〕：標示滑鼠指標所停留之螢幕。
+
+- 〔Mod5〕＋〔i〕：在 Hammerspoon Console 顯示除錯（Debug）
+  資訊。
+
+## 在堆疊排版桌面擇定（Focus）視窗
+
+- 〔Mod1〕＋〔t〕：擇定堆疊桌面上一層視窗
+
+- 〔Mod1〕＋〔g〕：擇定堆疊桌面下一層視窗
+
+## 並排排版桌面
+
+### 擇定（Focus）視窗
+
+- 〔Mod1〕＋〔h〕：⬅️ 左（西）
+- 〔Mod1〕＋〔j〕：⬇️ 下（南）
+- 〔Mod1〕＋〔k〕：⬆️ 上（北）
+- 〔Mod1〕＋〔l〕：➡️ 右（東）
+
+### 搬移（Move）視窗
+
+- 〔Mod2〕＋〔h〕：⬅️ 左（西）
+- 〔Mod2〕＋〔j〕：⬇️ 下（南）
+- 〔Mod2〕＋〔k〕：⬆️ 上（北）
+- 〔Mod2〕＋〔l〕：➡️ 右（東）
+
+### 對調（Swap）視窗
+
+- 〔Mod2〕＋〔a〕：⬅️ 左（西）
+- 〔Mod2〕＋〔s〕：⬇️ 下（南）
+- 〔Mod2〕＋〔w〕：⬆️ 上（北）
+- 〔Mod2〕＋〔d〕：➡️ 右（東）
+
+## 以切換(Toggle)方式變更視窗屬性設置
+
+### 切換視窗並排方向(split)
+
+- 〔Mod5〕＋〔s〕：切換視窗的排版方向：上下並排／左右並排
+
+在並排（BSP）桌面，將原本左右並排的桌面，改成上下並排（也有
+可能是上下並排，改成左右並排）。
+
+### 切換成浮動視窗(float/unfloat)
+
+- 〔Mod5〕＋〔f〕：切換視窗的屬性：浮動／並排
+
+在並排桌面，將作用視窗變更成浮動視窗。
+
+### 切換成浮動且置中視窗(float/unfloat and center)
+
+- 〔Mod5〕＋〔c〕：切換視窗的屬性：並排／浮動且置中
+
+在並排桌面，將作用視窗變更成浮動視窗。
+
+### 切換成佔用全桌面(zoom-parent)
+
+- 〔Mod5〕＋〔p〕：切換視窗的屬性：將視窗尺寸放大成佔用全桌
+  面／還原至放大前尺寸
+
+### 切換成佔用全螢幕(zoom-fullscreen)
+
+- 〔Mod5〕＋〔m〕：將並排（BSP）／堆疊（Stack）排版之桌面，
+  令作用視窗之寬度及高度同時擴大，佔用整個螢幕。
+
+【註】：屬浮動（Float）排版之桌面，無法使用此功能。
+
+### 切換成佔用全螢幕(native-fullscreen)
+
+- 〔Mod5〕＋〔n〕：將浮動視窗放大，佔用整個「螢幕」。
+
+### 切換擺放順序在最上層(topmost)
+
+- 〔Mod5〕＋〔t〕：切換視窗的堆疊順序：將視窗擺放至最上層／
+  還原至擺放層
+
+### 切換視窗框的顯示(border)
+
+- 〔Mod5〕＋〔b〕：顯示／隱藏視窗框。
+
+## 並排桌面
+
+### 雙視窗佔用版面比例（BSP Ratio）設置調整
+
+- 〔Mod5〕＋〔=〕：兩個視窗，各佔桌面寛度的一半
+- 〔Mod5〕＋〔[〕：兩個視窗，左端佔桌面寛度的 2/3
+- 〔Mod5〕＋〔]〕：兩個視窗，左端佔桌面寛度的 1/3
+
+### 視窗寬度／高度設置調整
+
+- 〔Mod5〕＋〔h〕：⬅️ 左（西）
+- 〔Mod5〕＋〔j〕：⬇️ 下（南）
+- 〔Mod5〕＋〔k〕：⬆️ 上（北）
+- 〔Mod5〕＋〔l〕：➡️ 右（東）
+
+## 浮動桌面
+
+### 變更浮動視窗寬度
+
+- 〔Mod6〕＋〔=〕：兩個視窗，各佔桌面寛度的一半
+- 〔Mod6〕＋〔[〕：將視窗移至桌面左方；其寬度佔桌面寛的 2/3
+- 〔Mod6〕＋〔]〕：將視窗移至桌面右方；其寬度佔桌面寛的 1/3
+
+- 〔Mod6〕＋〔Up〕：放大視窗成佔用全桌面
+- 〔Mod6〕＋〔Left〕：將視窗移至桌面左方；其寬度佔桌面寛的
+  1/2
+- 〔Mod6〕＋〔Right〕：將視窗移至桌面右方；其寬度佔桌面寛的
+  1/2
+
+### 雙視窗佔用桌面比例設置調整
+
+- 〔Mod6〕＋〔1〕：兩個視窗佔用桌面寛度的比例，視窗移桌面左
+  端，其寬佔桌面的 2/3
+- 〔Mod6〕＋〔2〕：兩個視窗佔用桌面寛度的比例，視窗移桌面右
+  端，其寬佔桌面的 1/3
+- 〔Mod6〕＋〔3〕：兩個視窗佔用桌面寛度的比例，視窗移桌面左
+  端，其寬佔桌面的 1/3
+- 〔Mod6〕＋〔4〕：兩個視窗佔用桌面寛度的比例，視窗移桌面右
+  端，其寬佔桌面的 2/3
+
+### 搬移(Move) 視窗
+
+- 〔Mod4〕＋〔h〕：⬅️ 左（西）
+- 〔Mod4〕＋〔j〕：⬇️ 下（南）
+- 〔Mod4〕＋〔k〕：⬆️ 上（北）
+- 〔Mod4〕＋〔l〕：➡️ 右（東）
+
+### 增加視窗的寛度／高度
+
+- 〔Mod6〕＋〔h〕：⬅️ 左（西）
+- 〔Mod6〕＋〔j〕：⬇️ 下（南）
+- 〔Mod6〕＋〔k〕：⬆️ 上（北）
+- 〔Mod6〕＋〔l〕：➡️ 右（東）
+
+### 減少視窗的寛度／高度
+
+- 〔Mod6〕＋〔a〕：⬅️ 左（西）
+- 〔Mod6〕＋〔s〕：⬇️ 下（南）
+- 〔Mod6〕＋〔w〕：⬆️ 上（北）
+- 〔Mod6〕＋〔d〕：➡️ 右（東）
+
+## 使用 HS 達成之操作
+
+以下之操作，非 Yabai 指令可達成；而是使用 HS 採用的 Lua
+Script 所完成的功能。視窗須為「浮動」視窗。
+
+### 變更視窗之寬度／高度
+
+- 〔Mod7〕＋〔⬅️〕：將視窗移至桌面左方；其寬度佔桌面寛的 1/2
+- 〔Mod7〕＋〔➡️〕：將視窗移至桌面右方；其寬度佔桌面寛的 1/2
+- 〔Mod7〕＋〔⬆️〕：將視窗移至桌面上方；其寬度佔桌面高的 1/2
+- 〔Mod7〕＋〔⬇️〕：將視窗移至桌面下方；其寬度佔桌面高的 1/2
+
+### 變更左右並排視窗之寬度
+
+- 〔Mod7〕＋〔1〕：兩個視窗佔用桌面寛度的比例，視窗移桌面左
+  端，其寬佔桌面的 2/3
+- 〔Mod7〕＋〔2〕：兩個視窗佔用桌面寛度的比例，視窗移桌面右
+  端，其寬佔桌面的 1/3
+- 〔Mod7〕＋〔3〕：兩個視窗佔用桌面寛度的比例，視窗移桌面左
+  端，其寬佔桌面的 1/3
+- 〔Mod7〕＋〔4〕：兩個視窗佔用桌面寛度的比例，視窗移桌面右
+  端，其寬佔桌面的 2/3
+
+### 放大視窗至佔用全螢幕
+
+- 〔Mod7〕＋〔m〕：放大視窗成佔用全桌面
+- 〔Mod7〕＋〔f〕：放大視窗成佔用全桌面
+
+### 將視窗移至桌面中央
+
+- 〔Mod7〕＋〔c〕：將視窗移至桌面中央
+
+### 以桌面 1/3 寬度或 1/3 高度移動視窗
+
+- 〔Mod8〕＋〔⬅️〕：設定視窗的寬度為桌面三分之一，並依此寬度
+  往左方移動
+- 〔Mod8〕＋〔➡️〕：設定視窗的寬度為桌面三分之一，並依此寬度
+  往右方移動
+- 〔Mod8〕＋〔⬆️〕：設定視窗的高度為桌面三分之一，並依此高度
+  往上方移動
+- 〔Mod8〕＋〔⬇️〕：設定視窗的高度為桌面三分之一，並依此高度
+  往下方移動
+
+### 搬移(Move) 視窗
+
+- 〔Mod8〕＋〔h〕：⬅️ 左（西）
+- 〔Mod8〕＋〔j〕：⬇️ 下（南）
+- 〔Mod8〕＋〔k〕：⬆️ 上（北）
+- 〔Mod8〕＋〔l〕：➡️ 右（東）
+- 〔Mod8〕＋〔y〕：左上（西北）
+- 〔Mod8〕＋〔u〕：右上（東北）
+- 〔Mod8〕＋〔b〕：左下（西南）
+- 〔Mod8〕＋〔n〕：右下（東南）
+
+## 擇定(Focus)桌面
+
+### 依桌面編號
+
+- 〔Mod3〕＋〔1〕..〔9〕：以編號擇定桌面
+
+### 依桌面序號
+
+- 〔Mod2〕＋〔=〕：上一次使用的桌面序號
+- 〔Mod2〕＋〔[〕：桌面序號的前一個
+- 〔Mod2〕＋〔]〕：桌面序號的後一個
+
+## 搬移(Move)視窗至某桌面
+
+### 依桌面編號
+
+- 〔Mod4〕＋〔1〕..〔9〕：將作用中視窗，搬移至【編號】桌面
+
+### 依桌面序號
+
+- 〔Mod3〕＋〔=〕：上一次使用的桌面序號
+- 〔Mod3〕＋〔[〕：桌面序號的前一個
+- 〔Mod3〕＋〔]〕：桌面序號的後一個
+
+## 變更桌面(Space)的設置
+
+### 設定桌面採用之排版版面
+
+每個桌面（Desktop/Space），均有三種視窗排版方式：左右／上下
+並排（BSP）、堆疊（Stack）、浮動（Float）；三種視窗排版方式
+，可以下列之按鍵切換：
+
+- 〔Mod6〕＋〔b〕：並排（BSP/Tiling）版面
+
+- 〔Mod6〕＋〔s〕：堆疊（Stack）版面
+
+- 〔Mod6〕＋〔f〕：浮動（Floating）版面
+
+### 切換視窗與桌面之間隔
+
+- 〔Mod6〕＋〔g〕：擴張／減縮間隔距離
+
+### 將視窗依順時鐘 90 度輪調
+
+- 〔Mod6〕＋〔r〕：並排桌面之作用視窗，依順時鐘方向，輪轉 90
+  度移動位置
+
+### 令桌面中各視窗均寬
+
+- 〔Mod6〕＋〔=〕：依桌面之寬度均分各視窗，令各個視窗同寬。
+
+### 桌面中上、下視窗對調
+
+- 〔Mod6〕＋〔x〕：令桌面中位居座標 X 軸：上、下兩方的視窗，
+  對調位置
+
+### 桌面中左、右視窗對調
+
+- 〔Mod6〕＋〔y〕：令桌面中位居座標 Y 軸：左、右兩方的視窗，
+  對調位置
+
+## 擇定螢幕(Screen)
+
+### 依螢幕編號
+
+- 〔Mod9〕＋〔1〕..〔3〕：以編號擇定螢幕
+
+### 依螢幕序號
+
+- 〔Mod9〕＋〔=〕：上一次使用的螢幕序號
+- 〔Mod9〕＋〔[〕：螢幕序號的前一個
+- 〔Mod9〕＋〔]〕：螢幕序號的後一個
+
+### 依螢幕擺放位置
+
+- 〔Mod9〕＋〔q〕：擇定左方螢幕（螢幕序號：2）
+- 〔Mod9〕＋〔w〕：擇定中央螢幕（螢幕序號：3）
+- 〔Mod9〕＋〔e〕：擇定右方螢幕（螢幕序號：1）
+
+## 搬移(Move)視窗至某螢幕
+
+### 依螢幕編號
+
+- 〔Mod0〕＋〔1〕..〔3〕：將作用中視窗，搬移至【編號】螢幕
+
+### 依螢幕序號
+
+- 〔Mod0〕＋〔[〕：將擇定視窗，搬移到螢幕序號的前一個
+- 〔Mod0〕＋〔]〕：將擇定視窗，搬移到螢幕序號的後一個
+
+- 〔Mod0〕＋〔⬅️〕：將擇定視窗，搬移到螢幕序號的前一個
+- 〔Mod0〕＋〔➡️〕：將擇定視窗，搬移到螢幕序號的後一個
+
+- 〔Mod0〕＋〔h〕：將擇定視窗，搬移到螢幕序號的前一個
+- 〔Mod0〕＋〔l〕：將擇定視窗，搬移到螢幕序號的後一個
+
+### 依螢幕擺放位置
+
+- 〔Mod0〕＋〔q〕：將擇定視窗，搬移到左方螢幕（螢幕序號：2）
+- 〔Mod0〕＋〔w〕：將擇定視窗，搬移到中央螢幕（螢幕序號：3）
+- 〔Mod0〕＋〔e〕：將擇定視窗，搬移到右方螢幕（螢幕序號：1）

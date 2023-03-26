@@ -169,6 +169,40 @@ module.exports = {
         ],
       },
       {
+        title: '常用工具',
+        collapsable: true,
+        children: [
+          {
+            title: 'Yabai',
+            path: '/_my_dev_env/yabai/',
+          },
+          {
+            title: 'Neovim',
+            path: '/_my_dev_env/nvim/',
+          },
+          {
+            title: 'VS Code',
+            path: '/_my_dev_env/VSCode/',
+          },
+          {
+            title: 'Git',
+            path: '/_my_dev_env/git/',
+          },
+          {
+            title: 'VirtualBox',
+            path: '/_my_dev_env/VirtualBox/',
+          },
+          {
+            title: 'PostgreSQL',
+            path: '/_my_dev_env/postgres/',
+          },
+          {
+            title: 'Vim',
+            path: '/_my_dev_env/vim/',
+          },
+        ],
+      },
+      {
         title: '參考資料',
         collapsable: true,
         children: [
@@ -191,40 +225,6 @@ module.exports = {
           {
             title: '其它⋯⋯',
             path: '/_my_dev_env/misc/',
-          },
-        ],
-      },
-      {
-        title: '常用工具',
-        collapsable: true,
-        children: [
-          {
-            title: 'VirtualBox',
-            path: '/_my_dev_env/VirtualBox/',
-          },
-          {
-            title: 'PostgreSQL',
-            path: '/_my_dev_env/postgres/',
-          },
-          {
-            title: 'Git',
-            path: '/_my_dev_env/git/',
-          },
-          {
-            title: 'Yabai',
-            path: '/_my_dev_env/yabai/',
-          },
-          {
-            title: 'Vim',
-            path: '/_my_dev_env/vim/',
-          },
-          {
-            title: 'Neovim',
-            path: '/_my_dev_env/nvim/',
-          },
-          {
-            title: 'VS Code',
-            path: '/_my_dev_env/VSCode/',
           },
         ],
       },
