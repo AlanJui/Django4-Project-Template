@@ -8,13 +8,15 @@ sidebar:auto
 
 ### 電腦用途
 
-MacBook Pro 15" (2018) 筆電，屬於用戶端電腦；主要功能用於軟體開發及文書處理。
+MacBook Pro 15" (2018) 筆電，屬於用戶端電腦；主要功能用於軟
+體開發及文書處理。
 
 ### 硬體環境
 
 - 處理器： Intel Core i7 (2.6GHz 6 核心)
 - 記憶體： 16 GB 2400MHz DDR4 (可擴充：32 GB)
-- 顯示器： 15.4 吋 IPS Retina LED, 220 DPI，解析度 2880 x 1800 (1920 x 1200)
+- 顯示器： 15.4 吋 IPS Retina LED, 220 DPI，解析度 2880 x
+  1800 (1920 x 1200)
 - 顯示卡： Radeon Pro 560X 4 GB GDDR5
 - 硬碟: 512 GB SSD
 - 擴充埠： 4 x Thunderbolt 3 (USB-C) 埠，可支援：
@@ -37,23 +39,31 @@ MacBook Pro 15" (2018) 筆電，屬於用戶端電腦；主要功能用於軟體
 
 ### 作業系統安裝指引
 
-需要在 MacBookPro 筆電，重新安裝 macOS 作業系統時，只要筆電可連上 Internet，
-便可透過筆電內建之「macOS 復原」功能，便能進行作業系統之安裝作業。
+需要在 MacBookPro 筆電，重新安裝 macOS 作業系統時，只要筆電
+可連上 Internet，便可透過筆電內建之「macOS 復原」功能，便能
+進行作業系統之安裝作業。
 
-啟動「macOS 復原」功能的方法有三種。該擇何種為之，可依下列之「安裝需求」擇其一：
+啟動「macOS 復原」功能的方法有三種。該擇何種為之，可依下列之
+「安裝需求」擇其一：
 
 - 使用原廠在「硬碟」內預裝的「安裝軟體」：[Command] + [R] ；
 
-- 透過網路安裝筆電出廠預裝的作業系統：[Shift] + [Optiion] + [Command] + [R]；
+- 透過網路安裝筆電出廠預裝的作業系統：[Shift] + [Optiion] +
+  [Command] + [R]；
 
-- 透過網路安裝與筆電相容，最新版的 macOS 作業系統： [Option] + [Command] + [R]。
+- 透過網路安裝與筆電相容，最新版的 macOS 作業系統：
+  [Option] + [Command] + [R]。
 
-至於操作細節，請詳參考文件[重新安裝 macOS](https://support.apple.com/zh-tw/HT204904)之說明。
+至於操作細節，請詳參考文
+件[重新安裝 macOS](https://support.apple.com/zh-tw/HT204904)之
+說明。
 
 ## 常用軟體安裝與設定
 
-- [Yabai 安裝與設定指引](/yabai/)：mmacOS 版 i3 Windows Manager 工具
-- [在 macOS 啟用 QEMS](./Start_QEMU_on_macOS.md)：macOS 版 QEMU VM 建置工具 s
+- [Yabai 安裝與設定指引](/_my_dev_env/yabai/)：mmacOS 版 i3
+  Windows Manager 工具
+- [在 macOS 啟用 QEMS](./Start_QEMU_on_macOS.md)：macOS 版
+  QEMU VM 建置工具 s
 - [使用 QEMU 建置虛擬電腦](./VM_on_macOS_with_Libvirt_+_QEMU)
 
 ## 開發環境建置作業

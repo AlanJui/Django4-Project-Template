@@ -119,44 +119,26 @@ module.exports = {
         collapsable: true,
         children: [
           {
-            title: 'Manjaro KDE 開發環境',
+            title: 'Python',
             collapsable: true,
             children: [
               {
-                title: 'Manjaro KDE 摘要',
-                path: '/_ManjaroKDE/',
-                collapsable: true,
-                sidebarDepth: 2,
+                title: 'Python',
+                path: '/_my_dev_env/python/',
               },
               {
-                title: '作業系統安裝',
-                path: '/_ManjaroKDE/D01_OS/',
-                collapsable: true,
-                sidebarDepth: 2,
+                title: 'pyenv',
+                path: '/_my_dev_env/python/pyenv.md',
               },
               {
-                title: '終端機作業',
-                path: '/_ManjaroKDE/D02_Terminal/',
-                collapsable: true,
-                sidebarDepth: 2,
+                title: 'poetry',
+                path: '/_my_dev_env/python/poetry.md',
               },
               {
-                title: '開發環境建置',
-                path: '/_ManjaroKDE/D03_DevEnvironments/',
-                collapsable: true,
-                sidebarDepth: 2,
-              },
-              {
-                title: '開發作業工具',
-                path: '/_ManjaroKDE/D04_DevTools/',
-                collapsable: true,
-                sidebarDepth: 2,
+                title: 'Django',
+                path: '/_my_dev_env/django/',
               },
             ],
-          },
-          {
-            title: 'Django',
-            path: '/_my_dev_env/django/',
           },
           {
             title: 'Node.js',
@@ -175,6 +157,10 @@ module.exports = {
           {
             title: 'Yabai',
             path: '/_my_dev_env/yabai/',
+          },
+          {
+            title: 'VuePress',
+            path: '/_my_dev_env/vuepress/',
           },
           {
             title: 'Neovim',
@@ -211,16 +197,48 @@ module.exports = {
             path: '/_my_dev_env/QuickRef/',
           },
           {
-            title: 'Python',
-            path: '/_my_dev_env/python/',
-          },
-          {
             title: 'Django',
             path: '/_my_dev_env/django/',
           },
           {
             title: 'Docker',
             path: '/_my_dev_env/docker/',
+          },
+          {
+            title: 'Manjaro KDE 開發環境',
+            collapsable: true,
+            children: [
+              {
+                title: 'Manjaro KDE 摘要',
+                path: '/_ManjaroKDE/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '作業系統安裝',
+                path: '/_ManjaroKDE/D01_OS/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '終端機作業',
+                path: '/_ManjaroKDE/D02_Terminal/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '開發環境建置',
+                path: '/_ManjaroKDE/D03_DevEnvironments/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+              {
+                title: '開發作業工具',
+                path: '/_ManjaroKDE/D04_DevTools/',
+                collapsable: true,
+                sidebarDepth: 2,
+              },
+            ],
           },
           {
             title: '其它⋯⋯',
