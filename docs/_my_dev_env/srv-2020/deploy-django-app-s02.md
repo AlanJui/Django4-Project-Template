@@ -2,7 +2,9 @@
 sidebar: auto
 ---
 
-# 建置 Django 應用系統運作平台
+<!-- markdownlint-disable MD024 MD029 MD040 MD041 MD043 MD045 MD033 -->
+
+# 應用系統更新作業指引
 
 ## 摘要
 
@@ -11,8 +13,8 @@ sidebar: auto
 ### Django 應用系統作業平台
 
 - HTTP 伺服器： Nginx
-- uWSGI 介面： 將 Nginx 收到之 HTTP Request 轉成 unix socket ，並傳
-送予 Django 應用系統
+- uWSGI 介面： 將 Nginx 收到之 HTTP Request 轉成 unix socket
+  ，並傳送予 Django 應用系統
 - Django App： Django 應用系統
 
 ![](./imgs/nginx-uwsgi-django-2.jpeg)
@@ -30,7 +32,7 @@ sidebar: auto
 ```
 cd ~/workspace/apps
 git clone git@github.com:AlanJui/Django4.git
-cd Django4 
+cd Django4
 ```
 
 2. 建置所需之 python 虛擬環境
@@ -54,7 +56,7 @@ pipenv install
 5. 建立 Django 應用系統之「後台管理員」。
 
 ```
-./manage.py createsuperuser 
+./manage.py createsuperuser
 ```
 
 ### (2) 驗證 Django 應用系統已能獨立運作
@@ -65,16 +67,17 @@ pipenv install
 ./manage.py runserver 0.0.0.0:8000
 ```
 
-2. 在伺服器、用戶端，使用 Web 瀏覽器瀏覽以下網址，
-以此方式驗證 Django 應用系統在 Debug 模式，已能正常
-運作。
+2. 在伺服器、用戶端，使用 Web 瀏覽器瀏覽以下網址，以此方式驗
+   證 Django 應用系統在 Debug 模式，已能正常運作。
 
 在「伺服器端」使用之網址：
+
 ```
 http://127.0.0.1:8000/
 ```
 
 在「用戶端」使用之網址：
+
 ```
 http://192.168.66.10:8000/
 ```
@@ -102,7 +105,6 @@ sudoedit app1.ccc.tw.local
 ```
 
 /etc/nginx/sites-available/app1.ccc.tw.local:
-
 
 ```sh
 upstream django {
@@ -162,10 +164,11 @@ sudo systemctl status nginx
 
 ### (4) 驗證 HTTP 虛擬網站已能獨立運作
 
-在 Web 用戶端，透過「瀏覽器」發送 HTTP Request，要求瀏覽某靜態檔案
-（如：.html / .css / .jpg / .png / ...）
-，若瀏覽器能顯示該靜態檔案的內容，即代表 Nginx 所建置的「虛擬網站」
-，已能正常作業，對於 HTTP Request 要求，能提供相對映，應有之 HTTP Response 。
+在 Web 用戶端，透過「瀏覽器」發送 HTTP Request，要求瀏覽某靜
+態檔案（如：.html / .css / .jpg / .png / ...），若瀏覽器能顯
+示該靜態檔案的內容，即代表 Nginx 所建置的「虛擬網站」，已能
+正常作業，對於 HTTP Request 要求，能提供相對映，應有之 HTTP
+Response 。
 
 在瀏覽器輸入以下網址，要求瀏覽 style.css 靜態檔。
 
@@ -176,6 +179,7 @@ http://app1.ccc.tw.local/static/polls/style.css
 ### (5) 建置 uWSGI 介面設定檔
 
 執行以下作業前，需先確認以下兩事：
+
 - 目錄路徑位於： ~/workspace/apps/django-v4/ ；
 - Django 應用系統使用之【Python 虛擬環境】已啟用。
 
@@ -185,6 +189,7 @@ http://app1.ccc.tw.local/static/polls/style.css
 web client <-> web server <-> unix socket <-> uWSGI <-> Python
                 (Nginx)                      (uwsgi)   (Django)
 ```
+
 1. 透過 pipenv 套件管理工具，安裝 python 套件：uwsgi 。
 
 ```
@@ -234,8 +239,8 @@ chown www-data:www-data uwsgi_params
 uwsgi --ini mysite_uwsgi.ini
 ```
 
-2. 透過瀏覽器，驗證 HTTP Request 已能循下列路徑運作：
-nginx <--> uwsgi <--> Django App 。
+2. 透過瀏覽器，驗證 HTTP Request 已能循下列路徑運作： nginx
+   <--> uwsgi <--> Django App 。
 
 在瀏覽器輸入以下網址：
 
@@ -245,8 +250,8 @@ http://app1.ccc.tw.local/polls/
 
 ### (7) 建置自動開機服務
 
-為使已佈署之 Django 應用系統，能於開機後自動啟動。故需建置及啟用
-Django 應用系統專用之服務。
+為使已佈署之 Django 應用系統，能於開機後自動啟動。故需建置及
+啟用 Django 應用系統專用之服務。
 
 1. 建置 app1 服務設定檔。
 

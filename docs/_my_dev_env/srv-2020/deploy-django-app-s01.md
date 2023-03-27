@@ -2,18 +2,20 @@
 sidebar: auto
 ---
 
-# 建置 Django 應用系統運作平台
+<!-- markdownlint-disable MD024 MD029 MD040 MD041 MD043 MD045 MD033 -->
+
+# 應用系統建置作業指引
 
 ## 摘要
 
-說明：如何在 Ubuntu 作業系統，建置 Django 應用系統於執行時期，
-所需使用之運作平台。
+說明：如何在 Ubuntu 作業系統，建置 Django 應用系統於執行時期
+，所需使用之運作平台。
 
 ### Django 應用系統作業平台
 
 - HTTP 伺服器： Nginx
-- uWSGI 介面： 將 Nginx 收到之 HTTP Request 轉成 unix socket ，並傳
-送予 Django 應用系統
+- uWSGI 介面： 將 Nginx 收到之 HTTP Request 轉成 unix socket
+  ，並傳送予 Django 應用系統
 - Django App： Django 應用系統
 
 ![](./imgs/nginx-uwsgi-django-2.jpeg)
@@ -24,7 +26,7 @@ sidebar: auto
 
 ## 作業程序
 
-### （1）安裝 nginx 作為 HTTP Server。
+### （1）安裝 nginx 作為 HTTP Server
 
 1. 安裝 nginx 套件。
 
@@ -61,9 +63,11 @@ alanjui@VB02-Ubuntu-2004:~$ systemctl status nginx
 lines 1-14/14 (END)
 ```
 
-3. 檢驗 Web Client 端，已能連上由 nginx 服務建構而成之 HTTP Server 。
+3. 檢驗 Web Client 端，已能連上由 nginx 服務建構而成之 HTTP
+   Server 。
 
-使用 Web 瀏覽器，瀏覽如下網址，若能正常閱讀「網頁」內容，則表 HTTP Server 已能 正常運作。
+使用 Web 瀏覽器，瀏覽如下網址，若能正常閱讀「網頁」內容，則
+表 HTTP Server 已能 正常運作。
 
 ```
 http://[IP_Address]
@@ -71,10 +75,10 @@ http://[IP_Address]
 
 ![]()
 
-
 ### （2）建置使用之 Host Name 與 IP
 
-在 Host 清單（檔案：/etc/hosts），建置 Django 應用系統之 Host Name 及使 用之 IP 。
+在 Host 清單（檔案：/etc/hosts），建置 Django 應用系統之
+Host Name 及使 用之 IP 。
 
 1. 編輯 Host 清單。
 
@@ -92,9 +96,16 @@ sudoedit /etc/hosts
 
 ### （3）建置應用系統網站
 
-nginx 提供的「虛擬網站」功能，可令一台 HTTP 伺服器，建置及執行多個網站。 每個 Django 應用系統，均會有： .css 樣式檔、 .html 網頁模版檔、.png/.jpg 圖檔... 等靜態檔案，考慮到應用系統之執行效能，當 Web Client 傳來之 HTTP Request ，若處理的結果只需回送「靜態檔案」，供 Web Client 下載，則此作業 之執行由專職的 HTTP 服務來執行，會有較佳之效能表現，故而交由 nginx 擔綱 負責。
+nginx 提供的「虛擬網站」功能，可令一台 HTTP 伺服器，建置及執
+行多個網站。 每個 Django 應用系統，均會有： .css 樣式檔、
+.html 網頁模版檔、.png/.jpg 圖檔... 等靜態檔案，考慮到應用系
+統之執行效能，當 Web Client 傳來之 HTTP Request ，若處理的結
+果只需回送「靜態檔案」，供 Web Client 下載，則此作業 之執行
+由專職的 HTTP 服務來執行，會有較佳之效能表現，故而交由 nginx
+擔綱 負責。
 
-以下之操作，將說明：當 nginx 服務已於伺服器完成安裝後，該如何作業，完成 Django 應用系統之 HTTP 網站。
+以下之操作，將說明：當 nginx 服務已於伺服器完成安裝後，該如
+何作業，完成 Django 應用系統之 HTTP 網站。
 
 1. 建置「網站目錄」。
 
@@ -142,13 +153,15 @@ unlink default
 ln -s /etc/nginx/sites-available/app.ccc.tw.local /etc/nginx/sites-enabled
 ```
 
-5. 檢驗 Django 應用系統網站之設定無誤，確保網站不會因設定有錯，以致無法啟動。
+5. 檢驗 Django 應用系統網站之設定無誤，確保網站不會因設定有
+   錯，以致無法啟動。
 
 ```
 nginx -t
 ```
 
-6. 重啟 nginx 服務，以便新進建置之 Django 應用系統網站，已能正常運作。
+6. 重啟 nginx 服務，以便新進建置之 Django 應用系統網站，已能
+   正常運作。
 
 ```
 systemctl restart nginx
@@ -157,7 +170,9 @@ systemclt status nginx
 
 7. 驗證 Django 應用系統網站已能正常運作。
 
-使用 Web 瀏覽器，瀏覽網址： http://app.ccc.tw.local/ 。透過「檢視」，觀察網頁 顯示內容的結果，以此方式驗證 Django 應用系統網站，已完成設定，可正常運作。
+使用 Web 瀏覽器，瀏覽網址： <http://app.ccc.tw.local/> 。透
+過「檢視」，觀察網頁 顯示內容的結果，以此方式驗證 Django 應
+用系統網站，已完成設定，可正常運作。
 
 【網頁應顯示之內容】：
 
@@ -167,25 +182,27 @@ app.ccc.tw.local Web Site
 
 ### （4）設定管理者帳號
 
-在作業系統，建立 Django 應用系統管理員，其「使用者帳號」及歸屬之「群組」。
+在作業系統，建立 Django 應用系統管理員，其「使用者帳號」及歸
+屬之「群組」。
 
 1. 新增管理者用使用者帳號，並設為 sudo 群組。
 
 ```
-$ sudo adduser web-admin
-$ usermod -aG sudo web-admin
+sudo adduser web-admin
+usermod -aG sudo web-admin
 ```
 
-將管理者帳號加入 www-data 群組
-先登出，再以「管理者帳號」登入。
+將管理者帳號加入 www-data 群組先登出，再以「管理者帳號」登入
+。
 
 ```
-$ sudo usermod -aG www-data $USER
+sudo usermod -aG www-data $USER
 ```
 
 3. 驗證設定成功：
 
-先登出，再登入。然後執行以下指令，驗證管理者帳號屬：sudo、www-data 群組。
+先登出，再登入。然後執行以下指令，驗證管理者帳號屬
+：sudo、www-data 群組。
 
 ```
 groups
@@ -294,7 +311,8 @@ IMPORTANT NOTES:
 
 ### （2）虛擬網站啟用 HTTPS 通信協定
 
-設定 nginx 虛擬網站，使之與「憑證」結合，以便啟用 HTTPS 通信協定。
+設定 nginx 虛擬網站，使之與「憑證」結合，以便啟用 HTTPS 通信
+協定。
 
 ```
 {
@@ -359,7 +377,8 @@ IMPORTANT NOTES:
 
 ### （3）測試 HTTPS 已能正常運作
 
-透過 SSL Server Test (opens new window)網站，測試 設定結果正確無誤，Web Server 已啟用了 HTTPS 通信協定。
+透過 SSL Server Test (opens new window)網站，測試 設定結果正
+確無誤，Web Server 已啟用了 HTTPS 通信協定。
 
 ## 常見作業
 
@@ -373,7 +392,8 @@ sudo service nginx start
 
 ### 驗證設定檔語法正確
 
-建立或變更 nginx.conf 、虛擬網站設定檔後，可使用如下指令驗證有無「設定語法」的 錯誤。
+建立或變更 nginx.conf 、虛擬網站設定檔後，可使用如下指令驗證
+有無「設定語法」的 錯誤。
 
 ```
 sudo nginx -t
@@ -387,26 +407,26 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-
 ## 問題診斷與狀況排除
 
 N/A
 
 ## 參考資料
 
-如何運用 Nginx 、uWSGI 服務，搭建 Django 應用系統之參考資料。
+如何運用 Nginx 、uWSGI 服務，搭建 Django 應用系統之參考資料
+。
 
 - [Setting up Django and your web server with uWSGI and nginx](https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html?fbclid=IwAR2NF6La2CNVljdTPr79dg4zy9S91e0pkyHqp8zTkj0DihpLrGoL04-lyzc)
 
 - [How To Set Up uWSGI and Nginx to Serve Python Apps on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-set-up-uwsgi-and-nginx-to-serve-python-apps-on-centos-7)
 
-如何運用作業系統所提供之功能，令 Django 應用系統可於「開機作業」完成後，便能
-自動啟動，開始提供服務。
+如何運用作業系統所提供之功能，令 Django 應用系統可於「開機作
+業」完成後，便能自動啟動，開始提供服務。
 
 - [How to use /etc/rc.local at boot](https://linuxhint.com/use-etc-rc-local-boot/)
 
-如何在區域網路，快速建置 DNS 服務，令 Web Client 可透過 FQDN （非 IP 之 Host
-Name），使用 Django 應用系統所提供之服務。
+如何在區域網路，快速建置 DNS 服務，令 Web Client 可透過 FQDN
+（非 IP 之 Host Name），使用 Django 應用系統所提供之服務。
 
 - [Install and Configure Dnsmasq on Ubuntu 22.04|20.04|18.04](https://computingforgeeks.com/install-and-configure-dnsmasq-on-ubuntu/)
 
@@ -417,11 +437,10 @@ Name），使用 Django 應用系統所提供之服務。
 編輯設定檔。
 
 ```
-$ sudo nano /etc/nginx/nginx.conf
+sudo nano /etc/nginx/nginx.conf
 ```
 
 nginx.conf 設定：
-
 
 ```
 user www-data;
@@ -495,55 +514,55 @@ http {
 sudo nginx -t
 ```
 
-#app1.ccc.tw.local 之 nginx 設定檔
+# app1.ccc.tw.local 之 nginx 設定檔
+
 /etc/nginx/sites-available/app1.ccc.tw.local
 
-#在 Ubuntu 18.04 安裝 Nginx
+# 在 Ubuntu 18.04 安裝 Nginx
+
 How to Install Nginx on Ubuntu 18.04(opens new window)
 
-
-
 /etc/nginx/sites-available/app1.ccc.tw.local
+
 ```
 upstream django {
-	# server 127.0.0.1:8001;
+ # server 127.0.0.1:8001;
     server unix:///home/alanjui/workspace/apps/django-v4/mysite.sock;
 }
 
 server {
-	listen 8000;
+ listen 8000;
 
-	server_name 	app1.ccc.tw.local;
-	charset		utf-8;
+ server_name  app1.ccc.tw.local;
+ charset  utf-8;
 
-	# max upload size
-	client_max_body_size	75M;
+ # max upload size
+ client_max_body_size 75M;
 
-	# Django media
-	location /media {
-		alias	/home/alanjui/workspace/apps/django-v4/media;
-	}
+ # Django media
+ location /media {
+  alias /home/alanjui/workspace/apps/django-v4/media;
+ }
 
-	location /static {
-		alias	/home/alanjui/workspace/apps/django-v4/static_collected;
-	}
+ location /static {
+  alias /home/alanjui/workspace/apps/django-v4/static_collected;
+ }
 
-	location / {
-		uwsgi_pass	django;
-		include		/home/alanjui/workspace/apps/django-v4/uwsgi_params;
-	}
+ location / {
+  uwsgi_pass django;
+  include  /home/alanjui/workspace/apps/django-v4/uwsgi_params;
+ }
 
-	# root 		/var/www/app1.ccc.tw.local;
-	# index 		index.html;
-	# access_log  	/var/log/nginx/app1-ccc-tw-local.log;
-	# error_log   	/var/log/nginx/app1-ccc-tw-local-error.log;
+ # root   /var/www/app1.ccc.tw.local;
+ # index   index.html;
+ # access_log   /var/log/nginx/app1-ccc-tw-local.log;
+ # error_log    /var/log/nginx/app1-ccc-tw-local-error.log;
 
-	# location / {
-	# 	try_files $uri $uri/ =404;
-	# }
+ # location / {
+ #  try_files $uri $uri/ =404;
+ # }
 }
 ```
-
 
 /home/alanjui/workspace/apps/django-v4/mysite_uwsgi.ini
 

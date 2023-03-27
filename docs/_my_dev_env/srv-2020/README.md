@@ -29,12 +29,12 @@ sidebar:auto
   - 內接 2: SATA HDD 2TB (ST2000DM008-2FR102)
   - 外接 3: SATA HDD 4TB
 
-## 週邊零件規格
+## 週邊規格
 
 - [SRV-2020 伺服器硬體規格明細](./SRV-2020_Hardware)
 - [SRV-2020 伺服器硬碟安裝指引](./SRV-2020_HDD)
 
-## 系統作業環境
+## 作業指引
 
 ### 作業系統安裝指引
 
@@ -55,12 +55,12 @@ sidebar:auto
 
 ### 服務安裝與設定
 
+- [使用 Nginx 建置 HTTP 伺服器](./nginx-guideline.md)
+- [佈署 Django 應用系統](./Deploy-Django-App.md)
 - [Samba Server 安裝作業指引](./Samba安裝與設定)
 - [Samba Server 設定檔 (smb.conf)](./smb-conf)
 - [建置 Node.js 作業環境](./nodejs-guideline.md)
-- [使用 Nginx 建置 HTTP 伺服器](./nginx-guideline.md)
 - [建置 Pyton 作業環境](./python-django-guideline.md)
-- [佈署 Django 應用系統](./Deploy-Django-App.md)
 
 ### 應用軟體安裝與設定
 
@@ -74,7 +74,7 @@ sidebar:auto
 
 ## 異常診斷與問題排除
 
-- [Ubuntu 伺服器常見問題與狀況排除指引](/srv-2020/Ubuntu_FAQ)
+- [Ubuntu 伺服器常見問題與狀況排除指引](/_my_dev_env/srv-2020/Ubuntu_FAQ)
 
 ## 參考文件
 

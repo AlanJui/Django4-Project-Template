@@ -148,6 +148,10 @@ module.exports = {
             title: 'Lua',
             path: '/_my_dev_env/lua/',
           },
+          {
+            title: 'Docker',
+            path: '/_my_dev_env/docker/',
+          },
         ],
       },
       {
@@ -157,6 +161,14 @@ module.exports = {
           {
             title: 'Yabai',
             path: '/_my_dev_env/yabai/',
+          },
+          {
+            title: 'Alacritty',
+            path: '/_my_dev_env/terminal/alacritty',
+          },
+          {
+            title: 'Tmux',
+            path: '/_my_dev_env/terminal/tmux',
           },
           {
             title: 'VuePress',
@@ -195,14 +207,6 @@ module.exports = {
           {
             title: '快速參考',
             path: '/_my_dev_env/QuickRef/',
-          },
-          {
-            title: 'Django',
-            path: '/_my_dev_env/django/',
-          },
-          {
-            title: 'Docker',
-            path: '/_my_dev_env/docker/',
           },
           {
             title: 'Manjaro KDE 開發環境',
