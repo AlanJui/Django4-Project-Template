@@ -55,12 +55,12 @@ sidebar:auto
 
 ### 服務安裝與設定
 
+- [建置 Node.js 作業環境](./nodejs-guideline.md)
+- [建置 Pyton 作業環境](./python-django-guideline.md)
 - [使用 Nginx 建置 HTTP 伺服器](./nginx-guideline.md)
 - [佈署 Django 應用系統](./Deploy-Django-App.md)
 - [Samba Server 安裝作業指引](./Samba安裝與設定)
 - [Samba Server 設定檔 (smb.conf)](./smb-conf)
-- [建置 Node.js 作業環境](./nodejs-guideline.md)
-- [建置 Pyton 作業環境](./python-django-guideline.md)
 
 ### 應用軟體安裝與設定
 

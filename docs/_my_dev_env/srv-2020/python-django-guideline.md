@@ -2,6 +2,8 @@
 sidebar: auto
 ---
 
+<!-- markdownlint-disable MD024 MD029 MD040 MD041 MD043 MD045 MD033 -->
+
 # 建置 Pyton 作業環境
 
 ## 摘要
@@ -9,98 +11,107 @@ sidebar: auto
 建置 Python 語言開發應用系統時，所需之作業環境。
 
 主要作業：
-- 使用 pyenv 管理 python 直譯器版本
-- 建置 Django Project 所需使用套件
+
+- 使用 pyenv 管理 Python 版本
+- 使用 Poetry 管理 Python 套件
 
 ## 安裝 pyenv 作業
 
-### (1) 自 GitHub 安裝 pyenv
+1. 自 GitHub 安裝 pyenv
 
-自 GitHub 下載 pyenv 及 pyenv-virtualenv
+   自 GitHub 下載 pyenv 及 pyenv-virtualenv
 
-```
-cd
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-```
+   ```
+   cd
+   git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+   git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+   ```
 
-### (2) 設定 Shell 作業環境
+2. 設定 Shell 作業環境
 
-```
-vim ~/.profile
-```
+   ```sh
+   vim ~/.profile
+   ```
 
-~/.profile:
+   ~/.profile:
 
-```
-....
-#-----------------------------------------------------------
-# pyenv
-#-----------------------------------------------------------
+   ```sh
+   ......
+   #-----------------------------------------------------------
+   # pyenv
+   #-----------------------------------------------------------
+   export PYENV_ROOT="$HOME/.pyenv"
+   export PATH="$PYENV_ROOT/bin:$PATH"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+   if command -v pyenv 1>/dev/null 2>&1; then
+     eval "$(pyenv init -)"
+     eval "$(pyenv virtualenv-init -)"
+   fi
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"   
-fi
-# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PIPENV_VERBOSITY=-1
-....
-```
+   # export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+   export PIPENV_VERBOSITY=-1
+   ......
+   ```
 
-### (3) 重啟 SHELL 服務
+3. 重啟 SHELL 服務
 
-```
-exec $SHELL
-```
+   ```sh
+   exec $SHELL
+   ```
 
-## 設定作業使用之 Python 直譯器
+## pyenv 作業指引
 
-### (1) 透過 pyenv 安裝 python 直譯器
+### 安裝某一 Python 版本
 
-透過 pyenv 這套 python 版本管理工具，安裝 python v3.8.5 版本
-之直譯器。
+設定作業使用之 Python 直譯器版本。
 
-1. 執行安裝指令。
+1. 透過 pyenv 安裝 python 直譯器
 
-```
-pyenv install 3.8.5
-```
+   透過 pyenv 這套 python 版本管理工具，安裝 python v3.8.5
+   版本之直譯器。
 
-```
-$ pyenv versions
-* system (set by /Users/alanjui/.pyenv/version)
+   (a) 執行安裝指令：
 
-$ pyenv install 3.8.5
-python-build: use openssl@1.1 from homebrew
-python-build: use readline from homebrew
-Downloading Python-3.8.5.tar.xz...
--> https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz
-Installing Python-3.8.5...
-python-build: use readline from homebrew
-python-build: use zlib from xcode sdk
-Installed Python-3.8.5 to /Users/alanjui/.pyenv/versions/3.8.5
-```
+   ```sh
+   pyenv install 3.8.5
+   ```
 
-2. 檢視已安裝之 python 直譯器。
+   (b) 驗證安裝完成
 
-```
-$ pyenv versions
-* system (set by /Users/alanjui/.pyenv/version)
-  3.8.5
-```
+   ```sh
+   $ pyenv versions
+   * system (set by /Users/alanjui/.pyenv/version)
 
-### (2) 設定「預設使用之 Python 直譯器」
+   $ pyenv install 3.8.5
+   python-build: use openssl@1.1 from homebrew
+   python-build: use readline from homebrew
+   Downloading Python-3.8.5.tar.xz...
+   -> https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz
+   Installing Python-3.8.5...
+   python-build: use readline from homebrew
+   python-build: use zlib from xcode sdk
+   Installed Python-3.8.5 to /Users/alanjui/.pyenv/versions/3.8.5
+   ```
 
-```
+2. 檢視作業系統中已安裝之 Python 直譯器。
+
+   ```sh
+   $ pyenv versions
+   * system (set by /Users/alanjui/.pyenv/version)
+     3.8.5
+   ```
+
+### 設定「預設之 Python 直譯器」
+
+設定作業系統層級的「預設 Python 直譯器」。
+
+```sh
 pyenv global <VerNo>
 ```
 
 Ex: Without Python 2 specified
 
-```
+```sh
 $ pyenv global 3.8.5
 
 $ pyenv versions
@@ -110,7 +121,7 @@ $ pyenv versions
 
 Ex: With Python 2 and Python 3 specified
 
-```
+```sh
 $  pyenv versions
   system
   2.7.16
@@ -126,7 +137,7 @@ $ pyenv versions
 * 3.9.1 (set by /Users/alanjui/.pyenv/version)
 ```
 
-```
+```sh
 $ which python
 /usr/bin/python
 $ la /usr/bin/python
@@ -159,82 +170,72 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> ^D
 ```
 
+## poetry 作業指引
+
+### 安裝 poetry
+
+1. 安裝軟體。
+
+   ```sh
+   curl -sSL https://install.python-poetry.org | python3 -
+   ```
+
+2. 設定 Shell 執行路徑。
+
+   (a) 編輯 Shell 設定檔： ~/.bashrc
+
+   ```sh
+   nvim ~/.bashrc
+   ```
+
+   (b) 加入設定
+
+   ```sh
+   . . .
+   export PATH="/home/sammy/.local/bin:$PATH"
+   ```
+
+   (c) 重啟 Shell
+
+   ```sh
+   source ~/.bashrc
+   ```
+
+3. 驗證已安裝成功
+
+   ```sh
+   poetry --version
+   ```
+
 ## 管理 python 虛擬環境
 
-### (1) 建置 python 虛擬環境
+### 建置 python 虛擬環境
 
-依據某版本之 python 直譯器，建立虛擬環境。
+建置專案使用之 Python 虛擬環境。
 
-```
-pyenv virtualenv <VerNo> <VirtualEnvName>
-```
-
-【情境用例】：
-
-使用 python v3.9.1 ，建立名為：venv-3.9.1 之 python 
-虛擬環境。
-
-```
-pyenv virtualenv 3.9.1 venv-3.9.1
+```sh
+cd ~/workspace/django/<ProjectRoot>/
+pyenv local <VerNo>
+python -m venv .venv
 ```
 
-### (2) 指定專案所使用之虛擬環境
+### 啟用專案虛擬環境
 
-1. 透過 pyenv local 指定專案使用之虛擬環境。
+1. 透過 poetry 啟動專案虛擬環境。
 
-```
-pyenv local <VirtualEnvName>
-```
-
-【情境用例】：
-
-對於名為：test-100 的 Django 專案，指定使用名為：venv-3.9.1 之 python 虛擬環境。
-
-```
-$ cd ~/workspace/django/test-100
-
-$ pyenv virtualenv 3.9.1 venv-3.9.1
-Looking in links: /var/folders/36/6kwybs_92bj1_x96p67h7q8w0000gp/T/tmp67ulkd55
-Requirement already satisfied: setuptools in /Users/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1/lib/python3.9/site-packages (49.2.1)
-Requirement already satisfied: pip in /Users/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1/lib/python3.9/site-packages (20.2.3)
-
-$ pyenv local venv-3.9.1
-
-$pyenv versions
-  system
-  2.7.16
-  3.8.5
-  3.9.1
-  3.9.1/envs/venv-3.9.1
-* venv-3.9.1 (set by /Users/alanjui/workspace/django/test-100/.python-version)
-```
+   ```sh
+   poetry shell
+   ```
 
 2. 安裝 python 套件管理工具： pipenv 。
 
-```
-pyenv shell
-pip install pipenv
-```
+   ```
+   poetry add <PackageName>
+   poetry add <PackageName> --group dev
+   ```
 
-
-### (3) 安裝 python 套件
-
-```
-pipenv shell
-pipenv install <Python_Package>
-```
-
-【情境用例】：
-
-在 Django 專案安裝 django 套件。
+### 安裝 Python 套件
 
 ```
-cd ~/workspace/django
-mkdir ex-101 && cd $_
-
-pyenv local venv-3.9.1
-pipenv shell
-pipenv install django
+poetry install
 ```
-
-
