@@ -4,7 +4,7 @@ sidebar: auto
 
 <!-- markdownlint-disable MD024 MD029 MD040 MD041 MD043 MD045 MD033 -->
 
-# 系統佈署指引
+# 應用系統佈署作業指引
 
 ## 摘要
 
@@ -69,13 +69,9 @@ sequenceDiagram
 說明如何在 Ubuntu 作業系統，建置 Django 應用系統於執行時期，
 所需使用之運作平台。
 
-### [應用系統更新作業指引](./deploy-django-app-s02.md)
+### [應用系統佈署作業指引](./deploy-django-app-s02.md)
 
-說明 Django 應用系統，「首度」佈署之作業程序。
-
-### [應用系統佈署作業指引](/_my_dev_env/srv-2020/django-app-deploy.md)
-
-說明 Django 應用系統之「佈署」作業程序。
+說明 Django 應用系統，如何佈署之作業程序。
 
 ## 問題診斷與狀況排除
 
