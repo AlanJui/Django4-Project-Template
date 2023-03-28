@@ -9,6 +9,8 @@ Command to run UT:
 poetry run python manage.py test han_ji_dict.tests
 """
 
+import re
+
 from django.test import Client, TestCase
 from django.urls import reverse
 
@@ -43,6 +45,10 @@ class HanJiModelTestCase(TestCase):
     def test_han_ji_model(self):
         han_ji_instance = HanJi.objects.get(han_ji="字")
         self.assertEqual(str(han_ji_instance), "字")
+
+    def test_split_chu_im(self):
+        han_ji_instance = HanJi.objects.get(han_ji="字")
+        self.assertEqual(han_ji_instance.split_chu_im(), ["j", "i", "7"])
 
 
 class HanJiCRUDTestCase(TestCase):
