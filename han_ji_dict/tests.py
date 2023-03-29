@@ -27,8 +27,31 @@ class HanJiModelTestCase(TestCase):
             un="i",
             tiau=7,
             old_chu_im="zi7",
+            sni_siann="入",
+            sni_un="居",
+        )
+        HanJi.objects.create(
+            han_ji="一",
+            chu_im="it4",
+            freq=0.9,
+            siann="",
+            un="it",
+            tiau=4,
+            old_chu_im="",
             sni_siann="英",
             sni_un="巾",
+        )
+        HanJi.objects.create(
+            han_ji="元",
+            chu_im="guan5",
+            freq=0.9,
+            siann="g",
+            un="uan",
+            tiau=5,
+        )
+        HanJi.objects.create(
+            han_ji="昔",
+            chu_im="sik4",
         )
 
     def test_han_ji_model_creation(self):
@@ -39,8 +62,15 @@ class HanJiModelTestCase(TestCase):
         self.assertEqual(han_ji_instance.un, "i")
         self.assertEqual(han_ji_instance.tiau, 7)
         self.assertEqual(han_ji_instance.old_chu_im, "zi7")
-        self.assertEqual(han_ji_instance.sni_siann, "英")
-        self.assertEqual(han_ji_instance.sni_un, "巾")
+        self.assertEqual(han_ji_instance.sni_siann, "入")
+        self.assertEqual(han_ji_instance.sni_un, "居")
+
+    def test_han_ji_model_creation_no_siann_bu(self):
+        han_ji_instance = HanJi.objects.get(han_ji="一")
+        self.assertEqual(han_ji_instance.chu_im, "it4")
+        self.assertEqual(han_ji_instance.siann, "")
+        self.assertEqual(han_ji_instance.un, "it")
+        self.assertEqual(han_ji_instance.tiau, 4)
 
     def test_han_ji_model(self):
         han_ji_instance = HanJi.objects.get(han_ji="字")
@@ -49,6 +79,31 @@ class HanJiModelTestCase(TestCase):
     def test_split_chu_im(self):
         han_ji_instance = HanJi.objects.get(han_ji="字")
         self.assertEqual(han_ji_instance.split_chu_im(), ["j", "i", "7"])
+
+    def test_get_sip_ngoo_im_chu_im(self):
+        han_ji_instance = HanJi.objects.get(han_ji="字")
+        self.assertEqual(han_ji_instance.get_sip_ngoo_im_chu_im(), "居七入")
+        han_ji_instance = HanJi.objects.get(han_ji="一")
+        self.assertEqual(han_ji_instance.get_sip_ngoo_im_chu_im(), "巾四英")
+
+    def test_get_tai_lo_chu_im(self):
+        han_ji_instance = HanJi.objects.get(han_ji="字")
+        self.assertEqual(han_ji_instance.get_tai_lo_chu_im(), "jī")
+        han_ji_instance = HanJi.objects.get(han_ji="一")
+        self.assertEqual(han_ji_instance.get_tai_lo_chu_im(), "it")
+
+    def test_get_peh_oe_ji_chu_im(self):
+        han_ji_instance = HanJi.objects.get(han_ji="字")
+        self.assertEqual(han_ji_instance.get_peh_oe_ji_chu_im(), "jī")
+
+        han_ji_instance = HanJi.objects.get(han_ji="一")
+        self.assertEqual(han_ji_instance.get_peh_oe_ji_chu_im(), "it")
+
+        han_ji_instance = HanJi.objects.get(han_ji="元")
+        self.assertEqual(han_ji_instance.get_peh_oe_ji_chu_im(), "goân")
+
+        han_ji_instance = HanJi.objects.get(han_ji="昔")
+        self.assertEqual(han_ji_instance.get_peh_oe_ji_chu_im(), "sek")
 
 
 class HanJiCRUDTestCase(TestCase):

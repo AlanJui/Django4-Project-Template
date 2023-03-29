@@ -2,74 +2,127 @@ class SipNgooIm:
     def __init__(self):
         """Intialize SipNgooIm class with dicitionaries."""
         self.siann_bu_dict = {
-            '柳': ['l', 'n'],
-            '邊': 'p',
-            '求': 'k',
-            '去': 'kh',
-            '地': 't',
-            '頗': 'ph',
-            '他': 'th',
-            '曾': 'ts',
-            '入': 'j',
-            '時': 's',
-            '英': 'q',
-            '門': ['b', 'm'],
-            '語': ['g', 'ng'],
-            '出': 'tsh',
-            '喜': 'h',
+            'l': '柳',
+            'n': '柳',
+            'p': '邊',
+            'k': '求',
+            'kh': '去',
+            't': '地',
+            'ph': '頗',
+            'th': '他',
+            'ts': '曾',
+            'j': '入',
+            's': '時',
+            '': '英',
+            'q': '英',
+            'b': '門',
+            'm': '門',
+            'g': '語',
+            'ng': '語',
+            'tsh': '出',
+            'h': '喜',
         }
 
         self.un_bu_dict = {
-            '君': ['un', 'ut'],
-            '堅': ['ian', 'iat'],
-            '金': ['im', 'ip'],
-            '規': ['ui', 'uih'],
-            '嘉': ['ee', 'eeh'],
-            '干': ['an', 'at'],
-            '公': ['ong', 'ok'],
-            '乖': ['uai', 'uaih'],
-            '經': ['ing', 'ik'],
-            '觀': ['uan', 'uat'],
-            '沽': ['oo', 'ooh'],
-            '嬌': ['iau', 'iauh'],
-            '稽': ['ei', 'eih'],
-            '恭': ['iong', 'iok'],
-            '高': ['o', 'oh'],
-            '皆': ['ai', 'aih'],
-            '巾': ['in', 'it'],
-            '姜': ['iang', 'iak'],
-            '甘': ['am', 'ap'],
-            '瓜': ['ua', 'uah'],
-            '江': ['ang', 'ak'],
-            '兼': ['iam', 'iap'],
-            '交': ['au', 'auh'],
-            '迦': ['ia', 'iah'],
-            '檜': ['ue', 'ueh'],
-            '監': ['ann', 'ahnn'],
-            '艍': ['u', 'uh'],
-            '膠': ['a', 'ah'],
-            '居': ['i', 'ih'],
-            '丩': ['iu', 'iuh'],
-            '更': ['enn', 'ehnn'],
-            '褌': ['uinn', 'uinnh'],
-            '茄': ['io', 'ioh'],
-            '梔': ['inn', 'ihnn'],
-            '薑': ['ionn', 'ionnh'],
-            '驚': ['iann', 'iannh'],
-            '官': ['uann', 'uannh'],
-            '鋼': ['ng', 'ngh'],
-            '伽': ['e', 'eh'],
-            '閒': ['ainn', 'ainnh'],
-            '姑': ['onn', 'onnh'],
-            '姆': ['m', 'mh'],
-            '光': ['uang', 'uak'],
-            '閂': ['uainn', 'uaihnn'],
-            '糜': ['uenn', 'uennh'],
-            '嘄': ['iaunn', 'iauhnn'],
-            '箴': ['om', 'op'],
-            '爻': ['aunn', 'aunnh'],
-            '扛': ['onn', 'ohnn'],
-            '牛': ['iunn', 'iunnh'],
+            'un': '君',
+            'ut': '君',
+            'ian': '堅',
+            'iat': '堅',
+            'im': '金',
+            'ip': '金',
+            'ui': '規',
+            'uih': '規',
+            'ee': '嘉',
+            'eeh': '嘉',
+            'an': '干',
+            'at': '干',
+            'ong': '公',
+            'ok': '公',
+            'uai': '乖',
+            'uaih': '乖',
+            'ing': '經',
+            'ik': '經',
+            'uan': '觀',
+            'uat': '觀',
+            'oo': '沽',
+            'ooh': '沽',
+            'iau': '嬌',
+            'iauh': '嬌',
+            'ei': '稽',
+            'eih': '稽',
+            'iong': '恭',
+            'iok': '恭',
+            'o': '高',
+            'oh': '高',
+            'ai': '皆',
+            'aih': '皆',
+            'in': '巾',
+            'it': '巾',
+            'iang': '姜',
+            'iak': '姜',
+            'am': '甘',
+            'ap': '甘',
+            'ua': '瓜',
+            'uah': '瓜',
+            'ang': '江',
+            'ak': '江',
+            'iam': '兼',
+            'iap': '兼',
+            'au': '交',
+            'auh': '交',
+            'ia': '迦',
+            'iah': '迦',
+            'ue': '檜',
+            'ueh': '檜',
+            'ann': '監',
+            'ahnn': '監',
+            'u': '艍',
+            'uh': '艍',
+            'a': '膠',
+            'ah': '膠',
+            'i': '居',
+            'ih': '居',
+            'iu': '丩',
+            'iuh': '丩',
+            'enn': '更',
+            'ehnn': '更',
+            'uinn': '褌',
+            'uinnh': '褌',
+            'io': '茄',
+            'ioh': '茄',
+            'inn': '梔',
+            'ihnn': '梔',
+            'ionn': '薑',
+            'ionnh': '薑',
+            'iann': '驚',
+            'iannh': '驚',
+            'uann': '官',
+            'uannh': '官',
+            'ng': '鋼',
+            'ngh': '鋼',
+            'e': '伽',
+            'eh': '伽',
+            'ainn': '閒',
+            'ainnh': '閒',
+            'onn': '扛',
+            'ohnn': '扛',
+            'onnh': '姑',
+            'm': '姆',
+            'mh': '姆',
+            'uang': '光',
+            'uak': '光',
+            'uainn': '閂',
+            'uaihnn': '閂',
+            'uenn': '糜',
+            'uennh': '糜',
+            'iaunn': '嘄',
+            'iauhnn': '嘄',
+            'om': '箴',
+            'op': '箴',
+            'aunn': '爻',
+            'aunnh': '爻',
+            'iunn': '牛',
+            'iunnh': '牛',
         }
 
         self.tiau_dict = {
@@ -83,38 +136,38 @@ class SipNgooIm:
         }
 
         self.trandication_tiau_dict = {
-            "上平": 1,
-            "上上": 2,
-            "上去": 3,
-            "上入": 4,
-            "下平": 5,
-            "下上": 6,
-            "下去": 7,
-            "下入": 8,
+            1: "上平",
+            2: "上上",
+            3: "上去",
+            4: "上入",
+            5: "下平",
+            6: "下上",
+            7: "下去",
+            8: "下入",
         }
 
-    def get_siann_bu(self, siann_bu):
-        return self.siann_bu_dict[siann_bu]
+    def get_siann_bu(self, siann):
+        return self.siann_bu_dict[siann]
 
-    def get_un_bu(self, un_bu, tiau):
+    def get_un_bu(self, un, tiau):
         # if tiau == 4 or tiau == 8:
         if tiau in (4, 8):
             # 韻母為入聲韻
-            un_bu_code = self.un_bu_dict[un_bu][1]
+            un_bu = self.un_bu_dict[un][1]
         else:
             # 韻母為舒聲韻
-            un_bu_code = self.un_bu_dict[un_bu][0]
-        return un_bu_code
+            un_bu = self.un_bu_dict[un][0]
+        return un_bu
+
+    def get_tiau_ho(self, tiau):
+        return self.tiau_dict[tiau]
 
     def convert_trandication_tiau(self, tiau):
         return self.trandication_tiau_dict[tiau]
 
-    def get_tiau_ho(self, idx):
-        return self.tiau_dict[idx]
-
-    def get_chu_im(self, siann_bu, un_bu, tiau):
-        un_code = self.get_un_bu(un_bu, tiau)
+    def get_chu_im(self, siann, un, tiau):
+        un_bu = self.get_un_bu(un, tiau)
         tiau_ho = self.get_tiau_ho(int(tiau))
-        siann_code = self.get_siann_bu(siann_bu)
+        siann_bu = self.get_siann_bu(siann)
 
-        return f"{un_code}{tiau_ho}{siann_code}"
+        return f"{un_bu}{tiau_ho}{siann_bu}"
