@@ -2,6 +2,7 @@ import re
 
 from django.db import models
 
+from .ban_phing_lo_ma_ji import BanPhing
 from .peh_oe_ji import PehOeJi
 from .sip_ngoo_im import SipNgooIm
 from .tai_uan_lo_ma_ji import TaiLo
@@ -79,7 +80,7 @@ class HanJi(models.Model):
         return sip_ngoo_im.get_chu_im(siann, un, tiau)
 
     # ==========================================================
-    # 取得台羅拼音的注音
+    # 取得台羅拼音（TL）的注音
     # ==========================================================
     def get_tai_lo_chu_im(self):
         # 取得「聲母」
@@ -89,11 +90,11 @@ class HanJi(models.Model):
         # 取得「調號」
         tiau = self.split_chu_im()[2]
 
-        tai_lo = TaiLo()
-        return tai_lo.get_chu_im(siann, un, tiau)
+        chu_im_method = TaiLo()
+        return chu_im_method.get_chu_im(siann, un, tiau)
 
     # ==========================================================
-    # 取得白話字的注音
+    # 取得白話字（POJ）的注音
     # ==========================================================
     def get_peh_oe_ji_chu_im(self):
         # 取得「聲母」
@@ -103,5 +104,19 @@ class HanJi(models.Model):
         # 取得「調號」
         tiau = self.split_chu_im()[2]
 
-        tai_lo = PehOeJi()
-        return tai_lo.get_chu_im(siann, un, tiau)
+        chu_im_method = PehOeJi()
+        return chu_im_method.get_chu_im(siann, un, tiau)
+
+    # ==========================================================
+    # 取得閩南語拼音方案（BP）注音
+    # ==========================================================
+    def get_ban_phing_chu_im(self):
+        # 取得「聲母」
+        siann = self.split_chu_im()[0]
+        # 取得「韻母」
+        un = self.split_chu_im()[1]
+        # 取得「調號」
+        tiau = self.split_chu_im()[2]
+
+        chu_im_method = BanPhing()
+        return chu_im_method.get_chu_im(siann, un, tiau)
