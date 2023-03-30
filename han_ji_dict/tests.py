@@ -125,21 +125,21 @@ class HanJiModelTestCase(TestCase):
         han_ji_instance = HanJi.objects.get(han_ji="昔")
         self.assertEqual(han_ji_instance.get_peh_oe_ji_chu_im(), "sek")
 
-    # def test_get_ban_phing_lo_ma_ji_chu_im(self):
-    #     han_ji_instance = HanJi.objects.get(han_ji="春")
-    #     self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "cūn")
+    def test_get_ban_phing_lo_ma_ji_chu_im(self):
+        han_ji_instance = HanJi.objects.get(han_ji="春")
+        self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "cūn")
 
-    #     han_ji_instance = HanJi.objects.get(han_ji="眠")
-    #     self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "bbián")
+        han_ji_instance = HanJi.objects.get(han_ji="眠")
+        self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "bbián")
 
-    #     han_ji_instance = HanJi.objects.get(han_ji="不")
-    #     self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "būt")
+        han_ji_instance = HanJi.objects.get(han_ji="不")
+        self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "būt")
 
-    #     han_ji_instance = HanJi.objects.get(han_ji="覺")
-    #     self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "gāk")
+        han_ji_instance = HanJi.objects.get(han_ji="覺")
+        self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "gāk")
 
-    #     han_ji_instance = HanJi.objects.get(han_ji="曉")
-    #     self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "hiǎo")
+        han_ji_instance = HanJi.objects.get(han_ji="曉")
+        self.assertEqual(han_ji_instance.get_ban_phing_chu_im(), "hiǎo")
 
 
 class HanJiCRUDTestCase(TestCase):

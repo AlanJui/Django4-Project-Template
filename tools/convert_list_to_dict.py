@@ -750,15 +750,15 @@ TaiUanLoMaJi_Un_List = [
 ]
 
 # ===============================================
-BP_Siann_Dict = dict(zip(TL_Siann_List, BP_Siann_List))
-# print(f"BP_Siann_Dict = {BP_Siann_Dict}")
-print("BP_Siann_Dict = ")
-pprint(BP_Siann_Dict, indent=2)
-
-BP_Un_Dict = dict(zip(TL_Un_List, BP_Un_List))
-# print(f"BP_Un_Dict = {BP_Un_Dict}")
-print("BP_Un_Dict = ")
-pprint(BP_Un_Dict, indent=2)
+# BP_Siann_Dict = dict(zip(TL_Siann_List, BP_Siann_List))
+# # print(f"BP_Siann_Dict = {BP_Siann_Dict}")
+# print("BP_Siann_Dict = ")
+# pprint(BP_Siann_Dict, indent=2)
+#
+# BP_Un_Dict = dict(zip(TL_Un_List, BP_Un_List))
+# # print(f"BP_Un_Dict = {BP_Un_Dict}")
+# print("BP_Un_Dict = ")
+# pprint(BP_Un_Dict, indent=2)
 
 # ===============================================
 PehOeJi_Siann_Dict = dict(zip(TL_Siann_List, PehOeJi_Siann_List))
@@ -768,3 +768,12 @@ pprint(PehOeJi_Siann_Dict, indent=2)
 PehOeJi_Un_Dict = dict(zip(TL_Un_List, PehOeJi_Un_List))
 print("PehOeJi_Un_Dict = ")
 pprint(PehOeJi_Un_Dict, indent=2)
+
+# ===============================================
+BP_Siann_Dict = dict(zip(TL_Siann_List, BP_Siann_List))
+print("BP_Siann_Dict = ")
+pprint(BP_Siann_Dict, indent=2)
+
+BP_Un_Dict = dict(zip(TL_Un_List, BP_Un_List))
+print("BP_Un_Dict = ")
+pprint(BP_Un_Dict, indent=2)

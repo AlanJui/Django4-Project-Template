@@ -7,137 +7,132 @@ class BanPhing:
     def __init__(self):
         """Intialize class with dicitionaries."""
         self.siann_bu_dict = {
-            'l': 'l',
-            'n': 'n',
-            'p': 'p',
-            'k': 'k',
-            'kh': 'kh',
-            't': 't',
-            'ph': 'ph',
-            'th': 'th',
-            'ts': 'ch',
-            'j': 'j',
-            's': 's',
             '': '',
-            'q': '',
-            'b': 'b',
-            'm': 'm',
-            'g': 'g',
-            'ng': 'ng',
-            'tsh': 'chh',
+            'b': 'bb',
+            'g': 'gg',
             'h': 'h',
+            'j': 'zz',
+            'k': 'g',
+            'kh': 'k',
+            'l': 'l',
+            'm': 'bbn',
+            'n': 'ln',
+            'ng': 'ggn',
+            'p': 'b',
+            'ph': 'p',
+            's': 's',
+            't': 'd',
+            'th': 't',
+            'ts': 'z',
+            'tsh': 'c',
         }
 
         self.un_bu_dict = {
-            'un': 'un',
-            'ut': 'ut',
-            'ian': 'ian',
-            'iat': 'iat',
-            'im': 'im',
-            'ip': 'ip',
-            'ui': 'ui',
-            'uih': 'uih',
-            'ee': 'ee',
-            'eeh': 'eeh',
-            'an': 'an',
-            'at': 'at',
-            'ong': 'ong',
-            'ok': 'ok',
-            'uai': 'uai',
-            'uaih': 'uaih',
-            'ing': 'eng',
-            'ik': 'ek',
-            'uan': 'oan',
-            'uat': 'oat',
-            'oo': 'o͘ ',
-            'ooh': 'ooh',
-            'iau': 'iau',
-            'iauh': 'iauh',
-            'ei': 'ei',
-            'eih': 'eih',
-            'iong': 'iong',
-            'iok': 'iok',
-            'o': 'o',
-            'oh': 'oh',
-            'ai': 'ai',
-            'aih': 'aih',
-            'in': 'in',
-            'it': 'it',
-            'iang': 'iang',
-            'iak': 'iak',
-            'am': 'am',
-            'ap': 'ap',
-            'ua': 'oa',
-            'uah': 'oah',
-            'ang': 'ang',
-            'ak': 'ak',
-            'iam': 'iam',
-            'iap': 'iap',
-            'au': 'au',
-            'auh': 'auh',
-            'ia': 'ia',
-            'iah': 'iah',
-            'ue': 'oe',
-            'ueh': 'oeh',
-            'ann': 'ann',
-            'ahnn': 'ahnn',
-            'u': 'u',
-            'uh': 'uh',
             'a': 'a',
             'ah': 'ah',
+            'ai': 'ai',
+            'aih': 'aih',
+            'ainn': 'nai',
+            'ainnh': 'naih',
+            'ak': 'ak',
+            'am': 'am',
+            'an': 'an',
+            'ang': 'ang',
+            'ann': 'na',
+            'annh': 'nah',
+            'ap': 'ap',
+            'au': 'ao',
+            'auh': 'aoh',
+            'aunn': 'nao',
+            'aunnh': 'naoh',
+            'e': 'e',
+            'ee': 'e',
+            'eh': 'eh',
+            'enn': 'ne',
+            'ennh': 'neh',
             'i': 'i',
+            'ia': 'ia',
+            'iah': 'iah',
+            'iak': 'iak',
+            'iam': 'iam',
+            'ian': 'ian',
+            'iang': 'iang',
+            'iann': 'nia',
+            'iannh': 'niah',
+            'iap': 'iap',
+            'iat': 'iat',
+            'iau': 'iao',
+            'iauh': 'iaoh',
+            'iaunn': 'niao',
+            'iaunnh': 'niaoh',
             'ih': 'ih',
-            'iu': 'iu',
-            'iuh': 'iuh',
-            'enn': 'enn',
-            'ehnn': 'ehnn',
-            'uinn': 'uinn',
-            'uinnh': 'uinnh',
+            'ik': 'ik',
+            'im': 'im',
+            'in': 'in',
+            'ing': 'ing',
+            'inn': 'ni',
+            'innh': 'nih',
             'io': 'io',
             'ioh': 'ioh',
-            'inn': 'inn',
-            'ihnn': 'ihnn',
-            'ionn': 'ionn',
-            'ionnh': 'ionnh',
-            'iann': 'iann',
-            'iannh': 'iannh',
-            'uann': 'oann',
-            'uannh': 'oannh',
-            'ng': 'ng',
-            'ngh': 'ngh',
-            'e': 'e',
-            'eh': 'eh',
-            'ainn': 'ainn',
-            'ainnh': 'ainnh',
-            'onn': 'onn',
-            'ohnn': 'ohnn',
-            'onnh': 'onnh',
+            'iok': 'iok',
+            'iong': 'iong',
+            'ionn': 'nioo',
+            'ionnh': 'niooh',
+            'ip': 'ip',
+            'it': 'it',
+            'iu': 'iu',
+            'iuh': 'iuh',
+            'iunn': 'niu',
+            'iunnh': 'niuh',
             'm': 'm',
             'mh': 'mh',
-            'uang': 'uang',
-            'uak': 'uak',
-            'uainn': 'uainn',
-            'uaihnn': 'uaihnn',
-            'uenn': 'uenn',
-            'uennh': 'uennh',
-            'iaunn': 'iaunn',
-            'iauhnn': 'iauhnn',
+            'ng': 'ng',
+            'ngh': 'ngh',
+            'o': 'o',
+            'oh': 'oh',
+            'ok': 'ok',
             'om': 'om',
+            'ong': 'ong',
+            'onn': 'no',
+            'onnh': 'noh',
+            'oo': 'oo',
+            'ooh': 'ooh',
             'op': 'op',
-            'aunn': 'aunn',
-            'aunnh': 'aunnh',
-            'iunn': 'iunn',
-            'iunnh': 'iunnh',
+            'u': 'u',
+            'ua': 'ua',
+            'uah': 'uah',
+            'uai': 'uai',
+            'uaih': 'uaih',
+            'uainn': 'nuai',
+            'uainnh': 'nuaih',
+            'uak': 'uak',
+            'uan': 'uan',
+            'uang': 'uang',
+            'uann': 'nua',
+            'uannh': 'nuah',
+            'uat': 'uat',
+            'ue': 'ue',
+            'ueh': 'ueh',
+            'uenn': 'nue',
+            'uennh': 'nueh',
+            'uh': 'uh',
+            'ui': 'ui',
+            'uih': 'uih',
+            'uinn': 'nui',
+            'uinnh': 'nuih',
+            'un': 'un',
+            'ut': 'ut',
         }
 
         self.tiau_dict = {
-            1: "一",
-            2: "二",
-            3: "三",
-            4: "四",
-            5: "五",
-            7: "七",
-            8: "八",
+            1: "一",  # 陰平
+            2: "二",  # 陽平
+            3: "三",  # 上声
+            4: "四",  # 陽上
+            5: "五",  # 陰去
+            6: "六",  # 陽去
+            7: "七",  # 陰入
+            8: "八",  # 陽入
         }
 
         # 將「傳統八聲調」轉換成閩拼使用的調號
@@ -147,21 +142,33 @@ class BanPhing:
             3: 5,  # 陰去：21
             4: 7,  # 上聲：53
             5: 2,  # 陽平：24
+            6: 4,
             7: 6,  # 陰入：3?
             8: 8,  # 陽入：4?
         }
 
         self.accent_mapping = {
-            'a': {2: 'á', 3: 'à', 4: 'a', 5: 'â', 7: 'ā', 8: 'a̍'},
-            'e': {2: 'é', 3: 'è', 4: 'e', 5: 'ê', 7: 'ē', 8: 'e̍'},
-            'i': {2: 'í', 3: 'ì', 4: 'i', 5: 'î', 7: 'ī', 8: 'i̍'},
-            'o': {2: 'ó', 3: 'ò', 4: 'o', 5: 'ô', 7: 'ō', 8: 'o̍'},
-            'u': {2: 'ú', 3: 'ù', 4: 'u', 5: 'û', 7: 'ū', 8: 'u̍'},
-            'm': {2: 'ḿ', 3: 'm̀', 4: 'ṃ', 5: 'm̂', 7: 'm̄', 8: 'm̍'},
-            'n': {2: 'ń', 3: 'ǹ', 4: 'ṇ', 5: 'n̂', 7: 'n̄', 8: 'n̍'},
+            'a': {1: 'ā', 2: 'á', 3: 'ǎ', 4: '', 5: 'à', 6: 'â', 7: 'ā', 8: 'á'},
+            'e': {1: 'ē', 2: 'é', 3: 'ě', 4: '', 5: 'è', 6: 'ê', 7: 'ē', 8: 'é'},
+            'i': {1: 'ī', 2: 'í', 3: 'ǐ', 4: '', 5: 'ì', 6: 'î', 7: 'ī', 8: 'í'},
+            'o': {1: 'ō', 2: 'ó', 3: 'ǒ', 4: '', 5: 'ò', 6: 'ô', 7: 'ō', 8: 'ó'},
+            'u': {1: 'ū', 2: 'ú', 3: 'ǔ', 4: '', 5: 'ù', 6: 'û', 7: 'ū', 8: 'ú'},
+            'm': {1: 'ḿ', 2: 'ḿ', 3: 'm̌', 4: '', 5: 'm̀', 6: 'm̂', 7: 'm̄', 8: 'ḿ'},
+            'n': {1: 'ń', 2: 'ń', 3: 'ň', 4: '', 5: 'ǹ', 6: 'n̂', 7: 'n̄', 8: 'ń'},
+            'oo': {
+                1: 'ōo',
+                2: 'óo',
+                3: 'ǒo',
+                4: 'ǒo',
+                5: 'òo',
+                6: 'ôo',
+                7: 'ōo',
+                8: 'óo',
+            },
         }
 
-        self.pattern = r"(a|oo|ere|iu|ui|ng|e|o|i|u|m)"
+        # self.pattern = r"(a|oo|ere|iu|ui|ng|e|o|i|u|m)"
+        self.pattern = r"(oo|ere|iu|ui|ng)"
 
     def get_siann_bu(self, siann):
         return self.siann_bu_dict[siann]
@@ -174,6 +181,31 @@ class BanPhing:
 
     def convert_trandication_tiau(self, tiau):
         return self.trandication_tiau_dict[tiau]
+
+    def get_vowel_idx(self, vowel, syllable):
+        """Get index of the vowel in the syllable."""
+        return syllable.index(vowel)
+
+    def get_primary_vowel(self, syllable):
+        """Get primary vowel based on the rules."""
+        vowels = [
+            'a',
+            'oo',
+            'e',
+            'o',
+            'i',
+            'u',
+            'm',
+            'n',
+        ]
+        primary_vowel = None
+        for vowel in vowels:
+            if vowel in syllable:
+                if primary_vowel is None or vowels.index(vowel) < vowels.index(
+                    primary_vowel
+                ):
+                    primary_vowel = vowel
+        return primary_vowel
 
     def _find_accented_vowel(self, un_bu, tiau):
         for vowel, accent_map in self.accent_mapping.items():
@@ -197,21 +229,22 @@ class BanPhing:
 
         chu_im = f"{siann_bu}{un_bu}"
 
-        searchObj = re.search(self.pattern, chu_im, re.M | re.I)
+        idx = 0
+        searchObj = re.search(self.pattern, un_bu, re.M | re.I)
         if searchObj:
             found = searchObj.group(1)
-            un_chars = list(found)
-            idx = 0
+            # un_chars = list(found)
             if found in ('iu', 'ui'):
                 idx = 1
             elif found in ('oo', 'ng'):
                 idx = 0
             elif found == "ere":
                 idx = 2
-
-            guan_im = un_chars[idx]
-            un_chars[idx] = self._find_accented_vowel(guan_im, int(tiau))
-            un_str = "".join(un_chars)
-            chu_im = chu_im.replace(found, un_str)
-
+        else:
+            primary_vowel = self.get_primary_vowel(un_bu)
+            idx = self.get_vowel_idx(primary_vowel, un_bu)
+        guan_im = un_chars[idx]
+        un_chars[idx] = self._find_accented_vowel(guan_im, int(tiau))
+        un_str = "".join(un_chars)
+        chu_im = chu_im.replace(found, un_str)
         return chu_im
