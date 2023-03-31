@@ -167,7 +167,6 @@ class BanPhing:
             },
         }
 
-        # self.pattern = r"(a|oo|ere|iu|ui|ng|e|o|i|u|m)"
         self.pattern = r"(oo|ere|iu|ui|ng)"
 
     def get_siann_bu(self, siann):
@@ -190,7 +189,6 @@ class BanPhing:
         """Get primary vowel based on the rules."""
         vowels = [
             'a',
-            'oo',
             'e',
             'o',
             'i',
@@ -218,22 +216,16 @@ class BanPhing:
         siann_bu = self.get_siann_bu(siann).strip()
         un_bu = self.get_un_bu(un)
 
-        # 當聲母為「空白」，韻母為：i 或 u 的調整
-        un_chars = list(un_bu)
-        if siann_bu == "":
-            if un_chars[0] in ('i', 'u'):
-                siann = "y" if un_chars[0] == "i" else "w"
-
         # 將「傳統八聲調」轉換成閩拼使用的調號
-        tiau = self.convert_trandication_tiau(int(tiau))
+        new_tiau = self.convert_trandication_tiau(int(tiau))
 
-        chu_im = f"{siann_bu}{un_bu}"
-
+        # 將韻母字串拆解成韻母 List ，如： "ian" ==> ['i', 'a', 'n']
+        un_chars = list(un_bu)
+        # 找出「韻母」中，應標示「聲調符號」之「元音」
         idx = 0
         searchObj = re.search(self.pattern, un_bu, re.M | re.I)
         if searchObj:
             found = searchObj.group(1)
-            # un_chars = list(found)
             if found in ('iu', 'ui'):
                 idx = 1
             elif found in ('oo', 'ng'):
@@ -243,8 +235,17 @@ class BanPhing:
         else:
             primary_vowel = self.get_primary_vowel(un_bu)
             idx = self.get_vowel_idx(primary_vowel, un_bu)
-        guan_im = un_chars[idx]
-        un_chars[idx] = self._find_accented_vowel(guan_im, int(tiau))
-        un_str = "".join(un_chars)
-        chu_im = chu_im.replace(found, un_str)
+
+        # 將找到之「元音」，加上「聲調符號」
+        vowel_with_tiau = self._find_accented_vowel(un_chars[idx], new_tiau)
+        un_chars[idx] = vowel_with_tiau
+        # 將資料型態為 List 的「韻母」，重新組合成「字串」資料型態
+        un_bu_str = "".join(un_chars)
+
+        # 當聲母為「空白」，韻母為：i 或 u 的調整
+        if siann_bu == "":
+            if un_chars[0] in ('i', 'u'):
+                siann = "y" if un_chars[0] == "i" else "w"
+        chu_im = f"{siann_bu}{un_bu_str}"
+
         return chu_im
