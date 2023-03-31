@@ -135,17 +135,6 @@ class SipNgooIm:
             8: "八",
         }
 
-        self.trandication_tiau_dict = {
-            1: "上平",
-            2: "上上",
-            3: "上去",
-            4: "上入",
-            5: "下平",
-            6: "下上",
-            7: "下去",
-            8: "下入",
-        }
-
     def get_siann_bu(self, siann):
         return self.siann_bu_dict[siann]
 
@@ -161,9 +150,6 @@ class SipNgooIm:
 
     def get_tiau_ho(self, tiau):
         return self.tiau_dict[tiau]
-
-    def convert_trandication_tiau(self, tiau):
-        return self.trandication_tiau_dict[tiau]
 
     def get_chu_im(self, siann, un, tiau):
         un_bu = self.get_un_bu(un, tiau)
