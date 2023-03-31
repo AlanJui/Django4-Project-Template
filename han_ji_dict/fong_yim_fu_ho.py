@@ -8,6 +8,7 @@ class FongYimFuHo:
         """Intialize class with dicitionaries."""
         self.siann_bu_dict = {
             '': '',
+            'q': '',
             'b': 'ㆠ',
             'g': 'ㆣ',
             'h': 'ㄏ',

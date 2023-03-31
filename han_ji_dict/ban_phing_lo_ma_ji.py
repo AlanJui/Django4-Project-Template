@@ -8,6 +8,7 @@ class BanPhing:
         """Intialize class with dicitionaries."""
         self.siann_bu_dict = {
             '': '',
+            'q': '',
             'b': 'bb',
             'g': 'gg',
             'h': 'h',

@@ -6,6 +6,8 @@ class TaiLo:
     def __init__(self):
         """Intialize SipNgooIm class with dicitionaries."""
         self.siann_bu_dict = {
+            '': '',
+            'q': '',
             'l': 'l',
             'n': 'n',
             'p': 'p',
@@ -17,8 +19,6 @@ class TaiLo:
             'ts': 'ts',
             'j': 'j',
             's': 's',
-            '': '',
-            'q': '',
             'b': 'b',
             'm': 'm',
             'g': 'g',

@@ -15,6 +15,7 @@ class PehOeJi:
         """Intialize class with dicitionaries."""
         self.siann_bu_dict = {
             '': '',
+            'q': '',
             'b': 'b',
             'g': 'g',
             'h': 'h',
@@ -212,6 +213,16 @@ class PehOeJi:
                 '6': 'ň',
                 '7': 'n̄',
                 '8': 'n̍',
+            },
+            'oo': {
+                '1': 'o͘',
+                '2': 'ó͘',
+                '3': 'ò͘',
+                '4': 'o͘',
+                '5': 'ô͘',
+                '6': '',
+                '7': 'ō͘',
+                '8': 'o̍',
             },
         }
 
