@@ -32,22 +32,6 @@ footer: Made by  with ❤️
 ### 循序圖
 
 <!-- markdownlint-disable line-length -->
-
-@startuml actor User control Django.Router as Router control Django.Template as
-Template boundary post_detail as View boundary CommentForm as Form entity Post
-as Model entity Comment as Comment database database as DB
-
-User -> Router : url: /blog/ (post_detail) Router -> View : post_detail(request,
-year, month, day, post) View -> Model : get_object_or_404(Post, slug=post, \n
-status='published', publish**year=year, \n publish**month=month,
-publish\_\_day=day) Model -> DB : sql_query() DB --> Model : post Model --> View
-: post View -> Comment: post.comments.filter(active=True) Comment --> View:
-comments View -> Form: CommentForm() Form --> View: form View --> Template:
-render(request, \n uri_of_template, \n {post, comments, form}) Template -->
-User: /blog/post/list.html @enduml
-
-<!-- markdownlint-enable line-length -->
-
 <mermaid/>
 
 ```mermaid
@@ -57,6 +41,8 @@ sequenceDiagram
       System-->>User: Response
   end
 ```
+
+<!-- markdownlint-enable line-length -->
 
 ### 流程圖
 
@@ -71,11 +57,24 @@ C -->|Two| E[iPhone]
 C -->|Three| F[fa:fa-car Car]
 ```
 
-## 指定色彩
+## 作業提示
 
-::: tip This is a tip message. :::
+一般作業提示：
 
-::: danger This is a danger message. :::
+::: tip
+
+作業執行時的工作要點、概念解釋，將置於此處說明。
+
+:::
+
+危險作業提示：
+
+::: danger
+
+作業執行將致資料移除、或有可能導致系統當機，以上均屬危險作業
+。執行時需小心、再小心。
+
+:::
 
 <style>
 .tip {
@@ -89,15 +88,3 @@ C -->|Three| F[fa:fa-car Car]
   border-color: var(--color-danger-border);
 }
 </style>
-
-這個提示信息告訴您，需要指定如何解決分支之間的分歧。您可以選擇合併（merge）、變
-基（rebase）或者只允許快速向前（fast-forward only）。
-
-這個提示信息告訴您，需要指定如何解決中文自動換行。
-
-It is very trouble me to control new line my self to let the length of line
-match the rule for markdown linter. I am so glad to hear some tool can solveing
-my prolem.
-
-It is very trouble for me to key an eye on control words in sentence to match
-the line length setting.
