@@ -3,6 +3,7 @@ import re
 from django.db import models
 
 from .ban_phing_lo_ma_ji import BanPhing
+from .fong_yim_fu_ho import FongYimFuHo
 from .peh_oe_ji import PehOeJi
 from .sip_ngoo_im import SipNgooIm
 from .tai_uan_lo_ma_ji import TaiLo
@@ -119,4 +120,18 @@ class HanJi(models.Model):
         tiau = self.split_chu_im()[2]
 
         chu_im_method = BanPhing()
+        return chu_im_method.get_chu_im(siann, un, tiau)
+
+    # ==========================================================
+    # 取得方音符號（TPS）注音
+    # ==========================================================
+    def get_fong_yim_fu_ho_chu_im(self):
+        # 取得「聲母」
+        siann = self.split_chu_im()[0]
+        # 取得「韻母」
+        un = self.split_chu_im()[1]
+        # 取得「調號」
+        tiau = self.split_chu_im()[2]
+
+        chu_im_method = FongYimFuHo()
         return chu_im_method.get_chu_im(siann, un, tiau)
