@@ -1,20 +1,4 @@
-"""
-韻母＋聲調 = 韻母注音
-
-a2: á (U+00E1)
-a3: à (U+00E0)
-a4: ah
-a5: â (U+00E2)
-a7: ā (U+0101)
-a8: a̍h
-
-e2: é (U+00E9)
-e3: è (U+00E8)
-e4: eh
-e5: ê (U+00EA)
-e7: ē (U+0113)
-e8: e̍h
-"""
+"""台灣羅馬字拼音（TL）."""
 import re
 
 
@@ -146,75 +130,152 @@ class TaiLo:
         }
 
         self.tiau_dict = {
-            1: "一",
-            2: "二",
-            3: "三",
-            4: "四",
-            5: "五",
-            7: "七",
-            8: "八",
+            1: "一",  # "上平"
+            2: "二",  # "上声"
+            3: "三",  # "上去"
+            4: "四",  # "上入"
+            5: "五",  # "下平"
+            6: "六",  # "下上"
+            7: "七",  # "下去"
+            8: "八",  # "下入"
         }
 
-        self.trandication_tiau_dict = {
-            1: "上平",
-            2: "上上",
-            3: "上去",
-            4: "上入",
-            5: "下平",
-            6: "下上",
-            7: "下去",
-            8: "下入",
+        self.accent_mapping = {
+            'a': {
+                '1': 'a',
+                '2': 'á',
+                '3': 'à',
+                '4': 'a',
+                '5': 'â',
+                '6': 'ǎ',
+                '7': 'ā',
+                '8': 'a̍',
+            },
+            'e': {
+                '1': 'e',
+                '2': 'é',
+                '3': 'è',
+                '4': 'e',
+                '5': 'ê',
+                '6': 'ě',
+                '7': 'ē',
+                '8': 'e̍',
+            },
+            'i': {
+                '1': 'i',
+                '2': 'í',
+                '3': 'ì',
+                '4': 'i',
+                '5': 'î',
+                '6': 'ǐ',
+                '7': 'ī',
+                '8': 'i̍',
+            },
+            'o': {
+                '1': 'o',
+                '2': 'ó',
+                '3': 'ò',
+                '4': 'o',
+                '5': 'ô',
+                '6': 'ǒ',
+                '7': 'ō',
+                '8': 'o̍',
+            },
+            'u': {
+                '1': 'u',
+                '2': 'ú',
+                '3': 'ù',
+                '4': 'u',
+                '5': 'û',
+                '6': 'ǔ',
+                '7': 'ū',
+                '8': 'u̍',
+            },
+            'm': {
+                '1': 'm',
+                '2': 'ḿ',
+                '3': 'm̀',
+                '4': 'm',
+                '5': 'm̂',
+                '6': 'm̌',
+                '7': 'm̄',
+                '8': 'm̍',
+            },
+            'n': {
+                '1': 'n',
+                '2': 'ń',
+                '3': 'ǹ',
+                '4': 'n',
+                '5': 'n̂',
+                '6': 'ň',
+                '7': 'n̄',
+                '8': 'n̍',
+            },
         }
+
+        self.pattern = r"(iu|ui|oo|ng|ere)"
 
     def get_siann_bu(self, siann):
         return self.siann_bu_dict[siann]
 
-    def get_un_bu(self, un, tiau):
-        # if tiau == 4 or tiau == 8:
-        if tiau in (4, 8):
-            # 韻母為入聲韻
-            un_bu = self.un_bu_dict[un][1]
-        else:
-            # 韻母為舒聲韻
-            un_bu = self.un_bu_dict[un][0]
-        return un_bu
+    def get_un_bu(self, un):
+        return self.un_bu_dict[un]
 
     def get_tiau_ho(self, tiau):
         return self.tiau_dict[tiau]
 
-    def convert_trandication_tiau(self, tiau):
-        return self.trandication_tiau_dict[tiau]
+    def get_vowel_idx(self, vowel, syllable):
+        """Get index of the vowel in the syllable."""
+        return syllable.index(vowel)
 
-    def _find_accented_vowel(self, un_bu, tiau):
-        accent_mapping = {
-            'a': {2: 'á', 3: 'à', 4: 'a', 5: 'â', 7: 'ā', 8: 'a̍'},
-            'e': {2: 'é', 3: 'è', 4: 'e', 5: 'ê', 7: 'ē', 8: 'e̍'},
-            'i': {2: 'í', 3: 'ì', 4: 'i', 5: 'î', 7: 'ī', 8: 'i̍'},
-            'o': {2: 'ó', 3: 'ò', 4: 'o', 5: 'ô', 7: 'ō', 8: 'o̍'},
-            'u': {2: 'ú', 3: 'ù', 4: 'u', 5: 'û', 7: 'ū', 8: 'u̍'},
-            'm': {2: 'ḿ', 3: 'm̀', 4: 'ṃ', 5: 'm̂', 7: 'm̄', 8: 'm̍'},
-            'n': {2: 'ń', 3: 'ǹ', 4: 'ṇ', 5: 'n̂', 7: 'n̄', 8: 'n̍'},
-        }
-
-        for vowel, accent_map in accent_mapping.items():
-            if vowel in un_bu:
-                un_bu = un_bu.replace(vowel, accent_map[tiau])
-                break
-
-        return un_bu
+    def get_primary_vowel(self, syllable):
+        """Get primary vowel based on the rules."""
+        vowels = [
+            'a',
+            'e',
+            'o',
+            'i',
+            'u',
+            'n',
+            'm',
+        ]
+        primary_vowel = None
+        for vowel in vowels:
+            if vowel in syllable:
+                if primary_vowel is None or vowels.index(vowel) < vowels.index(
+                    primary_vowel
+                ):
+                    primary_vowel = vowel
+        return primary_vowel
 
     def get_chu_im(self, siann, un, tiau):
-        chu_im = f"{siann}{un}"
+        siann_bu = self.get_siann_bu(siann)
+        un_bu = self.get_un_bu(un)
 
-        pattern = r"(oo|ee|ei|o|e|a|u|i|ng|m)"
-        searchObj = re.search(pattern, chu_im, re.M | re.I)
-
+        # 將韻母字串拆解成韻母 List ，如： "ian" ==> ['i', 'a', 'n']
+        un_chars = list(un_bu)
+        # 找出「韻母」中，應標示「聲調符號」之「元音」
+        idx = 0
+        # self.pattern = r"(oai|oan|oat|oah|oeh|ee|ei)"
+        searchObj = re.search(self.pattern, un_bu, re.M | re.I)
         if searchObj:
             found = searchObj.group(1)
-            un_chars = list(found)
-            guan_im = un_chars[0]
-            un_chars[0] = self._find_accented_vowel(guan_im, int(tiau))
-            un_str = "".join(un_chars)
-            chu_im = chu_im.replace(found, un_str)
+            if found in ('iu', 'ui'):
+                idx = 1
+            elif found in ('oo', 'ng'):
+                idx = 0
+            elif found in ('ere'):
+                idx = 2
+        else:
+            primary_vowel = self.get_primary_vowel(un_bu)
+            idx = self.get_vowel_idx(primary_vowel, un_bu)
 
+        # 將找到之「元音」，加上「聲調符號」
+        guan_im = un_chars[idx]
+        vowel_with_tiau = self.accent_mapping[guan_im][tiau]
+        un_chars[idx] = vowel_with_tiau
+        # 將資料型態為 List 的「韻母」，重新組合成「字串」資料型態
+        un_bu_str = "".join(un_chars)
+
+        chu_im = f"{siann_bu}{un_bu_str}"
         return chu_im
