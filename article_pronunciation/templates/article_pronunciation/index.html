@@ -1,18 +1,27 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block title %}
-  文章標讀音
+文章標讀音
 {% endblock %}
 
-{% block css %}
-{% endblock %}
+{% block styles %}
+    <!-- 加入自己的 CSS 樣式表 -->
+    <link rel="stylesheet" href="{% static 'article_pronunciation/css/articles.css' %}">
+{% endblock styles %}
 
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <h2><label for="text">輸入欲找讀音的漢字：</label></h2>
+        <h3><label for="text">輸入欲找讀音的漢字：</label></h3>
+        <select name="pronunciation" id="pronunciation">
+            <option value="tai_lo">台羅拼音</option>
+            <option value="peh_oe_ji">白話字</option>
+            <option value="ban_phing">閩南語拼音方案</option>
+            <option value="sip_ngoo">十五音</option>
+            <option value="fong_yim">方音符號</option>
+        </select>
+        <br />
         <textarea name="text" id="text" rows="4" cols="50">{{ default_text }}</textarea>
         <br />
         <button type="submit">送出</button>
@@ -20,16 +29,30 @@
     <br />
     {% if annotated_text %}
         <div class="content-area">
-        <h2>已標註讀音的漢字：</h2>
+            <h2>已標註讀音的漢字</h2>
             {% for char in annotated_text %}
-            {% if char.han_ji %}
-                <ruby>
-                    {{ char.han_ji }}<rt>{{ char.chu_im }}</rt>
-                </ruby>
-            {% else %}
-                {{ char|safe }}
-            {% endif %}
+                {% if char.han_ji %}
+                    <ruby>
+                        <rb>{{ char.han_ji }}</rb>
+                        <rp>(</rp>
+                        {% if selected_pronunciation == "fong_yim" %}
+                            <rtc>{{ char.chu_im_fu_ho }}</rtc>
+                        {% else %}
+                            <rt id="chu_im">{{ char.chu_im_fu_ho }}</rt>
+                        {% endif %}
+                        <rp>)</rp>
+                    </ruby>
+                {% else %}
+                    {{ char|safe }}
+                {% endif %}
             {% endfor %}
         </div>
     {% endif %}
 {% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function() {
+});
+</script>
+{% endblock javascript %}
