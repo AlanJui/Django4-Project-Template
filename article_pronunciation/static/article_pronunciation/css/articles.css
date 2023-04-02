@@ -37,6 +37,13 @@ h2 {
     height: 30rem;
 }
 
+ruby {
+    font-variant-east-asian: ruby;
+    -moz-font-feature-settings: 'ruby';
+    -webkit-font-feature-settings: 'ruby';
+    font-feature-settings: 'ruby';
+}
+
 rt {
     font-family: Arial;
     font-size: 45%;
@@ -45,7 +52,14 @@ rt {
     padding-right: 0.3rem;
 }
 
-rtc {
+.sip_ngoo {
+    font-family: Arial;
+    font-size: 30%;
+    color: blue;
+    text-align: center;
+}
+
+.fong_yim {
     font-family: BopomofoRuby;
     font-size: 40%;
     color: green;
@@ -59,13 +73,6 @@ rtc {
     white-space: nowrap;
 }
 
-ruby {
-    font-variant-east-asian: ruby;
-    -moz-font-feature-settings: 'ruby';
-    -webkit-font-feature-settings: 'ruby';
-    font-feature-settings: 'ruby';
-}
-
 .poj {
     font-family: 'Noto Serif TC';
     font-size: 48px;
@@ -73,37 +80,18 @@ ruby {
 }
 
 .pin_yin {
-    font-family: 'Noto Serif TC';
-    font-size: 48px;
-    line-height: 2.4;
-}
-
-.pin_yin rt {
     font-family: Arial;
     font-size: 45%;
     color: rosybrown;
     text-align: center;
 }
 
-.zhu_yin {
+.chu_im {
     font-family: 'Noto Serif TC';
     ruby-position: inter-character;
     letter-spacing: 0px;
     font-size: 48px;
     line-height: 2;
-}
-
-.fifteen_yin {
-    font-family: 'Noto Serif TC';
-    font-size: 48px;
-    line-height: 2;
-}
-
-.fifteen_yin rt {
-    font-family: Arial;
-    font-size: 30%;
-    color: blue;
-    text-align: center;
 }
 
 img {
@@ -113,10 +101,23 @@ img {
     margin-right: auto;
 }
 
+.content-header {
+    font-family: 'Noto Sans TC';
+    font-size: 32px;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: 9px;
+}
+
 .content-area {
     font-size: 48px;
     line-height: 1.8;
     font-family: 'Noto Serif TC';
     ruby-position: inter-character;
     letter-spacing: 0px;
+    margin-top: 1cm;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }

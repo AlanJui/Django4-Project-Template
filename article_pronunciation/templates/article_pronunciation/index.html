@@ -22,23 +22,25 @@
             <option value="fong_yim">方音符號</option>
         </select>
         <br />
-        <textarea name="text" id="text" rows="4" cols="50">{{ default_text }}</textarea>
+        <textarea name="text" id="text" rows="4" cols="80">{{ default_text }}</textarea>
         <br />
         <button type="submit">送出</button>
     </form>
     <br />
     {% if annotated_text %}
+        <h3 class="content-header">已標註讀音的漢字</h3>
         <div class="content-area">
-            <h2>已標註讀音的漢字</h2>
             {% for char in annotated_text %}
                 {% if char.han_ji %}
                     <ruby>
                         <rb>{{ char.han_ji }}</rb>
                         <rp>(</rp>
-                        {% if selected_pronunciation == "fong_yim" %}
-                            <rtc>{{ char.chu_im_fu_ho }}</rtc>
+                        {% if selected_pronunciation == "sip_ngoo" %}
+                            <rt class="sip_ngoo">{{ char.chu_im_fu_ho }}</rt>
+                        {% elif selected_pronunciation == "fong_yim" %}
+                            <rt class="fong_yim">{{ char.chu_im_fu_ho }}</rt>
                         {% else %}
-                            <rt id="chu_im">{{ char.chu_im_fu_ho }}</rt>
+                            <rt>{{ char.chu_im_fu_ho }}</rt>
                         {% endif %}
                         <rp>)</rp>
                     </ruby>
