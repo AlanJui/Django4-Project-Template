@@ -15,6 +15,7 @@ sqlparse = "^0.4.3"
 numpy = "^1.24.2"
 python-dotenv = "^1.0.0"
 django-mathfilters = "^1.0.0"
+uwsgi = "^2.0.21"
 
 
 [tool.poetry.group.dev.dependencies]
