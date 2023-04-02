@@ -55,6 +55,7 @@ class PehOeJi:
             'aunnh': 'auhⁿ',
             'e': 'e',
             'ee': 'ee',
+            'ei': 'e',
             'eh': 'eh',
             'enn': 'eⁿ',
             'ennh': 'ehⁿ',

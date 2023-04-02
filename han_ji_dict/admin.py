@@ -15,6 +15,7 @@ class HanJiAdmin(admin.ModelAdmin):
         'sni_siann',
         'sni_un',
     )
+    search_fields = ('han_ji', 'chu_im', 'sni_siann', 'sni_un', 'tiau')
 
     def display_freq(self, obj):
         try:

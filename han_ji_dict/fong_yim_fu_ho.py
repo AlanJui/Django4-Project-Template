@@ -49,6 +49,7 @@ class FongYimFuHo:
             'e': 'ㆤ',
             'ee': 'ㄝ',
             'eh': 'ㆤㆷ',
+            'ei': 'ㆤ',
             'enn': 'ㆥ',
             'ennh': 'ㆥㆷ',
             'i': 'ㄧ',
@@ -136,8 +137,17 @@ class FongYimFuHo:
             8: "\u02D9",  # 陽入
         }
 
-    def get_siann_bu(self, siann):
-        return self.siann_bu_dict[siann]
+    def get_siann_bu(self, siann, un):
+        if siann == "ts" and un.startswith("i"):
+            return "ㄐ"
+        elif siann == "tsh" and un.startswith("i"):
+            return "ㄑ"
+        elif siann == "s" and un.startswith("i"):
+            return "ㄒ"
+        elif siann == "j" and un.startswith("i"):
+            return "ㆢ"
+        else:
+            return self.siann_bu_dict[siann]
 
     def get_un_bu(self, un):
         return self.un_bu_dict[un]
@@ -146,7 +156,7 @@ class FongYimFuHo:
         return self.tiau_dict[tiau]
 
     def get_chu_im(self, siann, un, tiau):
-        siann_bu = self.get_siann_bu(siann).strip()
+        siann_bu = self.get_siann_bu(siann, un).strip()
         un_bu = self.get_un_bu(un)
         tiau_fu = self.get_tiau_ho(int(tiau))
 

@@ -49,6 +49,7 @@ class BanPhing:
             'e': 'e',
             'ee': 'e',
             'eh': 'eh',
+            'ei': 'e',
             'enn': 'ne',
             'ennh': 'neh',
             'i': 'i',
