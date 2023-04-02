@@ -3,8 +3,7 @@
 
 @font-face {
     font-family: BopomofoRuby;
-    src: local('BopomofoRuby1909-v1-Regular'),
-        url(/css/BopomofoRuby1909-v1-Regular.ttf);
+    src: url(BopomofoRuby1909-v1-Regular.ttf);
 }
 
 /* body { */
