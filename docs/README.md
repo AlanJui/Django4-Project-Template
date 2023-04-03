@@ -8,9 +8,9 @@ footer: Made by  with ❤️
 <!-- ![Hero image](./images/hero.png) -->
 
 <!-- ![Hero image](/images/hero.png =200x200) -->
-<center>
-  <img src="/images/hero.png" alt="Hero image" width="200" height="200">
-</center>
+<!-- <center> -->
+<!--   <img src="/images/hero.png" alt="Hero image" width="200" height="200"> -->
+<!-- </center> -->
 
 # <span style="text-align:center;display:block;">《專案指引》</span>
 
