@@ -38,7 +38,14 @@ def index(request):
 
         if text:
             for char in text:
-                if char.strip():
+                if char == "\n":
+                    annotated_text.append(
+                        {
+                            'han_ji': char,
+                            'chu_im_fu_ho': '',
+                        }
+                    )
+                elif char.strip():
                     chu_im_fu_ho = get_chu_im(char, selected_pronunciation)
                     annotated_text.append(
                         {
