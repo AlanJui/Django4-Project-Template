@@ -33,7 +33,7 @@ TL_Un_List = [
     'ee',
     'eh',
     'an',
-    'ap',
+    'at',
     'ong',
     'ok',
     'uai',
@@ -625,42 +625,40 @@ TPS_Un_List = [
 ]
 
 # ===============================================
-# BP_Siann_Dict = dict(zip(TL_Siann_List, BP_Siann_List))
-# print("BP_Siann_Dict = ")
-# pprint(BP_Siann_Dict, indent=2)
-#
-# BP_Un_Dict = dict(zip(TL_Un_List, BP_Un_List))
-# print("BP_Un_Dict = ")
-# pprint(BP_Un_Dict, indent=2)
-#
-# ===============================================
-# BP_Siann_Dict = dict(zip(TL_Siann_List, BP_Siann_List))
-# # print(f"BP_Siann_Dict = {BP_Siann_Dict}")
-# print("BP_Siann_Dict = ")
-# pprint(BP_Siann_Dict, indent=2)
-#
-# BP_Un_Dict = dict(zip(TL_Un_List, BP_Un_List))
-# # print(f"BP_Un_Dict = {BP_Un_Dict}")
-# print("BP_Un_Dict = ")
-# pprint(BP_Un_Dict, indent=2)
+TL_Siann_Dict = dict(zip(TL_Siann_List, TL_Siann_List))
+print("TL_Siann_Dict = ")
+pprint(TL_Siann_Dict, indent=2)
+
+TL_Un_Dict = dict(zip(TL_Un_List, TL_Un_List))
+print("TL_Un_Dict = ")
+pprint(TL_Un_Dict, indent=2)
 
 # ===============================================
-# PehOeJi_Siann_Dict = dict(zip(TL_Siann_List, PehOeJi_Siann_List))
-# print("PehOeJi_Siann_Dict = ")
-# pprint(PehOeJi_Siann_Dict, indent=2)
-#
-# PehOeJi_Un_Dict = dict(zip(TL_Un_List, PehOeJi_Un_List))
-# print("PehOeJi_Un_Dict = ")
-# pprint(PehOeJi_Un_Dict, indent=2)
-#
-# # ===============================================
-# BP_Siann_Dict = dict(zip(TL_Siann_List, BP_Siann_List))
-# print("BP_Siann_Dict = ")
-# pprint(BP_Siann_Dict, indent=2)
-#
-# BP_Un_Dict = dict(zip(TL_Un_List, BP_Un_List))
-# print("BP_Un_Dict = ")
-# pprint(BP_Un_Dict, indent=2)
+SipNgooIm_Siann_Dict = dict(zip(TL_Siann_List, SipNgooIm_Siann_List))
+print("SipNgooIm_Siann_Dict = ")
+pprint(SipNgooIm_Siann_Dict, indent=2)
+
+SipNgooIm_Un_Dict = dict(zip(TL_Un_List, SipNgooIm_Un_List))
+print("SipNgooIm_Un_Dict = ")
+pprint(SipNgooIm_Un_Dict, indent=2)
+
+# ===============================================
+PehOeJi_Siann_Dict = dict(zip(TL_Siann_List, PehOeJi_Siann_List))
+print("PehOeJi_Siann_Dict = ")
+pprint(PehOeJi_Siann_Dict, indent=2)
+
+PehOeJi_Un_Dict = dict(zip(TL_Un_List, PehOeJi_Un_List))
+print("PehOeJi_Un_Dict = ")
+pprint(PehOeJi_Un_Dict, indent=2)
+
+# ===============================================
+BP_Siann_Dict = dict(zip(TL_Siann_List, BP_Siann_List))
+print("BP_Siann_Dict = ")
+pprint(BP_Siann_Dict, indent=2)
+
+BP_Un_Dict = dict(zip(TL_Un_List, BP_Un_List))
+print("BP_Un_Dict = ")
+pprint(BP_Un_Dict, indent=2)
 
 # ===============================================
 TPS_Siann_Dict = dict(zip(TL_Siann_List, TPS_Siann_List))
