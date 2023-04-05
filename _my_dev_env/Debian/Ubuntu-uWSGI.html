@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>在 Ubuntu 建置 uWSGI 作業環境 | 《專案文件舘》</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="彙集專案相關文件">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/Django4-Project-Template/assets/css/0.styles.61339c89.css" as="style"><link rel="preload" href="/Django4-Project-Template/assets/js/app.85744e83.js" as="script"><link rel="preload" href="/Django4-Project-Template/assets/js/2.c06a707d.js" as="script"><link rel="preload" href="/Django4-Project-Template/assets/js/95.bb34c42c.js" as="script"><link rel="prefetch" href="/Django4-Project-Template/assets/js/10.5691f3a9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/100.90a68d78.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/101.360c8a2f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/102.36bb47bb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/103.d1ba6b6e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/104.ca8756b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/105.bb44451a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/106.79d9ae76.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/107.1e503b0f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/108.b25055d6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/109.97826a20.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/11.c9957984.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/110.db13e115.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/111.97dd95f0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/112.2356b060.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/113.ac91f33a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/114.7fcced81.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/115.c4f155c8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/116.9fa2f994.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/117.06c8327e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/118.f1f509c9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/119.44573aa4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/12.f2698b52.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/120.9e3a8e4a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/121.289a8fa4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/122.125ae6d7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/123.383957db.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/124.29eeaa27.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/125.634ea15e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/126.5f981fa6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/127.0f09b16b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/128.7d8a4d9a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/129.a0b49d00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/13.9183137b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/130.002c040f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/131.141ba121.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/132.29f09a8f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/133.af0ab2c6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/134.4ceafcb1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/135.a068a819.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/136.b14ff692.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/137.6ac48650.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/138.4bad394c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/139.b9f365da.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/14.cd75f347.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/140.5045f9fe.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/141.c706ae9a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/142.cac4f43c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/143.f9002cab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/144.0c32198b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/145.cb0cb0b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/146.a03fc4b5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/147.61e8e992.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/148.804c6789.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/149.36d21911.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/15.a39394c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/150.303e3675.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/151.c4326470.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/152.c64268eb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/153.42722b30.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/154.bceead00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/155.9b134554.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/156.a94162b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/157.ae3573b5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/158.b24de0cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/159.f04cd068.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/16.9da12a08.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/160.a1f1177d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/161.7fd424bf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/162.af12ef29.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/163.385bc4cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/164.9d186eb4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/165.94f26bb2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/166.81ab1171.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/167.b40a9186.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/168.bac35a7d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/169.c508ce6b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/17.ce305e5a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/170.e1ac4979.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/171.4d648b60.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/172.dc5f8c22.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/173.a4e5f963.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/174.7fb4eaab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/175.e63effd6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/176.d21920b6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/177.bbb2769f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/178.eff1705d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/179.0c6ae38b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/18.b46b18ca.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/180.5d0ac9c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/181.3a235f4f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/182.78e47913.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/183.8d9dbc6e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/184.ec43d72e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/185.12e07699.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/186.979d94df.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/187.a4cb4b45.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/188.3cbcf071.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/189.f26e2804.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/19.da5434b3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/190.49db0e53.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/191.6b065322.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/192.d9a8e122.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/193.f7dd8204.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/194.ca87dc6a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/195.4026f0d1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/196.f9a0a5bb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/197.b18ae4b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/198.698ceb55.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/199.b5c710e7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/20.468eb836.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/200.11208b28.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/201.88b5fc5a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/202.e3e2c818.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/203.98117947.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/204.ab9c9f8d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/205.12585880.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/206.84f7159b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/207.d8e5917a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/208.de8779f0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/209.8675d701.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/21.8ca83c99.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/210.c1e73d71.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/211.b62309e5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/212.2a9479fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/213.87009306.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/214.d10ac19e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/215.b6392483.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/216.b03c57b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/217.80498e7b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/218.880e1882.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/219.f5c0eba1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/22.d1799073.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/220.f63e0dc0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/221.6a194125.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/222.b02b43a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/223.9d1f926d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/224.68f4f8c1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/225.1b370f31.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/226.5aeab5ef.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/227.e6d038fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/228.9df23b8e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/229.6f2b9ac2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/23.2ccc740d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/230.deb441a6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/231.8a705474.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/232.7671854c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/233.dca06f36.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/234.68459d49.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/235.10211cb7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/236.f0c5c454.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/237.e082dca5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/238.1877b6cb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/239.81368ecf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/24.28d0fabf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/240.4568ba76.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/241.682e5125.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/242.a12343d0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/243.de07e131.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/244.8bc96641.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/245.f89663b9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/246.bd19c1fd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/247.358c89cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/248.f60713cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/249.1b193473.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/25.2a3adaf0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/250.4c252b00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/251.42d7f618.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/252.3c806581.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/253.d80d6188.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/254.b2f81131.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/255.e2c4e69f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/256.c69afff6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/257.3cbb31c7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/258.5171d83a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/259.8ba4bed7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/26.dc91b7f1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/260.4673c31b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/261.c9e285a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/262.53bf93ff.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/263.aba5408d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/264.138e998d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/265.1aa3d96e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/266.2a0d3bbf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/267.5b3da12d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/268.16309f96.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/269.b3b4b3e5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/27.ef7c877f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/270.33f8e11b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/271.20bb3554.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/272.f8e4e3cc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/273.a8fb79bd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/274.8cffbf46.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/275.36baa41c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/276.b066be42.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/277.5f455a2a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/278.8eb4690e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/279.edc03317.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/28.a3a59f5c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/280.a9f1222c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/281.c8b74bb0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/282.2e438fd4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/283.aa42a9e1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/284.4db32622.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/285.995ab829.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/286.9af42296.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/287.d5baf962.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/288.9dc17dd7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/289.39ba33e9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/29.54b38b5c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/290.9d0408fe.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/291.2b93a0fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/292.9933e60d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/293.9818cfa8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/294.19682b99.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/295.5d5b16f5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/296.2cc6e818.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/297.9db9d22b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/298.49a5646c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/299.c5393e3e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/3.84478ca7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/30.8c196357.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/300.7819e1ff.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/301.7b4ab8db.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/31.2eddc5f8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/32.e044508d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/33.f55803ad.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/34.47d65a8c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/35.d5a2486d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/36.cf6c774e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/37.f1ea0c9c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/38.96b16560.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/39.bfc5a8b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/4.65cb635a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/40.a86ffc2b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/41.4fc59a93.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/42.83b3fca0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/43.4539d518.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/44.a46b34bc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/45.1bf4d919.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/46.9ddfe64a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/47.2ef1c49b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/48.954bb735.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/49.fbe30a7d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/5.3f65dc24.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/50.647fc27f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/51.342b017e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/52.dc638d66.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/53.a7755902.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/54.c8dabbcc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/55.f0d00c3e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/56.b80a8eac.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/57.af95c5a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/58.b4c273a9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/59.245c8db1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/6.98bb6adc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/60.f3929800.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/61.33048821.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/62.2797510b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/63.c6b684a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/64.2238531e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/65.c1ce3b29.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/66.a3816f43.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/67.25003ffd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/68.d1e70a31.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/69.91e3e0b3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/7.d84d1ad0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/70.79380f13.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/71.76792141.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/72.1963b645.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/73.18cf47cc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/74.227fbb9c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/75.496f4453.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/76.522392c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/77.3110c92f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/78.ad9ce75a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/79.c0b23700.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/8.b237f028.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/80.e1876902.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/81.e3776492.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/82.89780882.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/83.63d2f2fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/84.2c5e7730.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/85.4abef243.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/86.fac01eb7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/87.287b1e6d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/88.860d47f8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/89.876679d1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/9.905004ab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/90.660f1b21.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/91.51871172.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/92.3530d643.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/93.fc37ba4c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/94.bda706b2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/96.c3587b2b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/97.9a4e2663.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/98.794f94e6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/99.ccc3d771.js">
+    <link rel="stylesheet" href="/Django4-Project-Template/assets/css/0.styles.61339c89.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Django4-Project-Template/" class="home-link router-link-active"><!----> <span class="site-name">《專案文件舘》</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Django4-Project-Template/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/Django4-Project-Template/config/" class="nav-link">
+  Config
+</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Django4-Project-Template/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/Django4-Project-Template/config/" class="nav-link">
+  Config
+</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>在 Ubuntu 建置 uWSGI 作業環境</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#摘要" class="sidebar-link">摘要</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#安裝-uwsgi-服務" class="sidebar-link">安裝 uWSGI 服務</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#安裝作業" class="sidebar-link">安裝作業</a></li><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證作業" class="sidebar-link">驗證作業</a></li></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證-port-能串連-django-app" class="sidebar-link">驗證 Port 能串連 Django App</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#設定作業" class="sidebar-link">設定作業</a></li><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證作業-2" class="sidebar-link">驗證作業</a></li></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證-unix-socket-能串連-django-app" class="sidebar-link">驗證 Unix Socket 能串連 Django App</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#設定作業-2" class="sidebar-link">設定作業</a></li><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證作業-3" class="sidebar-link">驗證作業</a></li></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證-uwsgi-能與-django-app-整合運作" class="sidebar-link">驗證 uWSGI 能與 Django App 整合運作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#設定-django-app-原始碼作業" class="sidebar-link">設定 Django App 原始碼作業</a></li><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#建置-uwsgi-服務設定檔" class="sidebar-link">建置 uWSGI 服務設定檔</a></li><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證作業-4" class="sidebar-link">驗證作業</a></li></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證作業系統預設-uwsgi-能串連-django-app" class="sidebar-link">驗證作業系統預設 uwsgi 能串連 Django App</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證-emperor-mode-能串連-django-app" class="sidebar-link">驗證 Emperor Mode 能串連 Django App</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#建置作業" class="sidebar-link">建置作業</a></li><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#驗證作業-5" class="sidebar-link">驗證作業</a></li></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#啟用-uwsgi-服務" class="sidebar-link">啟用 uwsgi 服務</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#問題診斷與狀況排除" class="sidebar-link">問題診斷與狀況排除</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#瀏覽異常-log" class="sidebar-link">瀏覽異常 Log</a></li></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#常用參考" class="sidebar-link">常用參考</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#重啟-systemd-服務" class="sidebar-link">重啟 systemd 服務</a></li></ul></li><li><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#參考資料" class="sidebar-link">參考資料</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#官網指引" class="sidebar-link">官網指引</a></li><li class="sidebar-sub-header"><a href="/Django4-Project-Template/_my_dev_env/Debian/Ubuntu-uWSGI.html#建置-uwsgi-服務" class="sidebar-link">建置 uwsgi 服務</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="在-ubuntu-建置-uwsgi-作業環境"><a href="#在-ubuntu-建置-uwsgi-作業環境" class="header-anchor">#</a> 在 Ubuntu 建置 uWSGI 作業環境</h1> <h2 id="摘要"><a href="#摘要" class="header-anchor">#</a> 摘要</h2> <p>如何在 Ubuntu 作業系統，建置 uWSGI 服務，用以整合 Nginx（HTTP Server）與 Django App （Application Server）。</p> <ul><li>安裝 uWSGI 服務</li> <li>驗證 uwsgi 能用 port 串連 Django App</li> <li>驗證 uwsgi 能用 unix socket 串連 Django App</li> <li>驗證 uwsgi 能與 Django App 整合運作</li> <li>驗證 uWSGI 能依設定檔運作</li></ul> <h2 id="安裝-uwsgi-服務"><a href="#安裝-uwsgi-服務" class="header-anchor">#</a> 安裝 uWSGI 服務</h2> <p>安裝 uWSGI 服務作為 WSGI (Web Server Gateway Interface) 。</p> <p>📚 <a href="https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html" target="_blank" rel="noopener noreferrer">《Setting up Django and your web server with uWSGI and nginx》<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="安裝作業"><a href="#安裝作業" class="header-anchor">#</a> 安裝作業</h3> <ol><li>安裝 uWSGI 套件。</li></ol> <p>先將已啟用之「虛擬環境」停掉。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo -H pip3 install uwsgi
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>alanjui@VB02-Ubuntu-2004:~$ sudo -H pip3 install uwsgi
+Processing /root/.cache/pip/wheels/87/01/0f/2fc9c74a1ae010de7d8b17d90f6b39595cbb8ac5169345fcb8/uWSGI-2.0.19.1-cp38-cp38-linux_x86_64.whl
+Installing collected packages: uwsgi
+Successfully installed uwsgi-2.0.19.1
+alanjui@VB02-Ubuntu-2004:~$ which uwsgi
+/usr/local/bin/uwsgi
+alanjui@VB02-Ubuntu-2004:~$ ll /usr/local/bin/uwsgi
+-rwxr-xr-x 1 root root 1341888  3月 28 15:23 /usr/local/bin/uwsgi*
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="驗證作業"><a href="#驗證作業" class="header-anchor">#</a> 驗證作業</h3> <p>驗證 Web Client 傳來之 HTTP Request ，能被 uwsgi 服務接收，並轉傳至
+Django App 。</p> <p>通信路徑：
+Web Client ⬅➡ uWSGI ⬅➡ Django App</p> <ol><li>建置測試用 Django App</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd
+mkdir www &amp;&amp; cd $_
+pyenv virtualenv 3.9.1 venv-3.9.1
+pyenv local venv-3.9.1
+~/.pyenv/versions/3.9.1/envs/venv-3.9.1/bin/python3.9 -m pip install --upgrade pip
+
+pip install Django
+
+django-admin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ol start="2"><li>安裝 python 套件：uwsgi。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>pip install uwsgi
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="3"><li>新增 test.py 測試檔，以為「測試用 Django App」。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>vim test.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>🔖</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># test.py
+def application(env, start_response):
+    start_response('200 OK', [('Content-Type','text/html')])
+    return [b&quot;Hello World&quot;]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ol start="4"><li>使用 uwsgi 啟動「測試用 Django App」。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>uwsgi --http :8000 --wsgi-file test.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(venv-3.9.1) alanjui@VB02-Ubuntu-2004:~/www/mysite$ uwsgi --http :8000 --wsgi-file test.py
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Mar 26 21:00:15 2021] ***
+compiled with version: 9.3.0 on 26 March 2021 12:58:00
+os: Linux-5.8.0-48-generic #54~20.04.1-Ubuntu SMP Sat Mar 20 13:40:25 UTC 2021
+nodename: VB02-Ubuntu-2004
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/alanjui/www/mysite
+detected binary path: /home/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15511
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on :8000 fd 4
+spawned uWSGI http 1 (pid: 72818)
+uwsgi socket 0 bound to TCP address 127.0.0.1:41827 (port auto-assigned) fd 3
+Python version: 3.9.1 (default, Mar 26 2021, 13:50:53)  [GCC 9.3.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x556dc9fcb0c0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x556dc9fcb0c0 pid: 72776 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 72776, cores: 1)
+[pid: 72776|app: 0|req: 1/1] 192.168.66.21 () {38 vars in 720 bytes} [Fri Mar 26 21:00:24 2021] GET / =&gt; generated 11 bytes in 0 msecs (HTTP/1.1 200) 1 headers in 44 bytes (1 switches on core 0)
+[pid: 72776|app: 0|req: 2/2] 192.168.66.21 () {38 vars in 679 bytes} [Fri Mar 26 21:00:24 2021] GET /favicon.ico =&gt; generated 11 bytes in 0 msecs (HTTP/1.1 200) 1 headers in 44 bytes (1 switches on core 0)
+[pid: 72776|app: 0|req: 3/3] 192.168.66.21 () {38 vars in 722 bytes} [Fri Mar 26 21:00:37 2021] GET / =&gt; generated 11 bytes in 0 msecs (HTTP/1.1 200) 1 headers in 44 bytes (1 switches on core 0)
+[pid: 72776|app: 0|req: 4/4] 192.168.66.21 () {38 vars in 683 bytes} [Fri Mar 26 21:00:37 2021] GET /favicon.ico =&gt; generated 11 bytes in 0 msecs (HTTP/1.1 200) 1 headers in 44 bytes (1 switches on core 0)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><ol start="5"><li>驗證 Web 瀏覽器，能自「測試用 Django App」傳來文字： Hello World 。</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/ ，確認「網頁」能見到文字： Hello World 。</p> <h2 id="驗證-port-能串連-django-app"><a href="#驗證-port-能串連-django-app" class="header-anchor">#</a> 驗證 Port 能串連 Django App</h2> <p>驗證 Web Client 傳來之 HTTP Request ，Web Server（nginx 服務）能依
+「Request」判別：該由 nginx 取出「靜態檔」，供 Web Client 下載；亦
+或是透過 port 交由 uwsgi 將 HTTP Request 轉交 Django App 處理。</p> <p>通信路徑：
+Web Client ⬅➡ Web Server ⬅➡ Web Socket (Port) ⬅➡ uWSGI ⬅➡ Django App</p> <p>【處理規則】：</p> <p>(1) 若 HTTP Request 要「取用 static 靜態檔」，由 nginx 服務處理：
+static: .html / .css / .js / .png / .jpg</p> <p>(2) 若 HTTP Request 要「取用 media 靜態檔」，由 nginx 服務處理：
+media: image 檔案</p> <p>(3) 以上皆非之 HTTP Request，透過 Web Socket（Port）轉交 uWSGI ，傳遞予 Django App 處理。</p> <h3 id="設定作業"><a href="#設定作業" class="header-anchor">#</a> 設定作業</h3> <ol><li>建立 mysite.ccc.tw.local 虛擬網站設定檔。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd /home/alanjui/www/mysite
+vim mysite.ccc.tw.local.conf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>🔖 mysite.ccc.tw.local.conf</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># the upstream component nginx needs to connect to
+upstream django {
+    # server unix:///path/to/your/mysite/mysite.sock; # for a file socket
+    server 127.0.0.1:8001;  # for a web port socket
+}
+
+server {
+    # the port mysite will be served on
+    # listen 8000;
+    # the domain name it will serve for
+    server_name mysite.ccc.tw.local; # substitute your machine's IP address or FQDN
+    charset utf-8;
+
+    # max upload size
+    client_max_body_size 75M; # adjust to taste
+
+    # Django media
+    location /media {
+        alias /home/alanjui/www/mysite/media;
+    }
+
+    location /static {
+        alias /home/alanjui/www/mysite/static_collected;
+    }
+
+    # Finally, send all non-media requests to the Djang server.
+    location / {
+        uwsgi_pass  django;
+        include     /etc/nginx/uwsgi_params;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><ol start="2"><li>啟用 mysite.ccc.tw.local 虛擬網站。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd /etc/nginx/sites-enabled
+sudo ln -nfs /home/alanjui/www/mysite/mysite.ccc.tw.local.conf
+sudo nginx -t
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="3"><li>設定「登入帳號」屬 www-data 群組。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo usermod -aG www-data $USER
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="驗證作業-2"><a href="#驗證作業-2" class="header-anchor">#</a> 驗證作業</h3> <p>驗證 Web Client 傳來之 HTTP Request ，Web Server（nginx 服務）能依
+「Request」判別：該由 nginx 取出「靜態檔」，供 Web Client 下載；亦
+或是透過 port 交由 uwsgi 將 HTTP Request 轉交 Django App 處理。</p> <p>通信路徑：
+Web Client ⬅➡ Web Server ⬅➡ Web Socket (Port) ⬅➡ uWSGI ⬅➡ Django App</p> <ol><li>設定 Django App 的「靜態檔佈署目錄」，用以彙總 Django App 所有的「靜態檔案」。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd ~/www/mysite/
+vim mysite/settngs.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>🔖 mysite/settngs.py</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>STATIC_ROOT = BASE_DIR / 'static_collected'
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="2"><li>佈署 Django App 的「靜態檔案（static files）」。</li></ol> <p>匯集所有靜態檔案至「靜態檔佈署目錄」：
+/home/alanjui/www/mysite/static_collected/</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>./manage.py collectstatic
+
+cp static_collected/admin/img/search.svg media/
+
+uwsgi --socket :8001 --wsgi-file test.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ol start="3"><li>驗證能存取 static 靜態檔案</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/static/admin/img/search.svg
+，確認「網頁」能見到「放大鏡圖示」。</p> <ol start="4"><li>驗證能存取 media 靜態檔案</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/media/search.svg
+，確認「網頁」能見到「放大鏡圖示」。</p> <ol start="5"><li>驗證非存取 static 與 media 的 HTTP Request 會被送往 Django App</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/ ，確認「網頁」能見到
+文字： Hello World 。</p> <p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(venv-3.9.1) alanjui@VB02-Ubuntu-2004:~/www/mysite$ uwsgi --socket :8001 --wsgi-file test.py
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Mar 26 22:46:53 2021] ***
+compiled with version: 9.3.0 on 26 March 2021 12:58:00
+os: Linux-5.8.0-48-generic #54~20.04.1-Ubuntu SMP Sat Mar 20 13:40:25 UTC 2021
+nodename: VB02-Ubuntu-2004
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/alanjui/www/mysite
+detected binary path: /home/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15511
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8001 fd 3
+Python version: 3.9.1 (default, Mar 26 2021, 13:50:53)  [GCC 9.3.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x564b57e0bac0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x564b57e0bac0 pid: 75124 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 75124, cores: 1)
+[pid: 75124|app: 0|req: 1/1] 192.168.66.21 () {42 vars in 787 bytes} [Fri Mar 26 22:47:21 2021] GET / =&gt; generated 11 bytes in 0 msecs (HTTP/1.1 200) 1 headers in 44 bytes (1 switches on core 0)
+[pid: 75124|app: 0|req: 2/2] 192.168.66.21 () {42 vars in 751 bytes} [Fri Mar 26 22:47:21 2021] GET /favicon.ico =&gt; generated 11 bytes in 0 msecs (HTTP/1.1 200) 1 headers in 44 bytes (1 switches on core 0)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><h2 id="驗證-unix-socket-能串連-django-app"><a href="#驗證-unix-socket-能串連-django-app" class="header-anchor">#</a> 驗證 Unix Socket 能串連 Django App</h2> <p>驗證 Web Client 傳來之 HTTP Request ，Web Server（nginx 服務）能依
+「Request」判別：該由 nginx 取出「靜態檔」，供 Web Client 下載；亦
+或是透過 Unix Socket (File Socket) 交由 uwsgi 將 HTTP Request 轉交 Django App 處理。</p> <p>通信路徑：
+Web Client ⬅➡ Web Server ⬅➡ Web Socket (Socket File) ⬅➡ uWSGI ⬅➡ Django App</p> <h3 id="設定作業-2"><a href="#設定作業-2" class="header-anchor">#</a> 設定作業</h3> <ol><li>變更 mysite 虛擬網站設定，將 socket 改用 unix socket (file socket)</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>upstream django {
+    # server unix:///path/to/your/mysite/mysite.sock; # for a file socket
+    # server 127.0.0.1:8001;  # for a web port socket
+    server unix:///run/uwsgi/mysite.sock;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ol start="2"><li>設定 /run/uwsgi 目錄及權限。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo mkdir /run/uwsgi
+sudo chown $USER:www-data /run/uwsgi
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="驗證作業-3"><a href="#驗證作業-3" class="header-anchor">#</a> 驗證作業</h3> <ol><li>重啟 nginx 服務。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo systemctl restart nginx
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="2"><li>重啟 uWSGI 服務。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>uwsgi --socket mysite.sock --wsgi-file test.py --chmod-socket=666
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="3"><li>驗證 Web Client 能連線到 Django App ，取得「網頁」內容。</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/ ，確認「網頁」能見到
+文字： Hello World 。</p> <p>【註】： 以上測試若發生：502 Bad Gateway 錯誤，可查 Log 紀錄，是否同下所示範例。
+若是的話，則問題很可能是因權限不足所導致：
+connect() to unix:///path/to/your/mysite/mysite.sock failed (13: Permission
+denied) 。</p> <p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(venv-3.9.1) alanjui@VB02-Ubuntu-2004:~/www/mysite$ uwsgi --socket mysite.sock --wsgi-file test.py
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Mar 26 23:32:56 2021] ***
+compiled with version: 9.3.0 on 26 March 2021 12:58:00
+os: Linux-5.8.0-48-generic #54~20.04.1-Ubuntu SMP Sat Mar 20 13:40:25 UTC 2021
+nodename: VB02-Ubuntu-2004
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/alanjui/www/mysite
+detected binary path: /home/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15511
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address mysite.sock fd 3
+Python version: 3.9.1 (default, Mar 26 2021, 13:50:53)  [GCC 9.3.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x562a24fceac0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x562a24fceac0 pid: 75507 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 75507, cores: 1)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h2 id="驗證-uwsgi-能與-django-app-整合運作"><a href="#驗證-uwsgi-能與-django-app-整合運作" class="header-anchor">#</a> 驗證 uWSGI 能與 Django App 整合運作</h2> <p>將上述「測試用 Django App」改用實際之 Django App 復行測試。</p> <p>通信路徑：
+Web Client ⬅➡ Web Server ⬅➡ Web Socket (Socket File) ⬅➡ uWSGI ⬅➡ Django App</p> <h3 id="設定-django-app-原始碼作業"><a href="#設定-django-app-原始碼作業" class="header-anchor">#</a> 設定 Django App 原始碼作業</h3> <p>修訂原始碼使之與 uwsgi 整合</p> <ol><li>修訂 Django App 原始碼，使之能與 uwsgi 及 nginx 整合運作。</li></ol> <ul><li>編輯 Django App 的設定檔</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd /home/alanjui/www/mysite
+vim mysite/settings.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>設定 ALLOWED_HOSTS ，接收來自 host: mysite.ccc.tw.local 的 HTTP Request</li></ul> <p>🔖 mysite/settings.py</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>ALLOWED_HOSTS = [
+    'mysite.ccc.tw.local',
+    'localhost',
+    '127.0.0.1',
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>設定 STATIC_ROOT ，令「靜態檔」集中匯入：專案目錄下的子目錄：static_collected</li></ul> <p>🔖 mysite/settings.py</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>STATIC_ROOT = BASE_DIR / 'static_collected'
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>【註】：目錄全路徑 /home/alanjui/www/mysite/static_collected/ 。</p> <ol start="2"><li>佈署 Django App 的「靜態檔案（static files）」。</li></ol> <p>匯集所有靜態檔案至「靜態檔佈署目錄」：
+/home/alanjui/www/mysite/static_collected/</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>./manage.py collectstatic
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="3"><li>佈署 Django App 的 Media 檔案</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cp static_collected/admin/img/search.svg media/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="建置-uwsgi-服務設定檔"><a href="#建置-uwsgi-服務設定檔" class="header-anchor">#</a> 建置 uWSGI 服務設定檔</h3> <ol><li>建置 uWSGI 服務設定檔： mysite_uwsgi.ini 。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd /home/alanjui/www/mysite
+vim mysite_uwsgi.ini
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>🔖 mysite_uwsgi.ini</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># mysite_uwsgi.ini file
+[uwsgi]
+project = mysite
+uid = alanjui
+base = /home/%(uid)
+
+# Django-related settings
+# the base directory (full path)
+#chdir           = /home/alanjui/www/mysite
+chdir           = %(base)/www/%(project)
+# Django's wsgi file
+module          = mysite.wsgi
+# the virtualenv (full path)
+#home            = /home/alanjui/.pyenv/versions/venv-3.9.1
+#home            = /home/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1
+home            = %(chdir)/.venv
+
+# process-related settings
+# master
+master          = true
+# maximum number of worker processes
+processes       = 10
+# the socket (use the full path to be safe
+# socket          = /home/alanjui/www/mysite/mysite.sock
+socket          = /run/uwsgi/%(project).sock
+# ... with appropriate permissions - may be needed
+#chmod-socket    = 664
+chmod-socket    = 666
+# clear environment on exit
+vacuum          = true
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><h3 id="驗證作業-4"><a href="#驗證作業-4" class="header-anchor">#</a> 驗證作業</h3> <ol><li>啟動 uwsgi 服務。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>uwsgi --ini mysite_uwsgi.ini
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="2"><li>驗證能存取 static 靜態檔案</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/static/admin/img/search.svg
+，確認「網頁」能見到「放大鏡圖示」。</p> <ol start="3"><li>驗證能存取 media 靜態檔案</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/media/search.svg
+，確認「網頁」能見到「放大鏡圖示」。</p> <ol start="4"><li>驗證非存取 static 與 media 的 HTTP Request 會被送往 Django App</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/ ，確認「網頁」能見到
+如下圖之內容。</p> <p><img src="/assets/img/django/django-app-default-home.png" alt=""></p> <p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>(venv-3.9.1) alanjui@VB02-Ubuntu-2004:~/www/mysite$ uwsgi --ini mysite_uwsgi.ini
+[uWSGI] getting INI configuration from mysite_uwsgi.ini
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sat Mar 27 21:29:54 2021] ***
+compiled with version: 9.3.0 on 26 March 2021 12:58:00
+os: Linux-5.8.0-48-generic #54~20.04.1-Ubuntu SMP Sat Mar 20 13:40:25 UTC 2021
+nodename: VB02-Ubuntu-2004
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/alanjui/www/mysite
+detected binary path: /home/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/alanjui/www/mysite
+your processes number limit is 15511
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/alanjui/www/mysite/mysite.sock fd 3
+Python version: 3.9.1 (default, Mar 26 2021, 13:50:53)  [GCC 9.3.0]
+PEP 405 virtualenv detected: /home/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1
+Set PythonHome to /home/alanjui/.pyenv/versions/3.9.1/envs/venv-3.9.1
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55a335b993b0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55a335b993b0 pid: 85887 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 85887)
+spawned uWSGI worker 1 (pid: 85930, cores: 1)
+spawned uWSGI worker 2 (pid: 85931, cores: 1)
+spawned uWSGI worker 3 (pid: 85932, cores: 1)
+spawned uWSGI worker 4 (pid: 85933, cores: 1)
+spawned uWSGI worker 5 (pid: 85934, cores: 1)
+spawned uWSGI worker 6 (pid: 85935, cores: 1)
+spawned uWSGI worker 7 (pid: 85936, cores: 1)
+spawned uWSGI worker 8 (pid: 85937, cores: 1)
+spawned uWSGI worker 9 (pid: 85938, cores: 1)
+spawned uWSGI worker 10 (pid: 85939, cores: 1)
+[pid: 85932|app: 0|req: 1/1] 192.168.66.21 () {44 vars in 818 bytes} [Sat Mar 27 13:32:07 2021] GET / =&gt; generated 16351 bytes in 17 msecs (HTTP/1.1 200) 5 headers in 153 bytes (1 switches on core 0)
+^CSIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+worker 6 buried after 1 seconds
+worker 7 buried after 1 seconds
+worker 8 buried after 1 seconds
+worker 9 buried after 1 seconds
+worker 10 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/alanjui/www/mysite/mysite.sock removed.
+(venv-3.9.1) alanjui@VB02-Ubuntu-2004:~/www/mysite$
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div><h2 id="驗證作業系統預設-uwsgi-能串連-django-app"><a href="#驗證作業系統預設-uwsgi-能串連-django-app" class="header-anchor">#</a> 驗證作業系統預設 uwsgi 能串連 Django App</h2> <ol><li><p>停用 Python 虛擬環境</p></li> <li><p>切換目錄至「家目錄」。</p></li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="3"><li>使用作業系統預設 uwsgi 與 Django App 整合作業。</li></ol> <p>此處 uwsgi 安裝路徑： /usr/local/bin/uwsgi</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>uwsgi --ini [/Path/to/uwsgi_config.ini]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>alanjui@VB02-Ubuntu-2004:~$ uwsgi --ini /home/alanjui/www/mysite/mysite_uwsgi.ini
+[uWSGI] getting INI configuration from /home/alanjui/www/mysite/mysite_uwsgi.ini
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sun Mar 28 15:28:27 2021] ***
+compiled with version: 9.3.0 on 28 March 2021 03:49:51
+os: Linux-5.8.0-48-generic #54~20.04.1-Ubuntu SMP Sat Mar 20 13:40:25 UTC 2021
+nodename: VB02-Ubuntu-2004
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/alanjui
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/alanjui/www/mysite
+your processes number limit is 15511
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lok engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/alanjui/www/mysite/mysite.sock fd 3
+Python version: 3.8.5 (default, Jan 27 2021, 15:41:15)  [GCC 9.3.0]
+PEP 405 virtualenv detected: /home/alanjui/www/mysite/.venv
+Set PythonHome to /home/alanjui/www/mysite/.venv
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x561392070640
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x561392070640 pid: 101202 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 101202)
+spawned uWSGI worker 1 (pid: 101204, cores: 1)
+spawned uWSGI worker 2 (pid: 101205, cores: 1)
+spawned uWSGI worker 3 (pid: 101206, cores: 1)
+spawned uWSGI worker 4 (pid: 101207, cores: 1)
+spawned uWSGI worker 5 (pid: 101208, cores: 1)
+spawned uWSGI worker 6 (pid: 101209, cores: 1)
+spawned uWSGI worker 7 (pid: 101210, cores: 1)
+spawned uWSGI worker 8 (pid: 101211, cores: 1)
+spawned uWSGI worker 9 (pid: 101212, cores: 1)
+spawned uWSGI worker 10 (pid: 101213, cores: 1)
+[pid: 101204|app: 0|req: 1/1] 192.168.66.21 () {42 vars in 787 bytes} [Sun Mar 28 07:28:54 2021] GET / =&gt; generated 16351 bytes in 17 msecs (HTTP/1.1 200) 5 headers in 153 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 101205|app: 0|req: 1/2] 192.168.66.21 () {42 vars in 751 bytes} [Sun Mar 28 07:28:54 2021] GET /favicon.ico =&gt; generated 1982 bytes in 20 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+^CSIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+worker 6 buried after 1 seconds
+worker 7 buried after 1 seconds
+worker 8 buried after 1 seconds
+worker 9 buried after 1 seconds
+worker 10 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/alanjui/www/mysite/mysite.sock removed.
+alanjui@VB02-Ubuntu-2004:~$
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div><h2 id="驗證-emperor-mode-能串連-django-app"><a href="#驗證-emperor-mode-能串連-django-app" class="header-anchor">#</a> 驗證 Emperor Mode 能串連 Django App</h2> <p>以 Emperor Mode ，執行 uwsgi 。測試此運作模式，能與 Django App 整合運作。</p> <h3 id="建置作業"><a href="#建置作業" class="header-anchor">#</a> 建置作業</h3> <ol><li>建置 vassals 目錄</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo mkdir -p /etc/uwsgi/vassals
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="2"><li>建立 uwsgi 設定檔的連結，放至目錄路徑中： /etc/uwsgi/vassals/</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo ln -s /home/alanjui/www/mysite/mysite_uwsgi.ini /etc/uwsgi/vassals/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>sudo mkdir -p /etc/uwsgi/u
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="3"><li>要求 uwsgi 服務以 emperor mode 作業</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>alanjui@VB02-Ubuntu-2004:~$ uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sun Mar 28 20:44:21 2021] ***
+compiled with version: 9.3.0 on 28 March 2021 03:49:51
+os: Linux-5.8.0-48-generic #54~20.04.1-Ubuntu SMP Sat Mar 20 13:40:25 UTC 2021
+nodename: VB02-Ubuntu-2004
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/alanjui
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15511
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+*** starting uWSGI Emperor ***
+*** has_emperor mode detected (fd: 6) ***
+[uWSGI] getting INI configuration from mysite_uwsgi.ini
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sun Mar 28 20:44:21 2021] ***
+compiled with version: 9.3.0 on 28 March 2021 03:49:51
+os: Linux-5.8.0-48-generic #54~20.04.1-Ubuntu SMP Sat Mar 20 13:40:25 UTC 2021
+nodename: VB02-Ubuntu-2004
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /etc/uwsgi/vassals
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/alanjui/www/mysite
+your processes number limit is 15511
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/alanjui/www/mysite/mysite.sock fd 3
+Python version: 3.8.5 (default, Jan 27 2021, 15:41:15)  [GCC 9.3.0]
+PEP 405 virtualenv detected: /home/alanjui/www/mysite/.venv
+Set PythonHome to /home/alanjui/www/mysite/.venv
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55e54bc1a560
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55e54bc1a560 pid: 101572 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 101572)
+Sun Mar 28 20:44:21 2021 - [emperor] vassal mysite_uwsgi.ini has been spawned
+spawned uWSGI worker 1 (pid: 101575, cores: 1)
+spawned uWSGI worker 2 (pid: 101576, cores: 1)
+Sun Mar 28 20:44:21 2021 - [emperor] vassal mysite_uwsgi.ini is ready to accept requests
+spawned uWSGI worker 3 (pid: 101577, cores: 1)
+spawned uWSGI worker 4 (pid: 101578, cores: 1)
+spawned uWSGI worker 5 (pid: 101579, cores: 1)
+spawned uWSGI worker 6 (pid: 101580, cores: 1)
+spawned uWSGI worker 7 (pid: 101581, cores: 1)
+spawned uWSGI worker 8 (pid: 101582, cores: 1)
+spawned uWSGI worker 9 (pid: 101583, cores: 1)
+spawned uWSGI worker 10 (pid: 101584, cores: 1)
+[pid: 101582|app: 0|req: 1/1] 192.168.66.21 () {44 vars in 818 bytes} [Sun Mar 28 12:44:55 2021] GET / =&gt; generated 16351 bytes in 16 msecs (HTTP/1.1 200) 5 headers in 153 bytes (1 switches on core 0)
+announcing my loyalty to the Emperor...
+Sun Mar 28 20:44:55 2021 - [emperor] vassal mysite_uwsgi.ini is now loyal
+
+^C[emperor] *** RAGNAROK EVOKED ***
+Sun Mar 28 20:45:48 2021 - [emperor] stop the uwsgi instance mysite_uwsgi.ini
+SIGINT/SIGQUIT received...killing workers...
+Sun Mar 28 12:45:48 2021 - received message 0 from emperor
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+worker 6 buried after 1 seconds
+worker 7 buried after 1 seconds
+worker 8 buried after 1 seconds
+worker 9 buried after 1 seconds
+worker 10 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/alanjui/www/mysite/mysite.sock removed.
+Sun Mar 28 20:45:50 2021 - [emperor] removed uwsgi instance mysite_uwsgi.ini
+Sun Mar 28 20:45:51 2021 - The Emperor is buried.
+alanjui@VB02-Ubuntu-2004:~$
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br></div></div><h3 id="驗證作業-5"><a href="#驗證作業-5" class="header-anchor">#</a> 驗證作業</h3> <ol><li>驗證能存取 static 靜態檔案</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/static/admin/img/search.svg
+，確認「網頁」能見到「對放大鏡圖示」。</p> <ol start="2"><li>驗證能存取 media 靜態檔案</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/media/search.svg
+，確認「網頁」能見到「放大鏡圖示」。</p> <ol start="3"><li>驗證非存取 static 與 media 的 HTTP Request 會被送往 Django App</li></ol> <p>在 Web 瀏覽器，瀏覽網址： http://mysite.ccc.tw.local/ ，確認「網頁」能見到
+如下圖之內容。</p> <p><img src="/assets/img/django/django-app-default-home.png" alt=""></p> <h2 id="啟用-uwsgi-服務"><a href="#啟用-uwsgi-服務" class="header-anchor">#</a> 啟用 uwsgi 服務</h2> <p>設定 uwsgi 以「systemd 服務」模式運作，能於開機後自動啟動，以 Empermor Mode
+模式運作。</p> <ol><li>建立 systemd 服務設定檔。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo su
+vim /etc/systemd/system/uwsgi.service
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>🔖 uwsgi.service</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[Unit]
+Description=uWSGI Empermor Mode Service
+
+[Service]
+ExecStartPre=/bin/bash -c &quot;mkdir -p /run/uwsgi; chown alanjui:www-data /run/uwsgi&quot;
+ExecStart=/usr/local/bin/uwsgi --emperor /etc/uwsgi/apps-enabled --uid alanjui --gid www-data
+Restart=always
+Killsignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ol start="2"><li>檢查有無其它 uwsgi 服務啟用，若有，則先予停用。</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo systemctl status uwsgi
+
+sudo sytemctl stop uwsgi
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="3"><li>啟用服務</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo systemctl enable uwsgi
+
+sudo systemctl start uwsgi
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>alanjui@VB02-Ubuntu-2004:/etc/uwsgi/apps-enabled$ sudo systemctl enable uwsgi
+Synchronizing state of uwsgi.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable uwsgi
+Created symlink /etc/systemd/system/multi-user.target.wants/uwsgi.service → /etc/systemd/system/uwsgi.service.
+
+alanjui@VB02-Ubuntu-2004:~$ sudo systemctl start uwsgi
+
+alanjui@VB02-Ubuntu-2004:~$ sudo systemctl status uwsgi
+● uwsgi.service - uWSGI Empermor Mode Service
+     Loaded: loaded (/etc/systemd/system/uwsgi.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2021-03-30 11:36:42 CST; 10s ago
+    Process: 1674 ExecStartPre=/bin/bash -c mkdir -p /run/uwsgi; chown alanjui:www-data /run/uwsgi (code=exited, status=0/SUCCESS)
+   Main PID: 1677 (uwsgi)
+     Status: &quot;The Emperor is governing 1 vassals&quot;
+      Tasks: 12 (limit: 4653)
+     Memory: 47.3M
+     CGroup: /system.slice/uwsgi.service
+             ├─1677 /usr/local/bin/uwsgi --emperor /etc/uwsgi/apps-enabled --uid alanjui --gid www-data
+             ├─1678 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1680 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1681 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1682 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1683 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1684 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1685 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1686 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1687 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             ├─1688 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+             └─1689 /usr/local/bin/uwsgi --ini mysite_uwsgi.ini
+
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 2 (pid: 1681, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 3 (pid: 1682, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 4 (pid: 1683, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 5 (pid: 1684, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 6 (pid: 1685, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 7 (pid: 1686, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 8 (pid: 1687, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1677]: Tue Mar 30 11:36:42 2021 - [emperor] vassal mysite_uwsgi.ini is ready to accept requests
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 9 (pid: 1688, cores: 1)
+ 3月 30 11:36:42 VB02-Ubuntu-2004 uwsgi[1678]: spawned uWSGI worker 10 (pid: 1689, cores: 1)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><h2 id="問題診斷與狀況排除"><a href="#問題診斷與狀況排除" class="header-anchor">#</a> 問題診斷與狀況排除</h2> <h3 id="瀏覽異常-log"><a href="#瀏覽異常-log" class="header-anchor">#</a> 瀏覽異常 Log</h3> <p>使用 systemctl 指令，欲啟動 uwsgi 服務。若結果失敗，可用以下指令瀏覽 Log ，診斷
+問題可能導因。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>journalctl -xe
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>📺</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>root@VB02-Ubuntu-2004:/home/alanjui# systemctl start emperor.uwsgi.service
+Job for emperor.uwsgi.service failed because the control process exited with error code.
+See &quot;systemctl status emperor.uwsgi.service&quot; and &quot;journalctl -xe&quot; for details.
+
+root@VB02-Ubuntu-2004:/home/alanjui# journalctl -xe
+--
+-- An ExecStart= process belonging to unit emperor.uwsgi.service has exited.
+--
+-- The process' exit code is 'exited' and its exit status is 1.
+ 3月 29 22:12:27 VB02-Ubuntu-2004 systemd[1]: emperor.uwsgi.service: Failed with result 'exit-cod&gt;
+-- Subject: Unit failed
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- The unit emperor.uwsgi.service has entered the 'failed' state with result 'exit-code'.
+ 3月 29 22:12:27 VB02-Ubuntu-2004 systemd[1]: Failed to start uWSGI Emperor.
+-- Subject: 單位 emperor.uwsgi.service 已失敗
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- 單位 emperor.uwsgi.service 已失敗。
+--
+-- 結果為 failed。
+ 3月 29 22:12:28 VB02-Ubuntu-2004 systemd[1]: emperor.uwsgi.service: Scheduled restart job, resta&gt;
+-- Subject: Automatic restarting of a unit has been scheduled
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- Automatic restarting of the unit emperor.uwsgi.service has been scheduled, as the result for
+-- the configured Restart= setting for the unit.
+ 3月 29 22:12:28 VB02-Ubuntu-2004 systemd[1]: Stopped uWSGI Emperor.
+-- Subject: 單位 emperor.uwsgi.service 已關閉結束
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- 單位 emperor.uwsgi.service 已關閉結束。
+ 3月 29 22:12:28 VB02-Ubuntu-2004 systemd[1]: emperor.uwsgi.service: Start request repeated too q&gt;
+ 3月 29 22:12:28 VB02-Ubuntu-2004 systemd[1]: emperor.uwsgi.service: Failed with result 'exit-cod&gt;
+-- Subject: Unit failed
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- The unit emperor.uwsgi.service has entered the 'failed' state with result 'exit-code'.
+ 3月 29 22:12:28 VB02-Ubuntu-2004 systemd[1]: Failed to start uWSGI Emperor.
+-- Subject: 單位 emperor.uwsgi.service 已失敗
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- 單位 emperor.uwsgi.service 已失敗。
+--
+-- 結果為 failed。
+lines 2374-2419/2419 (END)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br></div></div><h2 id="常用參考"><a href="#常用參考" class="header-anchor">#</a> 常用參考</h2> <h3 id="重啟-systemd-服務"><a href="#重啟-systemd-服務" class="header-anchor">#</a> 重啟 systemd 服務</h3> <p>當 systemd 的「服務設定檔」完成變更後，欲重啟服務之前，需先執行 daemon-reload 指令。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo systemctl daemon-reload
+sudo systemctl restart [Systemd_Service_Name]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="參考資料"><a href="#參考資料" class="header-anchor">#</a> 參考資料</h2> <h3 id="官網指引"><a href="#官網指引" class="header-anchor">#</a> 官網指引</h3> <ul><li><a href="https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html" target="_blank" rel="noopener noreferrer">Setting up Django and your web server with uWSGI and nginx<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://uwsgi-docs.readthedocs.io/en/latest/Systemd.html" target="_blank" rel="noopener noreferrer">systemd<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h3 id="建置-uwsgi-服務"><a href="#建置-uwsgi-服務" class="header-anchor">#</a> 建置 uwsgi 服務</h3></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/Django4-Project-Template/assets/js/app.85744e83.js" defer></script><script src="/Django4-Project-Template/assets/js/2.c06a707d.js" defer></script><script src="/Django4-Project-Template/assets/js/95.bb34c42c.js" defer></script>
+  </body>
+</html>

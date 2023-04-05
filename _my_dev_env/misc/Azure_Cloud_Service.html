@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Azure Cloud Service | 《專案文件舘》</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="彙集專案相關文件">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/Django4-Project-Template/assets/css/0.styles.61339c89.css" as="style"><link rel="preload" href="/Django4-Project-Template/assets/js/app.85744e83.js" as="script"><link rel="preload" href="/Django4-Project-Template/assets/js/2.c06a707d.js" as="script"><link rel="preload" href="/Django4-Project-Template/assets/js/185.12e07699.js" as="script"><link rel="prefetch" href="/Django4-Project-Template/assets/js/10.5691f3a9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/100.90a68d78.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/101.360c8a2f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/102.36bb47bb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/103.d1ba6b6e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/104.ca8756b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/105.bb44451a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/106.79d9ae76.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/107.1e503b0f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/108.b25055d6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/109.97826a20.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/11.c9957984.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/110.db13e115.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/111.97dd95f0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/112.2356b060.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/113.ac91f33a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/114.7fcced81.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/115.c4f155c8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/116.9fa2f994.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/117.06c8327e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/118.f1f509c9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/119.44573aa4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/12.f2698b52.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/120.9e3a8e4a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/121.289a8fa4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/122.125ae6d7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/123.383957db.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/124.29eeaa27.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/125.634ea15e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/126.5f981fa6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/127.0f09b16b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/128.7d8a4d9a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/129.a0b49d00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/13.9183137b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/130.002c040f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/131.141ba121.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/132.29f09a8f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/133.af0ab2c6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/134.4ceafcb1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/135.a068a819.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/136.b14ff692.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/137.6ac48650.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/138.4bad394c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/139.b9f365da.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/14.cd75f347.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/140.5045f9fe.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/141.c706ae9a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/142.cac4f43c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/143.f9002cab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/144.0c32198b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/145.cb0cb0b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/146.a03fc4b5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/147.61e8e992.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/148.804c6789.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/149.36d21911.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/15.a39394c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/150.303e3675.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/151.c4326470.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/152.c64268eb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/153.42722b30.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/154.bceead00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/155.9b134554.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/156.a94162b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/157.ae3573b5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/158.b24de0cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/159.f04cd068.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/16.9da12a08.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/160.a1f1177d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/161.7fd424bf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/162.af12ef29.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/163.385bc4cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/164.9d186eb4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/165.94f26bb2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/166.81ab1171.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/167.b40a9186.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/168.bac35a7d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/169.c508ce6b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/17.ce305e5a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/170.e1ac4979.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/171.4d648b60.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/172.dc5f8c22.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/173.a4e5f963.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/174.7fb4eaab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/175.e63effd6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/176.d21920b6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/177.bbb2769f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/178.eff1705d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/179.0c6ae38b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/18.b46b18ca.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/180.5d0ac9c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/181.3a235f4f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/182.78e47913.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/183.8d9dbc6e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/184.ec43d72e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/186.979d94df.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/187.a4cb4b45.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/188.3cbcf071.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/189.f26e2804.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/19.da5434b3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/190.49db0e53.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/191.6b065322.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/192.d9a8e122.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/193.f7dd8204.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/194.ca87dc6a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/195.4026f0d1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/196.f9a0a5bb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/197.b18ae4b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/198.698ceb55.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/199.b5c710e7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/20.468eb836.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/200.11208b28.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/201.88b5fc5a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/202.e3e2c818.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/203.98117947.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/204.ab9c9f8d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/205.12585880.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/206.84f7159b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/207.d8e5917a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/208.de8779f0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/209.8675d701.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/21.8ca83c99.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/210.c1e73d71.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/211.b62309e5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/212.2a9479fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/213.87009306.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/214.d10ac19e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/215.b6392483.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/216.b03c57b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/217.80498e7b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/218.880e1882.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/219.f5c0eba1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/22.d1799073.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/220.f63e0dc0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/221.6a194125.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/222.b02b43a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/223.9d1f926d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/224.68f4f8c1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/225.1b370f31.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/226.5aeab5ef.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/227.e6d038fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/228.9df23b8e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/229.6f2b9ac2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/23.2ccc740d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/230.deb441a6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/231.8a705474.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/232.7671854c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/233.dca06f36.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/234.68459d49.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/235.10211cb7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/236.f0c5c454.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/237.e082dca5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/238.1877b6cb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/239.81368ecf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/24.28d0fabf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/240.4568ba76.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/241.682e5125.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/242.a12343d0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/243.de07e131.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/244.8bc96641.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/245.f89663b9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/246.bd19c1fd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/247.358c89cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/248.f60713cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/249.1b193473.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/25.2a3adaf0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/250.4c252b00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/251.42d7f618.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/252.3c806581.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/253.d80d6188.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/254.b2f81131.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/255.e2c4e69f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/256.c69afff6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/257.3cbb31c7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/258.5171d83a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/259.8ba4bed7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/26.dc91b7f1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/260.4673c31b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/261.c9e285a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/262.53bf93ff.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/263.aba5408d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/264.138e998d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/265.1aa3d96e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/266.2a0d3bbf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/267.5b3da12d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/268.16309f96.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/269.b3b4b3e5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/27.ef7c877f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/270.33f8e11b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/271.20bb3554.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/272.f8e4e3cc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/273.a8fb79bd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/274.8cffbf46.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/275.36baa41c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/276.b066be42.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/277.5f455a2a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/278.8eb4690e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/279.edc03317.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/28.a3a59f5c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/280.a9f1222c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/281.c8b74bb0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/282.2e438fd4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/283.aa42a9e1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/284.4db32622.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/285.995ab829.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/286.9af42296.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/287.d5baf962.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/288.9dc17dd7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/289.39ba33e9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/29.54b38b5c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/290.9d0408fe.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/291.2b93a0fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/292.9933e60d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/293.9818cfa8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/294.19682b99.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/295.5d5b16f5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/296.2cc6e818.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/297.9db9d22b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/298.49a5646c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/299.c5393e3e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/3.84478ca7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/30.8c196357.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/300.7819e1ff.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/301.7b4ab8db.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/31.2eddc5f8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/32.e044508d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/33.f55803ad.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/34.47d65a8c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/35.d5a2486d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/36.cf6c774e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/37.f1ea0c9c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/38.96b16560.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/39.bfc5a8b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/4.65cb635a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/40.a86ffc2b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/41.4fc59a93.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/42.83b3fca0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/43.4539d518.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/44.a46b34bc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/45.1bf4d919.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/46.9ddfe64a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/47.2ef1c49b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/48.954bb735.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/49.fbe30a7d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/5.3f65dc24.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/50.647fc27f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/51.342b017e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/52.dc638d66.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/53.a7755902.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/54.c8dabbcc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/55.f0d00c3e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/56.b80a8eac.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/57.af95c5a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/58.b4c273a9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/59.245c8db1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/6.98bb6adc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/60.f3929800.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/61.33048821.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/62.2797510b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/63.c6b684a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/64.2238531e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/65.c1ce3b29.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/66.a3816f43.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/67.25003ffd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/68.d1e70a31.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/69.91e3e0b3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/7.d84d1ad0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/70.79380f13.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/71.76792141.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/72.1963b645.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/73.18cf47cc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/74.227fbb9c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/75.496f4453.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/76.522392c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/77.3110c92f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/78.ad9ce75a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/79.c0b23700.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/8.b237f028.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/80.e1876902.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/81.e3776492.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/82.89780882.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/83.63d2f2fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/84.2c5e7730.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/85.4abef243.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/86.fac01eb7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/87.287b1e6d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/88.860d47f8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/89.876679d1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/9.905004ab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/90.660f1b21.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/91.51871172.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/92.3530d643.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/93.fc37ba4c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/94.bda706b2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/95.bb34c42c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/96.c3587b2b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/97.9a4e2663.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/98.794f94e6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/99.ccc3d771.js">
+    <link rel="stylesheet" href="/Django4-Project-Template/assets/css/0.styles.61339c89.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Django4-Project-Template/" class="home-link router-link-active"><!----> <span class="site-name">《專案文件舘》</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Django4-Project-Template/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/Django4-Project-Template/config/" class="nav-link">
+  Config
+</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Django4-Project-Template/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/Django4-Project-Template/config/" class="nav-link">
+  Config
+</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>作業指引</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Django4-Project-Template/d100_URS/" class="sidebar-link">使用者需求</a></li><li><a href="/Django4-Project-Template/d200_SRS/" class="sidebar-link">系統需求</a></li><li><a href="/Django4-Project-Template/d300_SDD/" class="sidebar-link">系統設計</a></li><li><a href="/Django4-Project-Template/d400_DEV/" class="sidebar-link">開發與測試</a></li><li><a href="/Django4-Project-Template/d500_OP/" class="sidebar-link">系統維運</a></li><li><a href="/Django4-Project-Template/d900_REF/" class="sidebar-link">其它⋯⋯</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>電腦硬體</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>開發環境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>常用工具</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>參考資料</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="azure-cloud-service"><a href="#azure-cloud-service" class="header-anchor">#</a> Azure Cloud Service</h1> <h1 id="安裝"><a href="#安裝" class="header-anchor">#</a> 安裝</h1> <h2 id="安裝-azure-cli"><a href="#安裝-azure-cli" class="header-anchor">#</a> 安裝 Azure CLI</h2> <div class="language- extra-class"><pre><code>$ brew update &amp;&amp; brew install azure-cli
+⋯⋯
+==&gt; openssl@1.1
+A CA file has been bootstrapped using certificates from the system
+keychain. To add additional certificates, place .pem files in
+  /usr/local/etc/openssl@1.1/certs
+
+and run
+  /usr/local/opt/openssl@1.1/bin/c_rehash
+
+openssl@1.1 is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides LibreSSL.
+
+If you need to have openssl@1.1 first in your PATH run:
+  echo 'export PATH=&quot;/usr/local/opt/openssl@1.1/bin:$PATH&quot;' &gt;&gt; ~/.zshrc
+
+For compilers to find openssl@1.1 you may need to set:
+  export LDFLAGS=&quot;-L/usr/local/opt/openssl@1.1/lib&quot;
+  export CPPFLAGS=&quot;-I/usr/local/opt/openssl@1.1/include&quot;
+
+For pkg-config to find openssl@1.1 you may need to set:
+  export PKG_CONFIG_PATH=&quot;/usr/local/opt/openssl@1.1/lib/pkgconfig&quot;
+
+==&gt; azure-cli
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+
+
+$ az login
+You have logged in. Now let us find all the subscriptions to which you have access...
+[
+  {
+    &quot;cloudName&quot;: &quot;AzureCloud&quot;,
+    &quot;homeTenantId&quot;: &quot;ff3e1c6b-0fd2-4651-8898-fa9429981c8b&quot;,
+    &quot;id&quot;: &quot;bdbe86f1-40d5-4305-99ce-bb6ea7c085c7&quot;,
+    &quot;isDefault&quot;: true,
+    &quot;managedByTenants&quot;: [],
+    &quot;name&quot;: &quot;Azure subscription 1&quot;,
+    &quot;state&quot;: &quot;Enabled&quot;,
+    &quot;tenantId&quot;: &quot;ff3e1c6b-0fd2-4651-8898-fa9429981c8b&quot;,
+    &quot;user&quot;: {
+      &quot;name&quot;: &quot;AlanJui@outlook.com&quot;,
+      &quot;type&quot;: &quot;user&quot;
+    }
+  }
+]
+</code></pre></div><h1 id="佈署-docker-compose-應用系統至-azure"><a href="#佈署-docker-compose-應用系統至-azure" class="header-anchor">#</a> 佈署 docker-compose 應用系統至 Azure</h1> <p>https://docs.microsoft.com/zh-tw/azure/virtual-machines/linux/docker-compose-quickstart</p> <p><a href="https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql" target="_blank" rel="noopener noreferrer">Deployment of WordPress+MySQL Containers with Docker Compose<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>（1）登入</p> <div class="language- extra-class"><pre><code> az login
+You have logged in. Now let us find all the subscriptions to which you have access...
+[
+  {
+    &quot;cloudName&quot;: &quot;AzureCloud&quot;,
+    &quot;homeTenantId&quot;: &quot;ff3e1c6b-0fd2-4651-8898-fa9429981c8b&quot;,
+    &quot;id&quot;: &quot;bdbe86f1-40d5-4305-99ce-bb6ea7c085c7&quot;,
+    &quot;isDefault&quot;: true,
+    &quot;managedByTenants&quot;: [],
+    &quot;name&quot;: &quot;Azure subscription 1&quot;,
+    &quot;state&quot;: &quot;Enabled&quot;,
+    &quot;tenantId&quot;: &quot;ff3e1c6b-0fd2-4651-8898-fa9429981c8b&quot;,
+    &quot;user&quot;: {
+      &quot;name&quot;: &quot;AlanJui@outlook.com&quot;,
+      &quot;type&quot;: &quot;user&quot;
+    }
+  }
+]
+</code></pre></div><p>（2）建立「資源群組（Resource Group）」</p> <div class="language- extra-class"><pre><code>az group create --name myDockerGroup --location eastus
+{
+  &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup&quot;,
+  &quot;location&quot;: &quot;eastus&quot;,
+  &quot;managedBy&quot;: null,
+  &quot;name&quot;: &quot;myDockerGroup&quot;,
+  &quot;properties&quot;: {
+    &quot;provisioningState&quot;: &quot;Succeeded&quot;
+  },
+  &quot;tags&quot;: null,
+  &quot;type&quot;: &quot;Microsoft.Resources/resourceGroups&quot;
+}
+</code></pre></div><p>（3）建立虛擬主機</p> <div class="language- extra-class"><pre><code>az group create --name myDockerGroup --location eastus
+{
+  &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup&quot;,
+  &quot;location&quot;: &quot;eastus&quot;,
+  &quot;managedBy&quot;: null,
+  &quot;name&quot;: &quot;myDockerGroup&quot;,
+  &quot;properties&quot;: {
+    &quot;provisioningState&quot;: &quot;Succeeded&quot;
+  },
+  &quot;tags&quot;: null,
+  &quot;type&quot;: &quot;Microsoft.Resources/resourceGroups&quot;
+}
+</code></pre></div><p>（4）設定虛擬主機使用 Port：80</p> <p>cloud-init.txt</p> <div class="language- extra-class"><pre><code>#include https://get.docker.com
+
+
+az vm open-port --port 80 \
+    --resource-group myDockerGroup \
+    --name myDockerVM
+{- Finished ..
+  &quot;defaultSecurityRules&quot;: [
+    {
+      &quot;access&quot;: &quot;Allow&quot;,
+      &quot;description&quot;: &quot;Allow inbound traffic from all VMs in VNET&quot;,
+      &quot;destinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;*&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Inbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/defaultSecurityRules/AllowVnetInBound&quot;,
+      &quot;name&quot;: &quot;AllowVnetInBound&quot;,
+      &quot;priority&quot;: 65000,
+      &quot;protocol&quot;: &quot;*&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/defaultSecurityRules&quot;
+    },
+    {
+      &quot;access&quot;: &quot;Allow&quot;,
+      &quot;description&quot;: &quot;Allow inbound traffic from azure load balancer&quot;,
+      &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;*&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Inbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/defaultSecurityRules/AllowAzureLoadBalancerInBound&quot;,
+      &quot;name&quot;: &quot;AllowAzureLoadBalancerInBound&quot;,
+      &quot;priority&quot;: 65001,
+      &quot;protocol&quot;: &quot;*&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;AzureLoadBalancer&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/defaultSecurityRules&quot;
+    },
+    {
+      &quot;access&quot;: &quot;Deny&quot;,
+      &quot;description&quot;: &quot;Deny all inbound traffic&quot;,
+      &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;*&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Inbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/defaultSecurityRules/DenyAllInBound&quot;,
+      &quot;name&quot;: &quot;DenyAllInBound&quot;,
+      &quot;priority&quot;: 65500,
+      &quot;protocol&quot;: &quot;*&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/defaultSecurityRules&quot;
+    },
+    {
+      &quot;access&quot;: &quot;Allow&quot;,
+      &quot;description&quot;: &quot;Allow outbound traffic from all VMs to all VMs in VNET&quot;,
+      &quot;destinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;*&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Outbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/defaultSecurityRules/AllowVnetOutBound&quot;,
+      &quot;name&quot;: &quot;AllowVnetOutBound&quot;,
+      &quot;priority&quot;: 65000,
+      &quot;protocol&quot;: &quot;*&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/defaultSecurityRules&quot;
+    },
+    {
+      &quot;access&quot;: &quot;Allow&quot;,
+      &quot;description&quot;: &quot;Allow outbound traffic from all VMs to Internet&quot;,
+      &quot;destinationAddressPrefix&quot;: &quot;Internet&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;*&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Outbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/defaultSecurityRules/AllowInternetOutBound&quot;,
+      &quot;name&quot;: &quot;AllowInternetOutBound&quot;,
+      &quot;priority&quot;: 65001,
+      &quot;protocol&quot;: &quot;*&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/defaultSecurityRules&quot;
+    },
+    {
+      &quot;access&quot;: &quot;Deny&quot;,
+      &quot;description&quot;: &quot;Deny all outbound traffic&quot;,
+      &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;*&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Outbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/defaultSecurityRules/DenyAllOutBound&quot;,
+      &quot;name&quot;: &quot;DenyAllOutBound&quot;,
+      &quot;priority&quot;: 65500,
+      &quot;protocol&quot;: &quot;*&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/defaultSecurityRules&quot;
+    }
+  ],
+  &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+  &quot;flowLogs&quot;: null,
+  &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG&quot;,
+  &quot;location&quot;: &quot;eastus&quot;,
+  &quot;name&quot;: &quot;myDockerVMNSG&quot;,
+  &quot;networkInterfaces&quot;: [
+    {
+      &quot;dnsSettings&quot;: null,
+      &quot;enableAcceleratedNetworking&quot;: null,
+      &quot;enableIpForwarding&quot;: null,
+      &quot;etag&quot;: null,
+      &quot;hostedWorkloads&quot;: null,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkInterfaces/myDockerVMVMNic&quot;,
+      &quot;ipConfigurations&quot;: null,
+      &quot;location&quot;: null,
+      &quot;macAddress&quot;: null,
+      &quot;name&quot;: null,
+      &quot;networkSecurityGroup&quot;: null,
+      &quot;primary&quot;: null,
+      &quot;privateEndpoint&quot;: null,
+      &quot;provisioningState&quot;: null,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;resourceGuid&quot;: null,
+      &quot;tags&quot;: null,
+      &quot;tapConfigurations&quot;: null,
+      &quot;type&quot;: null,
+      &quot;virtualMachine&quot;: null
+    }
+  ],
+  &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+  &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+  &quot;resourceGuid&quot;: &quot;e946d9f8-d415-4f62-8bab-5d2449858766&quot;,
+  &quot;securityRules&quot;: [
+    {
+      &quot;access&quot;: &quot;Allow&quot;,
+      &quot;description&quot;: null,
+      &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;22&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Inbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/securityRules/default-allow-ssh&quot;,
+      &quot;name&quot;: &quot;default-allow-ssh&quot;,
+      &quot;priority&quot;: 1000,
+      &quot;protocol&quot;: &quot;Tcp&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/securityRules&quot;
+    },
+    {
+      &quot;access&quot;: &quot;Allow&quot;,
+      &quot;description&quot;: null,
+      &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+      &quot;destinationAddressPrefixes&quot;: [],
+      &quot;destinationApplicationSecurityGroups&quot;: null,
+      &quot;destinationPortRange&quot;: &quot;80&quot;,
+      &quot;destinationPortRanges&quot;: [],
+      &quot;direction&quot;: &quot;Inbound&quot;,
+      &quot;etag&quot;: &quot;W/\&quot;c82de93d-1821-4bed-b3a6-c150a2005c42\&quot;&quot;,
+      &quot;id&quot;: &quot;/subscriptions/bdbe86f1-40d5-4305-99ce-bb6ea7c085c7/resourceGroups/myDockerGroup/providers/Microsoft.Network/networkSecurityGroups/myDockerVMNSG/securityRules/open-port-80&quot;,
+      &quot;name&quot;: &quot;open-port-80&quot;,
+      &quot;priority&quot;: 900,
+      &quot;protocol&quot;: &quot;*&quot;,
+      &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+      &quot;resourceGroup&quot;: &quot;myDockerGroup&quot;,
+      &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
+      &quot;sourceAddressPrefixes&quot;: [],
+      &quot;sourceApplicationSecurityGroups&quot;: null,
+      &quot;sourcePortRange&quot;: &quot;*&quot;,
+      &quot;sourcePortRanges&quot;: [],
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups/securityRules&quot;
+    }
+  ],
+  &quot;subnets&quot;: null,
+  &quot;tags&quot;: {},
+  &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups&quot;
+}
+</code></pre></div><h2 id="在-vm-安裝-docker-compose"><a href="#在-vm-安裝-docker-compose" class="header-anchor">#</a> 在 VM 安裝 docker-compose</h2> <p>（1）查詢 IP</p> <p><img src="https://paper-attachments.dropbox.com/s_AACA570217B9FB240B7CB3EDE6535CC4FA8185265C3C18E6A8B4FACA7A8FC4BB_1589083227127_image.png" alt=""></p> <p><img src="https://paper-attachments.dropbox.com/s_AACA570217B9FB240B7CB3EDE6535CC4FA8185265C3C18E6A8B4FACA7A8FC4BB_1589083154027_image.png" alt=""></p> <p>（2）</p> <div class="language- extra-class"><pre><code>ssh azureuser@13.68.177.20
+The authenticity of host '13.68.177.20 (13.68.177.20)' can't be established.
+ECDSA key fingerprint is SHA256:3TAsZrGjNeq+fLcfKVRwFhKoywhOJ0utwSYdIaeQm4U.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.68.177.20' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 5.3.0-1020-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun May 10 03:56:15 UTC 2020
+
+  System load:  0.08              Processes:              110
+  Usage of /:   6.4% of 28.90GB   Users logged in:        0
+  Memory usage: 10%               IP address for eth0:    10.0.0.4
+  Swap usage:   0%                IP address for docker0: 172.17.0.1
+
+3 packages can be updated.
+2 updates are security updates.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user &quot;root&quot;), use &quot;sudo &lt;command&gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+
+azureuser@myDockerVM:~$
+</code></pre></div><p>（2）安裝 docker-compose</p> <div class="language- extra-class"><pre><code>sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo apt install docker-compose -y
+</code></pre></div><p>（3）設定 docker-compose.yml 組態檔</p> <div class="language- extra-class"><pre><code>$ vim docker-compose.yml
+</code></pre></div><p>docker-compose.yml</p> <div class="language- extra-class"><pre><code>wordpress:
+  image: wordpress
+  links:
+    - db:mysql
+  ports:
+    - 80:80
+
+db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: Passw0rd
+</code></pre></div><p>（4）啟動 docker 容器</p> <div class="language- extra-class"><pre><code>$ sudo docker-compose up -d
+</code></pre></div><p>（5）檢查 docker 容器已啟動</p> <div class="language- extra-class"><pre><code>$ sudo docker-compose ps
+      Name                     Command               State         Ports
+-------------------------------------------------------------------------------
+app01_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
+app01_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80-&gt;80/tcp
+</code></pre></div><p>（6）在瀏覽器，執行安裝指令</p> <div class="language- extra-class"><pre><code>http://13.68.177.20/wp-admin/install.php
+</code></pre></div><p><img src="https://paper-attachments.dropbox.com/s_AACA570217B9FB240B7CB3EDE6535CC4FA8185265C3C18E6A8B4FACA7A8FC4BB_1589084453698_image.png" alt=""></p> <h1 id="azure-cloud-service-學習資源"><a href="#azure-cloud-service-學習資源" class="header-anchor">#</a> Azure Cloud Service 學習資源</h1> <h2 id="azure-linux-vm-教學指南"><a href="#azure-linux-vm-教學指南" class="header-anchor">#</a> Azure Linux VM 教學指南</h2> <p>https://docs.microsoft.com/zh-tw/azure/virtual-machines/linux/tutorial-manage-vm</p> <h2 id="在-azure-app-service-建置-linux-容器-啟用-python-應用系統"><a href="#在-azure-app-service-建置-linux-容器-啟用-python-應用系統" class="header-anchor">#</a> 在 Azure App Service 建置 Linux 容器，啟用 Python 應用系統</h2> <p>https://docs.microsoft.com/zh-tw/azure/app-service/containers/quickstart-python?toc=%2Fpython%2Fazure%2FTOC.json&amp;tabs=bash</p> <h2 id="cli-指引"><a href="#cli-指引" class="header-anchor">#</a> CLI 指引</h2> <p>https://docs.microsoft.com/zh-tw/cli/azure/?view=azure-cli-latest</p> <h2 id="azure-文件"><a href="#azure-文件" class="header-anchor">#</a> Azure 文件</h2> <p>https://docs.microsoft.com/zh-tw/azure/?product=featured</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/Django4-Project-Template/assets/js/app.85744e83.js" defer></script><script src="/Django4-Project-Template/assets/js/2.c06a707d.js" defer></script><script src="/Django4-Project-Template/assets/js/185.12e07699.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NVCode for ArchLinx | 《專案文件舘》</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="彙集專案相關文件">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/Django4-Project-Template/assets/css/0.styles.61339c89.css" as="style"><link rel="preload" href="/Django4-Project-Template/assets/js/app.85744e83.js" as="script"><link rel="preload" href="/Django4-Project-Template/assets/js/2.c06a707d.js" as="script"><link rel="preload" href="/Django4-Project-Template/assets/js/134.4ceafcb1.js" as="script"><link rel="prefetch" href="/Django4-Project-Template/assets/js/10.5691f3a9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/100.90a68d78.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/101.360c8a2f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/102.36bb47bb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/103.d1ba6b6e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/104.ca8756b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/105.bb44451a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/106.79d9ae76.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/107.1e503b0f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/108.b25055d6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/109.97826a20.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/11.c9957984.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/110.db13e115.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/111.97dd95f0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/112.2356b060.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/113.ac91f33a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/114.7fcced81.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/115.c4f155c8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/116.9fa2f994.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/117.06c8327e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/118.f1f509c9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/119.44573aa4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/12.f2698b52.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/120.9e3a8e4a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/121.289a8fa4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/122.125ae6d7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/123.383957db.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/124.29eeaa27.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/125.634ea15e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/126.5f981fa6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/127.0f09b16b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/128.7d8a4d9a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/129.a0b49d00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/13.9183137b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/130.002c040f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/131.141ba121.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/132.29f09a8f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/133.af0ab2c6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/135.a068a819.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/136.b14ff692.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/137.6ac48650.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/138.4bad394c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/139.b9f365da.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/14.cd75f347.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/140.5045f9fe.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/141.c706ae9a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/142.cac4f43c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/143.f9002cab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/144.0c32198b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/145.cb0cb0b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/146.a03fc4b5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/147.61e8e992.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/148.804c6789.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/149.36d21911.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/15.a39394c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/150.303e3675.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/151.c4326470.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/152.c64268eb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/153.42722b30.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/154.bceead00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/155.9b134554.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/156.a94162b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/157.ae3573b5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/158.b24de0cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/159.f04cd068.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/16.9da12a08.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/160.a1f1177d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/161.7fd424bf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/162.af12ef29.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/163.385bc4cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/164.9d186eb4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/165.94f26bb2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/166.81ab1171.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/167.b40a9186.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/168.bac35a7d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/169.c508ce6b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/17.ce305e5a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/170.e1ac4979.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/171.4d648b60.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/172.dc5f8c22.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/173.a4e5f963.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/174.7fb4eaab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/175.e63effd6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/176.d21920b6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/177.bbb2769f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/178.eff1705d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/179.0c6ae38b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/18.b46b18ca.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/180.5d0ac9c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/181.3a235f4f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/182.78e47913.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/183.8d9dbc6e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/184.ec43d72e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/185.12e07699.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/186.979d94df.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/187.a4cb4b45.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/188.3cbcf071.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/189.f26e2804.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/19.da5434b3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/190.49db0e53.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/191.6b065322.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/192.d9a8e122.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/193.f7dd8204.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/194.ca87dc6a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/195.4026f0d1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/196.f9a0a5bb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/197.b18ae4b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/198.698ceb55.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/199.b5c710e7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/20.468eb836.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/200.11208b28.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/201.88b5fc5a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/202.e3e2c818.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/203.98117947.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/204.ab9c9f8d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/205.12585880.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/206.84f7159b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/207.d8e5917a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/208.de8779f0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/209.8675d701.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/21.8ca83c99.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/210.c1e73d71.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/211.b62309e5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/212.2a9479fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/213.87009306.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/214.d10ac19e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/215.b6392483.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/216.b03c57b8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/217.80498e7b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/218.880e1882.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/219.f5c0eba1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/22.d1799073.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/220.f63e0dc0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/221.6a194125.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/222.b02b43a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/223.9d1f926d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/224.68f4f8c1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/225.1b370f31.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/226.5aeab5ef.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/227.e6d038fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/228.9df23b8e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/229.6f2b9ac2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/23.2ccc740d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/230.deb441a6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/231.8a705474.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/232.7671854c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/233.dca06f36.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/234.68459d49.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/235.10211cb7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/236.f0c5c454.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/237.e082dca5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/238.1877b6cb.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/239.81368ecf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/24.28d0fabf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/240.4568ba76.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/241.682e5125.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/242.a12343d0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/243.de07e131.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/244.8bc96641.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/245.f89663b9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/246.bd19c1fd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/247.358c89cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/248.f60713cd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/249.1b193473.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/25.2a3adaf0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/250.4c252b00.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/251.42d7f618.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/252.3c806581.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/253.d80d6188.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/254.b2f81131.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/255.e2c4e69f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/256.c69afff6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/257.3cbb31c7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/258.5171d83a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/259.8ba4bed7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/26.dc91b7f1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/260.4673c31b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/261.c9e285a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/262.53bf93ff.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/263.aba5408d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/264.138e998d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/265.1aa3d96e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/266.2a0d3bbf.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/267.5b3da12d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/268.16309f96.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/269.b3b4b3e5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/27.ef7c877f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/270.33f8e11b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/271.20bb3554.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/272.f8e4e3cc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/273.a8fb79bd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/274.8cffbf46.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/275.36baa41c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/276.b066be42.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/277.5f455a2a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/278.8eb4690e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/279.edc03317.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/28.a3a59f5c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/280.a9f1222c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/281.c8b74bb0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/282.2e438fd4.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/283.aa42a9e1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/284.4db32622.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/285.995ab829.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/286.9af42296.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/287.d5baf962.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/288.9dc17dd7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/289.39ba33e9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/29.54b38b5c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/290.9d0408fe.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/291.2b93a0fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/292.9933e60d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/293.9818cfa8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/294.19682b99.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/295.5d5b16f5.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/296.2cc6e818.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/297.9db9d22b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/298.49a5646c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/299.c5393e3e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/3.84478ca7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/30.8c196357.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/300.7819e1ff.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/301.7b4ab8db.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/31.2eddc5f8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/32.e044508d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/33.f55803ad.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/34.47d65a8c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/35.d5a2486d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/36.cf6c774e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/37.f1ea0c9c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/38.96b16560.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/39.bfc5a8b0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/4.65cb635a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/40.a86ffc2b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/41.4fc59a93.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/42.83b3fca0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/43.4539d518.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/44.a46b34bc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/45.1bf4d919.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/46.9ddfe64a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/47.2ef1c49b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/48.954bb735.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/49.fbe30a7d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/5.3f65dc24.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/50.647fc27f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/51.342b017e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/52.dc638d66.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/53.a7755902.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/54.c8dabbcc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/55.f0d00c3e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/56.b80a8eac.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/57.af95c5a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/58.b4c273a9.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/59.245c8db1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/6.98bb6adc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/60.f3929800.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/61.33048821.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/62.2797510b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/63.c6b684a1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/64.2238531e.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/65.c1ce3b29.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/66.a3816f43.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/67.25003ffd.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/68.d1e70a31.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/69.91e3e0b3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/7.d84d1ad0.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/70.79380f13.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/71.76792141.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/72.1963b645.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/73.18cf47cc.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/74.227fbb9c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/75.496f4453.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/76.522392c3.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/77.3110c92f.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/78.ad9ce75a.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/79.c0b23700.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/8.b237f028.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/80.e1876902.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/81.e3776492.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/82.89780882.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/83.63d2f2fa.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/84.2c5e7730.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/85.4abef243.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/86.fac01eb7.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/87.287b1e6d.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/88.860d47f8.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/89.876679d1.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/9.905004ab.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/90.660f1b21.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/91.51871172.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/92.3530d643.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/93.fc37ba4c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/94.bda706b2.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/95.bb34c42c.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/96.c3587b2b.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/97.9a4e2663.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/98.794f94e6.js"><link rel="prefetch" href="/Django4-Project-Template/assets/js/99.ccc3d771.js">
+    <link rel="stylesheet" href="/Django4-Project-Template/assets/css/0.styles.61339c89.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Django4-Project-Template/" class="home-link router-link-active"><!----> <span class="site-name">《專案文件舘》</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Django4-Project-Template/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/Django4-Project-Template/config/" class="nav-link">
+  Config
+</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Django4-Project-Template/guide/" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><a href="/Django4-Project-Template/config/" class="nav-link">
+  Config
+</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>作業指引</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Django4-Project-Template/d100_URS/" class="sidebar-link">使用者需求</a></li><li><a href="/Django4-Project-Template/d200_SRS/" class="sidebar-link">系統需求</a></li><li><a href="/Django4-Project-Template/d300_SDD/" class="sidebar-link">系統設計</a></li><li><a href="/Django4-Project-Template/d400_DEV/" class="sidebar-link">開發與測試</a></li><li><a href="/Django4-Project-Template/d500_OP/" class="sidebar-link">系統維運</a></li><li><a href="/Django4-Project-Template/d900_REF/" class="sidebar-link">其它⋯⋯</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>電腦硬體</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>開發環境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>常用工具</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>參考資料</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nvcode-for-archlinx"><a href="#nvcode-for-archlinx" class="header-anchor">#</a> NVCode for ArchLinx</h1> <p>作業程序：</p> <ol><li>安裝 Neovim v5.x</li> <li>安裝 Neovim 執行環境</li> <li>安裝 Neovim Plugins 支援軟件</li> <li>安裝 VS Code  及 Extensions</li> <li>設定 VS Code 執行環境</li> <li>設定 NVCode 執行環境</li> <li>設定 Django Projects 執行環境</li></ol> <hr> <h1 id="安裝-neovim-v5-x"><a href="#安裝-neovim-v5-x" class="header-anchor">#</a> 安裝 Neovim v5.x</h1> <p>https://wiki.archlinux.org/index.php/Neovim</p> <h2 id="使用套件管理器安裝"><a href="#使用套件管理器安裝" class="header-anchor">#</a> 使用套件管理器安裝</h2> <div class="language- extra-class"><pre><code>sudo pacman -Sy
+yay -S neovim-git
+</code></pre></div><p>【註】：</p> <ul><li>在 Neovim v5.x 未發行前，以下的指令，只會安裝「正式」發行版 v4.x。
+sudo pacman -S neovim</li></ul> <p><strong>（4）驗證安裝結果：</strong></p> <p><img src="https://paper-attachments.dropbox.com/s_F68912D62AA8863372182B484B69A733F83F05E8E9526E0F4692C4DD64857303_1612063178759_image.png" alt=""></p> <hr> <h1 id="安裝-neovim-執行環境"><a href="#安裝-neovim-執行環境" class="header-anchor">#</a> 安裝 Neovim 執行環境</h1> <h2 id="python-support-for-neovim"><a href="#python-support-for-neovim" class="header-anchor">#</a> Python support for Neovim</h2> <p>先完成 pyenv ：Python 版本管理器之安裝後，再執行如下指令：</p> <div class="language- extra-class"><pre><code>[alanjui@VB2101-Manjaro-KDE-202 .vim]$ pyenv versions 
+ system 
+* 3.9.1 (set by /home/alanjui/.pyenv/version) 
+ 3.9.1/envs/my_venv 
+ 3.9.1/envs/venv-3.9.1 
+ my_venv 
+ venv-3.9.1
+
+
+pip install --upgrade pip
+pip install pynvim
+pip install neovim-remote
+</code></pre></div><h2 id="node-js-support-for-neovim"><a href="#node-js-support-for-neovim" class="header-anchor">#</a> Node.JS support for Neovim</h2> <p>先完成 n : Node.JS 版本管理器之安裝後，再執行如下指令：</p> <div class="language- extra-class"><pre><code>[alanjui@VB2101-Manjaro-KDE-202 .vim]$ n 
+  installed : v14.15.4 (with npm 6.14.10) 
+[alanjui@VB2101-Manjaro-KDE-202 .vim]$ node -v 
+v14.15.4 
+[alanjui@VB2101-Manjaro-KDE-202 .vim]$ npm -v 
+6.14.10
+
+
+npm install -g neovim
+</code></pre></div><h2 id="lua-support-for-neovim"><a href="#lua-support-for-neovim" class="header-anchor">#</a> Lua support for Neovim</h2> <p>【執行檔直接安裝法】：</p> <div class="language- extra-class"><pre><code>sudo pacman -S lua luarocks
+</code></pre></div><p>【驗證安裝結果】：</p> <div class="language- extra-class"><pre><code>[alanjui@VB2101-Manjaro-KDE-202 .vim]$ which lua 
+/usr/bin/lua 
+[alanjui@VB2101-Manjaro-KDE-202 .vim]$ which luarocks 
+/usr/bin/luarocks
+
+
+$ lua
+Lua 5.4.2  Copyright (C) 1994-2020 Lua.org, PUC-Rio
+&gt; ^D
+
+$ sudo luarocks install luasocket
+$ lua
+Lua 5.4.2  Copyright (C) 1994-2020 Lua.org, PUC-Rio
+&gt; require &quot;socket&quot;
+table: 0x7ff0ef004f50   /usr/share/lua/5.4/socket.lua
+&gt; ^D
+</code></pre></div><h2 id="git-support-for-neovim"><a href="#git-support-for-neovim" class="header-anchor">#</a> Git support for Neovim</h2> <p><strong>（1）安裝 git 軟件</strong></p> <div class="language- extra-class"><pre><code>sudo pacman -S git
+</code></pre></div><p><strong>（2）設置 git 執行環境</strong></p> <div class="language- extra-class"><pre><code>$ git config --global user.name &quot;Alan Jui&quot;
+$ git config --global user.email &quot;alanjui.1960@gmail.com&quot;
+</code></pre></div><hr> <h1 id="安裝-neovim-plugins-支援軟件"><a href="#安裝-neovim-plugins-支援軟件" class="header-anchor">#</a> 安裝 Neovim Plugins 支援軟件</h1> <p>Neovim Plugin 在「執行」時，會呼叫某些「作業系統」層級之軟件，以達成其「功能」之用途。故而需要安裝這些「<strong>Neovim Plugins 支援軟件</strong>」。</p> <h2 id="《clipboard支援軟件》"><a href="#《clipboard支援軟件》" class="header-anchor">#</a> 《Clipboard支援軟件》</h2> <p>https://wiki.archlinux.org/index.php/clipboard</p> <div class="language- extra-class"><pre><code>sudo pacman -S xsel
+</code></pre></div><h2 id="《ripgrep》"><a href="#《ripgrep》" class="header-anchor">#</a> 《ripgrep》</h2> <div class="language- extra-class"><pre><code>sudo pacman -S ripgrep
+</code></pre></div><h2 id="《silver-searcher》"><a href="#《silver-searcher》" class="header-anchor">#</a> 《silver searcher》</h2> <div class="language- extra-class"><pre><code>sudo pacman -S the_silver_searcher
+</code></pre></div><p>https://github.com/ggreer/the_silver_searcher</p> <h2 id="《fd》"><a href="#《fd》" class="header-anchor">#</a> 《fd》</h2> <div class="language- extra-class"><pre><code>sudo pacman -S fd
+</code></pre></div><p>https://github.com/sharkdp/fd</p> <h2 id="《ranger》"><a href="#《ranger》" class="header-anchor">#</a> 《ranger》</h2> <ul><li><p><strong>安裝 ranger (File Manager)</strong>
+sudo pacman -S ranger</p></li> <li><p>安裝 <strong>ueberzug (Image Preview Tool)</strong>
+sudo pacman -S ueberzug</p></li> <li><p><strong>設定 ranger 執行環境</strong>
+vim ~/.config/ranger/rc.conf</p> <p>set preview_images true
+set preview_images_method ueberzug</p> <p>default_linemod devicons
+set show_hidden true</p></li></ul> <p>【參考文章】：</p> <ul><li>https://www.everythingcli.org/ranger-image-preview-on-osx-with-iterm2/</li></ul> <h2 id="《rnvimr》"><a href="#《rnvimr》" class="header-anchor">#</a> 《Rnvimr》</h2> <div class="language- extra-class"><pre><code>pip install ueberzug
+</code></pre></div><p>【註】： Requirements</p> <ul><li>Ranger (v1.9.3 at least)</li> <li>Pynvim</li> <li>Neovim</li> <li>Python 3.6</li> <li>Ueberzug (optiona, v18.1.6 at least) : 只有 Linux 版可安裝</li></ul> <p>https://github.com/kevinhwang91/rnvimr</p> <p>【註】：
+Rnvimr is a NeoVim plugin that allows you to use Ranger in a floating window.</p> <p>Different than other Ranger vim-plugins, Rnvimr gives you full control over Ranger. It uses <a href="https://neovim.io/doc/user/api.html#RPC" target="_blank" rel="noopener noreferrer">RPC<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> to communicate with Ranger.</p> <p>This plugin does not support Vim.</p> <div class="language- extra-class"><pre><code>macOS users please install ranger by `pip3 ranger-fm` instead of `brew install ranger`
+</code></pre></div><p>https://awesomeopensource.com/project/kevinhwang91/rnvimr?categoryPage=40#installation</p> <h2 id="《universal-ctags》"><a href="#《universal-ctags》" class="header-anchor">#</a> 《universal-ctags》</h2> <div class="language- extra-class"><pre><code>sudo pacman -S universal-ctags
+</code></pre></div><p>https://github.com/universal-ctags/homebrew-universal-ctags</p> <h2 id="《lazy-git》"><a href="#《lazy-git》" class="header-anchor">#</a> 《lazy git》</h2> <div class="language- extra-class"><pre><code>yay -S lazygit-git
+</code></pre></div><p>https://github.com/jesseduffield/lazygit#ubuntu</p> <h2 id="《lazy-docker》"><a href="#《lazy-docker》" class="header-anchor">#</a> 《lazy docker》</h2> <div class="language- extra-class"><pre><code>yay -S lazydocker-git
+</code></pre></div><p>https://github.com/jesseduffield/lazydocker#installation</p> <h2 id="《coc-nvim-extension-bash-language-server》"><a href="#《coc-nvim-extension-bash-language-server》" class="header-anchor">#</a> 《coc-nvim extension: bash-language-server》</h2> <div class="language- extra-class"><pre><code>yay -S bash-language-server
+
+
+npm i -g bash-language-server
+</code></pre></div><p>https://github.com/bash-lsp/bash-language-server</p> <h2 id="《coc-nvim-extension-lua-language-server》"><a href="#《coc-nvim-extension-lua-language-server》" class="header-anchor">#</a> 《coc-nvim extension: lua-language-server》</h2> <div class="language- extra-class"><pre><code>yay -S lua-language-server-git
+</code></pre></div><p><strong>《vim-visual-multi》</strong></p> <p>https://github.com/mg979/vim-visual-multi</p> <p><strong>《fzf-preview》</strong></p> <p>https://github.com/yuki-yano/fzf-preview.vim</p> <div class="language- extra-class"><pre><code>sudo pacman -S fzf
+
+
+
+[ -f ~/.fzf.bash ] &amp;&amp; source ~/.fzf.bash
+</code></pre></div><hr> <h1 id="安裝-vs-code-及-extensions"><a href="#安裝-vs-code-及-extensions" class="header-anchor">#</a> 安裝 VS Code 及 Extensions</h1> <h2 id="安裝-vs-code-軟件"><a href="#安裝-vs-code-軟件" class="header-anchor">#</a> 安裝 VS Code 軟件</h2> <p>安裝 VS Code 軟件，有以下三種方法：</p> <ul><li>使用官方提供之執行檔安裝</li> <li>使用作業系統套件舘安裝</li> <li>使用原始碼編譯及安裝</li></ul> <p><strong>使用官方提供之執行檔安裝</strong></p> <p>自「官網」下載，及執行「安裝執行檔」。</p> <p>https://code.visualstudio.com/download</p> <ul><li>Mac 版： VSCode-darwin.zip</li> <li>Ubuntu/Debian 版： code_1.52.1-1608136922_amd64.deb</li> <li>Linux 版： code-stable-x64-1608137260.tar.gz （GZip壓縮檔）</li></ul> <p><strong>使用作業系統套件舘安裝</strong></p> <p>許多的 Linux 作業系統，如： Ubuntu / Debian / CentOS 均有提供「套件舘（Package Library）」的安裝方式：</p> <p>https://linuxhint.com/install_visual_studio_code_archlinux/</p> <p><strong>使用原始碼編譯及安裝</strong></p> <p>如：ArchLinux
+https://wiki.archlinux.org/index.php/Visual_Studio_Code</p> <h2 id="安裝-vs-code-擴充軟件-extensions"><a href="#安裝-vs-code-擴充軟件-extensions" class="header-anchor">#</a> 安裝 VS Code 擴充軟件（Extensions）</h2> <p>啟動 VS Code 後，安裝下列 Extensions：</p> <ul><li>Neo Vim (asvetliakov.vscode-neovim)</li> <li>Which Key (vspacecode.whichkey)</li> <li>prettier - Code formatter (esbenp.prettier-vscode)</li> <li>Material Icon Theme (pkief.material-icon-theme)</li> <li>Auto Rename Tag (formulahendry.auto-rename-tag)</li> <li>Django (batisteo.vscode-django)</li> <li>Djaneiro - Django Snippets (thebarkman.vscode-djaneiro)</li> <li>Django Samples (mengsicode.vscode-django-boilerplate)</li> <li>Bracket Pair Colorizer 2 (coenraads.bracket-pair-colorizer-2)</li> <li>GitLens - Git supercharged (eamodio.gitlens)</li> <li>Git Graph (mhutchie.git-graph)</li> <li>Markdown All in One (yzhang.markdown-all-in-one)</li></ul> <p>【註】： 其它參考</p> <p>https://blog.logrocket.com/top-10-vs-code-extensions-2021/</p> <h2 id="安裝-vs-code-terminal-使用字型"><a href="#安裝-vs-code-terminal-使用字型" class="header-anchor">#</a> 安裝 VS Code Terminal 使用字型</h2> <p><strong>Hack Nerd Font 下載網址：</strong></p> <p>Hack Regular Nerd Font Complete Mono.ttf</p> <div class="language- extra-class"><pre><code>$ su -
+$ cd /usr/share/fonts/truetype/
+
+$ wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
+$ unzip Hack-v3.003-ttf.zip
+
+
+sudo mv ttf/*.ttf /usr/share/fonts/TTF/
+
+
+
+cd
+mkdir -p ~/.local/share/fonts &amp;&amp; cd $_
+wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
+unzip Hack-v3.003-ttf.zip
+</code></pre></div><p>https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack</p> <div class="language- extra-class"><pre><code>cd ~/tmp
+wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
+unzip Hack-v3.003-ttf.zip
+sudo mv ttf/*.ttf /usr/share/fonts/truetype/
+</code></pre></div><p><strong>安裝 Hack Nerd Font 作業程序</strong></p> <p><strong>《macOS》</strong></p> <ol><li>Download the <a href="https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip" target="_blank" rel="noopener noreferrer">latest version of Hack<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</li> <li>Extract the files from the archive (<code>.zip</code>) and click to open them.</li> <li>Follow the instructions from your operating system.</li></ol> <p><strong>《Linux》</strong></p> <ol><li>Download the <a href="https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip" target="_blank" rel="noopener noreferrer">latest version of Hack<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</li> <li>Extract the files from the archive (<code>.zip</code>).</li> <li>Copy the font files to either your system font folder (often <code>/usr/share/fonts/</code>) or user font folder (often <code>~/.local/share/fonts/</code> or <code>/usr/local/share/fonts</code>).</li> <li>Copy the font configuration file in <code>config/fontconfig/</code> to either the system font configuration folder (often <code>/etc/fonts/conf.d/</code>) or the font user folder (often <code>~/.config/fontconfig/conf.d</code>)</li> <li>Clear and regenerate your font cache and indexes with the following command:
+$ fc-cache -f -v</li></ol> <p>You can confirm that the fonts are installed with the following command:</p> <div class="language- extra-class"><pre><code>$ fc-list | grep &quot;Hack&quot;
+</code></pre></div><hr> <h1 id="設定-vs-code-執行環境"><a href="#設定-vs-code-執行環境" class="header-anchor">#</a> 設定 VS Code 執行環境</h1> <h2 id="置入-nvcode-支援之設定"><a href="#置入-nvcode-支援之設定" class="header-anchor">#</a> 置入 NVCode 支援之設定</h2> <p>將 NVCode 所提供之 VS Code 「設定」放進以下設定檔中：</p> <ul><li>來源處所在目錄： <strong>~/.config/nvim/utils/vscode_config/</strong></li> <li>標的處所在目錄： <strong>~/Library/Application\ Support/Code/User/</strong></li> <li>來源處之 Git Repo 網址：https://github.com/ChristianChiarulli/nvim</li></ul> <p>設定標的及其設定檔名稱：</p> <ul><li>執行環境設定： settings.json</li> <li>快捷鍵設定：keybindings.json</li></ul> <h2 id="同步-vs-code-執行環境設定"><a href="#同步-vs-code-執行環境設定" class="header-anchor">#</a> 同步 VS Code 執行環境設定</h2> <p>啟動 VS Code 後，執行「登入」及「Settings is Sync On」功能。</p> <h2 id="檢查-vs-code-執行環境設定"><a href="#檢查-vs-code-執行環境設定" class="header-anchor">#</a> 檢查 VS Code 執行環境設定</h2> <p>檢查「設定檔」： <strong>~/Library/Application\ Support/Code/User/settings.json</strong> 的「設定」內容：</p> <p><strong>設定 Terminal</strong></p> <div class="language- extra-class"><pre><code>  &quot;terminal.external.osxExec&quot;: &quot;iTerm.app&quot;,
+  &quot;terminal.integrated.cursorBlinking&quot;: true,
+  &quot;terminal.integrated.fontFamily&quot;: &quot;Hack Nerd Font Mono&quot;,
+  &quot;terminal.integrated.fontSize&quot;: 14,
+  &quot;terminal.integrated.rightClickCopyPaste&quot;: true,
+</code></pre></div><p><strong>設定 editor</strong></p> <div class="language- extra-class"><pre><code>  &quot;editor.fontSize&quot;: 14,
+  &quot;editor.suggestFontSize&quot;: 14,
+  &quot;editor.suggestSelection&quot;: &quot;first&quot;,
+  &quot;editor.cursorBlinking&quot;: &quot;solid&quot;,
+  &quot;editor.fontFamily&quot;: &quot;FiraCode Nerd Font Mono, Hack, Menlo, Monaco, 'Courier New', monospace&quot;,
+  &quot;editor.minimap.enabled&quot;: false,
+  &quot;editor.snippetSuggestions&quot;: &quot;bottom&quot;,
+  &quot;editor.scrollbar.horizontal&quot;: &quot;hidden&quot;,
+  &quot;editor.scrollbar.vertical&quot;: &quot;hidden&quot;,
+  &quot;editor.tokenColorCustomizations&quot;: {
+    &quot;[One Dark Pro]&quot;: {
+      ....
+  },
+</code></pre></div><p><strong>設定 Emmet</strong></p> <p>設定 HTML 之編輯，在 Emmet 之使用，於 Django Template 編輯時，可使用 Django Extension 的Snippets 。</p> <div class="language- extra-class"><pre><code>  &quot;emmet.showSuggestionsAsSnippets&quot;: true,
+  &quot;emmet.triggerExpansionOnTab&quot;: true,
+  &quot;emmet.includeLanguages&quot;: {
+    &quot;javascript&quot;: &quot;javascriptreact&quot;,
+    &quot;django-html&quot;: &quot;html&quot;,
+    &quot;razor&quot;: &quot;html&quot;,
+    &quot;plaintext&quot;: &quot;pug&quot;
+  },
+</code></pre></div><p><strong>設定 Neo Vim Extension</strong></p> <div class="language- extra-class"><pre><code>  &quot;vscode-neovim.mouseSelectionStartVisualMode&quot;: true,
+  &quot;vscode-neovim.neovimExecutablePaths.linux&quot;: &quot;/home/alanjui/.local/bin/nvim&quot;,
+  &quot;vscode-neovim.neovimInitVimPaths.linux&quot;: &quot;/home/alanjui/.config/nvim/init.vim&quot;,
+  &quot;vscode-neovim.neovimExecutablePaths.darwin&quot;: &quot;/Users/alanjui/.local/share/nvim-osx64/bin/nvim&quot;,
+  &quot;vscode-neovim.neovimInitVimPaths.darwin&quot;: &quot;/Users/alanjui/.config/nvim/init.vim&quot;,
+</code></pre></div><p>【註】：不可將 /Users/alanjui 目錄路徑「縮寫」成如下「格式」：</p> <div class="language- extra-class"><pre><code>        - ~
+        - $HOME
+</code></pre></div><p><strong>設定 Which Key Extension</strong></p> <div class="language- extra-class"><pre><code>  &quot;whichkey.sortOrder&quot;: &quot;alphabetically&quot;,
+  &quot;whichkey.delay&quot;: 0,
+  &quot;whichkey.bindings&quot;: [
+    {
+      &quot;key&quot;: &quot;;&quot;,
+      &quot;name&quot;: &quot;commands&quot;,
+      &quot;type&quot;: &quot;command&quot;,
+      &quot;command&quot;: &quot;workbench.action.showCommands&quot;
+    },
+    ....
+  ]
+</code></pre></div><p><strong>整體設定參考</strong></p> <p>~/Library/Application\ Support/Code/User/settings.json</p> <div class="language- extra-class"><pre><code>{
+  &quot;vscode-neovim.mouseSelectionStartVisualMode&quot;: true,
+  &quot;vscode-neovim.neovimExecutablePaths.linux&quot;: &quot;/usr/bin/nvim&quot;,
+  &quot;vscode-neovim.neovimInitVimPaths.linux&quot;: &quot;~/.config/nvim/init.vim&quot;,
+  &quot;vscode-neovim.neovimExecutablePaths.darwin&quot;: &quot;/Users/alanjui/.local/share/nvim/bin/nvim&quot;,
+  &quot;vscode-neovim.neovimInitVimPaths.darwin&quot;: &quot;/Users/alanjuigg/.config/nvim/init.vim&quot;,
+
+  &quot;files.associations&quot;: {
+    &quot;**/*.html&quot;: &quot;html&quot;,
+    &quot;**/templates/**/*.html&quot;: &quot;django-html&quot;,
+    &quot;**/templates/**/*&quot;: &quot;django-txt&quot;,
+    &quot;**/requirements{/**,*}.{txt,in}&quot;: &quot;pip-requirements&quot;
+  },
+  &quot;files.exclude&quot;: {
+    &quot;**/__pycache__&quot;: true,
+    &quot;**/.classpath&quot;: true,
+    &quot;**/.project&quot;: true,
+    &quot;**/.settings&quot;: true,
+    &quot;**/.factorypath&quot;: true
+  },
+  &quot;code-runner.executorMap&quot;: {
+    &quot;python&quot;: &quot;$pythonPath $fileName&quot;,
+    &quot;java&quot;: &quot;cd $dir &amp;&amp; javac $fileName &amp;&amp; java $fileNameWithoutExt&quot;,
+    &quot;c&quot;: &quot;cd $dir &amp;&amp; gcc $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;
+  },
+  &quot;[javascript]&quot;: {
+    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;
+  },
+  
+  &quot;emmet.showSuggestionsAsSnippets&quot;: true,
+  &quot;emmet.triggerExpansionOnTab&quot;: true,
+  &quot;emmet.includeLanguages&quot;: {
+    &quot;javascript&quot;: &quot;javascriptreact&quot;,
+    &quot;django-html&quot;: &quot;html&quot;,
+    &quot;razor&quot;: &quot;html&quot;,
+    &quot;plaintext&quot;: &quot;pug&quot;
+  },
+
+  &quot;editor.fontSize&quot;: 14,
+  &quot;editor.suggestFontSize&quot;: 14,
+  &quot;editor.suggestSelection&quot;: &quot;first&quot;,
+  &quot;editor.cursorBlinking&quot;: &quot;solid&quot;,
+  &quot;editor.fontFamily&quot;: &quot;FiraCode Nerd Font Mono, Hack, Menlo, Monaco, 'Courier New', monospace&quot;,
+  &quot;editor.minimap.enabled&quot;: false,
+  &quot;editor.snippetSuggestions&quot;: &quot;bottom&quot;,
+  &quot;editor.scrollbar.horizontal&quot;: &quot;hidden&quot;,
+  &quot;editor.scrollbar.vertical&quot;: &quot;hidden&quot;,
+
+  //==================================================================
+  // Python
+  //==================================================================
+  //&quot;python.pythonPath&quot;: &quot;/home/chris/.miniconda/envs/ds/bin/python&quot;,
+  //&quot;python.condaPath&quot;: &quot;$HOME/.miniconda/bin/conda&quot;,
+  &quot;python.languageServer&quot;: &quot;Pylance&quot;,
+  &quot;python.formatting.provider&quot;: &quot;autopep8&quot;,
+  &quot;python.terminal.activateEnvironment&quot;: false,
+  &quot;python.insidersChannel&quot;: &quot;off&quot;,
+  &quot;python.showStartPage&quot;: false,
+  &quot;python.dataScience.alwaysTrustNotebooks&quot;: true,
+ 
+  &quot;whichkey.bindings&quot;: [
+    {
+      &quot;key&quot;: &quot;;&quot;,
+      &quot;name&quot;: &quot;commands&quot;,
+      &quot;type&quot;: &quot;command&quot;,
+      &quot;command&quot;: &quot;workbench.action.showCommands&quot;
+    },
+    ....
+  ]
+</code></pre></div><p><strong>設定 Python Extension</strong></p> <div class="language- extra-class"><pre><code>  &quot;python.languageServer&quot;: &quot;Pylance&quot;,
+  &quot;python.formatting.provider&quot;: &quot;autopep8&quot;,
+  &quot;python.terminal.activateEnvironment&quot;: false,
+  &quot;python.insidersChannel&quot;: &quot;off&quot;,
+  &quot;python.showStartPage&quot;: false,
+  &quot;python.dataScience.alwaysTrustNotebooks&quot;: true,
+</code></pre></div><p>code-runner.executorMap: 原始碼與執行編譯器之對映關係</p> <div class="language- extra-class"><pre><code>  &quot;code-runner.executorMap&quot;: {
+    &quot;python&quot;: &quot;$pythonPath $fileName&quot;,
+    &quot;java&quot;: &quot;cd $dir &amp;&amp; javac $fileName &amp;&amp; java $fileNameWithoutExt&quot;,
+    &quot;c&quot;: &quot;cd $dir &amp;&amp; gcc $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;
+  },
+</code></pre></div><p>file.exclude: 檔案瀏器可忽略不顯示之目錄或檔案</p> <div class="language- extra-class"><pre><code>  &quot;files.exclude&quot;: {
+    &quot;**/__pycache__&quot;: true,
+    &quot;**/.classpath&quot;: true,
+    &quot;**/.project&quot;: true,
+    &quot;**/.settings&quot;: true,
+    &quot;**/.factorypath&quot;: true
+  },
+</code></pre></div><p><strong>設定 Django Extension</strong></p> <p>files.associations: 設定「檔案型態辨識規則」</p> <div class="language- extra-class"><pre><code>&quot;files.associations&quot;: {
+    &quot;**/*.html&quot;: &quot;html&quot;,
+    &quot;**/templates/**/*.html&quot;: &quot;django-html&quot;,
+    &quot;**/templates/**/*&quot;: &quot;django-txt&quot;,
+    &quot;**/requirements{/**,*}.{txt,in}&quot;: &quot;pip-requirements&quot;
+},
+</code></pre></div><p><strong>【註】：</strong></p> <ul><li><p>配合 Django Extension 使用之 snippets 檔存放路徑：
+$HOME/Library/Application\ Support/Code/User/snippets/django-html.json</p></li> <li><p>在 Coc-nvim 使用 Django Extension Snippets 需配合之設定：
+{
+....
+&quot;snippets.textmateSnippetsRoots&quot;: [
+&quot;~/.config/nvim/snips&quot;
+],
+....
+}</p></li> <li><p><strong>建立 Symbolic Link: htmldjango.json 指向 django-html.json：</strong></p></li></ul> <p>在 coc-nvim 使用之 Snippets 檔案，集中於目錄路徑： <strong>~/.config/nvim/snips/</strong> 。為方便 Snippet 檔案內容同步的管理，應避免使用「實體檔案」，而改用：「軟連結（Symbolic Link）」，建立檔案連結指向為宜。</p> <p>【Mac】：</p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim/snips
+ln -s -f ~/Library/Application\ Support/Code/User/snippets/django-html.json htmldjango.json
+</code></pre></div><p>【ArchLinux】：</p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim/snips
+ln -s -f ~/.config/Code/User/snippets/django-html.json  htmldjango.json
+ln -s -f ~/.config/Code/User/snippets/markdown.json 
+</code></pre></div><hr> <h1 id="設定-nvcode-執行環境"><a href="#設定-nvcode-執行環境" class="header-anchor">#</a> 設定 NVCode 執行環境</h1> <h2 id="作業程序"><a href="#作業程序" class="header-anchor">#</a> 作業程序：</h2> <ol><li>下載 NVCode 設定檔</li> <li>編輯 NVCode 設定檔</li> <li>編輯 coc-nvim 設定檔</li> <li>安裝 Neovim Plugings</li> <li>設置個人客製化設定</li></ol> <h2 id="下載-nvcode-設定檔"><a href="#下載-nvcode-設定檔" class="header-anchor">#</a> 下載 NVCode 設定檔</h2> <div class="language- extra-class"><pre><code>git clone git@github.com:AlanJui/MyNVCode.git ~/.config/nvim
+
+
+git clone https://github.com/AlanJui/MyNVCode.git ~/.config/nvim
+</code></pre></div><h2 id="編輯-nvcode-設定檔"><a href="#編輯-nvcode-設定檔" class="header-anchor">#</a> 編輯 NVCode 設定檔</h2> <p><strong>（1）修訂 ～/.config/nvim/init.vim</strong></p> <div class="language- extra-class"><pre><code>https://github.com/AlanJui/MyNVCode.git
+</code></pre></div><p><strong>（2）設定 coc-settings.json 所在路徑</strong></p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim
+rm coc-settings.json
+ln -s -f my-nvim/coc-settings.json
+</code></pre></div><h2 id="編輯-coc-nvim-設定檔"><a href="#編輯-coc-nvim-設定檔" class="header-anchor">#</a> 編輯 coc-nvim 設定檔</h2> <p><strong>修訂設定檔： coc-settings.json</strong></p> <div class="language- extra-class"><pre><code>vim ~/.config/nvim/coc-settings.json
+</code></pre></div><p><strong>python 應用設定</strong></p> <div class="language- extra-class"><pre><code>  &quot;python.analysis.autoImportCompletions&quot;: true,
+  &quot;python.analysis.autoSearchPaths&quot;: true,
+  &quot;python.analysis.diagnosticMode&quot;: &quot;openFilesOnly&quot;,
+  &quot;python.analysis.stubPath&quot;: &quot;typings&quot;,
+  &quot;python.analysis.typeshedPaths&quot;: [],
+  &quot;python.analysis.diagnosticSeverityOverrides&quot;: {},
+  &quot;python.analysis.typeCheckingMode&quot;: &quot;basic&quot;,
+  &quot;python.analysis.useLibraryCodeForTypes&quot;: true,
+  &quot;python.pythonPath&quot;: &quot;python&quot;,
+  &quot;python.venvPath&quot;: &quot;&quot;,
+  &quot;python.linting.enabled&quot;: true,
+  &quot;python.linting.pylintEnabled&quot;: true,
+  &quot;python.linting.pylintArgs&quot;: [&quot;--disable=F401, E722, C0115, C0116, W0613&quot;],
+  &quot;python.formatting.provider&quot;: &quot;autopep8&quot;,
+  &quot;python.jediEnabled&quot;: false,
+  // &quot;python.formatting.provider&quot;: &quot;black&quot;,
+  // &quot;python.formatting.blackPath&quot;: &quot;~/.local/bin/black&quot;,
+  // &quot;python.linting.pylintPath&quot;: &quot;~/.miniconda/envs/neovim/bin/pylint&quot;,
+  // &quot;python.condaPath&quot;: &quot;~/.miniconda/bin/conda&quot;,
+  // &quot;python.sortImports.path&quot;: &quot;~/.miniconda/envs/neovim/bin/isort&quot;,
+  // &quot;python.jediPath&quot;: &quot;~/.miniconda/envs/neovim/lib/python3.8/site-packages&quot;,
+  &quot;pyright.disableCompletion&quot;: false,
+  &quot;pyright.disableLanguageServices&quot;: false,
+  &quot;pyright.disableOrganizeImports&quot;: false,
+</code></pre></div><p><strong>Snippets 設定</strong></p> <div class="language- extra-class"><pre><code>  &quot;suggest.noselect&quot;: false,
+  &quot;snippets.userSnippetsDirectory&quot;: &quot;~/.config/nvim/snips&quot;,
+  &quot;snippets.ultisnips.enable&quot;: true,
+  &quot;snippets.ultisnips.directories&quot;: [&quot;UltiSnips&quot;, &quot;~/.config/nvim/snips&quot;],
+  &quot;snippets.snipmate.enable&quot;: false,
+  &quot;snippets.textmateSnippetsRoots&quot;: [
+    // Ubuntu Path:
+    //  &quot;~/.config/Code/User/snippets&quot;
+    //
+    // macOS(Darwin) Path:
+    // &quot;~/Library/Application Support/Code/User/snippets&quot;
+    &quot;~/.config/nvim/snips&quot;
+  ],
+</code></pre></div><p><strong>Emmet 設定</strong></p> <div class="language- extra-class"><pre><code>  &quot;emmet.includeLanguages&quot;: {
+    &quot;htmldjango&quot;: &quot;html&quot;,
+    &quot;django-html&quot;: &quot;html&quot;,
+    &quot;python.django&quot;: &quot;python&quot;,
+    &quot;vue-html&quot;: &quot;html&quot;,
+    &quot;javascript&quot;: &quot;javascriptreact&quot;
+  },
+  &quot;emmet.showAbbreviationSuggestions&quot;: true,
+  &quot;emmet.showExpandedAbbreviation&quot;: &quot;always&quot;,
+</code></pre></div><p><strong>存檔後自動編排原始碼格式設定</strong></p> <p>執行「存檔」指令後，自動編排「原始碼」應有的「格式」：</p> <div class="language- extra-class"><pre><code>  &quot;coc.preferences.formatOnSaveFiletypes&quot;: [
+    &quot;python&quot;,
+    &quot;html&quot;,
+    &quot;htmldjango&quot;,
+    &quot;django-html&quot;,
+    &quot;css&quot;,
+    &quot;markdown&quot;,
+    &quot;javascript&quot;,
+    &quot;graphql&quot;,
+    &quot;yaml&quot;,
+    &quot;json&quot;,
+    &quot;jsonc&quot;,
+    &quot;java&quot;
+  ],
+</code></pre></div><p><strong>Language Server 設定</strong></p> <div class="language- extra-class"><pre><code>{
+  ....
+  &quot;languageserver&quot;: {
+    &quot;bash&quot;: {
+      &quot;command&quot;: &quot;bash-language-server&quot;,
+      &quot;args&quot;: [&quot;start&quot;],
+      &quot;filetypes&quot;: [&quot;sh&quot;],
+      &quot;ignoredRootPaths&quot;: [&quot;~&quot;]
+    },
+    &quot;lua&quot;: {
+      &quot;command&quot;: &quot;/usr/local/bin/lua-language-server&quot;,
+      &quot;filetypes&quot;: [&quot;lua&quot;],
+      &quot;trace.server&quot;: &quot;verbose&quot;
+    }
+}
+</code></pre></div><h2 id="修訂-coc-nvim-extensions-安裝清單"><a href="#修訂-coc-nvim-extensions-安裝清單" class="header-anchor">#</a> 修訂 coc-nvim extensions 安裝清單</h2> <p>配合 coc-nvim 使用的 extensions（亦算是 Neovim Plugins 的一種），除了可在 Neovim 中，透過指令 CocInstall ，逐個「手動安裝」外。亦可透過設定「<strong>安裝清單設定檔」： coc-extensions.vim ，令 coc-nvim 自動安裝。</strong></p> <div class="language- extra-class"><pre><code>vim ~/.config/nvim/plug-config/coc/coc-extensions.vim
+
+
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-actions',
+  \ 'coc-sh',
+  \ 'coc-java-debug',
+  \ 'coc-java',
+  \ 'coc-lists',
+  \ 'coc-emmet',
+  \ 'coc-tasks',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-floaterm',
+  \ 'coc-fzf-preview',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-cssmodules',
+  \ 'coc-stylelintplus',
+  \ 'coc-emoji',
+  \ 'coc-yaml',
+  \ 'coc-explorer',
+  \ 'coc-svg',
+  \ 'coc-prettier',
+  \ 'coc-vimlsp',
+  \ 'coc-xml',
+  \ 'coc-yank',
+  \ 'coc-json',
+  \ 'coc-marketplace',
+  \ ]
+  &quot; \ 'coc-pyright',
+  &quot; \ 'coc-bookmark',
+  &quot; \ 'coc-tabnine',
+  &quot; \ 'coc-highlight',
+</code></pre></div><h2 id="安裝-neovim-擴充軟件-plugins"><a href="#安裝-neovim-擴充軟件-plugins" class="header-anchor">#</a> 安裝 Neovim 擴充軟件（Plugins ）</h2> <p><strong>（1）啟動 Neovim</strong></p> <p><strong>（2）安裝 Neovim Plugins</strong></p> <p><strong>（3）啟動 FAR</strong></p> <div class="language- extra-class"><pre><code>nvim
+:UpdateRemotePlugins
+</code></pre></div><h2 id="設置個人客製化設定"><a href="#設置個人客製化設定" class="header-anchor">#</a> 設置個人客製化設定</h2> <p><strong>（1）設定「個人客製化」環境</strong></p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim
+git clone &lt;Repo&gt; my-nvim
+</code></pre></div><p>my-nvim 之目錄結構與檔案清單：</p> <div class="language- extra-class"><pre><code>[alanjui@VB2101-Manjaro-KDE-202 nvim]$ tree my-nvim        
+my-nvim 
+├── coc-settings.json 
+├── lua 
+│   ├── ccc-eviline.lua 
+│   ├── ccc-spaceline.lua 
+│   ├── ccc-statusline.lua 
+│   └── my-statusLine.lua 
+├── my-init.vim 
+├── my-settings.vim 
+└── snips 
+   ├── html.snippets 
+   ├── javascript-node.snippets 
+   ├── javascript.snippets 
+   ├── json.snippets 
+   ├── markdown.json 
+   ├── markdown.snippets 
+   └── python.snippets 
+
+2 directories, 14 files
+</code></pre></div><p><strong>（2）修訂原設定檔，以便加入「個人客製化」設定：</strong></p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim
+cp init.vim init.vim.org
+vim init.vim
+</code></pre></div><p>在「檔案底端」加入如下「設定」：</p> <div class="language- extra-class"><pre><code>&quot;=========================================================================
+&quot; User Define
+
+if !exists('g:vscode')
+    let g:python3_host_prog = expand(&quot;$HOME/.pyenv/versions/3.9.1/envs/venv-3.9.1/bin/python3&quot;)
+    let g:node_host_prog = expand(&quot;$HOME/n/bin/neovim-node-host&quot;)
+
+    let g:loaded_python_provider = 0
+    let g:loaded_ruby_provider = 0
+    let g:loaded_perl_provider = 0
+
+    source  $HOME/.config/nvim/my-nvim/my-settings.vim
+    luafile $HOME/.config/nvim/my-nvim/lua/my-statusLine.lua
+endif
+</code></pre></div><p><strong>（3）設定 Snippets</strong></p> <p>與 VS Code 共用 Snippets</p> <p><strong>《Mac版》</strong></p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim/snips
+ln -s -f ~/Library/Application\ Support/Code/User/snippets/django-html.json htmldjango.json
+ln -s -f ~/Library/Application\ Support/Code/User/snippets/django-python.json
+ln -s -f ~/Library/Application\ Support/Code/User/snippets/markdown.json
+</code></pre></div><p><strong>《Linux版》</strong></p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim/snips
+ln -s -f ~/.config/Code/User/snippets/django-html.json htmldjango.json
+ln -s -f ~/.config/Code/User/snippets/django-python.json
+ln -s -f ~/.config/Code/User/snippets/markdown.json
+</code></pre></div><p>設定個人用 Snippets</p> <div class="language- extra-class"><pre><code>cd ~/.config/nvim/snips
+ln -s -f ../my-nvim/snips/html.snippets
+ln -s -f ../my-nvim/snips/javascript-node.snippets
+ln -s -f ../my-nvim/snips/javascript.snippets
+ln -s -f ../my-nvim/snips/json.snippets
+ln -s -f ../my-nvim/snips/markdown.snippets
+ln -s -f ../my-nvim/snips/python.snippets
+</code></pre></div><hr> <h1 id="設定-django-projects-執行環境"><a href="#設定-django-projects-執行環境" class="header-anchor">#</a> 設定 Django Projects 執行環境</h1> <h2 id="作業程序-2"><a href="#作業程序-2" class="header-anchor">#</a> 作業程序：</h2> <ol><li>安裝 Python 執行環境</li> <li>建置 Django Project</li> <li>設定 Django Project 執行環境</li></ol> <h2 id="建置-django-project-目錄"><a href="#建置-django-project-目錄" class="header-anchor">#</a> 建置 Django Project 目錄</h2> <p><strong>（1）建置專案目錄</strong></p> <div class="language- extra-class"><pre><code>cd ~/workspace/django
+mkdir &lt;ProjectName&gt; &amp;&amp; cd $_
+</code></pre></div><p><strong>（2）設定專案使用 Python 版本</strong></p> <p>《建置新的虛擬環境》</p> <div class="language- extra-class"><pre><code>pyenv versions
+pyenv virtualenv 3.9.1 venv-3.9.1
+</code></pre></div><p>《指定專案所使用的虛擬環境》</p> <div class="language- extra-class"><pre><code>pyenv local venv-3.9.1
+pyenv version
+</code></pre></div><p><strong>（3）安裝 Python 套件：Django</strong></p> <div class="language- extra-class"><pre><code>pip install django
+</code></pre></div><p><strong>（4）安裝 Python 格式編排器</strong></p> <div class="language- extra-class"><pre><code>pip install autopep8
+</code></pre></div><p><strong>（5）安裝 Python 語法檢視器</strong></p> <ul><li><strong>安裝 pylint</strong>
+pip install pylint
+cp ~/.config/nvim/my-nvim/utils/.pylintrc</li></ul> <p>【註】：自行產生 .pylintrc 設定檔</p> <div class="language- extra-class"><pre><code>pylint --generate-rcfile &gt; .pylintrc
+</code></pre></div><ul><li><p><strong>設定可略過之「規則」：</strong></p> <ul><li><code>C0114</code> (<code>missing-module-docstring</code>)</li> <li><code>C0115</code> (<code>missing-class-docstring</code>)</li> <li><code>C0116</code> (<code>missing-function-docstring</code>)</li></ul> <p>[MASTER]
+....
+disable=print-statement,
+....,
+C0114,
+C0115,
+C0116,
+compresension-escape</p></li></ul> <p><strong>（6）建置 pyright 設定：pyrightconfig.json</strong></p> <div class="language- extra-class"><pre><code>cp ~/.config/nvim/my-nvim/utils/pyrightconfig.json .
+
+
+nvim pyrightconfig.json
+
+
+{
+  &quot;venvPath&quot;: &quot;/Users/alanjui/.pyenv/versions/3.9.1/envs&quot;,
+  &quot;venv&quot;: &quot;venv-3.9.1&quot;,
+  &quot;reportMissingImports&quot;: true, 
+  &quot;pythonVersion&quot;: &quot;3.9&quot;,
+  &quot;exclude&quot;: [
+    &quot;**/node_modules&quot;,
+    &quot;**/__pycache__&quot;
+  ]
+}
+</code></pre></div><p>【註】： <strong>venvPath</strong> 的設定，不可使用 Home Dir 的簡寫：</p> <div class="language- extra-class"><pre><code>- $**HOME**/.pyenv/versions/3.9.1/envs
+- **~**/.pyenv/versions/3.9.1/envs
+</code></pre></div><p><strong>（7）建置 git 版本管理器</strong></p> <div class="language- extra-class"><pre><code>cp ~/.config/nvim/my-nvim/utils/.gitignore .
+git init
+git add .
+git commit -m &quot;Initial project&quot;
+
+
+$ cat .gitignore
+$HOME/.config/coc/extensions/
+###################
+.DS_Store
+.hg
+.svn
+.idea
+.vscode
+*.vscode
+node_modules
+###################
+# Python files
+.venv/
+env/
+__pycache__/
+.pyc
+static_collected/
+# Temporary files
+*.kate-swp
+*.swp
+*.swo
+*~
+</code></pre></div><p><strong>（8）建立 Django Project</strong></p> <div class="language- extra-class"><pre><code>django-admin startproject web_config .
+</code></pre></div><p><strong>（9）驗證建立結果</strong></p> <div class="language- extra-class"><pre><code>$ ./manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+January 26, 2021 - 04:12:53
+Django version 3.1.5, using settings 'web_config.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+</code></pre></div><p><strong>（10）建立 app</strong></p> <div class="language- extra-class"><pre><code>$ ./manage.py startapp &lt;AppName&gt;
+</code></pre></div><h2 id="vs-code-操作"><a href="#vs-code-操作" class="header-anchor">#</a> VS Code 操作</h2> <p><strong>設定 Python 直譯器版本</strong></p> <p>1.《Shift》＋《Cmd》＋《P》</p> <ol start="2"><li>Python: Select Interpreter ==&gt; venv-3.9.1</li></ol> <h2 id="設定-launch-json"><a href="#設定-launch-json" class="header-anchor">#</a> 設定 launch.json</h2> <p>《專案目錄》/.vscode/launch.json</p> <div class="language- extra-class"><pre><code>{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Python: Django&quot;,
+            &quot;type&quot;: &quot;python&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;program&quot;: &quot;${workspaceFolder}/manage.py&quot;,
+            &quot;args&quot;: [
+                &quot;runserver&quot;,
+                &quot;0.0.0.0:9000&quot;
+            ],
+            &quot;django&quot;: true
+        }
+    ]
+}
+</code></pre></div><hr> <h1 id="參考資訊"><a href="#參考資訊" class="header-anchor">#</a> 參考資訊</h1> <h2 id="vim-8-2"><a href="#vim-8-2" class="header-anchor">#</a> <a href="https://paper.dropbox.com/doc/NVCode-for-ArchLinx-OkttDpJ4pcQd3WUEVoU6D#:uid=286156922109040961383735&amp;h2=Vim-8.2" target="_blank" rel="noopener noreferrer">Vim 8.2<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h2> <div class="language- extra-class"><pre><code>sudo pacman -S vim
+git clone git@github.com:AlanJui/vim8.git ~/.vim
+
+
+sudo pacman -S vim
+正在解決依賴關係…
+正在檢查衝突的軟體包…
+
+軟體包 (2) vim-runtime-8.2.2380-1  vim-8.2.2380-1
+
+總計下載大小：   8.18 MiB
+總計安裝大小：  34.01 MiB
+淨升級大小：   0.01 MiB
+
+:: 進行安裝嗎？ [Y/n] 
+....
+</code></pre></div><h2 id="coc-nvim-參考資料"><a href="#coc-nvim-參考資料" class="header-anchor">#</a> Coc-nvim 參考資料</h2> <p><strong>Neovim Plugin: Coc-nvim 簡介</strong>
+https://www.chrisatmachine.com/Neovim/04-vim-coc/</p> <p><strong>Coc-nvim 對 Code Snippets 的支援</strong></p> <p>https://kanneg881.gitbook.io/workspace/vim/wai-gua-tui-jian/dai-ma/coc/coc-snippets</p> <p><strong>存檔時自動編排原始碼格式</strong></p> <p>https://github.com/neoclide/coc-prettier</p> <p>https://prettier.io/docs/en/vim.html</p> <hr> <h2 id="command-line-file-explorr"><a href="#command-line-file-explorr" class="header-anchor">#</a> Command Line File Explorr</h2> <p>ranger</p> <p><strong>（1）Install on Mac</strong></p> <div class="language- extra-class"><pre><code>pyenv global venv-3.9.1
+pip install ranger-fm
+</code></pre></div><p>（2）Execute</p> <div class="language- extra-class"><pre><code>$ ranger
+</code></pre></div><hr> <h2 id="lua-原始碼安裝作業"><a href="#lua-原始碼安裝作業" class="header-anchor">#</a> Lua 原始碼安裝作業</h2> <p>透過「原始碼」安裝 Lua 。</p> <p><strong>（1）在此網頁查詢 Lua 版本及下載網址：</strong></p> <div class="language- extra-class"><pre><code>http://www.lua.org/versions.html
+http://www.lua.org/ftp/
+</code></pre></div><p><strong>（2）編譯原始碼及安裝執行檔</strong></p> <div class="language- extra-class"><pre><code>$ cd ~/build
+$ curl -R -O http://www.lua.org/ftp/lua-5.4.2.tar.gz
+$ tar -zxvf lua-5.4.2.tar.gz
+$ cd lua-5.4.2
+$ make macosx
+$ sudo make install
+
+
+
+$ sudo make install
+Password:
+cd src &amp;&amp; mkdir -p /usr/local/bin /usr/local/include /usr/local/lib /usr/local/man/man1 /usr/local/share/lua/5.4 /usr/local/lib/lua/5.4
+cd src &amp;&amp; install -p -m 0755 lua luac /usr/local/bin
+cd src &amp;&amp; install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h lua.hpp /usr/local/include
+cd src &amp;&amp; install -p -m 0644 liblua.a /usr/local/lib
+cd doc &amp;&amp; install -p -m 0644 lua.1 luac.1 /usr/local/man/man1
+</code></pre></div><p>【註】：</p> <ul><li><p>Lua V5.3.4 下載
+$ curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gz</p></li> <li><p>lua 安裝結果與執行檔所在路徑</p> <ul><li>lua: /usr/local/bin/lua</li> <li>luac: /usr/local/bin/luac</li> <li>lua.h luaconf.h lualib.h lauxlib.h lua.php: /usr/local/include</li> <li>liblua.a: /usr/local/lib</li> <li>lua.1 luac.1 /usr/local/man/man1</li></ul></li> <li><p>驗證安裝結果
+$ which lua
+/usr/local/bin/lua</p> <p>$ which lua
+/usr/local/bin/luac</p> <p>$ ll /usr/local/include/lua*
+-rw-r--r--  1 root     admin    15K 11 13 23:32 /usr/local/include/lua.h
+-rw-r--r--  1 root     admin   191B 12 23  2004 /usr/local/include/lua.hpp
+-rw-r--r--  1 root     admin    20K 11 13 23:32 /usr/local/include/luaconf.h
+lrwxr-xr-x  1 alanjui  admin    41B  1 22 13:11 /usr/local/include/luajit-2.0 -&gt; ../Cellar/luajit/2.0.5/include/luajit-2.0
+-rw-r--r--  1 root     admin   1.2K 11 13 23:32 /usr/local/include/lualib.h</p> <p>$ ll /usr/local/lib/lua
+total 0
+drwxr-xr-x  2 root  admin    64B  1 18 13:36 5.2
+drwxr-xr-x  3 root  admin    96B  1 20 11:27 5.3
+drwxr-xr-x  2 root  admin    64B  1 24 10:33 5.4</p> <p>$ ll /usr/local/man/man1
+total 16
+-rw-r--r--  1 root  wheel   3.0K  5 22  2020 lua.1
+-rw-r--r--  1 root  wheel   3.0K 11 17  2011 luac.1</p></li></ul> <p><strong>Lua 操作參考：</strong></p> <p>https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/84650/</p> <h2 id="lua-套件管理器-luarocks-安裝"><a href="#lua-套件管理器-luarocks-安裝" class="header-anchor">#</a> Lua 套件管理器：luarocks 安裝</h2> <p>https://luarocks.org/#quick-start</p> <p>【Installation instructions for macOS】</p> <p>https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-macOS</p> <p>【Installation instructions for Unix】</p> <p>https://github.com/luarocks/luarocks/wiki/Installation-instructions-for-Unix</p> <p>【Using LuaRocks】</p> <p>https://github.com/luarocks/luarocks/wiki/Using-LuaRocks</p> <p><strong>【使用原始碼安裝法】：</strong></p> <div class="language- extra-class"><pre><code>$ cd ~/build
+$ wget https://luarocks.org/releases/luarocks-3.5.0.tar.gz
+$ tar zxpf luarocks-3.5.0.tar.gz
+$ cd luarocks-3.5.0
+$ ./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre></div><p><strong>【安裝後驗證】：</strong></p> <div class="language- extra-class"><pre><code>$ which luarocks
+/usr/local/bin/luarocks
+
+$ sudo luarocks install luasocket
+$ lua
+Lua 5.3.5 Copyright (C) 1994-2018 Lua.org, PUC-Rio
+&gt; require &quot;socket&quot;
+</code></pre></div><p>《註》：執行時參考資訊</p> <div class="language- extra-class"><pre><code>$ ./configure
+
+Configuring LuaRocks version 3.5.0...
+
+Lua version detected: 5.1
+Lua interpreter found: /usr/local/bin/luajit
+lua.h found: /usr/local/include/lua.h
+unzip found in PATH: /usr/bin
+
+Done configuring.
+
+LuaRocks will be installed at......: /usr/local
+LuaRocks will install rocks at.....: /usr/local
+LuaRocks configuration directory...: /usr/local/etc/luarocks
+Using Lua from.....................: /usr/local
+
+* Type make and make install:
+  to install to /usr/local as usual.
+* Type make bootstrap:
+  to install LuaRocks into /usr/local as a rock.
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/Django4-Project-Template/assets/js/app.85744e83.js" defer></script><script src="/Django4-Project-Template/assets/js/2.c06a707d.js" defer></script><script src="/Django4-Project-Template/assets/js/134.4ceafcb1.js" defer></script>
+  </body>
+</html>
