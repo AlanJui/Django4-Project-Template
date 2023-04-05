@@ -50,6 +50,7 @@ class FongYimFuHo:
             'e': 'ㆤ',
             'ee': 'ㄝ',
             'eh': 'ㆤㆷ',
+            'ei': 'ㆤ',
             'enn': 'ㆥ',
             'ennh': 'ㆥㆷ',
             'i': 'ㄧ',

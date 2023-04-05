@@ -32,6 +32,15 @@ class HanJi(models.Model):
     def __str__(self):
         return self.han_ji
 
+    def is_chu_im_tone(self):
+        """
+        判斷注音符號中是否含有「聲調」.
+
+        若最後一個字元不是數值，表示使用者可能引用「略去聲調」不寫規則.
+        """
+        last_char = self.chu_im[-1]
+        return last_char.isdigit()
+
     def split_chu_im(self):
         """
         此方法用於將「注音」(chu_im) 分解成： 聲母、韻母和調號.
@@ -44,6 +53,10 @@ class HanJi(models.Model):
         去掉調號部分。
 
         3. 調號是音節最後一個字符。
+
+        4. 調號可省略規則：
+           當「韻母」為「舒聲韻」時，若「聲調」未標示，則代表「第一聲」；
+           當「韻母」為「入聲韻」時，若「聲調」未標示，則代表「第四聲」。
         """
         result = []
 
@@ -58,8 +71,68 @@ class HanJi(models.Model):
         else:
             siann_bu = ""
 
-        un_bu = self.chu_im[len(siann_bu) : len(self.chu_im) - 1]
-        tiau = self.chu_im[len(self.chu_im) - 1]
+        # 依據「注音符號」中是否有含「聲調」，決定取得韻母與調號的方式。
+        if self.is_chu_im_tone():
+            # 若注音符號最後一個字元為「數值」，表「聲調」。即
+            un_bu = self.chu_im[len(siann_bu) : -1]
+            tiau = self.chu_im[-1]
+        else:
+            un_bu = self.chu_im[len(siann_bu) :]
+            if un_bu in [
+                'un',
+                'ian',
+                'im',
+                'ui',
+                'ee',
+                'an',
+                'ong',
+                'uai',
+                'ing',
+                'uan',
+                'oo',
+                'iau',
+                'ei',
+                'iong',
+                'o',
+                'ai',
+                'in',
+                'iang',
+                'am',
+                'ua',
+                'ang',
+                'iam',
+                'au',
+                'ia',
+                'ue',
+                'ann',
+                'u',
+                'a',
+                'i',
+                'iu',
+                'enn',
+                'uinn',
+                'io',
+                'inn',
+                'ionn',
+                'iannh',
+                'uann',
+                'ng',
+                'e',
+                'ainn',
+                'onn',
+                'm',
+                'uang',
+                'uainn',
+                'uenn',
+                'iaunn',
+                'om',
+                'aunn',
+                'onn',
+                'iunn',
+            ]:
+                tiau = '1'
+            else:
+                tiau = '4'
 
         result += [siann_bu]
         result += [un_bu]
