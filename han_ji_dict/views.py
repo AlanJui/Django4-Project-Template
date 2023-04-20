@@ -36,3 +36,13 @@ class HanJiDeleteView(DeleteView):
     model = HanJi
     template_name = 'han_ji_dict/delete.html'
     success_url = reverse_lazy('han_ji_dict:home')
+
+# class HanJiSearchView(ListView):
+#     model = HanJi
+#     template_name = 'han_ji_dict/search.html'
+#     paginate_by = 8
+#
+#     def get_queryset(self):
+#         query = self.request.GET.get('q')
+#         object_list = HanJi.objects.filter(hanji__contains=query)
+#         return object_list

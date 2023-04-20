@@ -24,9 +24,11 @@
     "markdown-it": "^13.0.1",
     "markdown-it-imsize": "^2.0.1",
     "markdown-it-mermaid": "^0.2.5",
+    "stylelint-config-standard": "^33.0.0",
     "vuepress": "^1.9.9"
   },
   "dependencies": {
+    "@vscode/codicons": "^0.0.32",
     "prismjs": "^1.29.0"
   }
 }

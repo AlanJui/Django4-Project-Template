@@ -47,8 +47,7 @@ build-backend = "poetry.core.masonry.api"
 #====================================================================
 
 [tool.pyright]
-extraPaths = ["."]
-venvPath = ".venv"
+# include = ["src"]
 exclude = [
 	"**/__pycache__", "**/migrations/**", "**/venv/**", "**/.venv/**",
 	"**/node_modules/**", "**/dist/**", "**/build/**", "**/docs/**",
@@ -59,17 +58,36 @@ ignore = [
 	"**/node_modules/**", "**/dist/**", "**/build/**", "**/docs/**",
 	"**/tests/**", "**/test/**", "**/tests.py"
 ]
-typeshedPaths = []
-reportUnusedVariable = "none"
-reportUnusedClass = "none"
-reportUnusedFunction = "none"
-reportUnusedImport = "none"
-reportMissingImports = "warning"
-typeCheckingMode = "off"
-useLibraryCodeForTypes = true
-reportMissingTypeStubs = false
-reportGeneralTypeIssues = "none"
-reportOptionalMemberAccess = "none"
+defineConstant = { DEBUG = true }
+# stubPath = "src/stubs"
+venv = ".venv"
+# extraPaths = ["."]
+# venvPath = ".venv"
+
+# reportUnusedImport = false
+# reportUnusedFunction = false
+# reportUnusedVariable = false
+# reportUnusedImport = "none"
+# reportUnusedFunction = "none"
+# reportUnusedVariable = "none"
+# reportUnusedClass = "none"
+# reportMissingImports = "warning"
+# typeCheckingMode = "off"
+# useLibraryCodeForTypes = true
+# reportMissingTypeStubs = false
+# reportGeneralTypeIssues = "none"
+# reportOptionalMemberAccess = "none"
+# typeshedPaths = []
+
+pythonVersion = "3.10"
+# pythonPlatform = "Linux"
+
+# executionEnvironments = [
+#   { root = "src/web", pythonVersion = "3.5", pythonPlatform = "Windows", extraPaths = [ "src/service_libs" ] },
+#   { root = "src/sdk", pythonVersion = "3.0", extraPaths = [ "src/backend" ] },
+#   { root = "src/tests", extraPaths = ["src/tests/e2e", "src/sdk" ]},
+#   { root = "src" }
+# ]
 
 [tool.pylint]
 # init-hook = "import sys; import os; from pylint.config import find_pylintrc; sys.path.append(os.path.dirname(find_pylintrc()))"
