@@ -5,9 +5,9 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "myPython: Launch",
             "type": "python",
             "request": "launch"
-            "name": "Launch",
             "program": "${input:myPrompt}"
         },
         {
