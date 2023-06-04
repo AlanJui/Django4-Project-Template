@@ -243,10 +243,12 @@ On `psql` shell, run the below command to change the
 
 # Node.JS
 
-# export N*PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"_ ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see <http://git.io/n-install-repo>)
+    ```sh
+    # export N*PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"_ ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see <http://git.io/n-install-repo>)
 
     export N_PREFIX="$HOME/n"
     export PATH="$N_PREFIX/bin:$PATH"
+    ```
 
 3. 重啟 ZSH Shell . ~/.zshrc
 

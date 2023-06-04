@@ -16,11 +16,14 @@
   {% csrf_token %}
   <h3><label for="text">輸入欲找讀音的漢字：</label></h3>
   <select name="pronunciation" id="pronunciation">
-    <option value="tai_lo">台羅拼音</option>
-    <option value="peh_oe_ji">白話字</option>
-    <option value="ban_phing">閩南語拼音方案</option>
-    <option value="sip_ngoo">十五音</option>
-    <option value="fong_yim">方音符號</option>
+    {% for value, name in pronunciation_options.items %}
+      <option value="{{ value }}"{% if selected_pronunciation == value %} selected{% endif %}>{{ name }}</option>
+    {% endfor %}
+    <!-- <option value="tai_lo">台羅拼音</option> -->
+    <!-- <option value="peh_oe_ji">白話字</option> -->
+    <!-- <option value="ban_phing">閩南語拼音方案</option> -->
+    <!-- <option value="sip_ngoo">十五音</option> -->
+    <!-- <option value="fong_yim">方音符號</option> -->
   </select>
   <br />
   <textarea name="text" id="text" rows="4" cols="80">
