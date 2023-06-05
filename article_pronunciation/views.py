@@ -1,10 +1,10 @@
 # article_pronunciation/views.py
 from django.db.models import Max
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
-from django.urls import reverse
 
 from han_ji_dict.models import HanJi
+
 
 # 依據「漢字」查字典，並取出漢字讀音
 def get_chu_im(char, pronunciation):
@@ -27,6 +27,42 @@ def get_chu_im(char, pronunciation):
             return han_ji_instance.get_fong_yim_fu_ho_chu_im()
     # 若漢字的薛選物件無法建立（即字典中沒有找到該漢字之注音），則返回空值字串
     return ''
+
+
+def save_file(request):
+    if request.method == 'POST':
+        text = request.POST.get('text')
+        pronunciation = request.POST.get('pronunciation')
+
+        # 如果使用者未提供文本或發音方式，則返回
+        if not text or not pronunciation:
+            return HttpResponse('No text or pronunciation provided')
+
+        annotated_text = []
+        for char in text:
+            if char == "\n":
+                annotated_text.append(
+                    {
+                        'han_ji': char,
+                        'chu_im_fu_ho': '',
+                    }
+                )
+            elif char.strip():
+                chu_im_fu_ho = get_chu_im(char, pronunciation)
+                annotated_text.append(
+                    {
+                        'han_ji': char,
+                        'chu_im_fu_ho': chu_im_fu_ho,
+                    }
+                )
+
+        # 將注音文本轉換為字串，並存入檔案
+        output = ''.join([f"{item['han_ji']}({item['chu_im_fu_ho']})" for item in annotated_text])
+        with open('output.txt', 'w', encoding='utf-8') as f:
+            f.write(output)
+        return HttpResponse('已標示注音的漢字已存檔！')
+    else:
+        return HttpResponse('No text or pronunciation provided')
 
 
 def index(request):
@@ -81,7 +117,7 @@ def index(request):
             "selected_pronunciation": selected_pronunciation,
         }
     else:
-    # 使用者啟動功能
+        # 使用者啟動功能
         context = {
             "default_text": default_text,
             "pronunciation_options": pronunciation_options,
@@ -105,8 +141,8 @@ def annotate_pronunciation(text):
             continue
 
         max_freq = HanJi.objects.filter(han_ji=character).aggregate(Max('freq'))[
-            'freq__max'
-        ]
+        'freq__max'
+    ]
 
         if max_freq is None:
             annotated_text.append(character)
