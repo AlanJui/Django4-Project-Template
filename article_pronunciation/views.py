@@ -29,7 +29,9 @@ def get_chu_im(char, pronunciation):
     return ''
 
 
+# 使用者可以透過「存檔」按鈕，將標示注音的漢字存入檔案
 def save_file(request):
+    # 使用者在網頁上輸入漢文，並選擇注音方式，然後按下「標註注音」按鈕
     if request.method == 'POST':
         text = request.POST.get('text')
         pronunciation = request.POST.get('pronunciation')
@@ -40,6 +42,7 @@ def save_file(request):
 
         annotated_text = []
         for char in text:
+            # 若讀到換行字元，則漢字欄存放換行字元，而注音符號欄則留空白。
             if char == "\n":
                 annotated_text.append(
                     {
@@ -47,6 +50,7 @@ def save_file(request):
                         'chu_im_fu_ho': '',
                     }
                 )
+            # 若是要處理的字元為漢字，則透過查字典，取得漢字之「注音符號」
             elif char.strip():
                 chu_im_fu_ho = get_chu_im(char, pronunciation)
                 annotated_text.append(
@@ -57,9 +61,12 @@ def save_file(request):
                 )
 
         # 將注音文本轉換為字串，並存入檔案
-        output = ''.join([f"{item['han_ji']}({item['chu_im_fu_ho']})" for item in annotated_text])
+        # 文字檔內容為一個漢字帶一段注音符號；注音符號外圍以括號：（）包住。
+        output = ''.join(
+            [f"{item['han_ji']}({item['chu_im_fu_ho']})" for item in annotated_text])
         with open('output.txt', 'w', encoding='utf-8') as f:
             f.write(output)
+        # 顯示執行結果於返回後之網頁
         return HttpResponse('已標示注音的漢字已存檔！')
     else:
         return HttpResponse('No text or pronunciation provided')
@@ -77,7 +84,6 @@ def index(request):
     }
     # 預設注音方式：台羅拼音
     selected_pronunciation = "tai_lo"
-
 
     # 使用者輸入資料
     if request.method == 'POST':
@@ -141,8 +147,8 @@ def annotate_pronunciation(text):
             continue
 
         max_freq = HanJi.objects.filter(han_ji=character).aggregate(Max('freq'))[
-        'freq__max'
-    ]
+            'freq__max'
+        ]
 
         if max_freq is None:
             annotated_text.append(character)
