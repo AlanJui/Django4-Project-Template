@@ -40,6 +40,7 @@ def save_file(request):
         if not text or not pronunciation:
             return HttpResponse('No text or pronunciation provided')
 
+        # 逐字處理漢文，並標註注音
         annotated_text = []
         for char in text:
             # 若讀到換行字元，則漢字欄存放換行字元，而注音符號欄則留空白。

@@ -64,6 +64,7 @@ venv = ".venv"
 # extraPaths = ["."]
 # venvPath = ".venv"
 
+reportUnknownParameterType = "none"
 # reportUnusedImport = false
 # reportUnusedFunction = false
 # reportUnusedVariable = false
