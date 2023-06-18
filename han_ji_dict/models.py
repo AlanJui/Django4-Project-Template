@@ -74,10 +74,10 @@ class HanJi(models.Model):
         # 依據「注音符號」中是否有含「聲調」，決定取得韻母與調號的方式。
         if self.is_chu_im_tone():
             # 若注音符號最後一個字元為「數值」，表「聲調」。即
-            un_bu = self.chu_im[len(siann_bu) : -1]
+            un_bu = self.chu_im[len(siann_bu): -1]
             tiau = self.chu_im[-1]
         else:
-            un_bu = self.chu_im[len(siann_bu) :]
+            un_bu = self.chu_im[len(siann_bu):]
             if un_bu in [
                 'un',
                 'ian',

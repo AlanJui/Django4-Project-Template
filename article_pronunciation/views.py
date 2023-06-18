@@ -73,6 +73,7 @@ def save_file(request):
         return HttpResponse('No text or pronunciation provided')
 
 
+# 使用者可以透過「標註注音」按鈕，將漢文標示注音
 def index(request):
     default_text = "我可以為您標註漢字讀音"
     annotated_text = []
