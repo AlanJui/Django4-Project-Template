@@ -5,6 +5,9 @@ from django.shortcuts import render
 
 from han_ji_dict.models import HanJi
 
+from .forms import FanqieForm
+from .huan_tshiat_huat import parse_fanqie
+
 
 # 依據「漢字」查字典，並取出漢字讀音
 def get_chu_im(char, pronunciation):
@@ -160,3 +163,21 @@ def annotate_pronunciation(text):
         annotated_text.extend(hanji_objects)
 
     return annotated_text
+
+
+def huan_tshiat_huat(request):
+    if request.method == 'POST':
+        form = FanqieForm(request.POST)
+        if form.is_valid():
+            characters = form.cleaned_data['characters']
+            character1 = characters[0]
+            character2 = characters[1]
+            pinyin = parse_fanqie(character1, character2)
+            return render(request,
+                          'article_pronunciation/huan_tshiat_huat.html',
+                          {'form': form, 'pinyin': pinyin})
+    else:
+        form = FanqieForm()
+    return render(request,
+                  'article_pronunciation/huan_tshiat_huat.html',
+                  {'form': form})

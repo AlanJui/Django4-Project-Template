@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}反切法求漢字拼音{% endblock %}
+
+{% block styles %}
+<!-- 加入自己的 CSS 樣式表 -->
+<link rel="stylesheet" href="{% static 'article_pronunciation/css/articles.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <h2>反切法</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">提交</button>
+    </form>
+    {% if pinyin %}
+      <div style="padding-top: 20px; color: red;">
+        <p>漢字拼音: {{ pinyin }}</p>
+      </div>
+    {% endif %}
+{% endblock content %}
+
+{% block javascript %}
+<!-- 加入自己的 JavaScript -->
+{% endblock %}

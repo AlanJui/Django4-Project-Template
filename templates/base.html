@@ -38,16 +38,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-				<a class="nav-link" href="{% url 'article_pronunciation:index' %}">查找讀音</a>
+				    <a class="nav-link" href="{% url 'article_pronunciation:index' %}">查找讀音</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="{% url 'han_ji_dict:home' %}">漢字字典</a>
+				    <a class="nav-link" href="{% url 'han_ji_dict:home' %}">漢字字典</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="{% url 'admin:index' %}">後台</a>
+				    <a class="nav-link" href="{% url 'article_pronunciation:huan_tshiat_huat' %}">反切拼音</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="{% url 'logout' %}">登出</a>
+				    <a class="nav-link" href="{% url 'admin:index' %}">後台</a>
+				</li>
+				<li class="nav-item">
+				    <a class="nav-link" href="{% url 'logout' %}">登出</a>
 				</li>
 			</ul>
         </div>
