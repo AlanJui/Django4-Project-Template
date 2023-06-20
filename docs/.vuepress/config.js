@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  base: '/Django4-Project-Template/',
+  base: '/han_gi_chu_im/',
   locales: {
     '/': {
       lang: 'zh-TW',
@@ -91,8 +91,12 @@ module.exports = {
             path: '/d500_OP/',
           },
           {
-            title: '其它⋯⋯',
+            title: '參考資料',
             path: '/d900_REF/',
+          },
+          {
+            title: '作業指引',
+            path: '/guide/',
           },
         ],
       },
