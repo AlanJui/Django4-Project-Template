@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mathfilters',
+    'rest_framework',
+    'api',
     'han_ji_dict',
     'article_pronunciation',
 ]

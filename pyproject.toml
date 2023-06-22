@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["居正中 <AlanJui.1960@gmail.com>"]
 readme = "README.md"
-packages = [{include = "han_gi"}]
+packages = [{ include = "han_gi" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -15,7 +15,8 @@ sqlparse = "^0.4.3"
 numpy = "^1.24.2"
 python-dotenv = "^1.0.0"
 django-mathfilters = "^1.0.0"
-uwsgi = "^2.0.21"
+djangorestframework = "^3.14.0"
+beautifulsoup4 = "^4.12.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -49,14 +50,31 @@ build-backend = "poetry.core.masonry.api"
 [tool.pyright]
 # include = ["src"]
 exclude = [
-	"**/__pycache__", "**/migrations/**", "**/venv/**", "**/.venv/**",
-	"**/node_modules/**", "**/dist/**", "**/build/**", "**/docs/**",
-	"**/tests/**", "**/test/**", "**/tests.py", "**/.*"
+  "**/__pycache__",
+  "**/migrations/**",
+  "**/venv/**",
+  "**/.venv/**",
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/build/**",
+  "**/docs/**",
+  "**/tests/**",
+  "**/test/**",
+  "**/tests.py",
+  "**/.*",
 ]
 ignore = [
-	"**/__pycache__", "**/migrations/**", "**/venv/**", "**/.venv/**",
-	"**/node_modules/**", "**/dist/**", "**/build/**", "**/docs/**",
-	"**/tests/**", "**/test/**", "**/tests.py"
+  "**/__pycache__",
+  "**/migrations/**",
+  "**/venv/**",
+  "**/.venv/**",
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/build/**",
+  "**/docs/**",
+  "**/tests/**",
+  "**/test/**",
+  "**/tests.py",
 ]
 defineConstant = { DEBUG = true }
 # stubPath = "src/stubs"
@@ -132,7 +150,7 @@ disable = """
 """
 
 [tool.pydocstyle]
-ignore = ["D100","D103", "D104"]
+ignore = ["D100", "D103", "D104"]
 # match-dir = "tests/*"
 
 [tool.mypy]
@@ -151,9 +169,7 @@ max-line-length = 120
 max-complexity = 10
 extend-ignore = ['E231', 'E241', 'E501', 'F841']
 exclude = ['.git', '__pycache__', 'docs/source/conf.py', 'old', 'build', 'dist']
-per-file-ignores = [
-    '__init__.py:F401',
-]
+per-file-ignores = ['__init__.py:F401']
 count = true
 
 [tool.autopep8]

@@ -2,6 +2,8 @@
 from django.db.models import Max
 from django.http import HttpResponse
 from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from han_ji_dict.models import HanJi
 
@@ -181,3 +183,8 @@ def huan_tshiat_huat(request):
     return render(request,
                   'article_pronunciation/huan_tshiat_huat.html',
                   {'form': form})
+
+@api_view(['GET'])
+def huan_tshiat_huat(request):
+    data = {"message": "Hello, world!"}
+    return Response(data)
