@@ -50,39 +50,44 @@ build-backend = "poetry.core.masonry.api"
 #====================================================================
 
 [tool.pyright]
-# include = ["src"]
-exclude = [
-	"**/__pycache__",
-	"**/migrations/**",
-	"**/venv/**",
-	"**/.venv/**",
-	"**/node_modules/**",
-	"**/dist/**",
-	"**/build/**",
-	"**/docs/**",
-	"**/tests/**",
-	"**/test/**",
-	"**/tests.py",
-	"**/.*",
-]
-ignore = [
-	"**/__pycache__",
-	"**/migrations/**",
-	"**/venv/**",
-	"**/.venv/**",
-	"**/node_modules/**",
-	"**/dist/**",
-	"**/build/**",
-	"**/docs/**",
-	"**/tests/**",
-	"**/test/**",
-	"**/tests.py",
-]
-defineConstant = { DEBUG = true }
-# stubPath = "src/stubs"
+# executionEnvironments = [
+#   { root = "src/web", pythonVersion = "3.5", pythonPlatform = "Windows", extraPaths = [ "src/service_libs" ] },
+#   { root = "src/sdk", pythonVersion = "3.0", extraPaths = [ "src/backend" ] },
+#   { root = "src/tests", extraPaths = ["src/tests/e2e", "src/sdk" ]},
+#   { root = "src" }
+# ]
+pythonVersion = "3.10"
 venvPath = "."
 venv = ".venv"
 extraPaths = [".venv/lib/python3.10/site-packages"]
+exclude = [
+  "**/__pycache__",
+  "**/migrations/**",
+  "**/venv/**",
+  "**/.venv/**",
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/build/**",
+  "**/docs/**",
+  "**/tests/**",
+  "**/test/**",
+  "**/tests.py",
+  "**/.*",
+]
+ignore = [
+  "**/__pycache__",
+  "**/migrations/**",
+  "**/venv/**",
+  "**/.venv/**",
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/build/**",
+  "**/docs/**",
+  "**/tests/**",
+  "**/test/**",
+  "**/tests.py",
+]
+defineConstant = { DEBUG = true }
 
 reportUnknownParameterType = "none"
 # reportUnusedImport = false
@@ -99,16 +104,6 @@ reportUnknownParameterType = "none"
 # reportGeneralTypeIssues = "none"
 # reportOptionalMemberAccess = "none"
 # typeshedPaths = []
-
-pythonVersion = "3.10"
-# pythonPlatform = "Linux"
-
-# executionEnvironments = [
-#   { root = "src/web", pythonVersion = "3.5", pythonPlatform = "Windows", extraPaths = [ "src/service_libs" ] },
-#   { root = "src/sdk", pythonVersion = "3.0", extraPaths = [ "src/backend" ] },
-#   { root = "src/tests", extraPaths = ["src/tests/e2e", "src/sdk" ]},
-#   { root = "src" }
-# ]
 
 [tool.pylint]
 # init-hook = "import sys; import os; from pylint.config import find_pylintrc; sys.path.append(os.path.dirname(find_pylintrc()))"
