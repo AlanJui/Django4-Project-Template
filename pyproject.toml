@@ -37,6 +37,7 @@ jupyter = "^1.0.0"
 selenium = "^4.8.2"
 chromedriver-autoinstaller = "^0.4.0"
 jupyterlab = "^3.6.1"
+types-requests = "^2.31.0.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -51,37 +52,37 @@ build-backend = "poetry.core.masonry.api"
 [tool.pyright]
 # include = ["src"]
 exclude = [
-  "**/__pycache__",
-  "**/migrations/**",
-  "**/venv/**",
-  "**/.venv/**",
-  "**/node_modules/**",
-  "**/dist/**",
-  "**/build/**",
-  "**/docs/**",
-  "**/tests/**",
-  "**/test/**",
-  "**/tests.py",
-  "**/.*",
+	"**/__pycache__",
+	"**/migrations/**",
+	"**/venv/**",
+	"**/.venv/**",
+	"**/node_modules/**",
+	"**/dist/**",
+	"**/build/**",
+	"**/docs/**",
+	"**/tests/**",
+	"**/test/**",
+	"**/tests.py",
+	"**/.*",
 ]
 ignore = [
-  "**/__pycache__",
-  "**/migrations/**",
-  "**/venv/**",
-  "**/.venv/**",
-  "**/node_modules/**",
-  "**/dist/**",
-  "**/build/**",
-  "**/docs/**",
-  "**/tests/**",
-  "**/test/**",
-  "**/tests.py",
+	"**/__pycache__",
+	"**/migrations/**",
+	"**/venv/**",
+	"**/.venv/**",
+	"**/node_modules/**",
+	"**/dist/**",
+	"**/build/**",
+	"**/docs/**",
+	"**/tests/**",
+	"**/test/**",
+	"**/tests.py",
 ]
 defineConstant = { DEBUG = true }
 # stubPath = "src/stubs"
+venvPath = "."
 venv = ".venv"
-# extraPaths = ["."]
-# venvPath = ".venv"
+extraPaths = [".venv/lib/python3.10/site-packages"]
 
 reportUnknownParameterType = "none"
 # reportUnusedImport = false
@@ -157,6 +158,8 @@ ignore = ["D100", "D103", "D104"]
 [tool.mypy]
 ignore_missing_imports = true
 exclude = ['.venv', 'venv']
+mypy_path = '~/workspace/rime/han_gi/.venv/lib/python3.10/site-packages'
+python_executable = '~/workspace/rime/han_gi/.venv/bin/python3.10'
 # plugins = ["mypy_django_plugin.main"]
 
 [tool.django-stubs]

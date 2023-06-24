@@ -2,7 +2,8 @@ from bs4 import BeautifulSoup
 from django.test import TestCase
 
 # from ..huan_tshiat_huat import determine_tone, parse_fanqie
-from article_pronunciation.huan_tshiat_huat import determine_tone, parse_fanqie
+from article_pronunciation.lib_huan_tshiat_huat import (determine_tone,
+                                                        parse_fanqie)
 from han_ji_dict.models import HanJi
 
 
