@@ -10,5 +10,9 @@
     "python.testing.unittestEnabled": true,
     "python.testing.pytestArgs": [
         "article_pronunciation"
-    ]
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none"
 }

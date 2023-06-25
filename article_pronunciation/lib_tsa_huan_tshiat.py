@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 # 使用《中國哲學書電子化計劃》的《漢字字典》查「讀音」
 # url = 'https://ctext.org/dictionary.pl?if=gb&char=東'
 # url = 'https://ctext.org/dictionary.pl?if=gb&char=在'
-def extract_readings_from_html(html):
+def extract_readings_from_html(han_ji, html):
     # 自「網頁」中的「表格（Table）」，查找「反切」欄位，及取出「漢字讀音」
     soup = BeautifulSoup(html, 'html.parser')
     table = soup.find('table', class_='info')
@@ -22,13 +22,29 @@ def extract_readings_from_html(html):
                         reading = content.text.strip()
                         reading_list.append(reading)
                 if reading_list:
-                    readings.append({
-                        'huan_tshiat': reading_list[0],
-                        'un_su': reading_list[1] if len(reading_list) > 1 else None,
-                        'siann_tiau': reading_list[2] if len(reading_list) > 2 else None,
-                        'siann_bu': reading_list[3] if len(reading_list) > 3 else None,
-                        'un_bu': reading_list[4] if len(reading_list) > 4 else None
-                    })
+                    for i in range(len(reading_list)):
+                        if i % 5 == 0:
+                            reading = {
+                                'han_ji': han_ji,
+                                'huan_tshiat': None,
+                                'un_su': None,
+                                'siann_tiau': None,
+                                'siann_bu': None,
+                                'un_bu': None,
+                            }
+                        if i % 5 == 0:
+                            reading['huan_tshiat'] = reading_list[i]
+                        elif i % 5 == 1:
+                            reading['un_su'] = reading_list[i]
+                        elif i % 5 == 2:
+                            reading['siann_tiau'] = reading_list[i]
+                        elif i % 5 == 3:
+                            reading['siann_bu'] = reading_list[i]
+                        elif i % 5 == 4:
+                            reading['un_bu'] = reading_list[i]
+
+                        if i % 5 == 4:
+                            readings.append(reading)
     # 若輸入之「漢字」查找不到「反切」的讀音，則 readings 為空
     return readings
 
@@ -39,7 +55,7 @@ def tsa_huan_tshiat(han_ji):
     response = requests.get(url)
 
     # 解析 HTTP Response 返回的網頁（HTML）內容
-    readings = extract_readings_from_html(response.text)
+    readings = extract_readings_from_html(han_ji, response.text)
     results = []
     for reading in readings:
         result = {
@@ -74,6 +90,8 @@ han_ji_thak_im = {
     'siann_tiau': '上聲',
     'siann_bu': '海',
     'un_bu': '在',
+
+
 }
 han_ji_thak_im2 = {
     'han_ji': '在',
