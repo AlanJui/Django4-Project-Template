@@ -1,3 +1,7 @@
+# 使用《中國哲學書電子化計劃》的《漢字字典》查「讀音」
+# url = 'https://ctext.org/dictionary.pl?if=gb&char=東'
+# url = 'https://ctext.org/dictionary.pl?if=gb&char=在'
+
 # pyright: reportUnknownArgumentType=false, reportMissingTypeArgument=false, reportMissingParameterType=false, reportUnknownVariableType=false, reportUnknownMemberType=false, reportOptionalMemberAccess=false, reportOptionalIterable=false, reportGeneralTypeIssues=false
 import requests
 from bs4 import BeautifulSoup
@@ -5,12 +9,15 @@ from bs4 import BeautifulSoup
 from han_ji_dict.models import HanJi
 
 
+# ==========================================================
+# 使用平水韻的反切規則，自反切上、下字，推導漢字在八音的聲調
+# ==========================================================
 # pylint: disable=R0912
 def determine_tone(tiau1, tiau2):  # noqa: C901
-    # determine the clearness/muddiness
+    # 以反切上字推導聲調之：清／濁
     clearness = 'clear' if int(tiau1) <= 4 else 'muddy'
 
-    # determine tone category
+    # 以反切下字推導聲調之：平／上／去／入
     if int(tiau2) in {1, 5}:
         tone_category = 'level'
     elif int(tiau2) in {2, 6}:
@@ -22,7 +29,7 @@ def determine_tone(tiau1, tiau2):  # noqa: C901
     else:
         return "Invalid tone for the lower character."
 
-    # get the tone
+    # 綜合「清／濁」音與「平／上／去／入」聲，推導聲調為：1／2／3／4／5／6／7／8
     if clearness == 'clear':
         if tone_category == 'level':
             tone = '1'
@@ -49,10 +56,10 @@ def determine_tone(tiau1, tiau2):  # noqa: C901
 # 反切法推導漢字讀音
 # ==========================================================
 def parse_fanqie(character1, character2):
-    try:
-        han_ji1 = HanJi.objects.get(han_ji=character1)
-        han_ji2 = HanJi.objects.get(han_ji=character2)
-    except HanJi.DoesNotExist:
+    han_ji1 = HanJi.objects.filter(han_ji=character1).order_by('-freq').first()
+    han_ji2 = HanJi.objects.filter(han_ji=character2).order_by('-freq').first()
+
+    if not han_ji1 or not han_ji2:
         return None
 
     siann_bu1, un_bu1, tiau1 = han_ji1.split_chu_im()
@@ -69,23 +76,54 @@ def parse_fanqie(character1, character2):
     }
 
 
-# 使用《中國哲學書電子化計劃》的《漢字字典》查「讀音」
-# url = 'https://ctext.org/dictionary.pl?if=gb&char=東'
-# url = 'https://ctext.org/dictionary.pl?if=gb&char=在'
+# ==========================================================
+# 將「反切讀音」字串列表（List），轉換成「漢字反切讀音」字典結構
+# ==========================================================
 def convert_list_to_dict_list(string_list):
     dict_list = []
-    for i in range(0, len(string_list), 5):
-        han_ji_tak_im = {
-            'huan_tshiat': string_list[i],
-            'un_su': string_list[i + 1] if i + 1 < len(string_list) else None,
-            'siann_tiau': string_list[i + 2] if i + 2 < len(string_list) else None,
-            'siann_bu': string_list[i + 3] if i + 3 < len(string_list) else None,
-            'un_bu': string_list[i + 4] if i + 4 < len(string_list) else None
-        }
+    i = 0
+    for _ in string_list:
+        # 從「反切讀音」欄位，取「上字」（聲母）、「下字」（韻母）
+        siong_ji = string_list[i][0]
+        e_ji = string_list[i][1]
+        # 以「上字」、「下字」查「音標」；再將「音標」填入「反切讀音」欄位
+        piau_im = parse_fanqie(siong_ji, e_ji)
+        piau_im = '' if piau_im is None else piau_im
+
+        if string_list[i+1] == '廣韻':
+            han_ji_tak_im = {
+                'huan_tshiat': string_list[i],
+                'piau_im': piau_im,
+                'un_su': string_list[i + 1] if i + 1 < len(string_list) else None,
+                'siann_tiau': string_list[i + 2] if i + 2 < len(string_list) else None,
+                'siann_bu': string_list[i + 3] if i + 3 < len(string_list) else None,
+                'un_bu': string_list[i + 4] if i + 4 < len(string_list) else None
+            }
+        else:
+            su_mia = f'{string_list[i]}.{string_list[i + 1]}.{string_list[i + 2]}'
+            han_ji_tak_im = {
+                'huan_tshiat': string_list[i],
+                'piau_im': piau_im,
+                'un_su': su_mia,
+                'siann_tiau': '',
+                'siann_bu': '',
+                'un_bu': ''
+            }
         dict_list.append(han_ji_tak_im)
+
+        if string_list[i+1] == '廣韻':
+            i += 5
+        else:
+            i += 4
+        if i >= len(string_list):
+            break
+
     return dict_list
 
 
+# ==========================================================
+# 自「網頁」中的「表格（Table）」，查找「反切」欄位，箤取出成「反切讀音」字串列表
+# ==========================================================
 def extract_readings_from_html(html):
     # 自「網頁」中的「表格（Table）」，查找「反切」欄位，及取出「漢字讀音」
     soup = BeautifulSoup(html, 'html.parser')
@@ -109,6 +147,10 @@ def extract_readings_from_html(html):
     return readings
 
 
+# ==========================================================
+# 向字典網站發送 HTTP Request，取得「漢字反切讀音」，以便據此反切讀音
+# 推導該漢字的「台羅拼音」
+# ==========================================================
 def tsa_huan_tshiat(han_ji):
     # 發送 HTTP GET Request，要求查詢「漢字」的「讀音」
     url = f'https://ctext.org/dictionary.pl?if=gb&char={han_ji}'
@@ -126,14 +168,6 @@ def tsa_huan_tshiat(han_ji):
 def run_test(han_ji):
     # 以「漢字」查「反切讀音」
     han_ji_dict = tsa_huan_tshiat(han_ji)
-    # 以「漢字反切讀音」查詢結果，透過「漢字典」查找「音標」
-    # pylint: disable=E1133
-    for tak_im in han_ji_dict['tak_im_list']:
-        # 從「反切讀音」欄位，取「上字」（聲母）、「下字」（韻母）
-        siong_ji = tak_im['huan_tshiat'][0]
-        e_ji = tak_im['huan_tshiat'][1:]
-        # 以「上字」、「下字」查「音標」；再將「音標」填入「反切讀音」欄位
-        tak_im['piau_im'] = parse_fanqie(siong_ji, e_ji)
 
     # 顯示查詢結果
     if len(han_ji_dict['tak_im_list']) > 0:
@@ -152,8 +186,8 @@ def run_test(han_ji):
 
 
 # 驗證用例
-run_test('在')
-run_test('離')
+# run_test('在')
+# run_test('離')
 # run_test('東')
 
 han_ji_thak_im = {

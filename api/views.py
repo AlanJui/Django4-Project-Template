@@ -1,3 +1,4 @@
+# pyright: reportUnknownArgumentType=false, reportMissingTypeArgument=false, reportMissingParameterType=false, reportUnknownVariableType=false, reportUnknownMemberType=false, reportOptionalMemberAccess=false, reportOptionalIterable=false, reportGeneralTypeIssues=false
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -19,15 +20,7 @@ def huan_tshiat_huat(request):
         han_ji = request.query_params['han_ji']
         # 以漢字查詢「反切讀音」
         han_ji_dict = tsa_huan_tshiat(han_ji)
-        tak_im_list = han_ji_dict['tak_im_list']
-        for tak_im in tak_im_list:
-            siong_ji = tak_im['huan_tshiat'][0]
-            e_ji = tak_im['huan_tshiat'][1:]
-            tak_im['piau_im'] = parse_fanqie(siong_ji, e_ji)
-        return Response({
-            'han_ji': han_ji,
-            'tak_im_list': tak_im_list,
-        })
+        return Response(han_ji_dict)
     else:
         return Response({'error': '請提供要查詢的漢字。'})
 
