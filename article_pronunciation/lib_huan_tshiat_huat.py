@@ -55,5 +55,10 @@ def parse_fanqie(character1, character2):
 
     tone = determine_tone(tiau1, tiau2)
 
-    pinyin = siann_bu1 + un_bu2 + tone
-    return pinyin
+    piau_im = siann_bu1 + un_bu2 + tone
+
+    return {
+        'tsuan_ji': piau_im,                     # 漢字拼音
+        'siong_ji': [siann_bu1, un_bu1, tiau1],  # 上字
+        'e_ji': [siann_bu2, un_bu2, tiau2],      # 下字
+    }

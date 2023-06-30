@@ -1,10 +1,12 @@
+# pyright: reportUnknownArgumentType=false, reportMissingTypeArgument=false, reportMissingParameterType=false, reportUnknownVariableType=false, reportUnknownMemberType=false, reportOptionalMemberAccess=false, reportOptionalIterable=false, reportGeneralTypeIssues=false
 import requests
 from bs4 import BeautifulSoup
 
 from han_ji_dict.models import HanJi
 
 
-def determine_tone(tiau1, tiau2):
+# pylint: disable=R0912
+def determine_tone(tiau1, tiau2):  # noqa: C901
     # determine the clearness/muddiness
     clearness = 'clear' if int(tiau1) <= 4 else 'muddy'
 
@@ -58,8 +60,13 @@ def parse_fanqie(character1, character2):
 
     tone = determine_tone(tiau1, tiau2)
 
-    pinyin = siann_bu1 + un_bu2 + tone
-    return pinyin
+    piau_im = siann_bu1 + un_bu2 + tone
+
+    return {
+        'tsuan_ji': piau_im,                     # 漢字拼音
+        'siong_ji': [siann_bu1, un_bu1, tiau1],  # 上字
+        'e_ji': [siann_bu2, un_bu2, tiau2],      # 下字
+    }
 
 
 # 使用《中國哲學書電子化計劃》的《漢字字典》查「讀音」
@@ -120,12 +127,13 @@ def run_test(han_ji):
     # 以「漢字」查「反切讀音」
     han_ji_dict = tsa_huan_tshiat(han_ji)
     # 以「漢字反切讀音」查詢結果，透過「漢字典」查找「音標」
+    # pylint: disable=E1133
     for tak_im in han_ji_dict['tak_im_list']:
         # 從「反切讀音」欄位，取「上字」（聲母）、「下字」（韻母）
-        siong_im = tak_im['huan_tshiat'][0]
+        siong_ji = tak_im['huan_tshiat'][0]
         e_ji = tak_im['huan_tshiat'][1:]
         # 以「上字」、「下字」查「音標」；再將「音標」填入「反切讀音」欄位
-        tak_im['piau_im'] = parse_fanqie(siong_im, e_ji)
+        tak_im['piau_im'] = parse_fanqie(siong_ji, e_ji)
 
     # 顯示查詢結果
     if len(han_ji_dict['tak_im_list']) > 0:
@@ -134,7 +142,9 @@ def run_test(han_ji):
         for tak_im in han_ji_dict['tak_im_list']:
             print('----------------------------------------------')
             print(f'【反切讀音】：{tak_im["huan_tshiat"]}')
-            print(f'【拼音字母】：{tak_im["piau_im"]}')
+            print(f'【台羅拼音】：{tak_im["piau_im"]["tsuan_ji"]}')
+            print(f'【上字拼音】：{tak_im["piau_im"]["siong_ji"]}')
+            print(f'【下字拼音】：{tak_im["piau_im"]["e_ji"]}')
             print(f'【查詢結果】：{tak_im}')
     else:
         print('找不到反切讀音')
@@ -143,24 +153,35 @@ def run_test(han_ji):
 
 # 驗證用例
 run_test('在')
+run_test('離')
 # run_test('東')
 
-# han_ji_thak_im = {
-#     'han_ji': '在',
-#     'huan_tshiat': '昨宰',
-#     'un_su': '廣韻',
-#     'siann_tiau': '上聲',
-#     'siann_bu': '海',
-#     'un_bu': '在',
-
-
-# }
-# han_ji_thak_im2 = {
-#     'han_ji': '在',
-#     'huan_tshiat': '昨代',
-#     'un_su': '廣韻',
-#     'siann_tiau': '去聲',
-#     'siann_bu': '代',
-#     'un_bu': '載',
-# }
-# han_ji_thak_im_list = [han_ji_thak_im, han_ji_thak_im2]
+han_ji_thak_im = {
+    'han_ji': '在',
+    'tak_im_list': [
+        {
+            'huan_tshiat': '昨宰',
+            'piau_im': {
+                'tsuan_ji': 'tsai6',
+                'siong_ji': ['ts', 'ok', '8'],
+                'e_ji': ['ts', 'ai', '2'],
+            },
+            'un_su': '廣韻',
+            'siann_tiau': '上聲',
+            'siann_bu': '海',
+            'un_bu': '在',
+        },
+        {
+            'huan_tshiat': '昨代',
+            'piau_im': {
+                'tsuan_ji': 'tsai7',
+                'siong_ji': ['ts', 'ok', '8'],
+                'e_ji': ['t', 'ai', '7'],
+            },
+            'un_su': '廣韻',
+            'siann_tiau': '去聲',
+            'siann_bu': '代',
+            'un_bu': '載',
+        },
+    ],
+}

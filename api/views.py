@@ -1,9 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from article_pronunciation.lib_huan_tshiat_huat import (determine_tone,
-                                                        parse_fanqie)
-from article_pronunciation.lib_tsa_huan_tshiat import tsa_huan_tshiat
+from article_pronunciation.lib_tsa_huan_tshiat import (determine_tone,
+                                                       parse_fanqie,
+                                                       tsa_huan_tshiat)
 from han_ji_dict.models import HanJi
 
 
