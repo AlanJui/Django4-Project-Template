@@ -4,9 +4,9 @@ sidebar: auto
 
 <!-- markdownlint-disable MD024 MD043 -->
 
-# 軟體需求規格
+# 系統需求規格
 
-我需要打造一個應用系統，讓我記錄漢字的「讀音」。我的需求條列如下，請代為撰寫程式碼：
+本專案將建置之系統，其技術相關之系統需求描述如下：
 
 ## 1. 專案規格
 
@@ -20,11 +20,13 @@ sidebar: auto
 
 1.4 Python Package Manager 工具： Poetry
 
-1.5 Python Virtual Environment 目錄：位於 Project 目錄之下，使用名稱為： .venv 。
+1.5 Python Virtual Environment 目錄：位於 Project 目錄之下，
+使用名稱為： .venv 。
 
 ## 2. 漢字字庫應用
 
-需要一個「漢字字典」管理功能 。使用 han_ji_dict 為 App Name 。功能需求如下
+需要一個「漢字字典」管理功能 。使用 han_ji_dict 為 App Name
+。功能需求如下
 
 2.1 提供基本編輯功能：新增、更改、刪除及查詢。
 
@@ -52,6 +54,7 @@ sidebar: auto
 
 3-1. 可以輸入一篇文章；
 
-3-2. 文章中的「漢字讀音」，可從「漢字字典」查找其讀音，然後顯示於螢幕；
+3-2. 文章中的「漢字讀音」，可從「漢字字典」查找其讀音，然後
+顯示於螢幕；
 
 3-3. 使用 HTML Ruby Tag 為「漢字」標示「讀音」。
