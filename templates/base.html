@@ -63,7 +63,9 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2023 Web App. All rights reserved.</p>
+        {% block footer %}
+            {% include "footer.html" %}
+        {% endblock %}
     </footer>
 
     <script src="{% static 'js/app.js' %}"></script>

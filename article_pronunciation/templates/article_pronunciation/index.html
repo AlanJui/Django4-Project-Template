@@ -12,6 +12,7 @@
 {% endblock styles %}
 
 {% block content %}
+<div class="container">
   <form method="post">
     {% csrf_token %}
     <h3><label for="text">輸入欲找讀音的漢字：</label></h3>
@@ -64,6 +65,7 @@
         <button type="submit">存檔</button>
     </form>
   {% endif %}
+</div>
 {% endblock %}
 
 {% block javascript %}

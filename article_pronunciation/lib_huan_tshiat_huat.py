@@ -6,41 +6,41 @@ from han_ji_dict.models import HanJi
 
 def determine_tone(tiau1, tiau2):
     # determine the clearness/muddiness
-    clearness = 'clear' if int(tiau1) <= 4 else 'muddy'
+    tshing_lo_im = 'tshing' if int(tiau1) <= 4 else 'lo'
 
-    # determine tone category
+    # 定四聲：平、上、去、入
     if int(tiau2) in {1, 5}:
-        tone_category = 'level'
+        si_siann_tiau = 'ping'
     elif int(tiau2) in {2, 6}:
-        tone_category = 'rising'
+        si_siann_tiau = 'siong'
     elif int(tiau2) in {3, 7}:
-        tone_category = 'departing'
+        si_siann_tiau = 'khi'
     elif int(tiau2) in {4, 8}:
-        tone_category = 'entering'
+        si_siann_tiau = 'jip'
     else:
-        return "Invalid tone for the lower character."
+        return f"{tiau2} 聲調，無法歸入四聲調：平、上、去、入其中一種！"
 
-    # get the tone
-    if clearness == 'clear':
-        if tone_category == 'level':
-            tone = '1'
-        elif tone_category == 'rising':
-            tone = '2'
-        elif tone_category == 'departing':
-            tone = '3'
+    # 分清、濁
+    if tshing_lo_im == 'tshing_lo':
+        if si_siann_tiau == 'ping':
+            tiau_ho = '1'
+        elif si_siann_tiau == 'siong':
+            tiau_ho = '2'
+        elif si_siann_tiau == 'khi':
+            tiau_ho = '3'
         else:  # entering
-            tone = '4'
-    else:  # muddy
-        if tone_category == 'level':
-            tone = '5'
-        elif tone_category == 'rising':
-            tone = '6'
-        elif tone_category == 'departing':
-            tone = '7'
+            tiau_ho = '4'
+    else:  # lo
+        if si_siann_tiau == 'ping':
+            tiau_ho = '5'
+        elif si_siann_tiau == 'siong':
+            tiau_ho = '6'
+        elif si_siann_tiau == 'khi':
+            tiau_ho = '7'
         else:  # entering
-            tone = '8'
+            tiau_ho = '8'
 
-    return tone
+    return tiau_ho, tshing_lo_im, si_siann_tiau
 
 
 def parse_fanqie(character1, character2):
@@ -53,12 +53,19 @@ def parse_fanqie(character1, character2):
     siann_bu1, un_bu1, tiau1 = han_ji1.split_chu_im()
     siann_bu2, un_bu2, tiau2 = han_ji2.split_chu_im()
 
-    tone = determine_tone(tiau1, tiau2)
+    tiau_ho, tshing_lo_im, si_siann_tiau = determine_tone(tiau1, tiau2)
 
-    piau_im = siann_bu1 + un_bu2 + tone
+    piau_im = siann_bu1 + un_bu2 + tiau_ho
 
     return {
-        'tsuan_ji': piau_im,                     # 漢字拼音
+        'piau_im': piau_im,                      # 漢字拼音
         'siong_ji': [siann_bu1, un_bu1, tiau1],  # 上字
         'e_ji': [siann_bu2, un_bu2, tiau2],      # 下字
+        'tshing_lo_im': tshing_lo_im,            # 清濁音
+        'si_siann_tiau': si_siann_tiau,          # 四聲調
+        'siann_bu': f"{siann_bu1}",              # 聲母
+        'siann_bu_piau_im': f"{siann_bu1}{un_bu1}{tiau1}",
+        'un_bu': f"{un_bu2}",                    # 韻母
+        'un_bu_piau_im': f"{siann_bu2}{un_bu2}{tiau2}",
+        'tiau_ho': tiau_ho,                      # 聲調
     }

@@ -172,10 +172,15 @@ def huan_tshiat_huat(request):
             characters = form.cleaned_data['characters']
             character1 = characters[0]
             character2 = characters[1]
-            pinyin = parse_fanqie(character1, character2)
+            han_ji_haut_im = parse_fanqie(character1, character2)
             return render(request,
                           'article_pronunciation/huan_tshiat_huat.html',
-                          {'form': form, 'pinyin': pinyin})
+                          {
+                              'form': form,
+                              'siong_ji': character1,
+                              'e_ji': character2,
+                              'han_ji_haut_im': han_ji_haut_im,
+                          })
     else:
         form = FanqieForm()
     return render(request,

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "article_pronunciation/base.html" %}
 {% load static %}
 
 {% block title %}反切法求漢字拼音{% endblock %}
@@ -9,18 +9,53 @@
 {% endblock styles %}
 
 {% block content %}
-    <h2>反切法</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">提交</button>
     </form>
-    {% if pinyin %}
-      <div style="padding-top: 20px; color: red;">
-        <p>漢字拼音: {{ pinyin }}</p>
+    <br/>
+    {% if han_ji_haut_im %}
+      <div class="content-area">
+        <table>
+          <tr>
+            <th>反切音：</th>
+            <td>{{ han_ji_haut_im.piau_im }}</td>
+          </tr>
+          <tr>
+            <th>上&nbsp;&nbsp;&nbsp;&nbsp;字：</th>
+            <td>{{ siong_ji }}</td>
+            <td>{{ han_ji_haut_im.siann_bu_piau_im }}</td>
+            <td>&nbsp;&nbsp;</td>
+            {% if han_ji_haut_im.tshing_lo_im == "tshing" %}
+                <td>清音</td>
+            {% else %}
+                <td>濁音</td>
+            {% endif %}
+          </tr>
+          <tr>
+            <th>下&nbsp;&nbsp;&nbsp;&nbsp;字：</th>
+            <td>{{ e_ji }}</td>
+            <td>{{ han_ji_haut_im.un_bu_piau_im }}</td>
+            <td>&nbsp;&nbsp;</td>
+            {% if han_ji_haut_im.si_siann_tiau == "phing" %}
+                <td>平聲</td>
+            {% elif han_ji_haut_im.si_siann_tiau == "siong" %}
+                <td>上聲</td>
+            {% elif han_ji_haut_im.si_siann_tiau == "khi" %}
+                <td>去聲</td>
+            {% else %}
+                <td>入聲</td>
+            {% endif %}
+          </tr>
+          <tr>
+          </tr>
       </div>
     {% endif %}
 {% endblock content %}
+
+{% block footer %}
+{% endblock %}
 
 {% block javascript %}
 <!-- 加入自己的 JavaScript -->
