@@ -16,7 +16,7 @@
     </form>
     <br/>
     {% if han_ji_haut_im %}
-      <div class="content-area">
+      <div class="content-area" style="font-size: 1.0em">
         <table>
           <tr>
             <th>反切音：</th>
@@ -24,31 +24,36 @@
           </tr>
           <tr>
             <th>上&nbsp;&nbsp;&nbsp;&nbsp;字：</th>
-            <td>{{ siong_ji }}</td>
-            <td>{{ han_ji_haut_im.siann_bu_piau_im }}</td>
+            <td>{{ siong_ji }}({{ han_ji_haut_im.siann_bu_piau_im }})</td>
             <td>&nbsp;&nbsp;</td>
-            {% if han_ji_haut_im.tshing_lo_im == "tshing" %}
-                <td>清音</td>
-            {% else %}
-                <td>濁音</td>
-            {% endif %}
+            <td>聲：</td>
+            <td>{{ han_ji_haut_im.siann_piau_im }}</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>分清濁：</td>
+            <td>{{ han_ji_haut_im.tshing_lo_im}}音</td>
+            <td>&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <th>下&nbsp;&nbsp;&nbsp;&nbsp;字：</th>
-            <td>{{ e_ji }}</td>
-            <td>{{ han_ji_haut_im.un_bu_piau_im }}</td>
+            <td>{{ e_ji }}({{ han_ji_haut_im.un_bu_piau_im }})</td>
             <td>&nbsp;&nbsp;</td>
-            {% if han_ji_haut_im.si_siann_tiau == "phing" %}
-                <td>平聲</td>
-            {% elif han_ji_haut_im.si_siann_tiau == "siong" %}
-                <td>上聲</td>
-            {% elif han_ji_haut_im.si_siann_tiau == "khi" %}
-                <td>去聲</td>
-            {% else %}
-                <td>入聲</td>
-            {% endif %}
+            <td>韻：</td>
+            <td>{{ han_ji_haut_im.un_piau_im }}</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>定四聲：</td>
+            <td>{{ han_ji_haut_im.si_siann_tiau }}聲</td>
+            <td>&nbsp;&nbsp;</td>
           </tr>
           <tr>
+            <th></th>
+            <td></td>
+            <td>&nbsp;&nbsp;</td>
+            <td></td>
+            <td>&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>聲&nbsp;&nbsp;調：</td>
+            <td>{{ han_ji_haut_im.tiau_ho }}</td>
+            <td>&nbsp;&nbsp;</td>
           </tr>
       </div>
     {% endif %}
