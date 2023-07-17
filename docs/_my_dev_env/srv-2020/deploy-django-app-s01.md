@@ -73,8 +73,6 @@ lines 1-14/14 (END)
 http://[IP_Address]
 ```
 
-![]()
-
 ### （2）建置使用之 Host Name 與 IP
 
 在 Host 清單（檔案：/etc/hosts），建置 Django 應用系統之
