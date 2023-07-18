@@ -4,11 +4,12 @@ sidebar: auto
 
 <!-- markdownlint-disable MD024 MD043 -->
 
-# 專案伺服器建置指引
+# 建置作業程序
 
 ## 摘要
 
-說明如何在 Ubuntu 作業系統，佈署 Django 應用系統。
+首次建置應用系統所需之執行平台時，應循本作業程序，完成應用系
+統應用有之安裝及設定工作。
 
 ## 作業流程
 
@@ -16,64 +17,6 @@ sidebar: auto
 - 安裝應用系統作業
 - 安裝 HTTP 服務作業
 - 安裝 WSGI 服務作業
-
-## 應用系統服務架構
-
-### 應用系統通訊作業流程
-
-使用本專案之應用系統，使用者（亦稱：Web Client）在應用系統上
-的操作與系統執行結果的回應，大致循以下之流程步聚運行：
-
-1. Web Client 發送 HTTP Request；
-
-2. HTTP 服務收到 HTTP Request 後，屬「靜態檔案」 (Static
-   Files) 之請求，負責提供相關檔案予 Web Client 下載；或是將
-   HTTP Request 打包成：「檔案類型」 之 Unix Socket ，然後轉
-   交 APP 服務 (uWSGI) 處理；
-
-3. APP 服務自檔案讀取 Unix Socket 內容，並轉發予 Django 應用
-   系統處理此發自 Web Client 端之 HTTP Request。
-
-<mermaid/>
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Browser
-    participant System
-
-    User->>Browser: 輸入URI 網址：<br>/article_pronunciation/input/
-    Browser->>System: 發送系統功能指令 (HTTP GET Request)
-    System->>Browser: 回傳表單網頁 (HTTP Response)
-    Browser->>User: 依據 HTTP Response 顯示網頁
-    User->>Browser: 在網頁中的表單輸入漢字並按提交鈕
-    Browser->>System: 發送 HTTP POST Request（表單中輸入的漢字）
-    System->>System: 處理輸入的漢字，將之標註讀音
-    Note over System: 為文章中的每個漢字標註福建話音標。
-    System->>Browser: 重導 URI 網址：<br>/article_pronunciation/pronunciation/
-    Browser->>User: 顯示標註讀音的漢字
-    Note over User,Browser: 文章中的每個漢字都標註有它的讀音。
-```
-
-### 伺服器服務架構
-
-依據上述「應用系統通訊作業流程」，本專案之應用系統採用如下之
-服務架構，以滿足作業上的需求。
-
-![](./imgs/client-nginx-uwsgi-django.png)
-
-應用系統之運作，由下列三項服務(Services)協同作業：
-
-- HTTP 服務: 由 Ngnix 擔綱，作為 HTTP Server ；
-
-- WSGI 服務: WSGI（Web Server Gateway Interface）由 uWSGI 擔
-  鋼，作為 HTTP Serive 與 APP 服務的溝通中介；
-
-- APP 服務: 專案開發之 Django 應用系統。
-
-### 應用系統目錄結構
-
-![](./imgs/django-app-dirs.png)
 
 ## 安裝應用系統作業平台
 
@@ -85,11 +28,35 @@ sequenceDiagram
 
 ### 安裝 pyenv
 
+[pyenv github 官網](https://github.com/pyenv/pyenv)
+
 1. 安裝 pyenv
+
+```sh
+curl https://pyenv.run | bash
+```
 
 2. 設定 Shell
 
+```sh
+#--------------------------------------------------------------------
+# pyenv
+#--------------------------------------------------------------------
+# export PYENV_ROOT=$(pyenv root)
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init --path)"
+ eval "$(pyenv init -)"
+fi
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+```
+
 3. 重啟 Shell
+
+```sh
+exec $SHELL
+```
 
 ### 安裝 python
 
@@ -99,58 +66,133 @@ pyenv install 3.10.6
 
 ### 安裝 poetry
 
-## 安裝應用系統
+[Python Poetry 官網](https://python-poetry.org/)
 
-### 建置佈署目錄
-
-1.
+1. 安裝 poetry 套件
 
 ```sh
-sudo mkdir /apps && cd $_
-sudo chown -r alanjui:www
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-### 自 Git Repo 下載原始碼
+2. 驗證安裝結果。
 
-自 GitHub 下載及安裝 Django 應用系統。
+```sh
+ll ~/.local/share/pypoetry
+```
 
-1. 自 GitHub 下載原始碼。
+3. 設定 SHELL 環境
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+4. 重啟 SHELL
+
+```sh
+exec $SHELL
+```
+
+5. 驗證安裝及設定結果。
+
+```sh
+poetry --version
+
+poetry self update
+```
+
+## 安裝應用系統
+
+### 應用系統目錄結構
+
+![](./imgs/django-app-dirs.png)
+
+### 建置目錄及設定使用權限
+
+1. 建置應用系統安裝目錄。
+
+```sh
+❯ sudo mkdir /apps && cd $_
+
+❯ sudo chown -R www-data:www-data /apps
+
+❯ ll /apps
+總用量 12
+drwxrwxr-x  3 www-data www-data 4096  3月 26 20:29 ./
+drwxr-xr-x 22 root     root     4096  3月 26 20:23 ../
+drwxrwxr-x 14 www-data www-data 4096  3月 26 20:30 Django4-Project-Template/
+```
+
+2. 將系統管理員用戶帳號加入 www-data 群組。
+
+```sh
+❯ sudo usermod -a -G www-data alanjui
+
+❯ id alanjui
+uid=1000(alanjui) gid=1000(alanjui) groups=1000(alanjui),4(adm),24(cdrom),27(sudo),30(dip),33(www-data),46(plugdev),109(kvm),122(lpadmin),134(lxd),135(sambashare),138(libvirt)
+```
+
+3. 用戶帳號登出；再登入。
+
+務必執行此步驟，否則已付予 www-data 群組，在目錄及檔案之使用
+權限，將無法正常運作。
+
+### 安裝作業程序步驟
+
+1. 進入應用系統安裝目錄
 
    ```sh
    cd /apps
-   git clone git@github.com:AlanJui/Django4-Project-Template.git app1.ccc.tw.local
-   cd app1.ccc.tw.local
    ```
 
-2. 建置 Python 虛擬環境
+2. 自 Git Repo 下載原始碼
 
    ```sh
-   pyenv local 3.10.6
-   pyenv version
-   python -m venv .venv
+   git clone git@github.com:AlanJui/Django4-Project-Template.git han-gi.ccc.tw.local
+   cd han-gi.ccc.tw.local
    ```
 
-3. 安裝應用系統所需使用之 Python 套件。
+3. 建置 Python 虛擬環境
 
    ```sh
-   poetry shell
-   poetry install
+   ❯ pyenv version
+   3.10.6 (set by /apps/han-gi.ccc.tw.local/.python-version)
+
+   ❯ python -m venv .venv
+   ❯ ll .venv
+   總用量 24
+   drwxrwxr-x  5 alanjui alanjui 4096  7月 18 12:38 ./
+   drwxrwxr-x 16 alanjui alanjui 4096  7月 18 12:38 ../
+   drwxrwxr-x  2 alanjui alanjui 4096  7月 18 12:38 bin/
+   drwxrwxr-x  2 alanjui alanjui 4096  7月 18 12:38 include/
+   drwxrwxr-x  3 alanjui alanjui 4096  7月 18 12:38 lib/
+   lrwxrwxrwx  1 alanjui alanjui    3  7月 18 12:38 lib64 -> lib/
+   -rw-rw-r--  1 alanjui alanjui  102  7月 18 12:38 pyvenv.cfg
    ```
 
-4. 組建應用系統。
+4. 安裝應用系統所需使用之 Python 套件。
 
    ```sh
-   python manage.py migrate
-   python manage.py collectstatic
+   ❯ poetry shell
+   Spawning shell within /apps/han-gi.ccc.tw.local/.venv
+   ❯ emulate bash -c '. /apps/han-gi.ccc.tw.local/.venv/bin/activate'
+
+   ❯ poetry install
    ```
 
-5. 建立應用系統之「後台管理員」。
+5. 組建應用系統。
+
+```sh
+python manage.py migrate
+python manage.py collectstatic
+```
+
+6. 建立應用系統之「後台管理員」。
 
    ```sh
    python manage.py createsuperuser
    ```
 
-### 驗證應用系統已能運作
+### 驗證安裝作業成功
 
 1. 啟動 Django Web Server。
 
