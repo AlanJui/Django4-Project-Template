@@ -18,6 +18,25 @@ sidebar: auto
 - 安裝 HTTP 服務作業
 - 安裝 WSGI 服務作業
 
+## 設定 Hostname 與 IP 對照表
+
+在 Host 清單（檔案：/etc/hosts），建置 Django 應用系統之
+Host Name 及使 用之 IP 。
+
+1. 編輯 Host 清單。
+
+```
+sudoedit /etc/hosts
+```
+
+2. 添加一筆 Host 與 IP 對映紀錄。
+
+```
+127.0.0.1       localhost
+127.0.0.1       SRV-2020
+192.168.66.10   app.ccc.tw.local
+```
+
 ## 安裝應用系統作業平台
 
 設定 Python 作業環境。
@@ -207,9 +226,29 @@ python manage.py collectstatic
    http://127.0.0.1:8000/
    ```
 
+### 驗證 Hostname 亦能連線
+
+1. 編輯 /etc/hosts
+
+```sh
+192.168.66.20   han-gi.ccc.tw.local
+```
+
+2. 啟動 Django Web Server。
+
+   ```sh
+   python manage.py runserver 0.0.0.0:8000
+   ```
+
+3. 在瀏覽器輸入以下網址，驗證 Hostname 已能正常運作。
+
+   ```
+   http://han-gi.ccc.tw.local:8000/
+   ```
+
 ## 安裝 HTTP 服務
 
-### 安裝 HTTP 服務
+### 安裝 nginx 套件
 
 安裝 nginx 作為 HTTP Server
 
@@ -255,65 +294,36 @@ lines 1-14/14 (END)
 表 HTTP Server 已能 正常運作。
 
 ```
-http://[IP_Address]
+http://han-gi.ccc.tw.local/
 ```
 
-### 設定 Hostname 與 IP 對照表
-
-在 Host 清單（檔案：/etc/hosts），建置 Django 應用系統之
-Host Name 及使 用之 IP 。
-
-1. 編輯 Host 清單。
-
-```
-sudoedit /etc/hosts
-```
-
-2. 添加一筆 Host 與 IP 對映紀錄。
-
-```
-127.0.0.1       localhost
-127.0.0.1       SRV-2020
-192.168.66.10   app.ccc.tw.local
-```
+![nginx](./imgs/nginx.png)
 
 ### 建置 HTTP 虛擬網站
 
 建置 HTTP 虛擬網站，供 Django 應用系統，處理 static 型態檔案
 。
 
-1. 建置 Django 應用系統之 Host 名稱
-
-   ```sh
-   sudoedit /etc/hosts
-   ```
-
-   `/etc/hosts`:
-
-   ```
-   192.168.66.10   app1.ccc.tw.local
-   ```
-
-2. 建置 Nginx 虛擬網站設定檔。
+1. 建置 Nginx 虛擬網站設定檔。
 
    ```sh
    cd /etc/nginx/site-available
-   sudo cp default app1.ccc.tw.local
-   sudoedit app1.ccc.tw.local
+   sudo cp default han-gi.ccc.tw.local
+   sudoedit han-gi.ccc.tw.local
    ```
 
-   /etc/nginx/sites-available/app1.ccc.tw.local:
+   /etc/nginx/sites-available/hangi.ccc.tw.local:
 
    ```sh
-   upstream app1 {
+   upstream django_hangi {
        # server 127.0.0.1:8001;
-       server unix:///apps/app1.ccc.tw.local/app1.sock;
+       server unix:///apps/hangi.ccc.tw.local/hangi.sock;
    }
 
    server {
        listen 80;
 
-       server_name             app1.ccc.tw.local;
+       server_name             hangi.ccc.tw.local;
        charset                 utf-8;
 
        # max upload size
@@ -321,36 +331,46 @@ sudoedit /etc/hosts
 
        # Django media
        location /media {
-           alias        /apps/app1.ccc.tw.local/media;
+           alias        /apps/hangi.ccc.tw.local/media;
        }
 
        location /static {
-           alias        /apps/app1.ccc.tw.local/static_collected;
+           alias        /apps/hangi.ccc.tw.local/static_collected;
        }
 
        location / {
-           uwsgi_pass   django;
-           include      /apps/app1.ccc.tw.local/uwsgi_params;
+           uwsgi_pass   django_hangi;
+           include      /apps/hangi.ccc.tw.local/uwsgi_params;
        }
 
-       access_log      /var/log/nginx/app1-ccc-tw-local.log;
-       error_log       /var/log/nginx/app1-ccc-tw-local-error.log;
+       access_log      /var/log/nginx/hangi.ccc.tw.local.log;
+       error_log       /var/log/nginx/hangi.ccc.tw.local.error.log;
    }
    ```
 
-3. 檢測設定檔，確認內容無誤。
+2. 檢測設定檔，確認內容無誤。
 
    ```sh
-   sudo nginx -t
+   ❯ sudo nginx -t
+   nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+   nginx: configuration file /etc/nginx/nginx.conf test is successful
    ```
+
+### 目錄及檔案權限設定
+
+```sh
+sudo chown -R root:www-data /etc/nginx/sites-available
+sudo chown -R root:www-data /etc/nginx/sites-enable
+
+sudo chown -R alanjui:www-data /apps/hangi.ccc.tw.local
+```
 
 ### 啟用 HTTP 虛擬網站
 
 1. 建立啟用 nginx 虛擬網站之 symlink 。
 
    ```sh
-   sudo ln -fns /etc/nginx/sites-available/app1.ccc.tw.local
-   /etc/nginx/sites-enable
+   sudo ln -fns /etc/nginx/sites-available/han-gi.ccc.tw.local /etc/nginx/sites-enable
    ```
 
 2. 重啟 nginx 服務。
@@ -358,6 +378,12 @@ sudoedit /etc/hosts
    ```sh
    sudo systemctl restart nginx
    sudo systemctl status nginx
+   ```
+
+   ```sh
+   ❯ sudo systemctl restart nginx
+   Job for nginx.service failed because the control process exited with error code.
+   See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
    ```
 
 ### 驗證 HTTP 虛擬網站已能運作
@@ -372,6 +398,7 @@ Response 。
 
 ```sh
 http://app1.ccc.tw.local/static/css/site.css
+http://hangi.ccc.tw.local/static/admin/css/base.css
 ```
 
 ## 安裝 WSGI 服務
@@ -383,11 +410,20 @@ WSGI 是 Python Web 應用系統介面，當 HTTP 虛擬網站對於無法處
 Application 處理。
 
 ```sh
-upstream app1 {
+upstream django_hangi {
     # server 127.0.0.1:8001;
-    server unix:///apps/app1.ccc.tw.local/app1.sock;
+    server unix:///apps/hangi.ccc.tw.local/web_app.sock;
 }
 ......
+```
+
+```sh
+uwsgi --socket web_app.sock --wsgi-file test.py --chmod-socket=666
+```
+
+```sh
+http://hangi.ccc.tw.local/
+http://hangi.ccc.tw.local/static/admin/css/base.css
 ```
 
 此步驟的主要目的，用於建立下列所示之 HTTP Request 傳送通道：

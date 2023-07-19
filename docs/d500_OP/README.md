@@ -99,3 +99,52 @@ sequenceDiagram
 
 - [建置作業程序](./d510_Build_Server.md)
 - [更新作業程序](./d520_Update.md)
+
+## 參考文件
+
+- [How to use Django with uWSGI](https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/uwsgi/)
+  : Django 官網提供之文件，說明 Django 應用系統如何與 uWSGI
+  整合；
+
+- [uWSGI 官網文件](https://uwsgi-docs.readthedocs.io/en/latest/)
+
+  - [Installing uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/Install.html)
+  - [Setting up Django and your web server with uWSGI and nginx](https://uwsgi.readthedocs.io/en/latest/tutorials/Django_and_nginx.html)
+
+## 名詞解釋
+
+- WSGI: Web Server Gateway Interface. WSGI is a Python
+  standard.
+
+A web server faces the outside world. It can serve files
+(HTML, images, CSS, etc) directly from the file system.
+However, it can’t talk directly to Django applications; it
+needs something that will run the application, feed it
+requests from web clients (such as browsers) and return
+responses.
+
+A Web Server Gateway Interface - WSGI - does this job. WSGI
+is a Python standard.
+
+uWSGI is a WSGI implementation. In this tutorial we will set
+up uWSGI so that it creates a Unix socket, and serves
+responses to the web server via the uwsgi protocol. At the
+end, our complete stack of components will look like this:
+
+    the web client <-> the web server <-> the socket <-> uwsgi <-> Django
+
+Web 伺服器（或稱 HTTP 服務）負責與外界連繫。當外界欲提取檔案
+時（如：HTML 網頁、圖像、CSS 等），可由 Web 伺服器負責完成。
+然而，它不能直接與 Django 應用系統對話。
+
+當 Web 用戶端（如：瀏覽器）發出的請求（request），需要
+Django 應用系統進行處理，然後回應（Response）時，則需要一個
+中介軟體；由此中介軟體即所謂之：WSGI。
+
+WSGI 的用途在於：自 Web 伺服器接收來自 Web 用戶端的請求；然
+後轉交予 Django 應用系統處理；最後將 Django 應用系統處理的結
+果回應予 Web 用戶端。
+
+WSGI 是 Ptyhon Web 的標準，故 Django 應用系統需藉此標準與
+Web 伺服器串接整合。而 uWSGI 則是一個依據 WSGI 標準實作之軟
+體。
