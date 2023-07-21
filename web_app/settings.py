@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'app3.ccc.tw.local',
-    'han-gi.ccc.tw.local',
+    'hangi.ccc.tw.local',
 ]
 
 
