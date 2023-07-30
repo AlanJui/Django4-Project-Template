@@ -153,8 +153,8 @@ ignore = ["D100", "D103", "D104"]
 [tool.mypy]
 ignore_missing_imports = true
 exclude = ['.venv', 'venv']
-mypy_path = '~/workspace/rime/han_gi/.venv/lib/python3.10/site-packages'
 python_executable = '~/workspace/rime/han_gi/.venv/bin/python3.10'
+# mypy_path = '~/workspace/rime/han_gi/.venv/lib/python3.10/site-packages'
 # plugins = ["mypy_django_plugin.main"]
 
 [tool.django-stubs]
