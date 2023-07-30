@@ -2,6 +2,7 @@
 # 反切法推導漢字讀音
 # ==========================================================
 from han_ji_dict.models import HanJi
+from django.core.exceptions import MultipleObjectsReturned
 
 
 def determine_tone(tiau1, tiau2):
@@ -43,14 +44,22 @@ def determine_tone(tiau1, tiau2):
     return tiau_ho, tshing_lo_im, si_siann_tiau
 
 
-def parse_fanqie(character1, character2):
+def parse_huan_tshiat(character1, character2):
     try:
         # 取聲母
         han_ji1 = HanJi.objects.get(han_ji=character1)
+    except HanJi.DoesNotExist:
+        return None
+    except MultipleObjectsReturned:
+        han_ji1 = HanJi.objects.filter(han_ji=character1).first()
+
+    try:
         # 取韻母
         han_ji2 = HanJi.objects.get(han_ji=character2)
     except HanJi.DoesNotExist:
         return None
+    except MultipleObjectsReturned:
+        han_ji2 = HanJi.objects.filter(han_ji=character2).first()
 
     # 取聲母：siann_bu1
     siann_bu1, un_bu1, tiau1 = han_ji1.split_chu_im()

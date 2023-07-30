@@ -6,7 +6,8 @@ from django.shortcuts import render
 from han_ji_dict.models import HanJi
 
 from .forms import FanqieForm
-from .lib_huan_tshiat_huat import parse_fanqie
+# from .lib_huan_tshiat_huat import parse_fanqie
+from .lib_huan_tshiat_huat import parse_huan_tshiat
 
 
 # 依據「漢字」查字典，並取出漢字讀音
@@ -172,7 +173,7 @@ def huan_tshiat_huat(request):
             characters = form.cleaned_data['characters']
             character1 = characters[0]
             character2 = characters[1]
-            han_ji_haut_im = parse_fanqie(character1, character2)
+            han_ji_haut_im = parse_huan_tshiat(character1, character2)
             return render(request,
                           'article_pronunciation/huan_tshiat_huat.html',
                           {
