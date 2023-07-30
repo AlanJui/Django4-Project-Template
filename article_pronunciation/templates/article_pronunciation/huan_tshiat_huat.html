@@ -56,7 +56,13 @@
             <td>&nbsp;&nbsp;</td>
           </tr>
       </div>
+
+      {% for sion_ji in han_ji_haut_sion_ji.siong_ji_sion_ji %}
+          <p>{{ sion_ji }}</p>
+      {% endfor %}
+
     {% endif %}
+
 {% endblock content %}
 
 {% block footer %}

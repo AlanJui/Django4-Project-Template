@@ -51,7 +51,8 @@ def parse_huan_tshiat(character1, character2):
     except HanJi.DoesNotExist:
         return None
     except MultipleObjectsReturned:
-        han_ji1 = HanJi.objects.filter(han_ji=character1).first()
+        han_ji1_list = HanJi.objects.filter(han_ji=character1)
+        han_ji1 = han_ji1_list.first()
 
     try:
         # 取韻母
@@ -59,7 +60,8 @@ def parse_huan_tshiat(character1, character2):
     except HanJi.DoesNotExist:
         return None
     except MultipleObjectsReturned:
-        han_ji2 = HanJi.objects.filter(han_ji=character2).first()
+        han_ji2_list = HanJi.objects.filter(han_ji=character2)
+        han_ji2 = han_ji2_list.first()
 
     # 取聲母：siann_bu1
     siann_bu1, un_bu1, tiau1 = han_ji1.split_chu_im()
