@@ -18,14 +18,14 @@ django-mathfilters = "^1.0.0"
 djangorestframework = "^3.14.0"
 beautifulsoup4 = "^4.12.2"
 requests = "^2.31.0"
+django-summernote = "^0.8.20.0"
+django-stubs = "^4.2.4"
 
 
 [tool.poetry.group.dev.dependencies]
 pyright = "^1.1.299"
 pylint = "^2.17.0"
 pylint-django = "^2.5.3"
-mypy = "^1.1.1"
-django-stubs = "^1.15.0"
 pydocstyle = "^6.3.0"
 flake8 = "^6.0.0"
 djlint = "^1.19.16"
@@ -150,18 +150,20 @@ disable = """
 ignore = ["D100", "D103", "D104"]
 # match-dir = "tests/*"
 
-[tool.mypy]
-ignore_missing_imports = true
-exclude = ['.venv', 'venv']
-python_executable = '~/workspace/rime/han_gi/.venv/bin/python3.10'
-# mypy_path = '~/workspace/rime/han_gi/.venv/lib/python3.10/site-packages'
-# plugins = ["mypy_django_plugin.main"]
-
-[tool.django-stubs]
-django_settings_module = "web_app.settings"
-
-# [mypy.plugins.django-stubs]
+# [tool.mypy]
+# exclude = ['.venv', 'venv']
+# ignore_missing_imports = true
+# # python_executable = '~/workspace/rime/han_gi/.venv/bin/python3.10'
+# # mypy_path = '~/workspace/rime/han_gi/.venv/lib/python3.10/site-packages'
+# plugins = [
+#   "mypy_django_plugin.main",
+# ]
+#
+# [tool.django-stubs]
 # django_settings_module = "web_app.settings"
+#
+# [mypy-web_app.models.*]
+# ignore_errors = true
 
 [tool.flake8]
 max-line-length = 120

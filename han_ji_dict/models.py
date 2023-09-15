@@ -58,6 +58,16 @@ class HanJi(models.Model):
            當「韻母」為「舒聲韻」時，若「聲調」未標示，則代表「第一聲」；
            當「韻母」為「入聲韻」時，若「聲調」未標示，則代表「第四聲」。
         """
+
+        valid_un_bu_endings = [
+            'un', 'ian', 'im', 'ui', 'ee', 'an', 'ong', 'uai', 'ing', 'uan',
+            'oo', 'iau', 'ei', 'iong', 'o', 'ai', 'in', 'iang', 'am', 'ua',
+            'ang', 'iam', 'au', 'ia', 'ue', 'ann', 'u', 'a', 'i', 'iu', 'enn',
+            'uinn', 'io', 'inn', 'ionn', 'iannh', 'uann', 'ng', 'e', 'ainn',
+            'onn', 'm', 'uang', 'uainn', 'uenn', 'iaunn', 'om', 'aunn', 'onn',
+            'iunn'
+        ]
+
         result = []
 
         # 正規表達式，用於表達所有可能的聲母。
@@ -78,58 +88,7 @@ class HanJi(models.Model):
             tiau = self.chu_im[-1]
         else:
             un_bu = self.chu_im[len(siann_bu):]
-            if un_bu in [
-                'un',
-                'ian',
-                'im',
-                'ui',
-                'ee',
-                'an',
-                'ong',
-                'uai',
-                'ing',
-                'uan',
-                'oo',
-                'iau',
-                'ei',
-                'iong',
-                'o',
-                'ai',
-                'in',
-                'iang',
-                'am',
-                'ua',
-                'ang',
-                'iam',
-                'au',
-                'ia',
-                'ue',
-                'ann',
-                'u',
-                'a',
-                'i',
-                'iu',
-                'enn',
-                'uinn',
-                'io',
-                'inn',
-                'ionn',
-                'iannh',
-                'uann',
-                'ng',
-                'e',
-                'ainn',
-                'onn',
-                'm',
-                'uang',
-                'uainn',
-                'uenn',
-                'iaunn',
-                'om',
-                'aunn',
-                'onn',
-                'iunn',
-            ]:
+            if un_bu in valid_un_bu_endings:
                 tiau = '1'
             else:
                 tiau = '4'

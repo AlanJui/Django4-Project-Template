@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
+from django.views.static import serve
+from web_app import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,6 +34,11 @@ urlpatterns = [
         'han_ji_dict/',
         include(('han_ji_dict.urls', 'han_ji_dict'), namespace='han_ji_dict'),
     ),
+    path('summernote/', include('django_summernote.urls')),
+    # 供 summernote 上傳圖片用
+    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
+    # 供 summernote 存放靜態檔案用
+    path('staic/<path:path>', serve, {'document_root': settings.STATIC_ROOT}),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
 # urlpatterns += staticfiles_urlpatterns()
