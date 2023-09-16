@@ -38,6 +38,8 @@ selenium = "^4.8.2"
 chromedriver-autoinstaller = "^0.4.0"
 jupyterlab = "^3.6.1"
 types-requests = "^2.31.0.1"
+mypy = "^1.5.1"
+django-stubs = "^4.2.4"
 
 [build-system]
 requires = ["poetry-core"]
@@ -150,18 +152,19 @@ disable = """
 ignore = ["D100", "D103", "D104"]
 # match-dir = "tests/*"
 
-# [tool.mypy]
-# exclude = ['.venv', 'venv']
+[tool.mypy]
+exclude = ['.venv', 'venv']
 # ignore_missing_imports = true
-# # python_executable = '~/workspace/rime/han_gi/.venv/bin/python3.10'
-# # mypy_path = '~/workspace/rime/han_gi/.venv/lib/python3.10/site-packages'
-# plugins = [
-#   "mypy_django_plugin.main",
-# ]
-#
-# [tool.django-stubs]
-# django_settings_module = "web_app.settings"
-#
+plugins = [
+  "mypy_django_plugin.main",
+]
+
+[tool.django-stubs]
+django_settings_module = "web_app.settings"
+
+[tool.django-summernote]
+ignore_missing_imports = true
+
 # [mypy-web_app.models.*]
 # ignore_errors = true
 
