@@ -2,7 +2,7 @@
 name = "han-gi"
 version = "0.1.0"
 description = ""
-authors = ["居正中 <AlanJui.1960@gmail.com>"]
+authors = ["Alan Jui <AlanJui.1960@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "han_gi" }]
 
@@ -155,9 +155,12 @@ ignore = ["D100", "D103", "D104"]
 [tool.mypy]
 exclude = ['.venv', 'venv']
 # ignore_missing_imports = true
-plugins = [
-  "mypy_django_plugin.main",
-]
+plugins = ["mypy_django_plugin.main"]
+
+[[tool.mypy.overrides]]
+module = ["PyQt5"]
+ignore_missing_imports = true
+
 
 [tool.django-stubs]
 django_settings_module = "web_app.settings"
